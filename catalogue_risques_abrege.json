@@ -1,0 +1,170 @@
+{
+  "categories": [
+    {
+      "id": "abrcat1_circulation_et_acces_au_c",
+      "fr": "Circulation et accès au chantier"
+    },
+    {
+      "id": "abrcat2_travaux_en_hauteur",
+      "fr": "Travaux en hauteur"
+    },
+    {
+      "id": "abrcat3_manutention_et_levage",
+      "fr": "Manutention et levage"
+    },
+    {
+      "id": "abrcat4_environnement_de_travail",
+      "fr": "Environnement de travail"
+    },
+    {
+      "id": "abrcat5_risques_electriques",
+      "fr": "Risques électriques"
+    },
+    {
+      "id": "abrcat6_autres",
+      "fr": "Autres"
+    }
+  ],
+  "risques": [
+    {
+      "id": "abrcat1_circulation_et_acces_au_c_item1",
+      "categorieId": "abrcat1_circulation_et_acces_au_c",
+      "sourceDanger": "Choc, collision (véhicule…)",
+      "mesure": "Respect plans, règles circulation",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat1_circulation_et_acces_au_c_item2",
+      "categorieId": "abrcat1_circulation_et_acces_au_c",
+      "sourceDanger": "Chute de plain-pied (état du sol, ORP)",
+      "mesure": "Balisage des zones (si rubalise dist. 1.5m)",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat1_circulation_et_acces_au_c_item3",
+      "categorieId": "abrcat1_circulation_et_acces_au_c",
+      "sourceDanger": "Chute avec dénivellation (escalier…)",
+      "mesure": "Sécuriser accès, tenir la rampe",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat2_travaux_en_hauteur_item1",
+      "categorieId": "abrcat2_travaux_en_hauteur",
+      "sourceDanger": "Chute (échelle, échafaudage < 5m…)",
+      "mesure": "Matériel ok, fixé, réceptionné",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat2_travaux_en_hauteur_item2",
+      "categorieId": "abrcat2_travaux_en_hauteur",
+      "sourceDanger": "Chute (échafaudage de plus de 5 m)",
+      "mesure": "Pas de surcharge inutile",
+      "risqueAggrave": true
+    },
+    {
+      "id": "abrcat2_travaux_en_hauteur_item3",
+      "categorieId": "abrcat2_travaux_en_hauteur",
+      "sourceDanger": "Chute d'objets (travaux superposés)",
+      "mesure": "Coordination, protections des niveaux",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat2_travaux_en_hauteur_item4",
+      "categorieId": "abrcat2_travaux_en_hauteur",
+      "sourceDanger": "Chute (endroits non protégés…)",
+      "mesure": "Vigilance partagée permanente",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat3_manutention_et_levage_item1",
+      "categorieId": "abrcat3_manutention_et_levage",
+      "sourceDanger": "Mal de dos (manutention de charge…)",
+      "mesure": "Gestes et postures adéquats",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat3_manutention_et_levage_item2",
+      "categorieId": "abrcat3_manutention_et_levage",
+      "sourceDanger": "Coincement, écrasement",
+      "mesure": "Port de gants adaptés",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat3_manutention_et_levage_item3",
+      "categorieId": "abrcat3_manutention_et_levage",
+      "sourceDanger": "Basculement d'un engin",
+      "mesure": "Aptitude, matériel adapté",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat3_manutention_et_levage_item4",
+      "categorieId": "abrcat3_manutention_et_levage",
+      "sourceDanger": "Chute d'un objet levé (élingage !)",
+      "mesure": "Balisage, élingage conforme",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat4_environnement_de_travail_item1",
+      "categorieId": "abrcat4_environnement_de_travail",
+      "sourceDanger": "Défaut d'éclairage",
+      "mesure": "Eclairage d'appoint",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat4_environnement_de_travail_item2",
+      "categorieId": "abrcat4_environnement_de_travail",
+      "sourceDanger": "Ambiance thermique dégradée",
+      "mesure": "Boissons adaptées, repos",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat4_environnement_de_travail_item3",
+      "categorieId": "abrcat4_environnement_de_travail",
+      "sourceDanger": "Niveau sonore important",
+      "mesure": "Port d'EPI adaptés",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat4_environnement_de_travail_item4",
+      "categorieId": "abrcat4_environnement_de_travail",
+      "sourceDanger": "Niveau de poussières important",
+      "mesure": "Port de masques P2, P3",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat4_environnement_de_travail_item5",
+      "categorieId": "abrcat4_environnement_de_travail",
+      "sourceDanger": "Présence de produits dangereux",
+      "mesure": "Présence des fiches MSDS",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat5_risques_electriques_item1",
+      "categorieId": "abrcat5_risques_electriques",
+      "sourceDanger": "Equipement de production",
+      "mesure": "Consignation",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat5_risques_electriques_item2",
+      "categorieId": "abrcat5_risques_electriques",
+      "sourceDanger": "Equipement de chantier sous tension",
+      "mesure": "Equipement contrôlé, en ordre",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat5_risques_electriques_item3",
+      "categorieId": "abrcat5_risques_electriques",
+      "sourceDanger": "Travaux en enceinte métallique",
+      "mesure": "Eclairage TBTS, transfo, 30mA",
+      "risqueAggrave": false
+    },
+    {
+      "id": "abrcat6_autres_item1",
+      "categorieId": "abrcat6_autres",
+      "sourceDanger": "Chalumeau : brûlure, intensité lumineuse",
+      "mesure": "Permis feu, protection oculaire ; matières grasses proscrites",
+      "risqueAggrave": false
+    }
+  ]
+}

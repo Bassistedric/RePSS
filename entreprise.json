@@ -1,0 +1,172 @@
+{
+  "identite": {
+    "nomAffichage": "VMA Sud",
+    "nomFournisseurParDefaut": "vma sud"
+  },
+  "branding": {
+    "logo": "vma_logo.png",
+    "couleurPrincipale": "#0B3040",
+    "couleurSecondaire": "#156082"
+  },
+  "aideContact": {
+    "personnes": [
+      {
+        "nom": "Cédric Comblé",
+        "role": "Responsable SIPPT",
+        "email": "cedriccomble@vma.be",
+        "tel": "0484/813.826"
+      },
+      {
+        "nom": "Lauren Herbage",
+        "role": "QHSE Officer",
+        "email": "laurenherbage@vma.be",
+        "tel": "0478/038.717"
+      }
+    ]
+  },
+  "contactsReference": {
+    "assureurLoi": {
+      "nom": "AXA",
+      "contact": "N.A.",
+      "adresse": "Boulevard du Souverain 25, 1170 Bruxelles",
+      "email": "",
+      "tel": "02/678.61.11",
+      "site_web": "axa.be",
+      "logo": "axa_logo.png",
+      "notes": ""
+    },
+    "cnacConstructiv": {
+      "nom": "CNAC - Constructiv",
+      "contact": "N.A.",
+      "adresse": "Rue Royale 132/4, 1000 Bruxelles",
+      "email": "cnac@constructiv.be",
+      "tel": "02/552.05.00",
+      "site_web": "constructiv.be",
+      "logo": "const_logo.png",
+      "notes": ""
+    },
+    "volta": {
+      "nom": "Volta",
+      "contact": "N.A.",
+      "adresse": "Marlylaan 15/8 Avenue du Marly, 1120 Bruxelles",
+      "email": "sat@volta-org.be",
+      "tel": "02/476.16.76",
+      "site_web": "volta-org.be",
+      "logo": "volta_logo.png",
+      "notes": ""
+    },
+    "sepp": {
+      "nom": "CESI - SEPP Médecine du travail",
+      "contact": "N.A.",
+      "adresse": "",
+      "email": "",
+      "tel": "",
+      "site_web": "cesi.be",
+      "logo": "cesi_logo.png",
+      "notes": "voir onglet SEPP_Medecins pour le détail par site",
+      "medecins": [
+        {
+          "nom": "Dr Géraldine Notté",
+          "site": "LLN",
+          "tel": "010/45.61.69"
+        },
+        {
+          "nom": "Dr Jean-Edouard Stevens",
+          "site": "JUM",
+          "tel": "071/48.84.08"
+        },
+        {
+          "nom": "Dr Marine Jamar",
+          "site": "Alleur",
+          "tel": "04/342.15.03"
+        }
+      ]
+    },
+    "controleTechnique": {
+      "vincotte": {
+        "nom": "Vinçotte",
+        "contact": "N.A.",
+        "adresse": "Rue Phocas Lejeune 11, 5032 Gembloux",
+        "email": "",
+        "tel": "081/43.26.11",
+        "site_web": "vincotte.be",
+        "logo": "vincotte_logo.png",
+        "notes": ""
+      },
+      "atk": {
+        "nom": "ATK",
+        "contact": "N.A.",
+        "adresse": "Rijmennamseweg 109, 2820 Bonheiden",
+        "email": "atk@atk.be",
+        "tel": "015/55.51.51",
+        "site_web": "atk.be",
+        "logo": "atk_logo.png",
+        "notes": "adresse à vérifier "
+      }
+    },
+    "dgBienEtre": {
+      "bruxellesCapitale": {
+        "nom": "DG Contrôle Bien-être au Travail — Bruxelles-Capitale",
+        "contact": "",
+        "adresse": "Rue Ernest Blerot 1, 1070 Bruxelles",
+        "email": "cbe.bruxelles@emploi.belgique.be",
+        "tel": "02 233 45 46",
+        "site_web": "emploi.belgique.be",
+        "logo": "cbe_logo.png",
+        "notes": ""
+      },
+      "hainaut": {
+        "nom": "DG Contrôle Bien-être au Travail — Hainaut",
+        "contact": "",
+        "adresse": "Rue du Chapitre 1, 7000 Mons",
+        "email": "cbe.hainaut@emploi.belgique.be",
+        "tel": "02 233 42 50",
+        "site_web": "emploi.belgique.be",
+        "logo": "cbe_logo.png",
+        "notes": ""
+      },
+      "liege": {
+        "nom": "DG Contrôle Bien-être au Travail — Liège",
+        "contact": "",
+        "adresse": "Rue de Fragnée 2 boite 205, 4000 Liège",
+        "email": "cbe.liege@emploi.belgique.be",
+        "tel": "02 233 42 70",
+        "site_web": "emploi.belgique.be",
+        "logo": "cbe_logo.png",
+        "notes": ""
+      },
+      "namurLiegeLuxBW": {
+        "nom": "DG Contrôle Bien-être au Travail — Namur-Liège-Luxembourg-Brabant wallon",
+        "contact": "",
+        "adresse": "Chaussée de Liège 622, 5100 Jambes",
+        "email": "cbe.namur@emploi.belgique.be",
+        "tel": "02 233 43 30",
+        "site_web": "emploi.belgique.be",
+        "logo": "cbe_logo.png",
+        "notes": ""
+      }
+    }
+  },
+  "reglesGeneralesAnnexe4": {
+    "statut": "brouillon_partiel",
+    "texte": "Les interférences entre installations de chantier.\nLorsque le personnel de la S.A. vma sud travaille sur un site ou d'autres entreprises exercent en même temps, que ce soit sur un même ouvrage ou non, s'il y a possible interférence, ne fut-ce qu'au niveau des communs, des mesures particulières doivent être prescrites par le coordinateur de sécurité.\nLe coordinateur sécurité de l'ouvrage devra donc apporter des éléments de réponse à ce point. Il devra tenir compte dans cette réponse du fait de l'évolution du chantier dans le temps.\n\nAccords.\n\nLes sous-traitants de la S.A. vma sud s'engagent à respecter les instructions de sécurité qui sont d'application pour le personnel et l'organisation de la S.A. vma sud.\nPour rappel, s'engager sur ce document signifie que les intervenants respecteront en tous points les principes de sécurité édictés dans les instructions de la S.A. vma sud et les diverses références légales, notamment les documents suivants :\n- Le Règlement Général pour la Protection du Travail ;\n- La loi du 04 août 1996 relative au Bien-être des travailleurs ;\n- Les divers arrêtés d'exécution parus en application de cette loi, et plus particulièrement :\n  o Les Arrêtés Royaux du 27 mars 1998 relatifs à la Loi du 04 août 1996 et celui relatif aux Services Internes de Prévention et de Protection ;\n  o Les Arrêtés Royaux du 25 janvier 2001 et du 04 août 1999 concernant les chantiers mobiles et temporaires ;\n  o Les Arrêtés Royaux du 04 mai 1999 relatifs à l'utilisation des équipements de travail, ainsi que celui du 12 août 1993\n- …\nLes travailleurs indépendants exerçant directement une activité sur l'ouvrage, sont assujettis :\n- aux mesures de protection et de solidarité ;\n- à la mise en place, à l'acquisition et à l'utilisation de matériel conforme ;\n- à mettre en œuvre vis-à-vis des autres personnes, intervenants sur le chantier, comme d'eux-mêmes, les principes généraux de prévention ;\n- …\n- au présent règlement qui leur est applicable dans la totalité ainsi que les règles de sécurité prescrites."
+  },
+  "iconesUrgence": {
+    "pompier": {
+      "label": "Service incendie",
+      "logo": "pompier_logo.png"
+    },
+    "hopital": {
+      "label": "Hôpital",
+      "logo": "hopitaux_logo.png"
+    },
+    "antipoison": {
+      "label": "Centre antipoison",
+      "logo": "poison_logo.png"
+    },
+    "police": {
+      "label": "Police",
+      "logo": "police_logo.png"
+    }
+  }
+}

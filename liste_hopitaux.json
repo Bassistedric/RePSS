@@ -1,0 +1,1244 @@
+{
+  "hopitaux": [
+    {
+      "id": "hop_076_1520",
+      "numero_agrement": "076",
+      "numero_site": "1520",
+      "nom_hopital": "CHU ST. PIERRE",
+      "nom_site": "PORTE DE HALL",
+      "adresse": "RUE AUX LAINES 105",
+      "code_postal": "1000",
+      "commune": "BRUXELLES"
+    },
+    {
+      "id": "hop_110_1310",
+      "numero_agrement": "110",
+      "numero_site": "1310",
+      "nom_hopital": "CLINIQUE SAINT-JEAN",
+      "nom_site": "BOTANIQUE",
+      "adresse": "BOULEVARD DU JARDIN BOTANIQUE 32",
+      "code_postal": "1000",
+      "commune": "BRUXELLES"
+    },
+    {
+      "id": "hop_077_1570",
+      "numero_agrement": "077",
+      "numero_site": "1570",
+      "nom_hopital": "CHU BRUGMANN",
+      "nom_site": "VICTOR HORTA",
+      "adresse": "PLACE A. VAN GEHUCHTEN 4",
+      "code_postal": "1020",
+      "commune": "BRUXELLES (LAEKEN)"
+    },
+    {
+      "id": "hop_150_3440",
+      "numero_agrement": "150",
+      "numero_site": "3440",
+      "nom_hopital": "HOPITAL UNIVERSITAIRE DES ENFANTS REINE FABIOLA (HUDERF)",
+      "nom_site": null,
+      "adresse": "AVENUE J.J. CROCQ 15",
+      "code_postal": "1020",
+      "commune": "BRUXELLES (LAEKEN)"
+    },
+    {
+      "id": "hop_077_1590",
+      "numero_agrement": "077",
+      "numero_site": "1590",
+      "nom_hopital": "CHU BRUGMANN",
+      "nom_site": "PAUL BRIEN",
+      "adresse": "RUE FOYER SCHAERBEEKOIS 36",
+      "code_postal": "1030",
+      "commune": "BRUXELLES (SCHAERBEEK)"
+    },
+    {
+      "id": "hop_111_1420",
+      "numero_agrement": "111",
+      "numero_site": "1420",
+      "nom_hopital": "CLINIQUES DE L'EUROPE",
+      "nom_site": "ST-MICHEL",
+      "adresse": "RUE DE LINTHOUT 150",
+      "code_postal": "1040",
+      "commune": "BRUXELLES (ETTERBEEK)"
+    },
+    {
+      "id": "hop_087_1560",
+      "numero_agrement": "087",
+      "numero_site": "1560",
+      "nom_hopital": "HOPITAUX IRIS SUD",
+      "nom_site": "ETTERBEEK - IXELLES",
+      "adresse": "RUE JEAN PAQUOT 63",
+      "code_postal": "1050",
+      "commune": "BRUXELLES (IXELLES)"
+    },
+    {
+      "id": "hop_406_4210",
+      "numero_agrement": "406",
+      "numero_site": "4210",
+      "nom_hopital": "HOPITAL ERASME (ULB)",
+      "nom_site": "ERASME",
+      "adresse": "ROUTE DE LENNIK 808",
+      "code_postal": "1070",
+      "commune": "BRUXELLES (ANDERLECHT)"
+    },
+    {
+      "id": "hop_723_1470",
+      "numero_agrement": "723",
+      "numero_site": "1470",
+      "nom_hopital": "CHIREC - SARE",
+      "nom_site": "CLINIQUE STE. ANNE - ST. REMI",
+      "adresse": "BOULEVARD J. GRAINDOR 66",
+      "code_postal": "1070",
+      "commune": "BRUXELLES (ANDERLECHT)"
+    },
+    {
+      "id": "hop_079_6220",
+      "numero_agrement": "079",
+      "numero_site": "6220",
+      "nom_hopital": "INSTITUT JULES BORDET",
+      "nom_site": "JULES BORDET",
+      "adresse": "RUE MEYLEMEERSCH 90",
+      "code_postal": "1070",
+      "commune": "BRUXELLES--7"
+    },
+    {
+      "id": "hop_143_4200",
+      "numero_agrement": "143",
+      "numero_site": "4200",
+      "nom_hopital": "UNIVERSITAIR ZIEKENHUIS BRUSSEL",
+      "nom_site": null,
+      "adresse": "AVENUE DU LAERBEEK 101",
+      "code_postal": "1090",
+      "commune": "BRUXELLES (JETTE)"
+    },
+    {
+      "id": "hop_332_6140",
+      "numero_agrement": "332",
+      "numero_site": "6140",
+      "nom_hopital": "CHIREC - HOPITAL DELTA",
+      "nom_site": null,
+      "adresse": "BOULEVARD DU TRIOMPHE 201",
+      "code_postal": "1160",
+      "commune": "BRUXELLES (AUDERGHEM)"
+    },
+    {
+      "id": "hop_111_1400",
+      "numero_agrement": "111",
+      "numero_site": "1400",
+      "nom_hopital": "CLINIQUES DE L'EUROPE",
+      "nom_site": "ST-ELISABETH",
+      "adresse": "AVENUE DE FRE 206",
+      "code_postal": "1180",
+      "commune": "BRUXELLES (UCCLE)"
+    },
+    {
+      "id": "hop_087_1550",
+      "numero_agrement": "087",
+      "numero_site": "1550",
+      "nom_hopital": "HOPITAUX IRIS SUD",
+      "nom_site": "MOLIERE LONGCHAMP",
+      "adresse": "RUE MARCONI 142",
+      "code_postal": "1190",
+      "commune": "BRUXELLES (FOREST)"
+    },
+    {
+      "id": "hop_403_4190",
+      "numero_agrement": "403",
+      "numero_site": "4190",
+      "nom_hopital": "CLINIQUES UNIVERSITAIRES SAINT-LUC (UCL)",
+      "nom_site": null,
+      "adresse": "AVENUE HIPPOCRATE 10",
+      "code_postal": "1200",
+      "commune": "BRUXELLES (WOLUWE-SAINT-LAMBERT)"
+    },
+    {
+      "id": "hop_043_1730",
+      "numero_agrement": "043",
+      "numero_site": "1730",
+      "nom_hopital": "CLINIQUE SAINT PIERRE",
+      "nom_site": null,
+      "adresse": "AVENUE REINE FABIOLA 9",
+      "code_postal": "1340",
+      "commune": "OTTIGNIES"
+    },
+    {
+      "id": "hop_346_1710",
+      "numero_agrement": "346",
+      "numero_site": "1710",
+      "nom_hopital": "CHU HELORA - SITE NIVELLES - TUBIZE",
+      "nom_site": "NIVELLES",
+      "adresse": "RUE SAMIETTE 1",
+      "code_postal": "1400",
+      "commune": "NIVELLES"
+    },
+    {
+      "id": "hop_723_1760",
+      "numero_agrement": "723",
+      "numero_site": "1760",
+      "nom_hopital": "CHIREC - SARE",
+      "nom_site": "HOPITAL DE BRAINE-L'ALLEUD",
+      "adresse": "RUE WAYEZ 35",
+      "code_postal": "1420",
+      "commune": "BRAINE-L'ALLEUD"
+    },
+    {
+      "id": "hop_106_1340",
+      "numero_agrement": "106",
+      "numero_site": "1340",
+      "nom_hopital": "ALGEMEEN ZIEKENHUIS SINT-MARIA",
+      "nom_site": null,
+      "adresse": "ZIEKENHUISLAAN 100",
+      "code_postal": "1500",
+      "commune": "HALLE"
+    },
+    {
+      "id": "hop_126_1300",
+      "numero_agrement": "126",
+      "numero_site": "1300",
+      "nom_hopital": "ONZE-LIEVE-VROUW ZIEKENHUIS",
+      "nom_site": "ASSE",
+      "adresse": "BLOKLAAN 5",
+      "code_postal": "1730",
+      "commune": "ASSE"
+    },
+    {
+      "id": "hop_204_1460",
+      "numero_agrement": "204",
+      "numero_site": "1460",
+      "nom_hopital": "AZ JAN PORTAELS",
+      "nom_site": null,
+      "adresse": "GENDARMERIESTRAAT 65",
+      "code_postal": "1800",
+      "commune": "VILVOORDE"
+    },
+    {
+      "id": "hop_099_2020",
+      "numero_agrement": "099",
+      "numero_site": "2020",
+      "nom_hopital": "GZA- ZIEKENHUIZEN",
+      "nom_site": "SINT-VINCENTIUS",
+      "adresse": "ST.-VINCENTIUSSTRAAT 20",
+      "code_postal": "2018",
+      "commune": "ANTWERPEN"
+    },
+    {
+      "id": "hop_009_2000",
+      "numero_agrement": "009",
+      "numero_site": "2000",
+      "nom_hopital": "ZIEKENHUISNETWERK ANTWERPEN (ZNA)",
+      "nom_site": "ZNA MIDDELHEIM",
+      "adresse": "LINDENDREEF 1",
+      "code_postal": "2020",
+      "commune": "ANTWERPEN"
+    },
+    {
+      "id": "hop_009_6230",
+      "numero_agrement": "009",
+      "numero_site": "6230",
+      "nom_hopital": "ZIEKENHUISNETWERK ANTWERPEN (ZNA)",
+      "nom_site": "ZNA CADIX",
+      "adresse": "KEMPENSTRAAT 100",
+      "code_postal": "2030",
+      "commune": "ANTWERPEN"
+    },
+    {
+      "id": "hop_682_1210",
+      "numero_agrement": "682",
+      "numero_site": "1210",
+      "nom_hopital": "AZ MONICA",
+      "nom_site": "DEURNE",
+      "adresse": "FLORENT PAUWELSLEI 1",
+      "code_postal": "2100",
+      "commune": "DEURNE"
+    },
+    {
+      "id": "hop_009_3360",
+      "numero_agrement": "009",
+      "numero_site": "3360",
+      "nom_hopital": "ZIEKENHUISNETWERK ANTWERPEN (ZNA)",
+      "nom_site": "ZNA JAN PALFIJN",
+      "adresse": "LANGE BREMSTRAAT 70",
+      "code_postal": "2170",
+      "commune": "MERKSEM"
+    },
+    {
+      "id": "hop_308_1250",
+      "numero_agrement": "308",
+      "numero_site": "1250",
+      "nom_hopital": "AZ HERENTALS",
+      "nom_site": null,
+      "adresse": "NEDERRIJ 133",
+      "code_postal": "2200",
+      "commune": "HERENTALS"
+    },
+    {
+      "id": "hop_063_1280",
+      "numero_agrement": "063",
+      "numero_site": "1280",
+      "nom_hopital": "AZ TURNHOUT",
+      "nom_site": "SINT-ELISABETH",
+      "adresse": "RUBENSSTRAAT 166",
+      "code_postal": "2300",
+      "commune": "TURNHOUT"
+    },
+    {
+      "id": "hop_063_2100",
+      "numero_agrement": "063",
+      "numero_site": "2100",
+      "nom_hopital": "AZ TURNHOUT",
+      "nom_site": "SINT-JOZEF",
+      "adresse": "STEENWEG OP MERKSPLAS 44",
+      "code_postal": "2300",
+      "commune": "TURNHOUT"
+    },
+    {
+      "id": "hop_536_2090",
+      "numero_agrement": "536",
+      "numero_site": "2090",
+      "nom_hopital": "AZ VOORKEMPEN",
+      "nom_site": null,
+      "adresse": "OUDE LIERSEBAAN 4",
+      "code_postal": "2390",
+      "commune": "MALLE"
+    },
+    {
+      "id": "hop_102_2080",
+      "numero_agrement": "102",
+      "numero_site": "2080",
+      "nom_hopital": "HEILIG HART ZIEKENHUIS",
+      "nom_site": null,
+      "adresse": "GASTHUISSTRAAT 1",
+      "code_postal": "2400",
+      "commune": "MOL"
+    },
+    {
+      "id": "hop_709_2690",
+      "numero_agrement": "709",
+      "numero_site": "2690",
+      "nom_hopital": "ZIEKENHUIS GEEL",
+      "nom_site": null,
+      "adresse": "J.B. STESSENSSTRAAT 2",
+      "code_postal": "2440",
+      "commune": "GEEL"
+    },
+    {
+      "id": "hop_097_1260",
+      "numero_agrement": "097",
+      "numero_site": "1260",
+      "nom_hopital": "ALGEMEEN ZIEKENHUIS HEILIG HART",
+      "nom_site": null,
+      "adresse": "MECHELSESTRAAT 24",
+      "code_postal": "2500",
+      "commune": "LIER"
+    },
+    {
+      "id": "hop_099_1290",
+      "numero_agrement": "099",
+      "numero_site": "1290",
+      "nom_hopital": "GZA- ZIEKENHUIZEN",
+      "nom_site": "SINT-AUGUSTINUS",
+      "adresse": "OOSTERVELDLAAN 24",
+      "code_postal": "2610",
+      "commune": "WILRIJK"
+    },
+    {
+      "id": "hop_099_2030",
+      "numero_agrement": "099",
+      "numero_site": "2030",
+      "nom_hopital": "GZA- ZIEKENHUIZEN",
+      "nom_site": "SINT-JOZEF",
+      "adresse": "MOLENSTRAAT 19",
+      "code_postal": "2640",
+      "commune": "MORTSEL"
+    },
+    {
+      "id": "hop_300_4220",
+      "numero_agrement": "300",
+      "numero_site": "4220",
+      "nom_hopital": "UNIVERSITAIR ZIEKENHUIS ANTWERPEN",
+      "nom_site": null,
+      "adresse": "DRIE EIKENSTRAAT 655",
+      "code_postal": "2650",
+      "commune": "EDEGEM"
+    },
+    {
+      "id": "hop_026_6170",
+      "numero_agrement": "026",
+      "numero_site": "6170",
+      "nom_hopital": "AZ SINT-MAARTEN",
+      "nom_site": null,
+      "adresse": "LIERSESTEENWEG 435",
+      "code_postal": "2800",
+      "commune": "MECHELEN"
+    },
+    {
+      "id": "hop_689_2040",
+      "numero_agrement": "689",
+      "numero_site": "2040",
+      "nom_hopital": "IMELDA ZIEKENHUIS",
+      "nom_site": null,
+      "adresse": "IMELDALAAN 9",
+      "code_postal": "2820",
+      "commune": "BONHEIDEN"
+    },
+    {
+      "id": "hop_104_1270",
+      "numero_agrement": "104",
+      "numero_site": "1270",
+      "nom_hopital": "AZ RIVIERENLAND",
+      "nom_site": "RUMST",
+      "adresse": "'S HERENBAAN 172",
+      "code_postal": "2840",
+      "commune": "RUMST"
+    },
+    {
+      "id": "hop_104_2060",
+      "numero_agrement": "104",
+      "numero_site": "2060",
+      "nom_hopital": "AZ RIVIERENLAND",
+      "nom_site": "BORNEM",
+      "adresse": "KASTEELSTRAAT 23",
+      "code_postal": "2880",
+      "commune": "BORNEM"
+    },
+    {
+      "id": "hop_710_3450",
+      "numero_agrement": "710",
+      "numero_site": "3450",
+      "nom_hopital": "AZ KLINA",
+      "nom_site": "KLINA BRASSCHAAT",
+      "adresse": "AUGUSTIJNSLEI 100",
+      "code_postal": "2930",
+      "commune": "BRASSCHAAT"
+    },
+    {
+      "id": "hop_108_1360",
+      "numero_agrement": "108",
+      "numero_site": "1360",
+      "nom_hopital": "REGIONAAL ZIEKENHUIS HEILIG HART",
+      "nom_site": null,
+      "adresse": "NAAMSESTRAAT 105",
+      "code_postal": "3000",
+      "commune": "LEUVEN"
+    },
+    {
+      "id": "hop_322_4230",
+      "numero_agrement": "322",
+      "numero_site": "4230",
+      "nom_hopital": "UZ LEUVEN",
+      "nom_site": "GASTHUISBERG",
+      "adresse": "HERESTRAAT 49",
+      "code_postal": "3000",
+      "commune": "LEUVEN"
+    },
+    {
+      "id": "hop_712_1320",
+      "numero_agrement": "712",
+      "numero_site": "1320",
+      "nom_hopital": "AZ DIEST",
+      "nom_site": null,
+      "adresse": "STATIESTRAAT 65",
+      "code_postal": "3290",
+      "commune": "DIEST"
+    },
+    {
+      "id": "hop_109_1370",
+      "numero_agrement": "109",
+      "numero_site": "1370",
+      "nom_hopital": "RZ TIENEN",
+      "nom_site": "MARIENDAL",
+      "adresse": "KLINIEKSTRAAT 45",
+      "code_postal": "3300",
+      "commune": "TIENEN"
+    },
+    {
+      "id": "hop_243_3590",
+      "numero_agrement": "243",
+      "numero_site": "3590",
+      "nom_hopital": "JESSA ZIEKENHUIS",
+      "nom_site": "VIRGA JESSE",
+      "adresse": "STADSOMVAART 11",
+      "code_postal": "3500",
+      "commune": "HASSELT"
+    },
+    {
+      "id": "hop_714_3600",
+      "numero_agrement": "714",
+      "numero_site": "3600",
+      "nom_hopital": "SINT-FRANCISCUS ZIEKENHUIS",
+      "nom_site": null,
+      "adresse": "PASTOOR PAQUAYLAAN 129",
+      "code_postal": "3550",
+      "commune": "HEUSDEN"
+    },
+    {
+      "id": "hop_371_3560",
+      "numero_agrement": "371",
+      "numero_site": "3560",
+      "nom_hopital": "ZIEKENHUIS OOST - LIMBURG",
+      "nom_site": "SINT-JAN",
+      "adresse": "SYNAPS PARK 1",
+      "code_postal": "3600",
+      "commune": "GENK"
+    },
+    {
+      "id": "hop_717_6120",
+      "numero_agrement": "717",
+      "numero_site": "6120",
+      "nom_hopital": "ZIEKENHUIS OOST-LIMBURG",
+      "nom_site": "ZIEKENHUIS MAAS EN KEMPEN",
+      "adresse": "DIESTERSTEENWEG 425",
+      "code_postal": "3680",
+      "commune": "MAASEIK"
+    },
+    {
+      "id": "hop_716_3670",
+      "numero_agrement": "716",
+      "numero_site": "3670",
+      "nom_hopital": "AZ VESALIUS",
+      "nom_site": null,
+      "adresse": "HAZELEREIK 51",
+      "code_postal": "3700",
+      "commune": "TONGEREN"
+    },
+    {
+      "id": "hop_715_3650",
+      "numero_agrement": "715",
+      "numero_site": "3650",
+      "nom_hopital": "SINT-TRUDO ZIEKENHUIS",
+      "nom_site": null,
+      "adresse": "DIESTERSTEENWEG 100",
+      "code_postal": "3800",
+      "commune": "SINT-TRUIDEN"
+    },
+    {
+      "id": "hop_719_3615",
+      "numero_agrement": "719",
+      "numero_site": "3615",
+      "nom_hopital": "NOORDERHART",
+      "nom_site": "MARIAZIEKENHUIS",
+      "adresse": "MAESENSVELD 1",
+      "code_postal": "3900",
+      "commune": "PELT"
+    },
+    {
+      "id": "hop_152_6200",
+      "numero_agrement": "152",
+      "numero_site": "6200",
+      "nom_hopital": "GROUPE SANTE CHC",
+      "nom_site": "CLINIQUE CHC MONTLEGIA",
+      "adresse": "BOULEVARD PATIENCE ET BEAUJONC 2",
+      "code_postal": "4000",
+      "commune": "LIEGE"
+    },
+    {
+      "id": "hop_412_3410",
+      "numero_agrement": "412",
+      "numero_site": "3410",
+      "nom_hopital": "HOPITAL DE LA CITADELLE",
+      "nom_site": "CITADELLE",
+      "adresse": "BOULEVARD DU 12e DE LIGNE 1",
+      "code_postal": "4000",
+      "commune": "LIEGE"
+    },
+    {
+      "id": "hop_707_3860",
+      "numero_agrement": "707",
+      "numero_site": "3860",
+      "nom_hopital": "CHU DE LIEGE",
+      "nom_site": "SART-TILMAN",
+      "adresse": "RUE DE L'HOPITAL 1",
+      "code_postal": "4000",
+      "commune": "LIEGE"
+    },
+    {
+      "id": "hop_707_2840",
+      "numero_agrement": "707",
+      "numero_site": "2840",
+      "nom_hopital": "CHU DE LIEGE",
+      "nom_site": "NOTRE-DAME DE BRUYERES",
+      "adresse": "RUE DE GAILLARMONT 600",
+      "code_postal": "4032",
+      "commune": "CHENEE"
+    },
+    {
+      "id": "hop_023_2860",
+      "numero_agrement": "023",
+      "numero_site": "2860",
+      "nom_hopital": "CLINIQUE ANDRE RENARD",
+      "nom_site": null,
+      "adresse": "RUE A. RENARD 1",
+      "code_postal": "4040",
+      "commune": "HERSTAL"
+    },
+    {
+      "id": "hop_042_2990",
+      "numero_agrement": "042",
+      "numero_site": "2990",
+      "nom_hopital": "CENTRE HOSPITALIER BOIS DE L'ABBAYE",
+      "nom_site": "SERAING",
+      "adresse": "RUE LAPLACE 40",
+      "code_postal": "4100",
+      "commune": "SERAING"
+    },
+    {
+      "id": "hop_152_2930",
+      "numero_agrement": "152",
+      "numero_site": "2930",
+      "nom_hopital": "GROUPE SANTE CHC",
+      "nom_site": "CLINIQUE CHC WAREMME",
+      "adresse": "RUE DE SELYS LONGCHAMPS 4",
+      "code_postal": "4300",
+      "commune": "WAREMME"
+    },
+    {
+      "id": "hop_042_3000",
+      "numero_agrement": "042",
+      "numero_site": "3000",
+      "nom_hopital": "CENTRE HOSPITALIER BOIS DE L'ABBAYE",
+      "nom_site": "WAREMME",
+      "adresse": "AVENUE DE LA RESISTANCE 2",
+      "code_postal": "4300",
+      "commune": "WAREMME"
+    },
+    {
+      "id": "hop_068_2870",
+      "numero_agrement": "068",
+      "numero_site": "2870",
+      "nom_hopital": "CENTRE HOSPITALIER REGIONAL DE HUY",
+      "nom_site": null,
+      "adresse": "RUE TROIS PONTS 2",
+      "code_postal": "4500",
+      "commune": "HUY"
+    },
+    {
+      "id": "hop_158_2940",
+      "numero_agrement": "158",
+      "numero_site": "2940",
+      "nom_hopital": "GROUPE SANTE CHC",
+      "nom_site": "CLINIQUE CHC HERMALLE",
+      "adresse": "RUE BASSE HERMALLE 4",
+      "code_postal": "4681",
+      "commune": "HERMALLE-SOUS-ARGENTEAU"
+    },
+    {
+      "id": "hop_015_2850",
+      "numero_agrement": "015",
+      "numero_site": "2850",
+      "nom_hopital": "ST. NIKOLAUS-HOSPITAL",
+      "nom_site": null,
+      "adresse": "HUFENGASSE 4-8",
+      "code_postal": "4700",
+      "commune": "EUPEN"
+    },
+    {
+      "id": "hop_257_2980",
+      "numero_agrement": "257",
+      "numero_site": "2980",
+      "nom_hopital": "KLINIK ST. JOSEF",
+      "nom_site": null,
+      "adresse": "KLOSTERSTRASSE 9",
+      "code_postal": "4780",
+      "commune": "SANKT-VITH"
+    },
+    {
+      "id": "hop_020_3010",
+      "numero_agrement": "020",
+      "numero_site": "3010",
+      "nom_hopital": "CHR VERVIERS - EAST BELGIUM",
+      "nom_site": "LA TOURELLE",
+      "adresse": "RUE DU PARC 29",
+      "code_postal": "4800",
+      "commune": "VERVIERS"
+    },
+    {
+      "id": "hop_158_2970",
+      "numero_agrement": "158",
+      "numero_site": "2970",
+      "nom_hopital": "GROUPE SANTE CHC",
+      "nom_site": "CLINIQUE CHC HEUSY",
+      "adresse": "RUE DU NAIMEUX 17",
+      "code_postal": "4802",
+      "commune": "HEUSY"
+    },
+    {
+      "id": "hop_004_2950",
+      "numero_agrement": "004",
+      "numero_site": "2950",
+      "nom_hopital": "CENTRE HOSPITALIER REINE ASTRID",
+      "nom_site": null,
+      "adresse": "RUE DEVANT LES RELIGIEUSES",
+      "code_postal": "4960",
+      "commune": "MALMEDY"
+    },
+    {
+      "id": "hop_006_3300",
+      "numero_agrement": "006",
+      "numero_site": "3300",
+      "nom_hopital": "CHR SAMBRE ET MEUSE",
+      "nom_site": "MEUSE",
+      "adresse": "AVENUE ALBERT Ier 185",
+      "code_postal": "5000",
+      "commune": "NAMUR"
+    },
+    {
+      "id": "hop_166_3290",
+      "numero_agrement": "166",
+      "numero_site": "3290",
+      "nom_hopital": "CHU - UCL NAMUR",
+      "nom_site": "SAINTE-ELISABETH",
+      "adresse": "PLACE LOUISE GODIN 15",
+      "code_postal": "5000",
+      "commune": "NAMUR"
+    },
+    {
+      "id": "hop_706_3340",
+      "numero_agrement": "706",
+      "numero_site": "3340",
+      "nom_hopital": "CLINIQUE SAINT-LUC",
+      "nom_site": null,
+      "adresse": "RUE SAINT LUC 8",
+      "code_postal": "5004",
+      "commune": "BOUGE"
+    },
+    {
+      "id": "hop_103_3310",
+      "numero_agrement": "103",
+      "numero_site": "3310",
+      "nom_hopital": "CHR SAMBRE ET MEUSE",
+      "nom_site": "SAMBRE",
+      "adresse": "RUE CHERE VOIE 75",
+      "code_postal": "5060",
+      "commune": "AUVELAIS"
+    },
+    {
+      "id": "hop_264_3260",
+      "numero_agrement": "264",
+      "numero_site": "3260",
+      "nom_hopital": "CHU - UCL NAMUR",
+      "nom_site": "DINANT",
+      "adresse": "RUE ST.-JACQUES 501",
+      "code_postal": "5500",
+      "commune": "DINANT"
+    },
+    {
+      "id": "hop_039_3280",
+      "numero_agrement": "039",
+      "numero_site": "3280",
+      "nom_hopital": "CHU-UCL NAMUR",
+      "nom_site": "GODINNE",
+      "adresse": "AVENUE DR. G. THERASSE 1",
+      "code_postal": "5530",
+      "commune": "MONT-GODINNE"
+    },
+    {
+      "id": "hop_010_3100",
+      "numero_agrement": "010",
+      "numero_site": "3100",
+      "nom_hopital": "GRAND HOPITAL DE CHARLEROI",
+      "nom_site": "NOTRE-DAME",
+      "adresse": "GRAND'RUE 3",
+      "code_postal": "6000",
+      "commune": "CHARLEROI"
+    },
+    {
+      "id": "hop_409_3350",
+      "numero_agrement": "409",
+      "numero_site": "3350",
+      "nom_hopital": "CLINIQUE NOTRE-DAME DE GRÂCE",
+      "nom_site": null,
+      "adresse": "CHAUSSEE DE NIVELLES 212",
+      "code_postal": "6041",
+      "commune": "GOSSELIES"
+    },
+    {
+      "id": "hop_718_3130",
+      "numero_agrement": "718",
+      "numero_site": "3130",
+      "nom_hopital": "CHU CHARLEROI - HOPITAL CIVIL MARIE CURIE",
+      "nom_site": "HOPITAL CIVIL MARIE CURIE",
+      "adresse": "CHAUSSEE DE BRUXELLES 140",
+      "code_postal": "6042",
+      "commune": "LODELINSART"
+    },
+    {
+      "id": "hop_010_3170",
+      "numero_agrement": "010",
+      "numero_site": "3170",
+      "nom_hopital": "GRAND HOPITAL DE CHARLEROI",
+      "nom_site": "SAINT-JOSEPH",
+      "adresse": "RUE MARGUERITE DEPASSE 6",
+      "code_postal": "6060",
+      "commune": "GILLY"
+    },
+    {
+      "id": "hop_325_2750",
+      "numero_agrement": "325",
+      "numero_site": "2750",
+      "nom_hopital": "CHU CHARLEROI - HOPITAL ANDRE VESALE",
+      "nom_site": null,
+      "adresse": "RUE DE GOZEE 706",
+      "code_postal": "6110",
+      "commune": "MONTIGNY-LE-TILLEUL"
+    },
+    {
+      "id": "hop_010_3180",
+      "numero_agrement": "010",
+      "numero_site": "3180",
+      "nom_hopital": "GRAND HOPITAL DE CHARLEROI",
+      "nom_site": "IMTR",
+      "adresse": "RUE DE VILLERS 1",
+      "code_postal": "6280",
+      "commune": "LOVERVAL"
+    },
+    {
+      "id": "hop_249_3160",
+      "numero_agrement": "249",
+      "numero_site": "3160",
+      "nom_hopital": "CENTRE DE SANTE DES FAGNES",
+      "nom_site": null,
+      "adresse": "BOULEVARD LOUISE 18",
+      "code_postal": "6460",
+      "commune": "CHIMAY"
+    },
+    {
+      "id": "hop_146_3210",
+      "numero_agrement": "146",
+      "numero_site": "3210",
+      "nom_hopital": "CHU HELORA - SITE JOLIMONT - LOBBES",
+      "nom_site": "LOBBES",
+      "adresse": "RUE DE LA STATION 25",
+      "code_postal": "6540",
+      "commune": "LOBBES"
+    },
+    {
+      "id": "hop_168_3720",
+      "numero_agrement": "168",
+      "numero_site": "3720",
+      "nom_hopital": "VIVALIA",
+      "nom_site": "HOPITAL DE BASTOGNE",
+      "adresse": "RUE DE HOUFFALIZE 1",
+      "code_postal": "6600",
+      "commune": "BASTOGNE"
+    },
+    {
+      "id": "hop_246_3690",
+      "numero_agrement": "246",
+      "numero_site": "3690",
+      "nom_hopital": "VIVALIA",
+      "nom_site": "HOPITAL D'ARLON",
+      "adresse": "RUE DES DEPORTES 137",
+      "code_postal": "6700",
+      "commune": "ARLON"
+    },
+    {
+      "id": "hop_168_3240",
+      "numero_agrement": "168",
+      "numero_site": "3240",
+      "nom_hopital": "VIVALIA",
+      "nom_site": "HOPITAL DE LIBRAMONT",
+      "adresse": "AVENUE DE HOUFFALIZE 35",
+      "code_postal": "6800",
+      "commune": "LIBRAMONT"
+    },
+    {
+      "id": "hop_164_3230",
+      "numero_agrement": "164",
+      "numero_site": "3230",
+      "nom_hopital": "VIVALIA",
+      "nom_site": "HOPITAL DE MARCHE",
+      "adresse": "RUE DU VIVIER 21",
+      "code_postal": "6900",
+      "commune": "MARCHE-EN-FAMENNE"
+    },
+    {
+      "id": "hop_254_2730",
+      "numero_agrement": "254",
+      "numero_site": "2730",
+      "nom_hopital": "CHU HELORA - SITE KENNEDY MONS",
+      "nom_site": "KENNEDY MONS",
+      "adresse": "BOULEVARD KENNEDY 2",
+      "code_postal": "7000",
+      "commune": "MONS"
+    },
+    {
+      "id": "hop_266_2710",
+      "numero_agrement": "266",
+      "numero_site": "2710",
+      "nom_hopital": "CHU HELORA - SITE CONSTANTINOPLE MONS - WARQUIGNIES",
+      "nom_site": "MONS",
+      "adresse": "AV. B. DE CONSTANTINOPLE 5",
+      "code_postal": "7000",
+      "commune": "MONS"
+    },
+    {
+      "id": "hop_007_2790",
+      "numero_agrement": "007",
+      "numero_site": "2790",
+      "nom_hopital": "CHR HAUTE SENNE",
+      "nom_site": "LE TILLERIAU",
+      "adresse": "CHAUSSEE DE BRAINE 49",
+      "code_postal": "7060",
+      "commune": "SOIGNIES"
+    },
+    {
+      "id": "hop_096_3220",
+      "numero_agrement": "096",
+      "numero_site": "3220",
+      "nom_hopital": "CHU TIVOLI",
+      "nom_site": null,
+      "adresse": "AVENUE MAX BUSET 34",
+      "code_postal": "7100",
+      "commune": "LA-LOUVIERE"
+    },
+    {
+      "id": "hop_146_3200",
+      "numero_agrement": "146",
+      "numero_site": "3200",
+      "nom_hopital": "CHU HELORA - SITE JOLIMONT - LOBBES",
+      "nom_site": "JOLIMONT",
+      "adresse": "RUE FERRER 159",
+      "code_postal": "7100",
+      "commune": "HAINE-SAINT-PAUL"
+    },
+    {
+      "id": "hop_266_2720",
+      "numero_agrement": "266",
+      "numero_site": "2720",
+      "nom_hopital": "CHU HELORA - SITE CONSTANTINOPLE MONS - WARQUIGNIES",
+      "nom_site": "WARQUIGNIES",
+      "adresse": "RUE DES CHAUFOURS 27",
+      "code_postal": "7300",
+      "commune": "BOUSSU"
+    },
+    {
+      "id": "hop_410_3380",
+      "numero_agrement": "410",
+      "numero_site": "3380",
+      "nom_hopital": "CENTRE HOSPITALIER EPICURA",
+      "nom_site": "HORNU",
+      "adresse": "ROUTE DE MONS 63",
+      "code_postal": "7301",
+      "commune": "HORNU"
+    },
+    {
+      "id": "hop_534_2830",
+      "numero_agrement": "534",
+      "numero_site": "2830",
+      "nom_hopital": "CENTRE HOSPITALIER DE WALLONIE PICARDE (CHWAPI)",
+      "nom_site": "UNION",
+      "adresse": "RUE DES SPORTS 51",
+      "code_postal": "7500",
+      "commune": "TOURNAI"
+    },
+    {
+      "id": "hop_247_2770",
+      "numero_agrement": "247",
+      "numero_site": "2770",
+      "nom_hopital": "CENTRE HOSPITALIER DE MOUSCRON",
+      "nom_site": null,
+      "adresse": "AVENUE DE FECAMP 49",
+      "code_postal": "7700",
+      "commune": "MOUSCRON"
+    },
+    {
+      "id": "hop_724_1910",
+      "numero_agrement": "724",
+      "numero_site": "1910",
+      "nom_hopital": "CENTRE HOSPITALIER EPICURA",
+      "nom_site": "ATH",
+      "adresse": "RUE MARIA THOMEE 1",
+      "code_postal": "7800",
+      "commune": "ATH"
+    },
+    {
+      "id": "hop_049_1010",
+      "numero_agrement": "049",
+      "numero_site": "1010",
+      "nom_hopital": "AZ SINT-JAN",
+      "nom_site": "SINT-JAN BRUGGE",
+      "adresse": "RUDDERSHOVE 10",
+      "code_postal": "8000",
+      "commune": "BRUGGE"
+    },
+    {
+      "id": "hop_392_6160",
+      "numero_agrement": "392",
+      "numero_site": "6160",
+      "nom_hopital": "AZ ZENO",
+      "nom_site": "KNOKKE-HEIST",
+      "adresse": "KALVEKEETDIJK 260",
+      "code_postal": "8300",
+      "commune": "KNOKKE-HEIST"
+    },
+    {
+      "id": "hop_140_1000",
+      "numero_agrement": "140",
+      "numero_site": "1000",
+      "nom_hopital": "AZ SINT-LUCAS",
+      "nom_site": null,
+      "adresse": "ST.-LUCASLAAN 29",
+      "code_postal": "8310",
+      "commune": "BRUGGE"
+    },
+    {
+      "id": "hop_392_1040",
+      "numero_agrement": "392",
+      "numero_site": "1040",
+      "nom_hopital": "AZ ZENO",
+      "nom_site": "BLANKENBERGE",
+      "adresse": "DR. VERHAEGHESTRAAT 1",
+      "code_postal": "8370",
+      "commune": "BLANKENBERGE"
+    },
+    {
+      "id": "hop_067_1930",
+      "numero_agrement": "067",
+      "numero_site": "1930",
+      "nom_hopital": "AZ OOSTENDE - SERRUYS",
+      "nom_site": "SERRUYS",
+      "adresse": "KAIROSTRAAT 84",
+      "code_postal": "8400",
+      "commune": "OOSTENDE"
+    },
+    {
+      "id": "hop_525_1940",
+      "numero_agrement": "525",
+      "numero_site": "1940",
+      "nom_hopital": "AZ OOSTENDE - DAMIAAN",
+      "nom_site": "DAMIAAN",
+      "adresse": "GOUWELOZESTRAAT 100",
+      "code_postal": "8400",
+      "commune": "OOSTENDE"
+    },
+    {
+      "id": "hop_396_1090",
+      "numero_agrement": "396",
+      "numero_site": "1090",
+      "nom_hopital": "AZ GROENINGE",
+      "nom_site": null,
+      "adresse": "PRESIDENT KENNEDYLAAN  4",
+      "code_postal": "8500",
+      "commune": "KORTRIJK"
+    },
+    {
+      "id": "hop_310_1980",
+      "numero_agrement": "310",
+      "numero_site": "1980",
+      "nom_hopital": "AZ WEST",
+      "nom_site": null,
+      "adresse": "IEPERSE STEENWEG 100",
+      "code_postal": "8630",
+      "commune": "VEURNE"
+    },
+    {
+      "id": "hop_395_1170",
+      "numero_agrement": "395",
+      "numero_site": "1170",
+      "nom_hopital": "SINT-ANDRIES ZIEKENHUIS",
+      "nom_site": null,
+      "adresse": "BRUGGESTRAAT 84",
+      "code_postal": "8700",
+      "commune": "TIELT"
+    },
+    {
+      "id": "hop_397_1990",
+      "numero_agrement": "397",
+      "numero_site": "1990",
+      "nom_hopital": "O.L.V. VAN LOURDES ZIEKENHUIS WAREGEM",
+      "nom_site": null,
+      "adresse": "VIJFSEWEG 150",
+      "code_postal": "8790",
+      "commune": "WAREGEM"
+    },
+    {
+      "id": "hop_117_6210",
+      "numero_agrement": "117",
+      "numero_site": "6210",
+      "nom_hopital": "AZ DELTA",
+      "nom_site": "RUMBEKE",
+      "adresse": "DELTALAAN 1",
+      "code_postal": "8800",
+      "commune": "ROESELARE"
+    },
+    {
+      "id": "hop_117_1970",
+      "numero_agrement": "117",
+      "numero_site": "1970",
+      "nom_hopital": "AZ DELTA",
+      "nom_site": "TORHOUT",
+      "adresse": "ST.-REMBERTLAAN 21",
+      "code_postal": "8820",
+      "commune": "TORHOUT"
+    },
+    {
+      "id": "hop_124_1920",
+      "numero_agrement": "124",
+      "numero_site": "1920",
+      "nom_hopital": "ST-JOZEFSKLINIEK",
+      "nom_site": "ST-JOZEF",
+      "adresse": "OMMEGANGSTRAAT 7",
+      "code_postal": "8870",
+      "commune": "IZEGEM"
+    },
+    {
+      "id": "hop_057_2700",
+      "numero_agrement": "057",
+      "numero_site": "2700",
+      "nom_hopital": "JAN YPERMAN ZIEKENHUIS",
+      "nom_site": null,
+      "adresse": "BRIEKESTRAAT 12",
+      "code_postal": "8900",
+      "commune": "IEPER"
+    },
+    {
+      "id": "hop_117_1960",
+      "numero_agrement": "117",
+      "numero_site": "1960",
+      "nom_hopital": "AZ DELTA",
+      "nom_site": "MENEN",
+      "adresse": "OUDE LEIELAAN 6",
+      "code_postal": "8930",
+      "commune": "MENEN"
+    },
+    {
+      "id": "hop_017_1605",
+      "numero_agrement": "017",
+      "numero_site": "1605",
+      "nom_hopital": "AZ MARIA MIDDELARES",
+      "nom_site": null,
+      "adresse": "BUITENRING SINT-DENIJS 30",
+      "code_postal": "9000",
+      "commune": "GENT"
+    },
+    {
+      "id": "hop_290_1630",
+      "numero_agrement": "290",
+      "numero_site": "1630",
+      "nom_hopital": "AZ SINT-LUCAS",
+      "nom_site": "SINT-LUCAS",
+      "adresse": "GROENEBRIEL 1",
+      "code_postal": "9000",
+      "commune": "GENT"
+    },
+    {
+      "id": "hop_670_3850",
+      "numero_agrement": "670",
+      "numero_site": "3850",
+      "nom_hopital": "UNIVERSITAIR ZIEKENHUIS GENT",
+      "nom_site": null,
+      "adresse": "CORNEEL HEYMANSLAAN 10",
+      "code_postal": "9000",
+      "commune": "GENT"
+    },
+    {
+      "id": "hop_713_1610",
+      "numero_agrement": "713",
+      "numero_site": "1610",
+      "nom_hopital": "AZ JAN PALFIJN",
+      "nom_site": null,
+      "adresse": "WATERSPORTLAAN 5",
+      "code_postal": "9000",
+      "commune": "GENT"
+    },
+    {
+      "id": "hop_595_1860",
+      "numero_agrement": "595",
+      "numero_site": "1860",
+      "nom_hopital": "VITAZ",
+      "nom_site": "VITAZ SINT-NIKLAAS",
+      "adresse": "MOERLANDSTRAAT 1",
+      "code_postal": "9100",
+      "commune": "SINT-NIKLAAS"
+    },
+    {
+      "id": "hop_012_3460",
+      "numero_agrement": "012",
+      "numero_site": "3460",
+      "nom_hopital": "AZ SINT-BLASIUS",
+      "nom_site": "SINT-BLASIUS",
+      "adresse": "KROONVELDLAAN 50",
+      "code_postal": "9200",
+      "commune": "DENDERMONDE"
+    },
+    {
+      "id": "hop_126_1780",
+      "numero_agrement": "126",
+      "numero_site": "1780",
+      "nom_hopital": "ONZE-LIEVE-VROUW ZIEKENHUIS",
+      "nom_site": "AALST",
+      "adresse": "MOORSELBAAN 164",
+      "code_postal": "9300",
+      "commune": "AALST"
+    },
+    {
+      "id": "hop_176_1800",
+      "numero_agrement": "176",
+      "numero_site": "1800",
+      "nom_hopital": "A.S.Z. - AUTONOME VERZORGINGSINSTELLING",
+      "nom_site": "ASZ AALST",
+      "adresse": "MERESTRAAT 80",
+      "code_postal": "9300",
+      "commune": "AALST"
+    },
+    {
+      "id": "hop_176_1820",
+      "numero_agrement": "176",
+      "numero_site": "1820",
+      "nom_hopital": "A.S.Z. - AUTONOME VERZORGINGSINSTELLING",
+      "nom_site": "ASZ GERAARDSBERGEN",
+      "adresse": "GASTHUISSTRAAT 4",
+      "code_postal": "9500",
+      "commune": "GERAARDSBERGEN"
+    },
+    {
+      "id": "hop_550_1680",
+      "numero_agrement": "550",
+      "numero_site": "1680",
+      "nom_hopital": "AZ GLORIEUX",
+      "nom_site": null,
+      "adresse": "GLORIEUXLAAN 55",
+      "code_postal": "9600",
+      "commune": "RONSE"
+    },
+    {
+      "id": "hop_217_1900",
+      "numero_agrement": "217",
+      "numero_site": "1900",
+      "nom_hopital": "AZ SINT-ELISABETH",
+      "nom_site": null,
+      "adresse": "GODVEERDEGEMSTRAAT 69",
+      "code_postal": "9620",
+      "commune": "ZOTTEGEM"
+    },
+    {
+      "id": "hop_170_1660",
+      "numero_agrement": "170",
+      "numero_site": "1660",
+      "nom_hopital": "AZ OUDENAARDE",
+      "nom_site": null,
+      "adresse": "MINDERBROEDERSSTRAAT 3",
+      "code_postal": "9700",
+      "commune": "OUDENAARDE"
+    },
+    {
+      "id": "hop_134_1830",
+      "numero_agrement": "134",
+      "numero_site": "1830",
+      "nom_hopital": "AZ SINT-VINCENTIUS",
+      "nom_site": null,
+      "adresse": "SCHUTTERIJSTRAAT 34",
+      "code_postal": "9800",
+      "commune": "DEINZE"
+    },
+    {
+      "id": "hop_032_1845",
+      "numero_agrement": "032",
+      "numero_site": "1845",
+      "nom_hopital": "AZ ALMA",
+      "nom_site": null,
+      "adresse": "RINGLAAN 15",
+      "code_postal": "9900",
+      "commune": "EEKLO"
+    }
+  ]
+}

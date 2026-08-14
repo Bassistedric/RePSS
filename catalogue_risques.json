@@ -1,0 +1,4227 @@
+{
+  "categories": [
+    {
+      "id": "cat10_mesures_generales",
+      "code_origine": "10",
+      "fr": "Mesures générales",
+      "corps_metier": "universel",
+      "groupe": null
+    },
+    {
+      "id": "cat21_manutention_et_levage",
+      "code_origine": "21",
+      "fr": "Manutention et levage",
+      "corps_metier": "universel",
+      "groupe": "Exécution générale"
+    },
+    {
+      "id": "cat22_travaux_en_hauteur",
+      "code_origine": "22",
+      "fr": "Travaux en hauteur",
+      "corps_metier": "universel",
+      "groupe": "Exécution générale"
+    },
+    {
+      "id": "cat23_travaux_de_percements",
+      "code_origine": "23",
+      "fr": "Travaux de percements",
+      "corps_metier": "universel",
+      "groupe": "Exécution générale"
+    },
+    {
+      "id": "cat24_travaux_de_mesurage_ou_de",
+      "code_origine": "24",
+      "fr": "Travaux de mesurage ou de repérage",
+      "corps_metier": "universel",
+      "groupe": "Exécution générale"
+    },
+    {
+      "id": "cat25_travaux_dans_des_lieux_pa",
+      "code_origine": "25",
+      "fr": "Travaux dans des lieux particuliers",
+      "corps_metier": "universel",
+      "groupe": "Exécution générale"
+    },
+    {
+      "id": "cat26_travaux_de_fixation",
+      "code_origine": "26",
+      "fr": "Travaux de fixation",
+      "corps_metier": "universel",
+      "groupe": "Exécution générale"
+    },
+    {
+      "id": "cat27_travaux_de_faconnage_deco",
+      "code_origine": "27",
+      "fr": "Travaux de façonnage (découpage, filetage…)",
+      "corps_metier": "universel",
+      "groupe": "Exécution générale"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye",
+      "code_origine": "31",
+      "fr": "Electricité basse et moyenne tension",
+      "corps_metier": "electricite",
+      "groupe": "Risques spécifiques Métiers"
+    },
+    {
+      "id": "cat32_hvac_froid",
+      "code_origine": "32",
+      "fr": "HVAC - FROID",
+      "corps_metier": "hvac_froid",
+      "groupe": "Risques spécifiques Métiers"
+    },
+    {
+      "id": "cat33_photovoltaique",
+      "code_origine": "33",
+      "fr": "Photovoltaïque",
+      "corps_metier": "photovoltaique",
+      "groupe": "Risques spécifiques Métiers"
+    }
+  ],
+  "sousCategories": [
+    {
+      "id": "cat10_mesures_generales_sub1",
+      "code_origine": "10.1",
+      "fr": "Installation de chantier",
+      "parent": "cat10_mesures_generales"
+    },
+    {
+      "id": "cat10_mesures_generales_sub2",
+      "code_origine": "10.2",
+      "fr": "Circulation",
+      "parent": "cat10_mesures_generales"
+    },
+    {
+      "id": "cat10_mesures_generales_sub3",
+      "code_origine": "10.3",
+      "fr": "Réception et stockage de matériel/matériaux",
+      "parent": "cat10_mesures_generales"
+    },
+    {
+      "id": "cat10_mesures_generales_sub4",
+      "code_origine": "10.4",
+      "fr": "Évacuation des déchets",
+      "parent": "cat10_mesures_generales"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub1",
+      "code_origine": "31.1",
+      "fr": "Grand Equipements",
+      "parent": "cat31_electricite_basse_et_moye"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2",
+      "code_origine": "31.2",
+      "fr": "Exécution",
+      "parent": "cat31_electricite_basse_et_moye"
+    },
+    {
+      "id": "cat32_hvac_froid_sub1",
+      "code_origine": "32.1",
+      "fr": "Exécution",
+      "parent": "cat32_hvac_froid"
+    },
+    {
+      "id": "cat33_photovoltaique_sub1",
+      "code_origine": "33.1",
+      "fr": "Exécution",
+      "parent": "cat33_photovoltaique"
+    }
+  ],
+  "activites": [
+    {
+      "id": "cat10_mesures_generales_sub1_act1",
+      "code_origine": "10.1.1",
+      "fr": "Implantation",
+      "parent": "cat10_mesures_generales_sub1"
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act2",
+      "code_origine": "10.1.2",
+      "fr": "Accès au chantier",
+      "parent": "cat10_mesures_generales_sub1"
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act3",
+      "code_origine": "10.1.3",
+      "fr": "Pose de signalisation",
+      "parent": "cat10_mesures_generales_sub1"
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act4",
+      "code_origine": "10.1.4",
+      "fr": "Mise en place des conteneurs et baraquements par camion grue avec bras de déchargement",
+      "parent": "cat10_mesures_generales_sub1"
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act5",
+      "code_origine": "10.1.5",
+      "fr": "Raccordement électrique, téléphonique, mise à la terre avec outillage spécifique",
+      "parent": "cat10_mesures_generales_sub1"
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act6",
+      "code_origine": "10.1.6",
+      "fr": "Vestiaires",
+      "parent": "cat10_mesures_generales_sub1"
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act7",
+      "code_origine": "10.1.7",
+      "fr": "Réfectoire pour les repas",
+      "parent": "cat10_mesures_generales_sub1"
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act8",
+      "code_origine": "10.1.8",
+      "fr": "Sanitaires",
+      "parent": "cat10_mesures_generales_sub1"
+    },
+    {
+      "id": "cat10_mesures_generales_sub2_act1",
+      "code_origine": "10.2.1",
+      "fr": "Déplacement sur chantier",
+      "parent": "cat10_mesures_generales_sub2"
+    },
+    {
+      "id": "cat10_mesures_generales_sub2_act2",
+      "code_origine": "10.2.2",
+      "fr": "Manoeuvre sur chantier",
+      "parent": "cat10_mesures_generales_sub2"
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act1",
+      "code_origine": "10.3.1",
+      "fr": "Réception de matériels/matériaux lourds",
+      "parent": "cat10_mesures_generales_sub3"
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act2",
+      "code_origine": "10.3.2",
+      "fr": "Réception de matériel spécifique : extincteurs, foreuses, lapidaires, pinces hydrauliques, échafaudages, harnais de sécurité, appareils de levage et accessoires, poulies, palans, tirfor, élingues, sangles, , etc.",
+      "parent": "cat10_mesures_generales_sub3"
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act3",
+      "code_origine": "10.3.3",
+      "fr": "Réception de matériel spécifique : Nacelles - Elévateur à fourche - Elevateur télescopique à fourche",
+      "parent": "cat10_mesures_generales_sub3"
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act4",
+      "code_origine": "10.3.4",
+      "fr": "Stockage",
+      "parent": "cat10_mesures_generales_sub3"
+    },
+    {
+      "id": "cat21_manutention_et_levage_act1",
+      "code_origine": "21.1.1",
+      "fr": "Manutention manuelle",
+      "parent": "cat21_manutention_et_levage"
+    },
+    {
+      "id": "cat21_manutention_et_levage_act2",
+      "code_origine": "21.1.2",
+      "fr": "Levage mécanique de matériaux, de matériels",
+      "parent": "cat21_manutention_et_levage"
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act1",
+      "code_origine": "22.1.1",
+      "fr": "Mesures générales pour tout type de travail en hauteur",
+      "parent": "cat22_travaux_en_hauteur"
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act2",
+      "code_origine": "22.1.2",
+      "fr": "Escalier",
+      "parent": "cat22_travaux_en_hauteur"
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act3",
+      "code_origine": "22.1.3",
+      "fr": "Nacelle",
+      "parent": "cat22_travaux_en_hauteur"
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act4",
+      "code_origine": "22.1.4",
+      "fr": "Échelle",
+      "parent": "cat22_travaux_en_hauteur"
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act5",
+      "code_origine": "22.1.5",
+      "fr": "Échafaudages",
+      "parent": "cat22_travaux_en_hauteur"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub1_act1",
+      "code_origine": "31.1.1",
+      "fr": "Introduction dans bâtiment de cabine HT, transfo HT, TGBT, groupe de secours, no break, etc. avec camion transporteur avec grue, élingues, chaîne, crochets, manilles, etc.",
+      "parent": "cat31_electricite_basse_et_moye_sub1"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub1_act2",
+      "code_origine": "31.1.2",
+      "fr": "Mise en place, dénudage, raccordement et contrôle isolement des câbles en cabine HT, transfo HT, TGBT, groupe de secours, no break,",
+      "parent": "cat31_electricite_basse_et_moye_sub1"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub1_act3",
+      "code_origine": "31.1.3",
+      "fr": "Mise hors / sous tension de la cabine HT",
+      "parent": "cat31_electricite_basse_et_moye_sub1"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub1_act4",
+      "code_origine": "31.1.4",
+      "fr": "Mise hors / sous tension du groupe électrogène, du tableau TGBT, etc.",
+      "parent": "cat31_electricite_basse_et_moye_sub1"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act1",
+      "code_origine": "31.2.1",
+      "fr": "Pose des supports de chemin de câbles à une hauteur < à 2 m avec une escabeau et en utilisant de l’outillage spécifique (lapidaire, perceuse, poste à souder, etc.)",
+      "parent": "cat31_electricite_basse_et_moye_sub2"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act2",
+      "code_origine": "31.2.2",
+      "fr": "Pose des supports de chemin de câbles à une hauteur > à 2 m avec un échafaudage ou une nacelle et en utilisant de l’outillage spécifique (lapidaire, perceuse, poste à souder, etc.)",
+      "parent": "cat31_electricite_basse_et_moye_sub2"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act3",
+      "code_origine": "31.2.3",
+      "fr": "Tirage de câbles à une hauteur < 2 m avec escabeaux et outillage spécifique (vérin – axe ou dérouleuse)",
+      "parent": "cat31_electricite_basse_et_moye_sub2"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act4",
+      "code_origine": "31.2.4",
+      "fr": "Tirage de câbles à une hauteur >2 m avec échafaudage ou nacelle et outillage spécifique (vérin – axe ou dérouleuse)",
+      "parent": "cat31_electricite_basse_et_moye_sub2"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act5",
+      "code_origine": "31.2.5",
+      "fr": "Tirage de câble dans les vides techniques",
+      "parent": "cat31_electricite_basse_et_moye_sub2"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act6",
+      "code_origine": "31.2.6",
+      "fr": "Tirage de câble dans les tranchées",
+      "parent": "cat31_electricite_basse_et_moye_sub2"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act7",
+      "code_origine": "31.2.7",
+      "fr": "Exécution de tranchées avec outillage et engin spécifique ( pelle, pioche, excavatrice, etc.)",
+      "parent": "cat31_electricite_basse_et_moye_sub2"
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act8",
+      "code_origine": "31.2.8",
+      "fr": "Pose de tubage",
+      "parent": "cat31_electricite_basse_et_moye_sub2"
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act1",
+      "code_origine": "32.1.1",
+      "fr": "Utilisation de certains produits",
+      "parent": "cat32_hvac_froid_sub1"
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act2",
+      "code_origine": "32.1.2",
+      "fr": "Travaux de soudure",
+      "parent": "cat32_hvac_froid_sub1"
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act3",
+      "code_origine": "32.1.3",
+      "fr": "Travaux d'isolation",
+      "parent": "cat32_hvac_froid_sub1"
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act4",
+      "code_origine": "32.1.4",
+      "fr": "Travaux d'électricité",
+      "parent": "cat32_hvac_froid_sub1"
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act5",
+      "code_origine": "32.1.1",
+      "fr": "Travaux de détection (fuite de gaz, …)",
+      "parent": "cat32_hvac_froid_sub1"
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act6",
+      "code_origine": "32.1.6",
+      "fr": "Mise en service et intervention",
+      "parent": "cat32_hvac_froid_sub1"
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act7",
+      "code_origine": "32.1.7",
+      "fr": "Travaux de démontage",
+      "parent": "cat32_hvac_froid_sub1"
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act8",
+      "code_origine": "32.1.8",
+      "fr": "Travaux de terrassement et pose de canalisations",
+      "parent": "cat32_hvac_froid_sub1"
+    },
+    {
+      "id": "cat33_photovoltaique_sub1_act1",
+      "code_origine": "32.1.1",
+      "fr": "Engin de levage",
+      "parent": "cat33_photovoltaique_sub1"
+    },
+    {
+      "id": "cat33_photovoltaique_sub1_act2",
+      "code_origine": "32.1.2",
+      "fr": "Travail en toiture",
+      "parent": "cat33_photovoltaique_sub1"
+    },
+    {
+      "id": "cat33_photovoltaique_sub1_act3",
+      "code_origine": "32.1.3",
+      "fr": "Travail au vent",
+      "parent": "cat33_photovoltaique_sub1"
+    },
+    {
+      "id": "cat33_photovoltaique_sub1_act4",
+      "code_origine": "32.1.4",
+      "fr": "Travaux de soudure - découpe",
+      "parent": "cat33_photovoltaique_sub1"
+    }
+  ],
+  "lignesRisque": [
+    {
+      "id": "cat10_mesures_generales_sub1_act1_risque1",
+      "parent": "cat10_mesures_generales_sub1_act1",
+      "sourceDanger": "Absence de coordination",
+      "risques": "- écrasement des travailleurs par les différents engins de chantier/charges",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par An",
+          "valeur": "0.5"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "120",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "-Etablir le plan d'implantation en concertation avec le MO et le CSS (si présent)\n- un responsable est désigné afin d’organiser les approvisionnement, le trafic sur chantier et le guidage des engins\n- installation d’une signalisation adéquate (cfr point signalisation)\n'- Définition et balisage des différentes zones de circulation",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "2-3x par An",
+          "valeur": "0.5"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "4",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act2_risque1",
+      "parent": "cat10_mesures_generales_sub1_act2",
+      "sourceDanger": "Accès non maitrisés des véhicules et des piétons",
+      "risques": "-Accidents avec des personnes extérieurs au chantier",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "210",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Clôturer les zones de travail qui se situent en bordure de route et poser de panneaux:\"Interdiction de circuler sur le chantier\".\n- Porter et faire porter des vêtements de travail à haute visibilité (minimum gilet fluo)\n- Flècher et baliser les accès\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "6",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act2_risque2",
+      "parent": "cat10_mesures_generales_sub1_act2",
+      "sourceDanger": "Piste non stabilisée",
+      "risques": "- glissade sur la piste",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "180",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Stabilisation et entretien de la piste",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "15",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act2_risque3",
+      "parent": "cat10_mesures_generales_sub1_act2",
+      "sourceDanger": "Zones de circulation non définies",
+      "risques": "- chute d’objets dans la zone chantier",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "-faire respecter l' interdiction de circuler en dehors des zones de travail, des zones de circulations piétonnes et le port du casque ",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "18.000000000000004",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act3_risque1",
+      "parent": "cat10_mesures_generales_sub1_act3",
+      "sourceDanger": "Proximité de circulation non maitrisée",
+      "risques": "-Accidents de personnes par des véhicules",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "27",
+        "niveau": "Acceptable"
+      },
+      "mesuresPrevention": "- Déterminer sur plan et sur le terrain les zones de parking sécurisés\n- Porter des vêtements de travail à haute visibilité\n- Mettre en route le gyrophare du véhicule si travail de nuit\n- Si l'emplacement est caché, soit attendre la levée du jour, soit faire la circulation, et signaler le chantier.\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "4.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act3_risque2",
+      "parent": "cat10_mesures_generales_sub1_act3",
+      "sourceDanger": "Absence de signalisation\n/balisage",
+      "risques": "- accident de la circulation'/heurt avec piéton",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "150",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- installation d’avertissement relatif à la circulation. \n-Travail en bordure de route interdit sans balisage. \n-Respect du code de la route et des instructions des autorités compétentes.",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act4_risque1",
+      "parent": "cat10_mesures_generales_sub1_act4",
+      "sourceDanger": "Portance du sol insuffisant",
+      "risques": "- versement du camion (portance insuffisante du sol)",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par An",
+          "valeur": "0.5"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "120",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- utilisation de plaques d’acier sous les stabilisateurs du camion grue\n- étude et stabilisation de la zone si doute",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "2-3x par An",
+          "valeur": "0.5"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "4",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act4_risque2",
+      "parent": "cat10_mesures_generales_sub1_act4",
+      "sourceDanger": "Portance du sol insuffisant",
+      "risques": "- renversement de la charge",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "135",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- utilisation uniquement de matériel contrôlé",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act4_risque3",
+      "parent": "cat10_mesures_generales_sub1_act4",
+      "sourceDanger": "Portance du sol insuffisant",
+      "risques": "- rupture d’élingues",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "135",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- utilisation d’élingues contrôlées",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act4_risque4",
+      "parent": "cat10_mesures_generales_sub1_act4",
+      "sourceDanger": "Portance du sol insuffisant",
+      "risques": "- coincement en cours du guidage",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "45",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- guidage de la charge au moyen d’une corde",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act4_risque5",
+      "parent": "cat10_mesures_generales_sub1_act4",
+      "sourceDanger": "Portance du sol insuffisant",
+      "risques": "- écrasement du personnel",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "135",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- balisage de la zone.\n- Interdiction de circuler sous la charge. ",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act5_risque1",
+      "parent": "cat10_mesures_generales_sub1_act5",
+      "sourceDanger": "Câbles et ou conduites existantes enterrées",
+      "risques": "- détérioration des câbles ou  conduites existantes",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "120",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- consultation préalable du maître d’œuvre ou de son représentant en cas de travaux à proximité de câbles ou de conduites existantes\n- fouille en recherche",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "20",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act5_risque2",
+      "parent": "cat10_mesures_generales_sub1_act5",
+      "sourceDanger": "Câbles et ou conduites existantes enterrées",
+      "risques": "- projection de poussières",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "42",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- Humidifier la zone par grand vent.",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "ca va ce produire",
+          "valeur": "10"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "premiers soins",
+          "valeur": "1"
+        },
+        "score": "10",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act5_risque3",
+      "parent": "cat10_mesures_generales_sub1_act5",
+      "sourceDanger": "Câbles et ou conduites existantes enterrées",
+      "risques": "- chute de personne en tranchée",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "90",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Balisage de la zone de travail par rubalise et piquet à 1m50 du bord\n- Pose de barrière anti-chute\n- Recouvrement de la zone au fur et à mesure de l'avancement\n- Pose de passerelles avec garde corps intégré sur les chemins traversants la tranchée",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "7.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act5_risque4",
+      "parent": "cat10_mesures_generales_sub1_act5",
+      "sourceDanger": "Raccordement ",
+      "risques": "- électrocution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "45",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- Raccordement par un électricien compétent. \n- Réception de l’installation avant sa mise en service\n- Travail hors tension pour les travaux préparatoires avant raccordement\n- Consignation",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "3",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act6_risque1",
+      "parent": "cat10_mesures_generales_sub1_act6",
+      "sourceDanger": "Vol",
+      "risques": "- Risque psychosocial",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "180",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "-Porte d'entrée et armoire vestiaire équipées de système de fermeture",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "6",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act6_risque2",
+      "parent": "cat10_mesures_generales_sub1_act6",
+      "sourceDanger": "Locaux commun sous-traitant/autre entreprise",
+      "risques": "- contamination par manque d’hygiène",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "54",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- Interdiction de prendre les repas dans le vestiaire\n- S'assurer du rôle de chaque entreprise pour le maintien en ordre et le nettoyage\n- S'assurer du bon rangement et nettoyage à chaque changement de pose (à minima 1x/jour)\n- S'assurer du tri et de l'évacuation des déchets dans les conteneurs appropriés",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "18",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act6_risque3",
+      "parent": "cat10_mesures_generales_sub1_act6",
+      "sourceDanger": "Locaux commun sous-traitant/autre entreprise",
+      "risques": "- incendie",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "240",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Respecter et faire respecter l'interdiction de déposer des vêtements sur les radiateurs\n- S'assurer de la présence d'extincteurs à proximité et en suffisance\n- Respecter et faire respecter l'interdiction de fumer.\n- Inspection visuelle avant d'éteindre et de quitter les lieux chaque fin de poste ou de journée.",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "48.000000000000007",
+        "niveau": "Attention requise"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act7_risque1",
+      "parent": "cat10_mesures_generales_sub1_act7",
+      "sourceDanger": "Locaux commun sous-traitant/autre entreprise",
+      "risques": "- contamination par manque d’hygiène (locaux commun sous-traitant/autre entreprise)",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "108",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- S'assurer du rôle de chaque entreprise pour le maintien en ordre et le nettoyage\n- S'assurer du bon rangement et nettoyage à chaque changement de pose (à minima 1x/jour)\n- S'assurer du tri et de l'évacuation des déchets dans les conteneurs appropriés",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "3.6000000000000005",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act7_risque2",
+      "parent": "cat10_mesures_generales_sub1_act7",
+      "sourceDanger": "Températures extérieures",
+      "risques": "- manque de chaleur en hiver, hypothermie",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "ca va ce produire",
+          "valeur": "10"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "180",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- installation de radiateurs",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "3.6000000000000005",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act7_risque3",
+      "parent": "cat10_mesures_generales_sub1_act7",
+      "sourceDanger": "Températures extérieures",
+      "risques": "- incendie",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "240",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Respecter et faire respecter l'interdiction de déposer des vêtements sur les radiateurs\n- S'assurer de la présence d'extincteurs à proximité et en suffisance\n- Respecter et faire respecter l'interdiction de fumer.\n- Inspection visuelle avant d'éteindre et de quitter les lieux chaque fin de poste ou de journée.",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "48.000000000000007",
+        "niveau": "Attention requise"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub1_act8_risque1",
+      "parent": "cat10_mesures_generales_sub1_act8",
+      "sourceDanger": "Locaux commun sous-traitant/autre entreprise",
+      "risques": "- contamination (manque d’hygiène)",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "180",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- S'assurer du rôle de chaque entreprise pour le maintien en ordre et le nettoyage\n- S'assurer du bon rangement et nettoyage à chaque changement de pose (à minima 1x/jour)\n- S'assurer du tri et de l'évacuation des déchets dans les conteneurs appropriés\n- inspection visuelle par le chef d’équipe ou / et  par un responsable désigné\n- Respecter et faire respecter les règles élémentaires d’hygiène (affichage, toolbox,...)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "6",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub2_act1_risque1",
+      "parent": "cat10_mesures_generales_sub2_act1",
+      "sourceDanger": "Absence/insuffisance de l'éclairage",
+      "risques": "Chute, contusions",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "420",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "-Éclairer suffisament (pas de zône d'ombre,…) les zones dangereuses, sombres…\n-Utiliser de préférence de la lumière de couleur blanche (la lumière ne doit pas influencer les couleurs de la signalisation de sécurité)\n-Masquer les surfaces réfléchissantes pour ne pas éblouir les personnes par l'emploi de l'éclairage",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub2_act1_risque2",
+      "parent": "cat10_mesures_generales_sub2_act1",
+      "sourceDanger": "Obstacles non maîtrisés",
+      "risques": "Chute / chute dans fouille / entorse",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "180",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Maintenir les les pistes de circulation en bon état: enlever les gros cailloux, reboucher les trous, etc\n- Dégager les accès\n- Baliser les fouilles\n- Mettre en ordre régulièrement le chantier\n- Rester attentif lors des déplacements\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "6",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub2_act1_risque3",
+      "parent": "cat10_mesures_generales_sub2_act1",
+      "sourceDanger": "Visibilité absente ou réduite des personnes circulant sur le chantier",
+      "risques": " Heurt-écrasement",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "450",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Porter et faire respecter le port du gilet fluo pour augmenter la visibilité\n- Allumer son gyrophare (pour engin de chantier) en permanence lors des déplacements\n- Ne pas porter de baladeurs MP3 ou autre; volume réduit de la radio lors de la conduite.\n- Rester attentif lors des déplacements\n- Etre accompagné d'un guide si nécessaire et lors de piste encombrée ou à visibilité réduite",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub2_act1_risque4",
+      "parent": "cat10_mesures_generales_sub2_act1",
+      "sourceDanger": "Circulation externe au chantier non maitrisée",
+      "risques": " Heurt-écrasement",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "450",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Pas de déplacement sur le chantier avec des véhicules privés.\n- Pas de stationnement de véhicule privé sur le chantier (sauf aux endroits spécialement prévus).",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub2_act1_risque5",
+      "parent": "cat10_mesures_generales_sub2_act1",
+      "sourceDanger": "Convoyage de matériaux/matériel",
+      "risques": " Heurt-écrasement",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Ne pas dépasser la charge maximale autorisée du véhicule\n- Placer un panneau d'avertissement lorsque des éléments dépassent de plus d'un mètre à l'arrière du véhicule\n- Arrimer correctement les éléments placés sur la galerie du véhicule au moyen de sangles",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "4.2000000000000011",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub2_act2_risque1",
+      "parent": "cat10_mesures_generales_sub2_act2",
+      "sourceDanger": "- manque d'attention\n-visibilité int/ext\n-non respect des règles\nlors de conduite de véhicule ou d'engin",
+      "risques": " heurt-écrasement",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "900",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Pas de GSM en conduisant.\n- Rester attentif aux piétons et aux autres engins.\n- Respecter le plan de circulation si présent.\n- Signal sonore de recul opérationnel sur camion, chariot élévateur, etc\n- Gyrophare orange toujours actif\n- Porter des vêtements de travail à haute visibilité\n- Désigner, si nécessaire, un préposé pour guider les chauffeurs lors des manoeuvres et manutentions.\n- Contrôler l'état du véhicule avant de prendre la route (phares, pneus, freins, niveau d'huile, propreté des vitres, extincteur, trousse de secours…)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act1_risque1",
+      "parent": "cat10_mesures_generales_sub3_act1",
+      "sourceDanger": "Déchargement",
+      "risques": "- Déversement de la charge",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "45",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- Une personne  désignée organise les approvisionnements, le trafic sur le chantier et le guidage des engins\n- Déchargement uniquement dans les zones reprises au plan d'implantation, ou accord du MO et/ou CSS pour toutes autres zones. \n- Installation de plaques d’acier sous les stabilisateurs de la grue si la portance du sol n'est pas suffisante. \n- Manoeuvre réalisée par un conducteur compétent\n- Utilisation d'élingues en ordre et contrôlée (visuel et trimestriel)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act2_risque1",
+      "parent": "cat10_mesures_generales_sub3_act2",
+      "sourceDanger": "- Matériel défectueux entraînant un accident",
+      "risques": "-Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "63",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- Effectuer un inventaire du matériel électrique et de l’outillage. \n-Contrôler chaque semaine. \n- Conserver les fiches d’utilisation pour le personnel\n- Utiliser du matériel double isolation\n- Tenir à jour un inventaire des chaînes, crochets et autres organes amovibles servant à l’amarrage, au soulèvement, au transport de charge ou de personnel\n- Conserver une copie des certificats de contrôle par organisme agréé\n- Eliminer le matériel et les accessoires ayant subi une détérioration  même partielle",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "4.2000000000000011",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act3_risque1",
+      "parent": "cat10_mesures_generales_sub3_act3",
+      "sourceDanger": "- Matériel défectueux entraînant un accident",
+      "risques": "-Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "900",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Avant signature pour réception:\n  ° Contrôler visuellement l'engin (présence de gardes corps, point d'attache, absence de déformation,…) \n  ° Vérifier la validité du certificat de contrôle   du SECT\n  ° contrôler et tester les organes de commandes au sol et dans le panier.",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act4_risque1",
+      "parent": "cat10_mesures_generales_sub3_act4",
+      "sourceDanger": "Bonbonnes",
+      "risques": "- Explosion",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "2400",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Stocker verticalement chaque bouteille\n- Ranger séparément les gaz comburants (oxygène) et les gaz combustibles (acétylène, propane, méthane…) : bonbonnes vides ou pleines\n- Évacuer régulièrement les bonbonnes vides\n- Eloigner la zone de stockage de toute activité\n- Limiter l'accès à une seule personne autorisée",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act4_risque2",
+      "parent": "cat10_mesures_generales_sub3_act4",
+      "sourceDanger": "Divers matériaux ou matériels",
+      "risques": "-Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "210",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Limiter la hauteur des éléments stockés\n- Utiliser, si nécessaires, des équipements facilitant le stockage (racks, casiers…) pour une meilleure stabilité et une plus grande facilité de manipulation",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act4_risque3",
+      "parent": "cat10_mesures_generales_sub3_act4",
+      "sourceDanger": "Matériaux lourds",
+      "risques": "-Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "90",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Placer la zone de stockage à une distance suffisante des sols instables (sable…) des tranchées, des excavations, des talus\n- S'assurer de la portance du sol; la renforcer (plaques,…) si nécessaire)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act4_risque4",
+      "parent": "cat10_mesures_generales_sub3_act4",
+      "sourceDanger": "Produits dangereux (bonbonnes, acides…)",
+      "risques": "-Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "540",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Vérifier que la liste des produits dangereux est reprise dans le plan de sécurité\n- Ranger régulièrement le local (séparer les différents produits dangereux…)\n- Vérifier la fermeture de chaque bonbonne (pleine ou vide) et/ou récipient, vérifier régulièrement l'étanchéité et la présence du bouchon de protection sur les bonbonnes\n- Respecter les consignes de stockage et de sécurité préconisées par le fabriquant \n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "18.000000000000004",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act4_risque5",
+      "parent": "cat10_mesures_generales_sub3_act4",
+      "sourceDanger": "Produits dangereux (bonbonnes, acides…)",
+      "risques": "- Incendie, explosion",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "900",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Interdiction de fumer\n- Ranger les produits dangereux dans un local à l'écart de toute source de chaleur (soleil…) aéré de préférence\n- Stocker uniquement les quantités nécessaires pour satisfaire les besoins immédiats\n- Placer à l'entrée du local les panneaux d'affichage appropriés (Interdiction et obligations) : risques et mesures à prendre\n- Identifier clairement chaque produit dangereux et les ranger séparément\n- Placer à l'entrée du local des moyens de lutte contre l'incendie (extincteurs…)\n- Limiter l'accès du local de stockage aux seules personnes autorisées (local fermant à clé de préférence)\n- Choisir un local à l'abris du soleil et disposant d'une aération suffisante",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act4_risque6",
+      "parent": "cat10_mesures_generales_sub3_act4",
+      "sourceDanger": "Produits dangereux (bonbonnes, acides…)",
+      "risques": "- Intoxication",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "150",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "-Conserver les produits dangereux dans leur emballage d'origine (Ne pas mélanger différents produits pouvant entraîner une réaction chimique notamment)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "14",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act4_risque7",
+      "parent": "cat10_mesures_generales_sub3_act4",
+      "sourceDanger": "Produits dangereux (bonbonnes, acides…)",
+      "risques": "-Intoxication, incendie, pollution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "900",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Vérifier la lisibilité des étiquettes de chaque récipient (précautions d'emploi, instructions d'utilisation...)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "14",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub3_act4_risque8",
+      "parent": "cat10_mesures_generales_sub3_act4",
+      "sourceDanger": "Tuyauterie",
+      "risques": "-Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "210",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Utiliser des racks de stockage pour les matériaux ronds",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub4_risque1",
+      "parent": "cat10_mesures_generales_sub4",
+      "sourceDanger": "Containers",
+      "risques": "- Pollution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "108",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Procéder au tri des déchets et à l'évacuation de ceux-ci dans les containers prévus à cet effet : papiers et cartons, métaux, plastics d'emballages, déchets de construction (briques, béton…), produits chimiques inflammables ou toxiques…\n- Faire vider les containers régulièrement\n- Placer les containers à l'écart des zones de travail (cfr Plan d'implantation)\n- Replacer le filet au dessus du container",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "9",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub4_risque2",
+      "parent": "cat10_mesures_generales_sub4",
+      "sourceDanger": "Containers",
+      "risques": "- Incendie",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Éloigner les déchets de toute source de chaleur\n- Ne pas brûler les déchets (papiers, cartons, plastiques …)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "45",
+        "niveau": "Attention requise"
+      }
+    },
+    {
+      "id": "cat10_mesures_generales_sub4_risque3",
+      "parent": "cat10_mesures_generales_sub4",
+      "sourceDanger": "Produits chimiques, dangereux",
+      "risques": "- Pollution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Respecter les consignes d'utilisation, de sécurité et de mise en décharge préconisées par le fabriquant (emballage …)\n- Ne jamais jeter à l'égoût\n- Contacter le conseiller en prévention en cas de doute",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat21_manutention_et_levage_act1_risque1",
+      "parent": "cat21_manutention_et_levage_act1",
+      "sourceDanger": "Bonbonnes sous pression",
+      "risques": "- Incendie, explosion",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "135",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Utiliser un chariot et attacher les bonbonnes au chariot. Ne jamais faire rouler les bonbonnes sur le sol\n- Vérifier la pression de chaque bonbonne\n- Placer le bouchon de protection de chaque bonbonne pour protéger le robinet\n- Ne pas saisir la bonbonne par le capuchon ou le robinet",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "9.0000000000000018",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat21_manutention_et_levage_act1_risque2",
+      "parent": "cat21_manutention_et_levage_act1",
+      "sourceDanger": "Objets lourds, volumineux…",
+      "risques": " - Heurt-écrasement",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "-Ne pas présumer de ses forces et se faire aider par un ou  plusieurs collègues, utiliser les équipements de manutention adéquats",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "10.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat21_manutention_et_levage_act1_risque3",
+      "parent": "cat21_manutention_et_levage_act1",
+      "sourceDanger": "Produits dangereux",
+      "risques": "- Brulures chimique\n- Intoxication",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "42",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- Vérifier l'étanchéité et la fermeture de chaque récipient",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "3.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat21_manutention_et_levage_act1_risque4",
+      "parent": "cat21_manutention_et_levage_act1",
+      "sourceDanger": "Produits dangereux (bonbonnes, produits chimiques…)",
+      "risques": "- Incendie, explosion",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "135",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Interdiction de fumer",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "9.0000000000000018",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat21_manutention_et_levage_act1_risque5",
+      "parent": "cat21_manutention_et_levage_act1",
+      "sourceDanger": "Produits dangereux (bonbonnes, produits chimiques…)",
+      "risques": "- Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- S'assurer une bonne prise et utiliser si nécessaires des sangles de manutention, des cordages, des poignées amovibles…\n- Dégager les voies de passage et se faire guider par un collègue\n- Manutentionner les quantités nécessaires pour satisfaire les besoins immédiats",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "10.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat21_manutention_et_levage_act2_risque1",
+      "parent": "cat21_manutention_et_levage_act2",
+      "sourceDanger": "Engin de levage, treuil, palan…",
+      "risques": "- Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Vérifier que les appareils et équipements de levage ont subis leur contrôle trimestriel par un organisme agréé (Attestation de contrôle)\n- Assurer la portance du sol\n- Délimiter la zone de levage et en empêcher l'accès\n- Ne pas lever au-dessus de personnes\n- Attacher correctement la charge à soulever\n- Respecter les consignes d'utilisation, d'entretien et de sécurité \n- Vérifier l'absence d'obstacle ou de lignes électriques avant la montée de la charge\n- Guider la charge lors de la montée au moyen d'un cordage pour des éléments particulièrement encombrants",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act5_risque1",
+      "parent": "cat22_travaux_en_hauteur_act5",
+      "sourceDanger": "Montage échafaudage roulant",
+      "risques": "- Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "135",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Montage par ou sous la supervision d'une personnes habilitées\n- Identifier et mettre à l'écart les éléments d'échafaudage défectueux\n- Dégager une zone de travail suffisante pour procéder au montage, au démontage, au déplacement et au rangement de l'échafaudage\n- Prendre soin de chaque élément (Ne pas jeter les éléments sur le sol)\n- Ranger sans délai l'échafaudage après le démontage de celui-ci.\n- Apposition du scaftag vma sud\n- Contrôler l'échafaudage avant chaque mise en service, une fois par semaine, après une interruption prolongée du travail\n- Prévoir des moyens de protection au pied de l'échafaudage afin d'éviter toute collision ou dévier la circulation\n- Veiller à ce que la hauteur maximale du plancher de l'échafaudage ne dépasse pas trois fois la largeur de sa plus petite base, y compris les béquilles\n- Ne pas placer le plancher à plus de 20 centimètres du mur",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act5_risque2",
+      "parent": "cat22_travaux_en_hauteur_act5",
+      "sourceDanger": "Utilisation",
+      "risques": "- Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "540",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Bloquer les roues de l'échafaudage\n- Placer sur l'échafaudage le  minimum de matériaux ou d'outillage pour éviter toute surcharge et répartir ceux-ci correctement pour éviter tout déséquilibre\n- Se déplacer avec prudence sur le plancher (Ne pas sauter)\n- Veiller régulièrement à la propreté du plancher et au rangement de celui-ci (matériaux, outillage…)\n- Entretenir et nettoyer les éléments d'échafaudage avant de procéder au stockage\n- Ne pas déplacer inutilement l'échafaudage\n- Délimiter la zone en cas de passage fréquent ou de circulation",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "45",
+        "niveau": "Attention requise"
+      }
+    },
+    {
+      "id": "cat23_travaux_de_percements_risque1",
+      "parent": "cat23_travaux_de_percements",
+      "sourceDanger": "Perceuse électrique, carotteuse…",
+      "risques": "- Bris de mèche, blessure, coupure",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Vérifier le bon affûtage et la fixation correcte de la mèche\n- Utiliser de l'eau, le cas échéant, pour refroidir la mèche lors du percement",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat23_travaux_de_percements_risque2",
+      "parent": "cat23_travaux_de_percements",
+      "sourceDanger": "Perceuse électrique, carotteuse…",
+      "risques": "- Dégâts matériels",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Prendre les mesures nécessaires pour prévenir les dégâts dus à l'eau, si nécessaire installer des bâches de protection\n- Effectuer le percement perpendiculairement par rapport au plan de travail- Vérifier l'absence de câbles électriques ou de canalisations à l'endroit du percement",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat23_travaux_de_percements_risque3",
+      "parent": "cat23_travaux_de_percements",
+      "sourceDanger": "Perceuse électrique, carotteuse…",
+      "risques": "- Lésions auditives",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "252",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Prévenir les travailleurs proches de la zone de travail; proposer le port d'epi",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "premiers soins",
+          "valeur": "1"
+        },
+        "score": "36",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat24_travaux_de_mesurage_ou_de_risque1",
+      "parent": "cat24_travaux_de_mesurage_ou_de",
+      "sourceDanger": "Appareil de visée laser",
+      "risques": "- Lésions oculaires",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Ne pas orienter le laser sur une surface réfléchissante ou vers quelqu'un \n- Avertir les tiers de l'emploi d'un laser, des risques et des précautions à prendre\n- Ne pas laisser le laser sans surveillance\n- N'utiliser le laser qu'aux moments nécessaires et le mettre en arrêt aux autres moments",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "10.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat25_travaux_dans_des_lieux_pa_risque1",
+      "parent": "cat25_travaux_dans_des_lieux_pa",
+      "sourceDanger": "Locaux poussiéreux",
+      "risques": "- Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "42",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- Isoler le lieu de travail des autres pièces pour éviter la propagation de poussières vers d'autres locaux\n- Fermer les bouches de ventilation\n- Mettre hors service la ventilation\n- Humidifier, si possible, la zone de travail, les déchets lors de l'évacuation de ceux-ci\n- Aspirer les poussières à la source (travaux de rainurage, de percement…)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "3.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat26_travaux_de_fixation_risque1",
+      "parent": "cat26_travaux_de_fixation",
+      "sourceDanger": "Pistolet de scellement",
+      "risques": "- Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "42",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- Orienter le pistolet dans une direction non dangereuse\n- Placer le pistolet perpendiculairement par rapport à la surface de travail et ne jamais l'orienter vers quelqu'un\n- Contrôler l'épaisseur et la consistance de la surface de travail\n- Contrôler la puissance de la charge par rapport au clou\n- Employer le pistolet par une personne compétente ayant une expérience suffisante ou ayant suivi une formation spécifique et ayant plus de 18 ans\n- Avertir les tiers de l'emploi d'un pistolet, des risques et des précautions à prendre",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "7",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat27_travaux_de_faconnage_deco_risque1",
+      "parent": "cat27_travaux_de_faconnage_deco",
+      "sourceDanger": "Équipements électriques",
+      "risques": "- Blessure, coupure",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "210",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "-Utiliser des équipements de serrage adaptés à la pièce à façonner et au type de travail à effectuer (étau, pinces autobloquantes, serre-joints…)\n- Tenir l'appareil à deux mains",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat27_travaux_de_faconnage_deco_risque2",
+      "parent": "cat27_travaux_de_faconnage_deco",
+      "sourceDanger": "Équipements électriques",
+      "risques": "- Irritation pulmonaire, encrassement",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "210",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Délimiter la zone de travail\n- Prévenir les tiers\n- Si nécessaire, si l'opération est longue, humidifier le plan de travail pour limiter le dégagement de poussières",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat27_travaux_de_faconnage_deco_risque3",
+      "parent": "cat27_travaux_de_faconnage_deco",
+      "sourceDanger": "Équipements électriques",
+      "risques": "- Sourdité, bruits émis au-delà des 85 dB",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "420",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": ")- Prévenir les tiers de s'éloigner le temps du travail ou de porter leurs protections auditives",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "14",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat27_travaux_de_faconnage_deco_risque4",
+      "parent": "cat27_travaux_de_faconnage_deco",
+      "sourceDanger": "Équipements électriques",
+      "risques": "- Dégâts matériels",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "180",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Prendre les mesures nécessaires pour éviter les dégâts dus aux projections (protection des murs, du carrelage, des vitres…)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "premiers soins",
+          "valeur": "1"
+        },
+        "score": "2",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat27_travaux_de_faconnage_deco_risque5",
+      "parent": "cat27_travaux_de_faconnage_deco",
+      "sourceDanger": "Disqueuse, meuleuse, scie sauteuse",
+      "risques": "- Blessure, coupure",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Vérifier la fixation correcte du disque, lame et la présence du capot de protection\n- Utiliser des supports ou se faire aider par un collègue pour maintenir la pièce découpée. Ne pas maintenir la pièce avec le pied.\n- Utiliser un disque en bon état et adapté à la nature des matériaux à découper\n- Vérifier l'absence de tiers à proximité",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat27_travaux_de_faconnage_deco_risque6",
+      "parent": "cat27_travaux_de_faconnage_deco",
+      "sourceDanger": "Disqueuse, meuleuse, scie sauteuse",
+      "risques": "- Incendie",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "540",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Si nécessaire, demander un permis de feu au Maître de l'Ouvrage\n- Eloigner toutes sources inflamable\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "45",
+        "niveau": "Attention requise"
+      }
+    },
+    {
+      "id": "cat27_travaux_de_faconnage_deco_risque7",
+      "parent": "cat27_travaux_de_faconnage_deco",
+      "sourceDanger": "Filière électrique",
+      "risques": "- Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Utiliser des supports pour les tubes\n- Protéger les organes en mouvement contre tout élément pouvant  bloquer l'appareil\n- délimiter la zone de travail",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub1_act1_risque1",
+      "parent": "cat31_electricite_basse_et_moye_sub1_act1",
+      "sourceDanger": "Charge lourde, encombrante",
+      "risques": "-Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "240",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "-' Planifier à l'avance l'opération et communiquer avec les parties prenantes\n- Délimiter la zone de travail et en empêcher l'accès aux personnes non autorisées \n- S'assurer de la bonne stabilité et fixations des éléments déposés",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "20",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub1_act3_risque1",
+      "parent": "cat31_electricite_basse_et_moye_sub1_act3",
+      "sourceDanger": "Mauvaise manipulation",
+      "risques": "Electrocution, brûlure",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "240",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Vérification et accord préalable auprès du MO et/ou CSS de la faisabilité\n- Communication aux parties prenantes de l'enclenchement/déclenchement\n- Formation et habilitation enclenchement/déclenchement\n- Baliser, empêcher et interdire l'accès à la zone de travail\n- Consignation en cas de déclenchement (7 règles d'or)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "20",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub1_act4_risque1",
+      "parent": "cat31_electricite_basse_et_moye_sub1_act4",
+      "sourceDanger": "Mauvaise manipulation",
+      "risques": "Electrocution, brûlure",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "240",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Vérification et accord préalable auprès du MO et/ou CSS de la faisabilité\n- Communication aux parties prenantes de l'enclenchement/déclenchement\n- Habilitation BA4 ou supervision par BA5\n- Baliser, empêcher et interdire l'accès à la zone de travail\n- Application des sept règles d’or de la consignation\n- Mise à la terre du groupe",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "20",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act1_risque1",
+      "parent": "cat32_hvac_froid_sub1_act1",
+      "sourceDanger": "Bonbonnes, acides, peintures…",
+      "risques": "-Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      },
+      "mesuresPrevention": "- Respecter les consignes fournies par le fabricant (mode d'emploi, précautions à prendre…)\n- Prendre connaissance des consignes de sécurité liées aux produits utilisés\n- Utiliser les quantités nécessaires pour satisfaire les besoins immédiats\n- Avertir les tiers des dangers liés aux produits dangereux employés",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act1_risque2",
+      "parent": "cat32_hvac_froid_sub1_act1",
+      "sourceDanger": "Bonbonnes, acides, peintures…",
+      "risques": "- Incendie, explosion",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "15",
+        "niveau": "Acceptable"
+      },
+      "mesuresPrevention": "- Interdiction de fumer\n- Éloigner les produits dangereux de toutes les sources de chaleur",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "15",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act1_risque3",
+      "parent": "cat32_hvac_froid_sub1_act1",
+      "sourceDanger": "Bonbonnes, acides, peintures…",
+      "risques": "- Lésions des voies respiratoires, intoxication, asphyxie",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      },
+      "mesuresPrevention": "- Vérifier l'aération suffisante de la zone de travail et écarter les produits dangereux des grilles de ventilation (prise d'air) de l'installation existante",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act1_risque4",
+      "parent": "cat32_hvac_froid_sub1_act1",
+      "sourceDanger": "Bonbonnes sous pression (oxygène, acétylène…)",
+      "risques": "- Incendie, explosion",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Ne jamais utiliser de bonbonnes d'oxygène pour améliorer la qualité de l'air\n- Placer les bonbonnes verticalement\n- Éliminer des bonbonnes toutes les traces de graisse ou d'huile…\n- Utiliser les équipements adaptés pour le type de gaz employé\n- Maintenir une distance de minimum trois mètres entre les bonbonnes et toute source de chaleur\n- Maintenir les bonbonnes verticalement ou les incliner au maximum de 30 degrés\n- Régler la pression des manomètres sur les valeurs préconisées par le fabriquant\n- Baliser la zone de travail",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "63",
+        "niveau": "Attention requise"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act1_risque5",
+      "parent": "cat32_hvac_froid_sub1_act1",
+      "sourceDanger": "Produits chimiques ou dangereux (acides, peintures…)",
+      "risques": "- Accidents divers, intoxication…",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "45",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- Lors d'une phase de travail, ne jamais laisser des produits sans surveillance\n- Prévenir les tiers de l'emploi de produits dangereux\n- Ne pas mélanger différents produits chimiques sauf instructions précises reçues\n- Fermer chaque récipient immédiatement après usage\n- Ne pas transvaser des produits dangereux dans des récipients non prévus à cet effet (bouteille d'eau minérale…)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "15",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act1_risque6",
+      "parent": "cat32_hvac_froid_sub1_act1",
+      "sourceDanger": "Produits chimiques ou dangereux (acides, peintures…)",
+      "risques": "- Lésions cutanées",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      },
+      "mesuresPrevention": "- Rincer abondamment à l'eau froide en cas de contact avec la peau (l'utilisation de l'eau froide referme les pores de la peau et empêche ainsi la pénétration du produit)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "7",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act1_risque7",
+      "parent": "cat32_hvac_froid_sub1_act1",
+      "sourceDanger": "Produits chimiques ou dangereux (acides, peintures…)",
+      "risques": "- Dégradation des locaux",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      },
+      "mesuresPrevention": "- Utiliser, si nécessaire, des bâches de protection pour éviter les éclaboussures sur les murs, les vitres, le sol…",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "7",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act2_risque1",
+      "parent": "cat32_hvac_froid_sub1_act2",
+      "sourceDanger": "Divers",
+      "risques": "-Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Placer les appareils de manière à faciliter la coupure de l'arrivée du courant ou du gaz\n- Utiliser des équipements de serrage adaptés à la pièce à façonner et au type de travail à effectuer (étau, pinces autobloquantes…)\n- Dégager de la zone de travail les éléments inflammables.\n- Utiliser une bâche anti-feu de manière à limiter les projections de matières incandescentes et protéger les matières inflammables qui ne peuvent être déplacées.\n- Placer à proximité du poste de travail un extincteur à poudre ABC\n- Ne pas déposer d'objets chauds sur un support ne résistant pas à la chaleur\n- Veiller à une ventilation suffisante de la zone de travail\n- Contrôler régulièrement l'usure des câbles ou des tuyaux d'alimentation",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act2_risque2",
+      "parent": "cat32_hvac_froid_sub1_act2",
+      "sourceDanger": "Chalumeau oxyacéthylénique",
+      "risques": "- Retour de flamme, incendie, explosion",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "135",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Déboucher régulièrement le bec du chalumeau\n- Placer les bouteilles verticalement\n- Conserver à proximité du poste de travail le nombre de bouteilles nécessaire pour les travaux journaliers\n- Fermer les bouteilles après emploi\n- Ne pas utiliser les bonbonnes comme support pour les pièces\n- Placer les bouteilles à 3 mètres du chalumeau\n'- Placer les bouteilles et les tuyaux d'alimentation à l'écart des voies de passage, fixée à un support\n- Vérifier la propreté des bouteilles, des tuyaux d'alimentation et du chalumeau, détendeur... (absence de graisse, huile…)\n- Régler les manomètres sur les valeurs préconisées par le fabricant et la vitesse de sortie des gaz par rapport au diamètre du bec\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act2_risque3",
+      "parent": "cat32_hvac_froid_sub1_act2",
+      "sourceDanger": "Poste à souder",
+      "risques": "- Électrocution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "135",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Travailler dans une zone protégée des intempéries et de toute humidité\n- Connecter directement avec la pièce, aussi proche que possible de la pièce à souder\n- Déconnecter complètement le poste de soudage avant d'enlever la bride de masse\n- Ne jamais mettre le support par terre, sur la pièce à souder ou sur une pièce quelconque connectée électriquement",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act2_risque4",
+      "parent": "cat32_hvac_froid_sub1_act2",
+      "sourceDanger": "Soudure au miroir (fusiotherme - PE)",
+      "risques": "- Brûlures",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "63",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- délimiter la zone de travail\n- Prévenir les tiers",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "10.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act3_risque1",
+      "parent": "cat32_hvac_froid_sub1_act3",
+      "sourceDanger": "Laine minérale, Poussières",
+      "risques": "- Irritation, toux, lésions oculaires",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Prévenir et éloigner les tiers\n- Couper/obstruer la ventilation",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act4_risque1",
+      "parent": "cat32_hvac_froid_sub1_act4",
+      "sourceDanger": "- Panneau d'affichage, voltmètre",
+      "risques": "- Électrocution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Procédure des 7 règles d'or par une personne habilitée BA5\n- Prévenir le Maître de l'Ouvrage (faire une demande d'autorisation) et les tiers de la coupure de courant\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act6_risque1",
+      "parent": "cat32_hvac_froid_sub1_act6",
+      "sourceDanger": "Travaux sur une installation électrique, sur le système de détection d'incendie…",
+      "risques": "-Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "90",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Ne pas travailler sur une installation sous tension\n- Consignation (7 règles d'or) par une personne habilitée BA5\n- Placer un panneau d'avertissement à l'endroit où l'installation est mise hors service  (Nom, téléphone, durée probable, motif) : Mise hors service à faire en présence du Maître de l'Ouvrage\n- Remettre en service en présence du Maître de l'Ouvrage par la personne ayant mis hors service antérieurement (Cfr Panneau d'affichage)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "2-3x par An",
+          "valeur": "0.5"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "7.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act6_risque2",
+      "parent": "cat32_hvac_froid_sub1_act6",
+      "sourceDanger": "Installation gaz",
+      "risques": "- Incendie, explosion",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par An",
+          "valeur": "0.5"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "120",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Ne pas fumer\n- Couper l'arrivée de gaz directement au niveau du compteur\n- Prévoir si nécessaire ou si demandé, un appareil de mesure de gaz explosifs et de taux d'oxygène",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "2-3x par An",
+          "valeur": "0.5"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "10",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act6_risque3",
+      "parent": "cat32_hvac_froid_sub1_act6",
+      "sourceDanger": "Test à l'azote de l'installation avant de la charger en gaz (à 1,1 x la pression nominale)",
+      "risques": "-Risque d'anoxie lié à une quantité d'azote dans l'air en espace non ventilé / confiné",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "120",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Utiliser un appareil de monitoring du niveau d'O2 / détection de gaz pendant l'intervention\n- Effectuer le chargement en gaz  au niveau du groupe ou à minima en espace bien aéré\n- S'assurer que les mesures de détection sont prises à chaque utilisation de gaz dangereux et que le matériel de détection est calibré, contrôlé et entretenu périodiquement.\n-  Vérifier le flexible / bonbonne d'alimentation en azote et remplacer périodiquement\n- En espace confiné, les interventions se font toujours à au moins 2 travailleurs\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "40",
+        "niveau": "Attention requise"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act6_risque4",
+      "parent": "cat32_hvac_froid_sub1_act6",
+      "sourceDanger": "Test à l'azote de l'installation avant de la charger en gaz (à 1,1 x la pression nominale)",
+      "risques": "- Incendie, explosion",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "240",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Ne pas fumer\n- Vérifier le flexible / bonbonne d'alimentation en azote et remplacer périodiquement\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "20",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act6_risque5",
+      "parent": "cat32_hvac_froid_sub1_act6",
+      "sourceDanger": "Remplissage du gaz (amoniaque, fréon, R404, CO2, ...) et mise sous pression de l'installation",
+      "risques": "- Risque d'inhaler du gaz / amoniaque",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "240",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Prévenir et éloigner les tiers\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "20",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act8_risque1",
+      "parent": "cat32_hvac_froid_sub1_act8",
+      "sourceDanger": "Pelle hydraulique",
+      "risques": "- Pollution du sol par huile ou de mazout.",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Vérifier l'état des tuyaux flexibles.  Effectuer le plein de carburant et mise à niveau des réservoirs d'huile moteur et hydraulique dans les zones prévues à cet effet.\n- Prévoir des matériaux d'absorption des résidus d'hydrocarbures sur le sol pour prévenir toute pollution",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act8_risque2",
+      "parent": "cat32_hvac_froid_sub1_act8",
+      "sourceDanger": "Pelle hydraulique",
+      "risques": "- Contact avec une personne.",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Interdire de rentrer dans la zone de mouvement de la machine sans prévenir le chauffeur (Contact visuel)\n- Arrêter l'engin si une personne traverse la zone dangereuse.",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act8_risque3",
+      "parent": "cat32_hvac_froid_sub1_act8",
+      "sourceDanger": "Pelle hydraulique",
+      "risques": "- Contact avec ligne électrique.",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Respecter une distance minimale de 2 m entre l'extrémité du bras et la ligne sous tension. En haute tension, cette distance sera supérieure à (2,5m + Tension en KV x 0,01).\n'- Si votre engin de chantier entre en contact avec un câble électrique :\n° coupez le contact, prévenez votre sup.hiérarchique",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act8_risque4",
+      "parent": "cat32_hvac_froid_sub1_act8",
+      "sourceDanger": "Pelle hydraulique",
+      "risques": "- Arrachement de câbles ou de conduites.",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Plans d'impétrant sur chantier et les marquer au sol si possible.\n- Effectuer des sondages préalables.\n- Eviter de travailler mécaniquement trop près des impétrants, surtout en cas d'imprécision des plans de repérage.\n- Obliger l'accès au fond de la fouille à l'aide d'échelles.\n- Tenir compte de la profondeur des installations",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act8_risque5",
+      "parent": "cat32_hvac_froid_sub1_act8",
+      "sourceDanger": "Pelle hydraulique",
+      "risques": "- Eboulement en fouille.",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Interdire l'accès aux fouilles pour toutes personnes non autorisées",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "9.0000000000000018",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act8_risque6",
+      "parent": "cat32_hvac_froid_sub1_act8",
+      "sourceDanger": "Camions",
+      "risques": "- Eboulement de tranchées.",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "720",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Utiliser les blindages.\n- Débordement du blindage constituant le garde-corps ou garde-corps si pas de débordement.\n- Entreposer les terres de retroussement assez loin de la fouille pour éviter l'éboulement.\n- Nettoyer les abords de la fouille pour éviter la chute de matériaux ou d'objet.\n- Interdire de travailler l'un au-dessous de l'autre. Prendre des mesures de protection contre le danger d'éboulement sur des travailleurs se trouvant dans la tranchée.\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "60",
+        "niveau": "Attention requise"
+      }
+    },
+    {
+      "id": "cat33_photovoltaique_sub1_act1_risque1",
+      "parent": "cat33_photovoltaique_sub1_act1",
+      "sourceDanger": "Travailler avec une grue (mobile); bras télescopique",
+      "risques": "- basculement\n- choc\n- écrasement\n- chute d'objet\n- Coincement entre la grue et l'installation",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "720",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- confirmer la portance du sol avant implantation\n- Pas de tranchées ouvertes/de puits souterrains à proximité de la grue mobile \n- Pose de plaques d'assise ) si nécessaire\nConduite défensive\n- Contrôle SECT trimestriel.\n- habilitation du personnel comme grutier (si interne); contrôle de la formation si externe . \n- Installation dans la zone de travail attribuée et balisée\n- aucune présence dans le rayon de giration lorsqu'en action.\n- Être attentif aux obstacles propres au bâtiment/terrain. \n- Être attentif aux blocs de lestage\n- Contrôler tous les jours s'ils n'ont pas glissé (si oui, le signaler)\n- À partir d'un châssis de 8 ou 10 mètres, il faut un antidérapage entre les blocs\n- Voir instruction si présence de ligne sous tensions",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "60",
+        "niveau": "Attention requise"
+      }
+    },
+    {
+      "id": "cat33_photovoltaique_sub1_act2_risque1",
+      "parent": "cat33_photovoltaique_sub1_act2",
+      "sourceDanger": "Travailler en toiture",
+      "risques": "- Chute d'objets\n- chute de personne",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "540",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- hauteur d'acrotère de minimum 1m (abac)\n- protection collective temporaire par garde corps et/ou filet si insuffisant ou absent.\n- protection collective adaptée aux degrés d'inclinaison de la pente de toit.",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "18.000000000000004",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat33_photovoltaique_sub1_act3_risque1",
+      "parent": "cat33_photovoltaique_sub1_act3",
+      "sourceDanger": "Travailler par temps venteux",
+      "risques": "- Chute d'objets\n- chute de personne",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "900",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Arrêter le travail lorsque le vent atteint la vitesse prescrite par le fabricant de l'engin (prescriptions propres à la grue mobile).\n- arrimage conforme des charges\n- Enlever tous les outils à la fin de la journée de travail.\n-Si nécessaire, lester davantage les matériaux ou les évacuer\n- Entreposer les matériaux le plus près possible de la rive du toit. \n-Pas de manipulation en cas de vent fort.\n- ne pas manipuler les panneaux avec la plus grande surface face au vent \n- déposer et fixer immédiatement les panneaux sur la structure\n- en démontage: enlever, déposer à plat  et l'évacuer au plus tôt",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat33_photovoltaique_sub1_act4_risque1",
+      "parent": "cat33_photovoltaique_sub1_act4",
+      "sourceDanger": "Divers",
+      "risques": "-Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Placer les appareils de manière à faciliter la coupure de l'arrivée du courant ou du gaz\n- Utiliser des équipements de serrage adaptés à la pièce à façonner et au type de travail à effectuer (étau, pinces autobloquantes…)\n- Dégager de la zone de travail les éléments inflammables.\n- Utiliser une bâche anti-feu de manière à limiter les projections de matières incandescentes et protéger les matières inflammables qui ne peuvent être déplacées.\n- Placer à proximité du poste de travail un extincteur à poudre ABC\n- Ne pas déposer d'objets chauds sur un support ne résistant pas à la chaleur\n- Veiller à une ventilation suffisante de la zone de travail\n- Contrôler régulièrement l'usure des câbles ou des tuyaux d'alimentation",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat33_photovoltaique_sub1_act4_risque2",
+      "parent": "cat33_photovoltaique_sub1_act4",
+      "sourceDanger": "Chalumeau oxyacéthylénique",
+      "risques": "- Retour de flamme, incendie, explosion",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "135",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Déboucher régulièrement le bec du chalumeau\n- Placer les bouteilles verticalement\n- Conserver à proximité du poste de travail le nombre de bouteilles nécessaire pour les travaux journaliers\n- Fermer les bouteilles après emploi\n- Ne pas utiliser les bonbonnes comme support pour les pièces\n- Placer les bouteilles à 3 mètres du chalumeau\n'- Placer les bouteilles et les tuyaux d'alimentation à l'écart des voies de passage, fixée à un support\n- Vérifier la propreté des bouteilles, des tuyaux d'alimentation et du chalumeau, détendeur... (absence de graisse, huile…)\n- Régler les manomètres sur les valeurs préconisées par le fabricant et la vitesse de sortie des gaz par rapport au diamètre du bec\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat33_photovoltaique_sub1_act4_risque3",
+      "parent": "cat33_photovoltaique_sub1_act4",
+      "sourceDanger": "Poste à souder",
+      "risques": "- Électrocution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "135",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Travailler dans une zone protégée des intempéries et de toute humidité\n- Connecter directement avec la pièce, aussi proche que possible de la pièce à souder\n- Déconnecter complètement le poste de soudage avant d'enlever la bride de masse\n- Ne jamais mettre le support par terre, sur la pièce à souder ou sur une pièce quelconque connectée électriquement",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat33_photovoltaique_sub1_act4_risque4",
+      "parent": "cat33_photovoltaique_sub1_act4",
+      "sourceDanger": "Soudure au miroir (fusiotherme - PE)",
+      "risques": "- Brûlures",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "63",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- délimiter la zone de travail\n- Prévenir les tiers",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "10.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat33_photovoltaique_sub1_act4_risque5",
+      "parent": "cat33_photovoltaique_sub1_act4",
+      "sourceDanger": "Découper des profils métalliques à la disqueuse",
+      "risques": "- incendie",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "1440",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Connaitre les instructions du site en cas d'incendie et d'évacuation.\n- effectuer les découpes dans une zone non inflammable (béton,..)\n- protéger les zones à risque par un matériau ignifuge\n- toujours avoir un extincteur ABC à portée de main\n- même en cas de maîtrise de départ de feu, appeler le 112 pour contrôle\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "48.000000000000007",
+        "niveau": "Attention requise"
+      }
+    }
+  ]
+}
