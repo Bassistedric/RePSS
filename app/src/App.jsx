@@ -93,6 +93,7 @@ export default function App() {
             onBack={goBack}
             onNext={goNext}
             tab={infosAdminTab}
+            setTab={setInfosAdminTab}
           />
         );
       case "infosChantierUsine":
