@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Check, Circle, Save, Info } from "lucide-react";
-import { STEPS } from "../lib/steps";
+import { getSteps } from "../lib/steps";
 
-export default function StepSidebar({ current, dossier, onNavigate, onSave, t }) {
+export default function StepSidebar({ current, dossier, onNavigate, onSave }) {
+  const STEPS = getSteps(dossier.triage.modeChoisi);
   const currentIndex = STEPS.findIndex((s) => s.key === current);
   const [showInfo, setShowInfo] = useState(false);
   const { numeroChantier, nomChantier } = dossier.identification;
@@ -11,7 +12,7 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t })
 
   return (
     <div className="w-56 shrink-0 border-r p-4 flex flex-col" style={{ background: "#F7F8F9", borderColor: "#E2E5E8" }}>
-      <p className="text-xs mb-4 truncate" style={{ color: "#7A8590" }}>
+      <p className="text-xs mb-4 truncate" style={{ color: "#5A646C" }}>
         {chantierLabel}
       </p>
       <div className="flex flex-col gap-1 flex-1 overflow-y-auto">
@@ -20,7 +21,7 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t })
           const done = i < currentIndex;
           const active = s.key === current;
           const reachable = i <= currentIndex;
-          const label = s.labelKey ? t(s.labelKey) : s.fallback;
+          const label = s.fallback;
           return (
             <button
               key={s.key}
@@ -31,7 +32,7 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t })
                 cursor: reachable ? "pointer" : "default",
                 ...(active
                   ? { background: "#E7EEF1", color: "#0B3040", fontWeight: 500 }
-                  : { color: done ? "#3D4750" : "#A7AFB6" }),
+                  : { color: done ? "#3D4750" : "#5A646C" }),
               }}
             >
               {done ? <Check size={16} /> : active ? <Icon size={16} /> : <Circle size={16} />}
@@ -54,13 +55,13 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t })
         <button
           onClick={() => setShowInfo((v) => !v)}
           className="flex items-center gap-1 text-[11px] mt-1.5 mx-auto"
-          style={{ color: "#A7AFB6" }}
+          style={{ color: "#5A646C" }}
         >
           <Info size={11} />
           Comment ça marche ?
         </button>
         {showInfo && (
-          <p className="text-[11px] mt-2 leading-relaxed" style={{ color: "#7A8590" }}>
+          <p className="text-[11px] mt-2 leading-relaxed" style={{ color: "#5A646C" }}>
             Télécharge l'état actuel dans un fichier .json à déposer dans le dossier SharePoint du chantier.
             Pour reprendre plus tard : reviens sur l'écran d'identification et clique "Reprendre un RePSS
             existant", puis choisis ce fichier.

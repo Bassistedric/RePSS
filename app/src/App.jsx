@@ -2,23 +2,17 @@ import { useEffect, useState } from "react";
 import { loadContentPack } from "./lib/contentPack";
 import { makeTranslator } from "./lib/i18n";
 import { defaultDossier } from "./lib/dossier";
-import { STEPS } from "./lib/steps";
+import { getSteps } from "./lib/steps";
 import { saveDossier } from "./lib/storage";
-import {
-  renseignementsGenerauxSchema,
-  administrationSchema,
-  sousTraitantsSchema,
-  caracteristiquesSchema,
-} from "./lib/schema";
 
 import StepSidebar from "./components/StepSidebar";
 import Accueil from "./components/Accueil";
 import Identification from "./components/Identification";
-import SimpleFormStep from "./components/SimpleFormStep";
 import Caracterisation from "./components/Caracterisation";
+import InfosAdmin from "./components/InfosAdmin";
+import InfosChantierUsine from "./components/InfosChantierUsine";
 import AnalyseRisques from "./components/AnalyseRisques";
-import ComplementsStep from "./components/ComplementsStep";
-import Finalisation from "./components/Finalisation";
+import Generation from "./components/Generation";
 
 export default function App() {
   const [pack, setPack] = useState(null);
@@ -59,13 +53,16 @@ export default function App() {
     .map((c) => ({ id: c.corps_metier, label: c.fr }))
     .filter((o, i, arr) => arr.findIndex((x) => x.id === o.id) === i);
 
-  const stepIndex = STEPS.findIndex((s) => s.key === screen);
+  // Le parcours bifurque juste après la Caractérisation selon le mode choisi
+  // (CLAUDE.md §5) : la liste d'étapes dépend donc de triage.modeChoisi.
+  const steps = getSteps(dossier.triage.modeChoisi);
+  const stepIndex = steps.findIndex((s) => s.key === screen);
   function goNext() {
-    const next = STEPS[stepIndex + 1];
+    const next = steps[stepIndex + 1];
     if (next) setScreen(next.key);
   }
   function goBack() {
-    const prev = STEPS[stepIndex - 1];
+    const prev = steps[stepIndex - 1];
     if (prev) setScreen(prev.key);
   }
 
@@ -73,54 +70,6 @@ export default function App() {
     switch (screen) {
       case "identification":
         return <Identification dossier={dossier} setDossier={setDossier} onNext={goNext} t={t} />;
-      case "renseignements":
-        return (
-          <SimpleFormStep
-            schema={renseignementsGenerauxSchema}
-            dossier={dossier}
-            setDossier={setDossier}
-            t={t}
-            title={t("titre_rens_gen")}
-            onBack={goBack}
-            onNext={goNext}
-          />
-        );
-      case "administration":
-        return (
-          <SimpleFormStep
-            schema={administrationSchema}
-            dossier={dossier}
-            setDossier={setDossier}
-            t={t}
-            title={t("titre_adm_chantier")}
-            onBack={goBack}
-            onNext={goNext}
-          />
-        );
-      case "sousTraitants":
-        return (
-          <SimpleFormStep
-            schema={sousTraitantsSchema}
-            dossier={dossier}
-            setDossier={setDossier}
-            t={t}
-            title={t("titre_liste_sous_traitants")}
-            onBack={goBack}
-            onNext={goNext}
-          />
-        );
-      case "caracteristiques":
-        return (
-          <SimpleFormStep
-            schema={caracteristiquesSchema}
-            dossier={dossier}
-            setDossier={setDossier}
-            t={t}
-            title={t("titre_carac_chantier")}
-            onBack={goBack}
-            onNext={goNext}
-          />
-        );
       case "caracterisation":
         return (
           <Caracterisation
@@ -131,6 +80,20 @@ export default function App() {
             onNext={goNext}
           />
         );
+      case "infosAdmin":
+        return (
+          <InfosAdmin
+            dossier={dossier}
+            setDossier={setDossier}
+            entreprise={pack.entreprise}
+            hopitaux={pack.hopitaux}
+            t={t}
+            onBack={goBack}
+            onNext={goNext}
+          />
+        );
+      case "infosChantierUsine":
+        return <InfosChantierUsine dossier={dossier} setDossier={setDossier} t={t} onBack={goBack} onNext={goNext} />;
       case "analyse":
         return (
           <AnalyseRisques
@@ -142,20 +105,9 @@ export default function App() {
             onNext={goNext}
           />
         );
-      case "complements":
+      case "generation":
         return (
-          <ComplementsStep
-            dossier={dossier}
-            setDossier={setDossier}
-            hopitaux={pack.hopitaux}
-            t={t}
-            onBack={goBack}
-            onNext={goNext}
-          />
-        );
-      case "finalisation":
-        return (
-          <Finalisation
+          <Generation
             dossier={dossier}
             setDossier={setDossier}
             entreprise={pack.entreprise}
@@ -163,6 +115,8 @@ export default function App() {
             catalogueAbrege={pack.catalogueAbrege}
             hopitaux={pack.hopitaux}
             t={t}
+            lang={lang}
+            setLang={setLang}
             onBack={goBack}
           />
         );
@@ -180,7 +134,7 @@ export default function App() {
           </div>
         ) : (
           <div className="flex">
-            <StepSidebar current={screen} dossier={dossier} onNavigate={setScreen} onSave={() => saveDossier(dossier)} t={t} />
+            <StepSidebar current={screen} dossier={dossier} onNavigate={setScreen} onSave={() => saveDossier(dossier)} />
             <div className="flex-1 p-6 overflow-y-auto" style={{ maxHeight: "90vh" }}>
               {renderScreen()}
             </div>

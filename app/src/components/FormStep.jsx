@@ -67,6 +67,37 @@ function TableField({ path, columns, value, onChange, t }) {
   );
 }
 
+const TRISTATE_OPTIONS = [
+  { value: "interne", label: "Interne" },
+  { value: "client", label: "Client" },
+  { value: "na", label: "N.A." },
+];
+
+function TriStateField({ path, value, onChange }) {
+  return (
+    <div className="inline-flex rounded border overflow-hidden" style={{ borderColor: "#D6DADE" }}>
+      {TRISTATE_OPTIONS.map((o) => {
+        const active = value === o.value;
+        return (
+          <button
+            key={o.value}
+            type="button"
+            onClick={() => onChange(path, active ? null : o.value)}
+            className="px-3 py-1.5 text-xs"
+            style={{
+              background: active ? "#0B3040" : "white",
+              color: active ? "white" : "#5A646C",
+              borderRight: o.value !== "na" ? "1px solid #D6DADE" : undefined,
+            }}
+          >
+            {o.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 function Field({ field, dossier, onChange, t }) {
   const value = getPath(dossier, field.path);
 
@@ -78,12 +109,30 @@ function Field({ field, dossier, onChange, t }) {
     return (
       <label className="flex items-center gap-2 text-sm py-1">
         <input type="checkbox" checked={!!value} onChange={(e) => onChange(field.path, e.target.checked)} />
-        {t(field.labelKey)}
+        {field.labelKey ? t(field.labelKey) : field.label}
       </label>
     );
   }
 
-  const label = field.labelKey ? t(field.labelKey) : null;
+  if (field.type === "tristate") {
+    return (
+      <div className="flex flex-col gap-1 py-1">
+        <span className="text-sm">{field.labelKey ? t(field.labelKey) : field.label}</span>
+        <TriStateField path={field.path} value={value} onChange={onChange} />
+      </div>
+    );
+  }
+
+  if (field.type === "readonly") {
+    return (
+      <div>
+        {field.labelKey && <label className="text-sm font-medium block mb-1" style={{ color: "#5A646C" }}>{t(field.labelKey)}</label>}
+        <p className="text-sm" style={{ color: "#3D4750" }}>{value || "non renseigné"}</p>
+      </div>
+    );
+  }
+
+  const label = field.labelKey ? t(field.labelKey) : field.label ?? null;
 
   return (
     <div>

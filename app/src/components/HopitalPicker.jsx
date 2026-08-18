@@ -45,7 +45,7 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
           <div key={h.id} className="flex items-center justify-between text-xs border rounded px-2.5 py-1.5" style={{ borderColor: "#E2E5E8" }}>
             <span>
               {h.nom_hopital}
-              {h.nom_site ? ` (${h.nom_site})` : ""} — {h.adresse}, {h.code_postal} {h.commune}
+              {h.nom_site ? ` (${h.nom_site})` : ""}, {h.adresse}, {h.code_postal} {h.commune}
             </span>
             <button onClick={() => removeHopital(h.id)} style={{ color: "#B3261E" }}>
               <X size={14} />
@@ -53,7 +53,7 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
           </div>
         ))}
         {selected.length === 0 && (
-          <p className="text-xs" style={{ color: "#A7AFB6" }}>
+          <p className="text-xs" style={{ color: "#5A646C" }}>
             Saisis le code postal du chantier pour une suggestion automatique.
           </p>
         )}
@@ -68,7 +68,7 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
           <option value="">Ajouter un autre hôpital manuellement…</option>
           {hopitaux.map((h) => (
             <option key={h.id} value={h.id}>
-              {h.nom_hopital} {h.nom_site ? `(${h.nom_site})` : ""} — {h.code_postal} {h.commune}
+              {h.nom_hopital} {h.nom_site ? `(${h.nom_site})` : ""}, {h.code_postal} {h.commune}
             </option>
           ))}
         </select>

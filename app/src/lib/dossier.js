@@ -1,3 +1,7 @@
+// Rôles du tableau "Responsable d'approbation" (Infos admin > Administration du
+// chantier). Mélange de rôles fixes et variables par chantier — tous traités comme
+// des champs texte éditables tant qu'aucune donnée fixe n'est fournie par
+// entreprise.json (voir CLAUDE.md §5, point encore ouvert).
 export const ROLES_ADMINISTRATION = [
   "role_bu_site_manager",
   "role_tender_engineer",
@@ -12,110 +16,100 @@ export const ROLES_ADMINISTRATION = [
   "role_membre_sippt_niv3",
 ];
 
+function today() {
+  return new Date().toISOString().slice(0, 10);
+}
+
 export function defaultDossier() {
+  const date = today();
   return {
     meta: {
+      repssNumero: null,
       version: 1,
       statut: "brouillon",
-      dateDerniereModif: new Date().toISOString().slice(0, 10),
+      dateCreation: date,
+      dateDerniereModif: date,
+      moadrEnAttente: false,
     },
     identification: {
       numeroChantier: "",
       nomChantier: "",
+      pmLead: "",
+      pmSecondaire: "",
     },
+    triage: {
+      modeChoisi: "complet", // "abrege" | "complet"
+      aideAuChoix: {
+        heuresInf1000: false,
+        hauteur5mPlus: false,
+        hauteTension: false,
+        espaceConfine: false,
+      },
+    },
+    caracterisation: {
+      corpsMetier: [], // electricite | hvac_froid | photovoltaique
+    },
+
+    // --- Branche complet : "Infos admin.", 3 sous-onglets ---
     renseignementsGeneraux: {
       client: "",
-      maitreOeuvre: "",
-      maitreOuvrage: "",
-      nomRespPaiements: "",
-      nomRespTravaux: "",
-      nomConseillerPrevention: "",
       adresseChantier: "",
-      adresseFacturation: "",
-      numeroTva: "",
-      tauxTva: "",
-      nbExemplairesFacture: "",
-      etatAvancements: "",
-      declarationCreance: "",
-      declarationOnss: "",
-      formuleRevision: "",
       bureauArchitecture: "",
-      beTechSpeciales: "",
       coordinateurSecurite: "",
     },
-    administration: {
-      responsables: Object.fromEntries(ROLES_ADMINISTRATION.map((r) => [r, ""])),
-      revisionsPPSS: [],
-      descriptionTravaux: "",
-      dateCommande: "",
-      dateTransfert: "",
+    administratif: {
       dateDebutTravaux: "",
-      dateFinTravaux: "",
-      declarationTravauxOnss: false,
-      accuseReception: false,
-      declarationTravauxCnac: false,
-      cautionnement: "",
-      dureeGarantie: "",
-      dateReceptionProvisoire: "",
-      dateReceptionDefinitive: "",
-      dossierAsBuilt: "",
-      dateRemise: "",
-      entretienAPrevoir: false,
-      frequence: "",
-      reunionChantier: false,
-      jourFrequence: "",
-      etatDesLieux: false,
-      formationClient: false,
-      toutRisqueChantier: false,
+      dateFinTravauxEstimee: "",
+      motifNouvelleVersion: "",
+      responsables: Object.fromEntries(ROLES_ADMINISTRATION.map((r) => [r, ""])),
     },
-    sousTraitants: [],
+    reglesSpecifiques: {
+      serviceIncendieInterne: "",
+      codePostalChantier: "",
+      hopitalPlusProcheIds: [],
+      derogations: { neant: true, items: [] },
+    },
     caracteristiques: {
-      planEnAnnexe: false,
+      // contrôle à 3 états : "interne" | "client" | "na" | null (pas encore renseigné)
+      refectoire: null,
+      wc: null,
+      stockage: null,
+      zoneCirculation: null,
+      zoneTravail: null,
+      electricite: null,
+      eau: null,
+      gardeCorps: null,
+      ligneDeVie: null,
+      filetRetention: null,
       particularitesAcces: "",
-      autresPointRassemblement: "",
-      refectoire: false,
-      wc: false,
-      stockage: false,
-      evacuationDechets: false,
-      nettoyageInstallationsSanitaires: false,
-      eclairage: false,
-      zoneCirculation: "",
-      zoneTravail: "",
-      electriciteAlimTerre: false,
-      eau: false,
-      panneauSignalisation: false,
-      barrieres: false,
-      autorisationsParticulieres: "",
-      materielSpecifique: "",
-      gardeCorps: false,
-      ligneDeVie: false,
-      filetRetention: false,
-      produitsDangereux: "",
-      presenceSecouristes: false,
+    },
+
+    // --- Branche abrégé : "Infos chantier & usine" ---
+    infosChantierUsine: {
+      seveso: false,
+      coactivite: false,
+      accueilSecurite: false,
+      matieresPremierresDangereuses: "",
+      pressionsTemperatures: "",
+      presenceGaz: false,
+      locauxSociaux: { refectoire: null, sanitaires: null, vestiaires: null, douches: null },
       permisFeu: false,
       permisTravail: false,
     },
-    caracterisation: {
-      mode: "complet",
-      corpsMetier: [],
-      aide: { heures: false, hauteur: false, ht: false, confine: false },
-    },
+
+    // --- Analyse de risques : la ligne de risque est l'unité cochée (§6) ---
     analyseRisques: {
-      activitesCochees: [],
-      itemsCochesAbrege: [],
+      itemsCoches: [], // [{ risqueId, remarques }]
     },
-    reglesSpecifiques: {
-      conseillerPrevention: "",
-      serviceIncendie: "",
-      serviceIncendieInterne: "",
-      hopitalPlusProcheIds: [],
-      codePostalChantier: "",
-      infirmerieClient: "",
+
+    documentsAccompagnants: {
+      sousTraitants: [], // liste ouverte, non bloquante
+      planParticulier: { fichier: null, notes: "" },
+      listeEnginsSpeciaux: [],
     },
-    derogationsPSS: { neant: true, items: [] },
-    questionsCoordination: [],
-    accordsObligations: { accueilEnLigne: "", lienVideo: "", lienQuestionnaire: "" },
-    planParticulier: { notes: "", enginsSpeciaux: [] },
-    annexe4: { accepte: false },
+
+    demandesMoadr: [], // [{ id, descriptionSituation, dateAjout, statut, mentionDocument, fichierAnnexe }]
+
+    historiqueVersions: [{ version: 1, date, motif: "Création initiale" }],
   };
 }

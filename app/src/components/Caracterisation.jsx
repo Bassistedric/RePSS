@@ -1,26 +1,28 @@
 const AIDE_CRITERES = [
-  { key: "heures", label: "Heures de chantier < 1000" },
-  { key: "hauteur", label: "Travail en hauteur ≥ 5 m" },
-  { key: "ht", label: "Haute tension" },
-  { key: "confine", label: "Espace confiné" },
+  { key: "heuresInf1000", label: "Heures de chantier < 1000" },
+  { key: "hauteur5mPlus", label: "Travail en hauteur ≥ 5 m" },
+  { key: "hauteTension", label: "Haute tension" },
+  { key: "espaceConfine", label: "Espace confiné" },
 ];
 
 export default function Caracterisation({ dossier, setDossier, corpsMetierOptions, onBack, onNext }) {
-  const { mode, corpsMetier, aide } = dossier.caracterisation;
-  const aideActive = Object.values(aide).some(Boolean);
+  const { modeChoisi, aideAuChoix } = dossier.triage;
+  const { corpsMetier } = dossier.caracterisation;
+  const aideActive = Object.values(aideAuChoix).some(Boolean);
 
-  function update(patch) {
-    setDossier((prev) => ({ ...prev, caracterisation: { ...prev.caracterisation, ...patch } }));
+  function updateTriage(patch) {
+    setDossier((prev) => ({ ...prev, triage: { ...prev.triage, ...patch } }));
   }
   function setMode(next) {
-    update({ mode: next });
+    updateTriage({ modeChoisi: next });
   }
   function toggleCorpsMetier(id) {
-    update({ corpsMetier: corpsMetier.includes(id) ? corpsMetier.filter((x) => x !== id) : [...corpsMetier, id] });
+    const next = corpsMetier.includes(id) ? corpsMetier.filter((x) => x !== id) : [...corpsMetier, id];
+    setDossier((prev) => ({ ...prev, caracterisation: { ...prev.caracterisation, corpsMetier: next } }));
   }
   function toggleAide(key) {
-    const next = { ...aide, [key]: !aide[key] };
-    update({ aide: next, ...(Object.values(next).some(Boolean) ? { mode: "complet" } : {}) });
+    const next = { ...aideAuChoix, [key]: !aideAuChoix[key] };
+    updateTriage({ aideAuChoix: next, ...(Object.values(next).some(Boolean) ? { modeChoisi: "complet" } : {}) });
   }
 
   return (
@@ -31,12 +33,12 @@ export default function Caracterisation({ dossier, setDossier, corpsMetierOption
 
       <p className="text-sm font-medium mb-2">RePSS abrégé ou complet ?</p>
       <div className="flex gap-5 mb-3">
-        <label className="flex items-center gap-1.5 text-sm" style={aideActive ? { color: "#A7AFB6" } : undefined}>
-          <input type="radio" checked={mode === "abrege"} disabled={aideActive} onChange={() => setMode("abrege")} />
+        <label className="flex items-center gap-1.5 text-sm" style={aideActive ? { color: "#5A646C" } : undefined}>
+          <input type="radio" checked={modeChoisi === "abrege"} disabled={aideActive} onChange={() => setMode("abrege")} />
           Abrégé
         </label>
         <label className="flex items-center gap-1.5 text-sm">
-          <input type="radio" checked={mode === "complet"} onChange={() => setMode("complet")} />
+          <input type="radio" checked={modeChoisi === "complet"} onChange={() => setMode("complet")} />
           Complet
         </label>
       </div>
@@ -52,7 +54,7 @@ export default function Caracterisation({ dossier, setDossier, corpsMetierOption
         </p>
         {AIDE_CRITERES.map((o) => (
           <label key={o.key} className="flex items-center gap-2 text-sm py-0.5">
-            <input type="checkbox" checked={aide[o.key]} onChange={() => toggleAide(o.key)} />
+            <input type="checkbox" checked={aideAuChoix[o.key]} onChange={() => toggleAide(o.key)} />
             {o.label}
           </label>
         ))}
