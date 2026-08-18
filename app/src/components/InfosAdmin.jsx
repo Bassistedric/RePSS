@@ -38,8 +38,22 @@ function ContactCard({ c }) {
   );
 }
 
-export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, t, onBack, onNext, tab }) {
+export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, t, onBack, onNext, tab, setTab }) {
   const contacts = entreprise?.contactsReference || {};
+  const tabIndex = INFOS_ADMIN_TABS.findIndex((tb) => tb.key === tab);
+
+  // "Continuer"/"Retour" avancent d'abord dans les sous-sections ; ce n'est qu'à la
+  // première/dernière qu'ils sortent de l'étape "Infos admin." elle-même.
+  function handleNext() {
+    const next = INFOS_ADMIN_TABS[tabIndex + 1];
+    if (next) setTab(next.key);
+    else onNext();
+  }
+  function handleBack() {
+    const prev = INFOS_ADMIN_TABS[tabIndex - 1];
+    if (prev) setTab(prev.key);
+    else onBack();
+  }
 
   function updateReglesSpecifiques(patch) {
     setDossier((prev) => ({ ...prev, reglesSpecifiques: { ...prev.reglesSpecifiques, ...patch } }));
@@ -186,10 +200,10 @@ export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, 
       )}
 
       <div className="flex justify-between mt-6">
-        <button onClick={onBack} className="px-5 py-2 rounded text-sm border" style={{ borderColor: "#D6DADE" }}>
+        <button onClick={handleBack} className="px-5 py-2 rounded text-sm border" style={{ borderColor: "#D6DADE" }}>
           {t("bouton_retour")}
         </button>
-        <button onClick={onNext} className="px-5 py-2 rounded text-sm font-medium" style={{ background: "#0B3040", color: "white" }}>
+        <button onClick={handleNext} className="px-5 py-2 rounded text-sm font-medium" style={{ background: "#0B3040", color: "white" }}>
           {t("bouton_continuer")}
         </button>
       </div>
