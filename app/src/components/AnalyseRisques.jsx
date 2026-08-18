@@ -6,46 +6,78 @@ import MoadrSection from "./MoadrSection";
 // simple sous-titre qui regroupe ses lignes, toujours affichées (pas de repli
 // supplémentaire, médiane 2 lignes/activité, max 8). Seuls catégorie et
 // sous-catégorie sont pliables/dépliables.
+function RisqueRows({ lignesRisque, isChecked, toggle, remarque, setRemarque, t }) {
+  return (
+    <div className="flex flex-col gap-1">
+      {lignesRisque.map((r) => {
+        const checked = isChecked(r.id);
+        return (
+          <div key={r.id}>
+            <label
+              className="flex items-start gap-2 text-[13px] py-1 pl-2 pr-2 rounded"
+              style={{ color: "#5A646C", ...(checked ? { background: "#EAF6EC", color: "#3D4750" } : {}) }}
+            >
+              <input
+                type="checkbox"
+                className="mt-0.5"
+                style={{ accentColor: "#8FCB9B" }}
+                checked={checked}
+                onChange={() => toggle(r.id)}
+              />
+              {r.sourceDanger}
+            </label>
+            {checked && (
+              <input
+                type="text"
+                placeholder={t("remarque_optionnelle_placeholder")}
+                className="ml-7 mb-1 border rounded px-2 py-1 text-xs"
+                style={{ borderColor: "#D6DADE", width: "calc(100% - 1.75rem)" }}
+                value={remarque(r.id)}
+                onChange={(e) => setRemarque(r.id, e.target.value)}
+              />
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function ActiviteBlock({ activite, lignesRisque, isChecked, toggle, remarque, setRemarque, t }) {
   return (
     <div className="mb-3 last:mb-0 pl-3 border-l-2" style={{ borderColor: "#D6E3E8" }}>
       <p className="text-[13px] font-medium mb-1.5" style={{ color: "#3D4750" }}>
         {activite.fr}
       </p>
-      <div className="flex flex-col gap-1 pl-3 border-l-2" style={{ borderColor: "#EDEFF1" }}>
-        {lignesRisque.map((r) => {
-          const checked = isChecked(r.id);
-          return (
-            <div key={r.id}>
-              <label
-                className="flex items-start gap-2 text-[13px] py-1 pl-2 pr-2 rounded"
-                style={{ color: "#5A646C", ...(checked ? { background: "#EAF6EC", color: "#3D4750" } : {}) }}
-              >
-                <input
-                  type="checkbox"
-                  className="mt-0.5"
-                  style={{ accentColor: "#8FCB9B" }}
-                  checked={checked}
-                  onChange={() => toggle(r.id)}
-                />
-                {r.sourceDanger}
-              </label>
-              {checked && (
-                <input
-                  type="text"
-                  placeholder={t("remarque_optionnelle_placeholder")}
-                  className="ml-7 mb-1 border rounded px-2 py-1 text-xs"
-                  style={{ borderColor: "#D6DADE", width: "calc(100% - 1.75rem)" }}
-                  value={remarque(r.id)}
-                  onChange={(e) => setRemarque(r.id, e.target.value)}
-                />
-              )}
-            </div>
-          );
-        })}
+      <div className="pl-3 border-l-2" style={{ borderColor: "#EDEFF1" }}>
+        <RisqueRows lignesRisque={lignesRisque} isChecked={isChecked} toggle={toggle} remarque={remarque} setRemarque={setRemarque} t={t} />
       </div>
     </div>
   );
+}
+
+// La hiérarchie n'a pas une profondeur fixe (certaines catégories/sous-catégories
+// sautent un ou deux niveaux intermédiaires). À un niveau donné, on cherche d'abord
+// des activités rattachées ; si aucune, les lignes de risque sont rattachées
+// directement à ce niveau et on les affiche sans indentation d'activité fictive.
+function ActivitesOuRisques({ catalogue, parentId, isChecked, toggle, remarque, setRemarque, t }) {
+  const acts = catalogue.activites.filter((a) => a.parent === parentId);
+  if (acts.length > 0) {
+    return acts.map((act) => (
+      <ActiviteBlock
+        key={act.id}
+        activite={act}
+        lignesRisque={catalogue.lignesRisque.filter((r) => r.parent === act.id)}
+        isChecked={isChecked}
+        toggle={toggle}
+        remarque={remarque}
+        setRemarque={setRemarque}
+        t={t}
+      />
+    ));
+  }
+  const lignesDirectes = catalogue.lignesRisque.filter((r) => r.parent === parentId);
+  return <RisqueRows lignesRisque={lignesDirectes} isChecked={isChecked} toggle={toggle} remarque={remarque} setRemarque={setRemarque} t={t} />;
 }
 
 function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque, setRemarque, t }) {
@@ -100,38 +132,49 @@ function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque,
             </button>
             {isOpen && (
               <div className="px-3 py-3">
-                {subs.map((sub) => {
-                  const subOpen = openSubs.has(sub.id);
-                  const acts = catalogue.activites.filter((a) => a.parent === sub.id);
-                  return (
-                    <div key={sub.id} className="mb-2 last:mb-0 border rounded" style={{ borderColor: "#EDEFF1" }}>
-                      <button
-                        onClick={() => toggleSub(sub.id)}
-                        className="w-full flex justify-between items-center px-2.5 py-2 text-sm font-semibold border-b"
-                        style={{ color: "#0B3040", borderColor: subOpen ? "#E2E5E8" : "transparent" }}
-                      >
-                        {sub.fr}
-                        {subOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                      </button>
-                      {subOpen && (
-                        <div className="p-2.5">
-                          {acts.map((act) => (
-                            <ActiviteBlock
-                              key={act.id}
-                              activite={act}
-                              lignesRisque={catalogue.lignesRisque.filter((r) => r.parent === act.id)}
+                {subs.length > 0 ? (
+                  subs.map((sub) => {
+                    const subOpen = openSubs.has(sub.id);
+                    return (
+                      <div key={sub.id} className="mb-2 last:mb-0 border rounded" style={{ borderColor: "#EDEFF1" }}>
+                        <button
+                          onClick={() => toggleSub(sub.id)}
+                          className="w-full flex justify-between items-center px-2.5 py-2 text-sm font-semibold border-b"
+                          style={{ color: "#0B3040", borderColor: subOpen ? "#E2E5E8" : "transparent" }}
+                        >
+                          {sub.fr}
+                          {subOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                        </button>
+                        {subOpen && (
+                          <div className="p-2.5">
+                            <ActivitesOuRisques
+                              catalogue={catalogue}
+                              parentId={sub.id}
                               isChecked={isChecked}
                               toggle={toggle}
                               remarque={remarque}
                               setRemarque={setRemarque}
                               t={t}
                             />
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })
+                ) : (
+                  // Cette catégorie saute le niveau sous-catégorie : ses activités
+                  // (ou, plus rare, ses lignes de risque) sont rattachées directement
+                  // à la catégorie, pas d'indentation de sous-catégorie fictive.
+                  <ActivitesOuRisques
+                    catalogue={catalogue}
+                    parentId={cat.id}
+                    isChecked={isChecked}
+                    toggle={toggle}
+                    remarque={remarque}
+                    setRemarque={setRemarque}
+                    t={t}
+                  />
+                )}
               </div>
             )}
             </div>
