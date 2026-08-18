@@ -90,6 +90,41 @@ function Table({ columns, rows }) {
   );
 }
 
+function LignesRisquePdf({ lignesRisque, cochesById, t }) {
+  return lignesRisque.map((r) => (
+    <View key={r.id} style={styles.ligneRisque}>
+      <Text style={{ fontWeight: 500 }}>{r.sourceDanger}</Text>
+      <Text>{r.mesuresPrevention}</Text>
+      {cochesById[r.id].remarques && (
+        <Text style={{ color: "#5A646C" }}>
+          {t("remarques_descriptifs")} {cochesById[r.id].remarques}
+        </Text>
+      )}
+    </View>
+  ));
+}
+
+// La hiérarchie n'a pas une profondeur fixe (certaines catégories/sous-catégories
+// sautent un ou deux niveaux intermédiaires) : à un niveau donné on cherche d'abord
+// des activités rattachées, sinon les lignes de risque cochées directement
+// rattachées à ce niveau.
+function ActivitesOuLignesPdf({ catalogue, parentId, cochesById, t }) {
+  const acts = catalogue.activites.filter((a) => a.parent === parentId);
+  if (acts.length > 0) {
+    return acts.map((act) => {
+      const lignes = catalogue.lignesRisque.filter((r) => r.parent === act.id && cochesById[r.id]);
+      return (
+        <View key={act.id} wrap={false}>
+          <Text style={styles.actTitle}>{act.fr}</Text>
+          <LignesRisquePdf lignesRisque={lignes} cochesById={cochesById} t={t} />
+        </View>
+      );
+    });
+  }
+  const lignesDirectes = catalogue.lignesRisque.filter((r) => r.parent === parentId && cochesById[r.id]);
+  return <LignesRisquePdf lignesRisque={lignesDirectes} cochesById={cochesById} t={t} />;
+}
+
 // §6 : la hiérarchie catégorie > sous-catégorie > activité est toujours affichée en
 // entier (même sans ligne cochée dessous) pour prouver une revue délibérée ; seules
 // les lignes de risque cochées sont détaillées.
@@ -99,35 +134,24 @@ function AnalyseRisquesComplet({ catalogue, corpsMetier, itemsCoches, t }) {
 
   return (
     <View>
-      {visibleCats.map((cat) => (
-        <View key={cat.id} wrap>
-          <Text style={styles.catTitle}>{cat.fr}</Text>
-          {catalogue.sousCategories
-            .filter((s) => s.parent === cat.id)
-            .map((sub) => (
-              <View key={sub.id}>
-                <Text style={styles.subTitle}>{sub.fr}</Text>
-                {catalogue.activites
-                  .filter((a) => a.parent === sub.id)
-                  .map((act) => {
-                    const lignes = catalogue.lignesRisque.filter((r) => r.parent === act.id && cochesById[r.id]);
-                    return (
-                      <View key={act.id} wrap={false}>
-                        <Text style={styles.actTitle}>{act.fr}</Text>
-                        {lignes.map((r) => (
-                          <View key={r.id} style={styles.ligneRisque}>
-                            <Text style={{ fontWeight: 500 }}>{r.sourceDanger}</Text>
-                            <Text>{r.mesuresPrevention}</Text>
-                            {cochesById[r.id].remarques && <Text style={{ color: "#5A646C" }}>{t("remarques_descriptifs")} {cochesById[r.id].remarques}</Text>}
-                          </View>
-                        ))}
-                      </View>
-                    );
-                  })}
-              </View>
-            ))}
-        </View>
-      ))}
+      {visibleCats.map((cat) => {
+        const subs = catalogue.sousCategories.filter((s) => s.parent === cat.id);
+        return (
+          <View key={cat.id} wrap>
+            <Text style={styles.catTitle}>{cat.fr}</Text>
+            {subs.length > 0 ? (
+              subs.map((sub) => (
+                <View key={sub.id}>
+                  <Text style={styles.subTitle}>{sub.fr}</Text>
+                  <ActivitesOuLignesPdf catalogue={catalogue} parentId={sub.id} cochesById={cochesById} t={t} />
+                </View>
+              ))
+            ) : (
+              <ActivitesOuLignesPdf catalogue={catalogue} parentId={cat.id} cochesById={cochesById} t={t} />
+            )}
+          </View>
+        );
+      })}
     </View>
   );
 }
