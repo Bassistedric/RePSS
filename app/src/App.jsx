@@ -20,6 +20,7 @@ export default function App() {
   const [lang, setLang] = useState("fr");
   const [screen, setScreen] = useState("accueil");
   const [dossier, setDossier] = useState(defaultDossier);
+  const [infosAdminTab, setInfosAdminTab] = useState("renseignements");
 
   useEffect(() => {
     loadContentPack()
@@ -91,6 +92,7 @@ export default function App() {
             t={t}
             onBack={goBack}
             onNext={goNext}
+            tab={infosAdminTab}
           />
         );
       case "infosChantierUsine":
@@ -136,7 +138,15 @@ export default function App() {
           </div>
         ) : (
           <div className="flex">
-            <StepSidebar current={screen} dossier={dossier} onNavigate={setScreen} onSave={() => saveDossier(dossier)} t={t} />
+            <StepSidebar
+              current={screen}
+              dossier={dossier}
+              onNavigate={setScreen}
+              onSave={() => saveDossier(dossier)}
+              t={t}
+              infosAdminTab={infosAdminTab}
+              setInfosAdminTab={setInfosAdminTab}
+            />
             <div className="flex-1 p-6 overflow-y-auto" style={{ maxHeight: "90vh" }}>
               {renderScreen()}
             </div>
