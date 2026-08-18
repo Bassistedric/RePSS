@@ -2274,6 +2274,396 @@
       }
     },
     {
+      "id": "cat22_travaux_en_hauteur_act1_risque1",
+      "parent": "cat22_travaux_en_hauteur_act1",
+      "sourceDanger": "Mesures générales pour tout type de travail en hauteur",
+      "risques": "- Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "252",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "-Dégager la zone de travail de tout obstacle (au niveau du sol et en hauteur) et baliser une zone de travail de sécurité pour éviter la circulation d'autres travailleurs à proximité\n- Contrôler la solidité, la stabilité et la pente du sol au besoin étayer\n- Contrôler la solidité et la stabilité de l'échelle, l'échafaudage, de l'élévateur à ciseaux…",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act1_risque2",
+      "parent": "cat22_travaux_en_hauteur_act1",
+      "sourceDanger": "Mesures générales pour tout type de travail en hauteur",
+      "risques": "- Chute",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "540",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Déplacer aussi souvent que nécessaire l'échelle, l'échafaudage… en avertissant au préalable les autres travailleurs se trouvant à proximité\n- Ne pas placer une échelle, un échafaudage... devant une porte. A défaut, fermer la porte à clé et placer un panneau d'affichage de l'autre côté pour avertir les tiers. Limiter le temps de blocage de la porte\n- Maintenir l'échelle, l'échafaudage propre et en bon état (montants, échelons, planchers…)\n- Ne pas travailler en hauteur si l'on souffre du vertige",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "45",
+        "niveau": "Attention requise"
+      }
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act1_risque3",
+      "parent": "cat22_travaux_en_hauteur_act1",
+      "sourceDanger": "Mesures générales pour tout type de travail en hauteur",
+      "risques": "- Électrocution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Utiliser les échelles ou engins élévateurs à l'écart de câbles électriques",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "18.000000000000004",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act2_risque1",
+      "parent": "cat22_travaux_en_hauteur_act2",
+      "sourceDanger": "Escalier",
+      "risques": "- Chute",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Placer des garde-corps dans les escalierset les contrôler régulièrement\n- Enlever les tapis de protection de transport; remplacer par des plaques en bois si nécessaire; controler et refixer régulièrement en cas d'incapacité d'enlèvement/remplacement.",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "18.000000000000004",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act2_risque2",
+      "parent": "cat22_travaux_en_hauteur_act2",
+      "sourceDanger": "Escalier",
+      "risques": "- Accidents à la tête",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Ne pas travailler au-dessus d'autres travailleurs\n- Favoriser les équipements de protection collective (garde-corps, échaffaudage escalier) par rapport aux équipements de protection individuelle (harnais …)\n- Favoriser l'emploi de plate-formes, d'échafaudages pour effectuer des travaux (à la place d'échelles)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "42",
+        "niveau": "Attention requise"
+      }
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act3_risque1",
+      "parent": "cat22_travaux_en_hauteur_act3",
+      "sourceDanger": "Nacelle ",
+      "risques": "- Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "126",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Déplacement de l'engin par une personne habilitées \n- Ne pas dépasser la charge maximale (nombre de personne, matériaux ou équipements…)\n- Choisir le type d'élévateur en fonction de la situation locale (à l'intérieur ou à l'extérieur), de la surface disponible (espace de manœuvre), de la hauteur",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "21",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act3_risque2",
+      "parent": "cat22_travaux_en_hauteur_act3",
+      "sourceDanger": "Nacelle ",
+      "risques": "- Chute",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Vérifier la présence et la mise en place des garde-corps\n- Placer le  minimum de matériaux ou d'outillage pour éviter toute surcharge sur l'élévateur et répartir ceux-ci correctement pour éviter tout déséquilibre\n- Ne pas utiliser les garde-corps de la plate-forme comme échelle ou appui\n- Vérifier la présence du certificat de contrôle de l'engin par un organisme agréé, inspection visuelle avant chaque utilisation",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "45",
+        "niveau": "Attention requise"
+      }
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act4_risque1",
+      "parent": "cat22_travaux_en_hauteur_act4",
+      "sourceDanger": "Échelle",
+      "risques": "- Chute",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Identifier et mettre à l'écart l'échelle défectueuse\n- Ne pas couper une échelle\n- Vérifier les montants : droits\n- Vérifier chaque échelon : tous présents et droits\n- Vérifier la présence et le bon état des embouts anti-dérapants\n- Utiliser l'échelle pour les déplacements en hauteur et pour les travaux légers et de courte durée - Dans les autres cas : utiliser un échafaudage\n- Utilisation pour changement de niveau: dépassement d'1m (3 échelons) de l'appui supérieur, Fixer l'extrémité supérieure de l'échelle si celle-ci a plus de 25 échelons ou par mauvais temps (vent,..)\n- Ne pas utiliser une échelle comme plancher d'échafaudage ou comme passerelle\n- Placer une planche aux pieds de l'échelle lorsque le sol n'est pas suffisamment stable\n- Ne pas prolonger l'échelle avec des moyens de fortune. Toujours employer une échelle de longueur suffisante\n- Vérifier à garder une bonne inclinaison de l'échelle (75 degrés)\n- Ne pas se pencher pour atteindre un élément éloigné mais déplacer l'échelle aussi souvent que nécessaire\n- Ne pas monter à l'échelle en portant des objets lourds ou volumineux",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "22.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act4_risque2",
+      "parent": "cat22_travaux_en_hauteur_act4",
+      "sourceDanger": "Échelle",
+      "risques": "- Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "27",
+        "niveau": "Acceptable"
+      },
+      "mesuresPrevention": "- Déplacer l'échelle à plusieurs si celle-ci est lourde",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "incapacité de travail",
+          "valeur": "3"
+        },
+        "score": "4.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat22_travaux_en_hauteur_act4_risque3",
+      "parent": "cat22_travaux_en_hauteur_act4",
+      "sourceDanger": "Échelle",
+      "risques": "- Électrocution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "270",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Utiliser des échelles isolées (bois, fibre de carbone, polyester) en cas de risque d'électrocution",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "chaque Semaine",
+          "valeur": "3"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "9.0000000000000018",
+        "niveau": "Acceptable"
+      }
+    },
+    {
       "id": "cat22_travaux_en_hauteur_act5_risque1",
       "parent": "cat22_travaux_en_hauteur_act5",
       "sourceDanger": "Montage échafaudage roulant",
@@ -2898,6 +3288,45 @@
       }
     },
     {
+      "id": "cat31_electricite_basse_et_moye_sub1_act2_risque1",
+      "parent": "cat31_electricite_basse_et_moye_sub1_act2",
+      "sourceDanger": "Mise en place, dénudage, raccordement et contrôle isolement des câbles en cabine HT, transfo HT, TGBT, groupe de secours, no break,",
+      "risques": "- Electrocution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "240",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Balisage de la zone de travail avec signalisation empêchant l'accès\n- Les raccordements seront réalisés par une personne habilitée BA5\n- Consignations des circuits non indispensables\n- Tests et vérifications avant enclenchement\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "20",
+        "niveau": "Acceptable"
+      }
+    },
+    {
       "id": "cat31_electricite_basse_et_moye_sub1_act3_risque1",
       "parent": "cat31_electricite_basse_et_moye_sub1_act3",
       "sourceDanger": "Mauvaise manipulation",
@@ -2973,6 +3402,903 @@
         },
         "score": "20",
         "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act1_risque1",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act1",
+      "sourceDanger": "Pose des supports de chemin de câbles à une hauteur < à 2 m avec une escabeau et en utilisant de l’outillage spécifique (lapidaire, perceuse, poste à souder, etc.)",
+      "risques": "- Chute de hauteur",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "210",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- n'utiliser l'escabeau que si et seulement si, il n'est pas possible d'utiliser raisonnablement les petit échafaudages roulants\n- Vérifier que l'escabeau est en ordre de contrôle annuel (pastille/colson)\n- Contrôler régulièrement (à minima 1x/j) l’état des caoutchoucs antidérapants des escabeaux \n- Seul le personnel habilité au travail en hauteur peut utiliser l'escabeau\n- Délimiter la zone de travail\n- Utiliser les dragonnes des outils portatifs\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act1_risque2",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act1",
+      "sourceDanger": "Pose des supports de chemin de câbles à une hauteur < à 2 m avec une escabeau et en utilisant de l’outillage spécifique (lapidaire, perceuse, poste à souder, etc.)",
+      "risques": "- Electrocution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "450",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- protection des câbles contre toute détérioration extérieure et isolation parfaite",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act1_risque3",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act1",
+      "sourceDanger": "Pose des supports de chemin de câbles à une hauteur < à 2 m avec une escabeau et en utilisant de l’outillage spécifique (lapidaire, perceuse, poste à souder, etc.)",
+      "risques": "- Brûlures par projection",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "210",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Permis feu\n- Zone délimitée en fonction des projections possibles\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act1_risque4",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act1",
+      "sourceDanger": "Pose des supports de chemin de câbles à une hauteur < à 2 m avec une escabeau et en utilisant de l’outillage spécifique (lapidaire, perceuse, poste à souder, etc.)",
+      "risques": "- Chutes au plancher inférieur",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "900",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Couvrir solidement, refermer correctement ou baliser (distance min. 1m50) les ouvertures au sol dangereuses\n- Placer des gardes corps (conforme (lisse, sous-lisse-plinte) ou des filet de rétention pour les ouvertures verticales",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act2_risque1",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act2",
+      "sourceDanger": "Pose des supports de chemin de câbles à une hauteur > à 2 m avec un échafaudage ou une nacelle  et en utilisant de l’outillage spécifique (lapidaire, perceuse, poste à souder, etc.)",
+      "risques": "- Chute de hauteur\n- Renversement",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "900",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "Echafaudage:\n- Utiliser un échafaudage approprié, monté par ouvriers compétents sous la direction d’une personne compétante et habilitée\n- L'échafaudage doit être contrôlé journalièrement, le scaftag doit être remplacer toute les semaines\n- Les freins doivent être bloqués quand il y à un travailleur dessus.\n- Les lisses, sous-lisses et plintes doivent en permanence être présentes\n- La zone de travail doit être délimitée\n- Aucun déplacement ne peut se faire avec une personne ou du matériel present sur la pleteforme.\n- Repérer le chemin et les obstacles avant d'entamer le déplacement\nNacelle:\n- Les nacelles seront contrôlée à la descente du camion (visuellement, en ordre de contrôle périodique)\n- Seul les personne habilitées pourront déplacer les nacelles\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act2_risque2",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act2",
+      "sourceDanger": "Pose des supports de chemin de câbles à une hauteur > à 2 m avec un échafaudage ou une nacelle  et en utilisant de l’outillage spécifique (lapidaire, perceuse, poste à souder, etc.)",
+      "risques": "- électrocution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "450",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- protection des câbles contre toute détérioration extérieure et isolation parfaite",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act2_risque3",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act2",
+      "sourceDanger": "Pose des supports de chemin de câbles à une hauteur > à 2 m avec un échafaudage ou une nacelle  et en utilisant de l’outillage spécifique (lapidaire, perceuse, poste à souder, etc.)",
+      "risques": "- Brûlures par projection",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "210",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Permis feu\n- Zone délimitée en fonction des projections possibles\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act3_risque1",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act3",
+      "sourceDanger": "Tirage de câbles à une hauteur < 2 m avec escabeaux et outillage spécifique (vérin – axe ou dérouleuse)",
+      "risques": "- Chute de hauteur",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "210",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- n'utiliser l'escabeau que si et seulement si, il n'est pas possible d'utiliser raisonnablement les petit échafaudages roulants\n- Vérifier que l'escabeau est en ordre de contrôle annuel (pastille/colson)\n- Contrôler régulièrement (à minima 1x/j) l’état des caoutchoucs antidérapants des escabeaux \n- Seul le personnel habilité au travail en hauteur peut utiliser l'escabeau\n- Délimiter la zone de travail\n- Utiliser les dragonnes des outils portatifs\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act3_risque2",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act3",
+      "sourceDanger": "Tirage de câbles à une hauteur < 2 m avec escabeaux et outillage spécifique (vérin – axe ou dérouleuse)",
+      "risques": "- Electrocution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "450",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- protection des câbles contre toute détérioration extérieure et isolation parfaite",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act3_risque3",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act3",
+      "sourceDanger": "Tirage de câbles à une hauteur < 2 m avec escabeaux et outillage spécifique (vérin – axe ou dérouleuse)",
+      "risques": "- Brûlures par projection",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "210",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Permis feu\n- Zone délimitée en fonction des projections possibles\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act3_risque4",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act3",
+      "sourceDanger": "Tirage de câbles à une hauteur < 2 m avec escabeaux et outillage spécifique (vérin – axe ou dérouleuse)",
+      "risques": "- Chutes au plancher inférieur",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "900",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Couvrir solidement, refermer correctement ou baliser (distance min. 1m50) les ouvertures au sol dangereuses\n- Placer des gardes corps (conforme (lisse, sous-lisse-plinte) ou des filet de rétention pour les ouvertures verticales",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act3_risque5",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act3",
+      "sourceDanger": "Tirage de câbles à une hauteur < 2 m avec escabeaux et outillage spécifique (vérin – axe ou dérouleuse)",
+      "risques": "- Renversement\n- Ecrasement\n- Coincement",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "450",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Stabiliser et fixer tourets et dérouleurs\n- Baliser la zône de déroulage ainsi que le chemin emprunté par le câble\n- Controler les système de retenues de câble (manchont,..)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act4_risque1",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act4",
+      "sourceDanger": "Tirage de câbles à une hauteur >2 m avec échafaudage ou nacelle  et outillage spécifique (vérin – axe ou dérouleuse)",
+      "risques": "- Chute de hauteur\n- Renversement",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "900",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "Echafaudage:\n- Utiliser un échafaudage approprié, monté par ouvriers compétents sous la direction d’une personne compétante et habilitée\n- L'échafaudage doit être contrôlé journalièrement, le scaftag doit être remplacer toute les semaines\n- Les freins doivent être bloqués quand il y à un travailleur dessus.\n- Les lisses, sous-lisses et plintes doivent en permanence être présentes\n- La zone de travail doit être délimitée\n- Aucun déplacement ne peut se faire avec une personne ou du matériel present sur la pleteforme.\n- Repérer le chemin et les obstacles avant d'entamer le déplacement\nNacelle:\n- Les nacelles seront contrôlée à la descente du camion (visuellement, en ordre de contrôle périodique)\n- Seul les personne habilitées pourront déplacer les nacelles\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act4_risque2",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act4",
+      "sourceDanger": "Tirage de câbles à une hauteur >2 m avec échafaudage ou nacelle  et outillage spécifique (vérin – axe ou dérouleuse)",
+      "risques": "- électrocution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "450",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- protection des câbles contre toute détérioration extérieure et isolation parfaite",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act4_risque3",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act4",
+      "sourceDanger": "Tirage de câbles à une hauteur >2 m avec échafaudage ou nacelle  et outillage spécifique (vérin – axe ou dérouleuse)",
+      "risques": "- Brûlures par projection",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "210",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Permis feu\n- Zone délimitée en fonction des projections possibles\n",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act4_risque4",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act4",
+      "sourceDanger": "Tirage de câbles à une hauteur >2 m avec échafaudage ou nacelle  et outillage spécifique (vérin – axe ou dérouleuse)",
+      "risques": "- Renversement\n- Ecrasement\n- Coincement",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "450",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Stabiliser et fixer tourets et dérouleurs\n- Baliser la zône de déroulage ainsi que le chemin emprunté par le câble\n- Controler les système de retenues de câble (manchont,..)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act5_risque1",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act5",
+      "sourceDanger": "Tirage de câble dans les vides techniques",
+      "risques": "- chute ",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "90",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Balisage de la zone où le plancher a été ouvert",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "7.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act5_risque2",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act5",
+      "sourceDanger": "Tirage de câble dans les vides techniques",
+      "risques": "- électrocution",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "45",
+        "niveau": "Attention requise"
+      },
+      "mesuresPrevention": "- Précautions particulière si le tirage doit se faire sous des tableaux sous-tension (accès aux tableaux à rendre impossible par écrans de protection rigides)\n- Eclairage suffisant\n- Interdiction de travailler seul",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "3",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act5_risque3",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act5",
+      "sourceDanger": "Tirage de câble dans les vides techniques",
+      "risques": "- Renversement\n- Ecrasement\n- Coincement",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "inhabituel mais possible",
+          "valeur": "3"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "450",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Stabiliser et fixer tourets et dérouleurs\n- Baliser la zône de déroulage ainsi que le chemin emprunté par le câble\n- En cas de tirage sur plusieurs étages de trèmies accessibles, prévenir le CSS, baliser les zones pour enpêcher l'accès\n- Controler les système de retenues de câble (manchont,..)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "pratiquement impossible",
+          "valeur": "0.2"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "30",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act6_risque1",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act6",
+      "sourceDanger": "Tirage de câble dans les tranchées",
+      "risques": "- Renversement\n- Ecrasement\n- Coincement",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "420",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Stabiliser et fixer tourets et dérouleurs\n- Baliser la zône de déroulage ainsi que le chemin emprunté par le câble\n- Controler les système de retenues de câble (manchont,..)",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act7_risque1",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act7",
+      "sourceDanger": "Exécution de tranchées avec outillage et engin spécifique ( pelle, pioche, excavatrice, etc.)",
+      "risques": "- chute ",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "420",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Balisage de la tranchée (min. 1m50 si emploi de rubalise)\n- Placement de pacerelle avec garde corps intégrés si besoin de traverser la tranchée (chemin de passage)\n- Limiter au maximum la durée d’ouverture de la tranchée",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "h de travail",
+          "valeur": "10"
+        },
+        "gravite": {
+          "texte": "Invalidité, lésion permanente",
+          "valeur": "7"
+        },
+        "score": "35",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act7_risque2",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act7",
+      "sourceDanger": "Exécution de tranchées avec outillage et engin spécifique ( pelle, pioche, excavatrice, etc.)",
+      "risques": "- Electrocution\n- Explosion",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "90",
+        "niveau": "Correction nécessaire"
+      },
+      "mesuresPrevention": "- Vérification de la présence d'impétran auprès du MO ou des autorités compétantes\n- Repérage et marquage des impétrants\n- Fouille manuelle dans la zone de présence des impétrants",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "7.5",
+        "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat31_electricite_basse_et_moye_sub2_act8_risque1",
+      "parent": "cat31_electricite_basse_et_moye_sub2_act8",
+      "sourceDanger": "Pose de tubage",
+      "risques": "- Chute ",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "540",
+        "niveau": "Envisager l'arrêt"
+      },
+      "mesuresPrevention": "- Ramassage immédiat des déchets de tubes et gravats éventuels\n- Délimitation de la zone de travail",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "2-3x par jour",
+          "valeur": "6"
+        },
+        "gravite": {
+          "texte": "1 mort",
+          "valeur": "15"
+        },
+        "score": "45",
+        "niveau": "Attention requise"
       }
     },
     {
@@ -3483,6 +4809,45 @@
       }
     },
     {
+      "id": "cat32_hvac_froid_sub1_act5_risque1",
+      "parent": "cat32_hvac_froid_sub1_act5",
+      "sourceDanger": "Travaux de détection (fuite de gaz, …)",
+      "risques": "- Incendie, explosion",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "240",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- Interdiction de fumer sur les leiux de travail\n- Ne pas utiliser d'équipement pouvant produire une étincelle\n- Aérer le local\n- Ouvrir les portes et fenêtres du local pour atténuer l'effet de souffle en cas d'explosion\n- Utiliser du savon liquide sur les tuyauteries pour détecter les fuites",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "si tout va de travers en même temps",
+          "valeur": "0.5"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "20",
+        "niveau": "Acceptable"
+      }
+    },
+    {
       "id": "cat32_hvac_froid_sub1_act6_risque1",
       "parent": "cat32_hvac_froid_sub1_act6",
       "sourceDanger": "Travaux sur une installation électrique, sur le système de détection d'incendie…",
@@ -3675,6 +5040,45 @@
         },
         "score": "20",
         "niveau": "Acceptable"
+      }
+    },
+    {
+      "id": "cat32_hvac_froid_sub1_act7_risque1",
+      "parent": "cat32_hvac_froid_sub1_act7",
+      "sourceDanger": "Travaux de démontage",
+      "risques": "-Accidents divers",
+      "evaluationInitiale": {
+        "probabilite": {
+          "texte": "tout à fait possible",
+          "valeur": "6"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "240",
+        "niveau": "Mesure immédiate"
+      },
+      "mesuresPrevention": "- S'assurer que les tuyauteries ou équipements ayant contenu du gaz, des produits chimiques (corrosifs, inflammable …) ont été nettoyées\n- Mettre hors service des tuyauteries sous pression",
+      "evaluationResiduelle": {
+        "probabilite": {
+          "texte": "possible si problêmes simultanés",
+          "valeur": "1"
+        },
+        "exposition": {
+          "texte": "chaque Mois",
+          "valeur": "1"
+        },
+        "gravite": {
+          "texte": "plusieurs morts",
+          "valeur": "40"
+        },
+        "score": "40",
+        "niveau": "Attention requise"
       }
     },
     {
