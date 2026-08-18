@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Check, Circle, Save, Info, Home } from "lucide-react";
+import { Check, Circle, CheckCircle2, Save, Info, Home } from "lucide-react";
 import { getSteps } from "../lib/steps";
+import { INFOS_ADMIN_TABS } from "../lib/infosAdminTabs";
 
-export default function StepSidebar({ current, dossier, onNavigate, onSave, t }) {
+export default function StepSidebar({ current, dossier, onNavigate, onSave, t, infosAdminTab, setInfosAdminTab }) {
   const STEPS = getSteps(dossier.triage.modeChoisi);
   const currentIndex = STEPS.findIndex((s) => s.key === current);
   const [showInfo, setShowInfo] = useState(false);
@@ -31,21 +32,51 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t })
           const reachable = i <= currentIndex;
           const label = t(s.labelKey);
           return (
-            <button
-              key={s.key}
-              onClick={() => reachable && onNavigate(s.key)}
-              disabled={!reachable}
-              className="flex items-center gap-2 px-2 py-2 rounded text-sm text-left"
-              style={{
-                cursor: reachable ? "pointer" : "default",
-                ...(active
-                  ? { background: "#E7EEF1", color: "#0B3040", fontWeight: 500 }
-                  : { color: done ? "#3D4750" : "#5A646C" }),
-              }}
-            >
-              {done ? <Check size={16} /> : active ? <Icon size={16} /> : <Circle size={16} />}
-              <span className="truncate">{label}</span>
-            </button>
+            <div key={s.key}>
+              <button
+                onClick={() => reachable && onNavigate(s.key)}
+                disabled={!reachable}
+                className="w-full flex items-center gap-2 px-2 py-2 rounded text-sm text-left"
+                style={{
+                  cursor: reachable ? "pointer" : "default",
+                  ...(active
+                    ? { background: "#E7EEF1", color: "#0B3040", fontWeight: 500 }
+                    : { color: done ? "#3D4750" : "#5A646C" }),
+                }}
+              >
+                {done ? <Check size={16} /> : active ? <Icon size={16} /> : <Circle size={16} />}
+                <span className="truncate">{label}</span>
+              </button>
+              {/* Sous-menu dépliable : seule "Infos admin." a des sous-sections, et
+                  uniquement affiché tant que cette étape est active. */}
+              {s.key === "infosAdmin" && active && (
+                <div className="flex flex-col gap-0.5 mt-0.5 mb-1 ml-3 pl-2 border-l" style={{ borderColor: "#D6DADE" }}>
+                  {INFOS_ADMIN_TABS.map((tb) => {
+                    const tabActive = infosAdminTab === tb.key;
+                    const complete = tb.isComplete(dossier);
+                    return (
+                      <button
+                        key={tb.key}
+                        onClick={() => setInfosAdminTab(tb.key)}
+                        className="flex items-center gap-2 px-2 py-1.5 rounded text-xs text-left"
+                        style={
+                          tabActive
+                            ? { background: "#E7EEF1", color: "#0B3040", fontWeight: 500 }
+                            : { color: "#5A646C" }
+                        }
+                      >
+                        {complete ? (
+                          <CheckCircle2 size={13} style={{ color: "#3E9B57" }} />
+                        ) : (
+                          <Circle size={13} style={{ color: "#D6DADE" }} />
+                        )}
+                        <span className="truncate">{t(tb.labelKey)}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           );
         })}
       </div>

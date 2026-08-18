@@ -1,8 +1,8 @@
-import { useState } from "react";
 import FormStep from "./FormStep";
 import HopitalPicker from "./HopitalPicker";
 import { renseignementsGenerauxSchema, administratifSchema, caracteristiquesSchema, derogationsColumns } from "../lib/schema";
 import { RAPPEL_ACCIDENT_KEYS, APPEL_SECOURS_KEYS } from "../lib/rappelAccident";
+import { INFOS_ADMIN_TABS } from "../lib/infosAdminTabs";
 
 const derogationsSchema = [{ fields: [{ path: "reglesSpecifiques.derogations.items", type: "table", columns: derogationsColumns }] }];
 
@@ -38,15 +38,8 @@ function ContactCard({ c }) {
   );
 }
 
-export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, t, onBack, onNext }) {
-  const [tab, setTab] = useState("renseignements");
+export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, t, onBack, onNext, tab }) {
   const contacts = entreprise?.contactsReference || {};
-
-  const TABS = [
-    { key: "renseignements", label: t("titre_rens_gen") },
-    { key: "administration", label: t("titre_adm_chantier") },
-    { key: "reglesSpecifiques", label: t("titre_regles_speciales") },
-  ];
 
   function updateReglesSpecifiques(patch) {
     setDossier((prev) => ({ ...prev, reglesSpecifiques: { ...prev.reglesSpecifiques, ...patch } }));
@@ -57,26 +50,12 @@ export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, 
 
   return (
     <div>
-      <h3 className="text-lg font-semibold mb-4" style={{ color: "#0B3040" }}>
+      <h3 className="text-lg font-semibold mb-1" style={{ color: "#0B3040" }}>
         {t("infos_admin_titre")}
       </h3>
-
-      <div className="flex gap-1 mb-5 border-b" style={{ borderColor: "#E2E5E8" }}>
-        {TABS.map((tb) => (
-          <button
-            key={tb.key}
-            onClick={() => setTab(tb.key)}
-            className="px-3 py-2 text-sm -mb-px border-b-2"
-            style={
-              tab === tb.key
-                ? { borderColor: "#0B3040", color: "#0B3040", fontWeight: 500 }
-                : { borderColor: "transparent", color: "#5A646C" }
-            }
-          >
-            {tb.label}
-          </button>
-        ))}
-      </div>
+      <p className="text-sm mb-5" style={{ color: "#156082" }}>
+        {t(INFOS_ADMIN_TABS.find((tb) => tb.key === tab)?.labelKey)}
+      </p>
 
       {tab === "renseignements" && (
         <div>
