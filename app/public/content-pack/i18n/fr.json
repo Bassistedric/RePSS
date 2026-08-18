@@ -184,7 +184,14 @@
     "appel_secours_etat_victime": "Signalez l'état de la victime (consciente, inconsciente,…)",
     "appel_secours_incendie": "En cas d'incendie, signalez l'ampleur du sinistre",
     "appel_secours_circonstances": "Décrivez au mieux les circonstances de l'accident",
-    "appel_secours_raccrocher": "Ne raccrochez pas en premier !"
+    "appel_secours_raccrocher": "Ne raccrochez pas en premier !",
+    "accueil_intro": "Générez votre réponse au PSS en quelques étapes, guidées selon votre chantier",
+    "accueil_etape1": "Identifiez le chantier → ou reprends un RePSS déjà commencé en important son fichier .json",
+    "accueil_etape2": "Quelques critères déterminent si un RePSS abrégé suffit, ou si le complet est nécessaire",
+    "accueil_etape3": "Cochez les risques concernés → seules les catégories correspondant aux corps de métier présents sur le chantier s'affichent",
+    "accueil_etape4": "Le document se génère avec toutes les annexes requises, prêt à déposer sur SharePoint",
+    "accueil_bouton_commencer": "Commencer",
+    "accueil_credits": "Conçu par Cédric Comblé, CP1 - Ergonome"
   },
   "risques": []
 }

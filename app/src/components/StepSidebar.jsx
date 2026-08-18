@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check, Circle, Save, Info } from "lucide-react";
+import { Check, Circle, Save, Info, Home } from "lucide-react";
 import { getSteps } from "../lib/steps";
 
 export default function StepSidebar({ current, dossier, onNavigate, onSave }) {
@@ -16,6 +16,14 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave }) {
         {chantierLabel}
       </p>
       <div className="flex flex-col gap-1 flex-1 overflow-y-auto">
+        <button
+          onClick={() => onNavigate("accueil")}
+          className="flex items-center gap-2 px-2 py-2 rounded text-sm text-left mb-1"
+          style={{ color: "#5A646C" }}
+        >
+          <Home size={16} />
+          Accueil
+        </button>
         {STEPS.map((s, i) => {
           const Icon = s.icon;
           const done = i < currentIndex;
