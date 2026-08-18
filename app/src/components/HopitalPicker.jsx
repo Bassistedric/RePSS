@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { findHopitauxProches } from "../lib/hopitaux";
+import { colors } from "../lib/colors";
 
 export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
   const { codePostalChantier, hopitalPlusProcheIds } = dossier.reglesSpecifiques;
@@ -36,24 +37,24 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
         type="text"
         placeholder={t("hopital_code_postal_placeholder")}
         className="w-full border rounded px-3 py-2 text-sm mb-2"
-        style={{ borderColor: "#D6DADE" }}
+        style={{ borderColor: colors.neutralBorderStrong }}
         value={codePostalChantier}
         onChange={(e) => onCodePostalChange(e.target.value)}
       />
       <div className="flex flex-col gap-1.5 mb-2">
         {selected.map((h) => (
-          <div key={h.id} className="flex items-center justify-between text-xs border rounded px-2.5 py-1.5" style={{ borderColor: "#E2E5E8" }}>
+          <div key={h.id} className="flex items-center justify-between text-xs border rounded px-2.5 py-1.5" style={{ borderColor: colors.neutralBorder }}>
             <span>
               {h.nom_hopital}
               {h.nom_site ? ` (${h.nom_site})` : ""}, {h.adresse}, {h.code_postal} {h.commune}
             </span>
-            <button onClick={() => removeHopital(h.id)} style={{ color: "#B3261E" }}>
+            <button onClick={() => removeHopital(h.id)} style={{ color: colors.neutralText }}>
               <X size={14} />
             </button>
           </div>
         ))}
         {selected.length === 0 && (
-          <p className="text-xs" style={{ color: "#5A646C" }}>
+          <p className="text-xs" style={{ color: colors.neutralText }}>
             {t("hopital_saisis_code_postal")}
           </p>
         )}
@@ -63,7 +64,7 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
           value={manualId}
           onChange={(e) => setManualId(e.target.value)}
           className="flex-1 border rounded px-2 py-1.5 text-xs"
-          style={{ borderColor: "#D6DADE" }}
+          style={{ borderColor: colors.neutralBorderStrong }}
         >
           <option value="">{t("hopital_ajouter_manuellement")}</option>
           {hopitaux.map((h) => (
@@ -72,7 +73,7 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
             </option>
           ))}
         </select>
-        <button onClick={addManual} className="text-xs px-3 py-1.5 rounded border" style={{ borderColor: "#D6DADE" }}>
+        <button onClick={addManual} className="text-xs px-3 py-1.5 rounded border" style={{ borderColor: colors.neutralBorderStrong }}>
           {t("bouton_ajouter")}
         </button>
       </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Check, Circle, CheckCircle2, Save, Info, Home } from "lucide-react";
 import { getSteps } from "../lib/steps";
 import { INFOS_ADMIN_TABS } from "../lib/infosAdminTabs";
+import { colors } from "../lib/colors";
 
 export default function StepSidebar({ current, dossier, onNavigate, onSave, t, infosAdminTab, setInfosAdminTab }) {
   const STEPS = getSteps(dossier.triage.modeChoisi);
@@ -12,15 +13,15 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
     numeroChantier && nomChantier ? `${numeroChantier} - ${nomChantier}` : numeroChantier || nomChantier || "Chantier";
 
   return (
-    <div className="w-56 shrink-0 border-r p-4 flex flex-col" style={{ background: "#F7F8F9", borderColor: "#E2E5E8" }}>
-      <p className="text-xs mb-4 truncate" style={{ color: "#5A646C" }}>
+    <div className="w-56 shrink-0 border-r p-4 flex flex-col" style={{ background: colors.neutralBgSubtle, borderColor: colors.neutralBorder }}>
+      <p className="text-xs mb-4 truncate" style={{ color: colors.neutralText }}>
         {chantierLabel}
       </p>
       <div className="flex flex-col gap-1 flex-1 overflow-y-auto">
         <button
           onClick={() => onNavigate("accueil")}
           className="flex items-center gap-2 px-2 py-2 rounded text-sm text-left mb-1"
-          style={{ color: "#5A646C" }}
+          style={{ color: colors.neutralText }}
         >
           <Home size={16} />
           {t("step_accueil")}
@@ -40,8 +41,8 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
                 style={{
                   cursor: reachable ? "pointer" : "default",
                   ...(active
-                    ? { background: "#E7EEF1", color: "#0B3040", fontWeight: 500 }
-                    : { color: done ? "#3D4750" : "#5A646C" }),
+                    ? { background: colors.navyTint, color: colors.navy, fontWeight: 500 }
+                    : { color: done ? colors.neutralTextStrong : colors.neutralText }),
                 }}
               >
                 {done ? <Check size={16} /> : active ? <Icon size={16} /> : <Circle size={16} />}
@@ -50,7 +51,7 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
               {/* Sous-menu dépliable : seule "Infos admin." a des sous-sections, et
                   uniquement affiché tant que cette étape est active. */}
               {s.key === "infosAdmin" && active && (
-                <div className="flex flex-col gap-0.5 mt-0.5 mb-1 ml-3 pl-2 border-l" style={{ borderColor: "#D6DADE" }}>
+                <div className="flex flex-col gap-0.5 mt-0.5 mb-1 ml-3 pl-2 border-l" style={{ borderColor: colors.neutralBorderStrong }}>
                   {INFOS_ADMIN_TABS.map((tb) => {
                     const tabActive = infosAdminTab === tb.key;
                     const complete = tb.isComplete(dossier);
@@ -61,14 +62,14 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
                         className="flex items-center gap-2 px-2 py-1.5 rounded text-xs text-left"
                         style={
                           tabActive
-                            ? { background: "#E7EEF1", color: "#0B3040", fontWeight: 500 }
-                            : { color: "#5A646C" }
+                            ? { background: colors.navyTint, color: colors.navy, fontWeight: 500 }
+                            : { color: colors.neutralText }
                         }
                       >
                         {complete ? (
-                          <CheckCircle2 size={13} style={{ color: "#3E9B57" }} />
+                          <CheckCircle2 size={13} style={{ color: colors.success }} />
                         ) : (
-                          <Circle size={13} style={{ color: "#D6DADE" }} />
+                          <Circle size={13} style={{ color: colors.neutralBorderStrong }} />
                         )}
                         <span className="truncate">{t(tb.labelKey)}</span>
                       </button>
@@ -81,12 +82,12 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
         })}
       </div>
 
-      <div className="pt-3 border-t" style={{ borderColor: "#E2E5E8" }}>
+      <div className="pt-3 border-t" style={{ borderColor: colors.neutralBorder }}>
         <button
           onClick={onSave}
           disabled={!numeroChantier && !nomChantier}
           className="w-full flex items-center justify-center gap-2 text-xs px-3 py-2 rounded border disabled:opacity-40"
-          style={{ borderColor: "#156082", color: "#156082" }}
+          style={{ borderColor: colors.blue, color: colors.blue }}
         >
           <Save size={14} />
           {t("bouton_enregistrer")}
@@ -94,13 +95,13 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
         <button
           onClick={() => setShowInfo((v) => !v)}
           className="flex items-center gap-1 text-[11px] mt-1.5 mx-auto"
-          style={{ color: "#5A646C" }}
+          style={{ color: colors.neutralText }}
         >
           <Info size={11} />
           {t("comment_ca_marche")}
         </button>
         {showInfo && (
-          <p className="text-[11px] mt-2 leading-relaxed" style={{ color: "#5A646C" }}>
+          <p className="text-[11px] mt-2 leading-relaxed" style={{ color: colors.neutralText }}>
             {t("sidebar_info_text")}
           </p>
         )}

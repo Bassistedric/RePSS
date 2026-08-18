@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp, FileCheck } from "lucide-react";
 import MoadrSection from "./MoadrSection";
+import { colors } from "../lib/colors";
 
 // §6 : la case à cocher est la ligne de risque, jamais l'activité. L'activité est un
 // simple sous-titre qui regroupe ses lignes, toujours affichées (pas de repli
@@ -15,12 +16,12 @@ function RisqueRows({ lignesRisque, isChecked, toggle, remarque, setRemarque, t 
           <div key={r.id}>
             <label
               className="flex items-start gap-2 text-[13px] py-1 pl-2 pr-2 rounded"
-              style={{ color: "#5A646C", ...(checked ? { background: "#EAF6EC", color: "#3D4750" } : {}) }}
+              style={{ color: colors.neutralText, ...(checked ? { background: colors.successBg, color: colors.neutralTextStrong } : {}) }}
             >
               <input
                 type="checkbox"
                 className="mt-0.5"
-                style={{ accentColor: "#8FCB9B" }}
+                style={{ accentColor: colors.successAccent }}
                 checked={checked}
                 onChange={() => toggle(r.id)}
               />
@@ -31,7 +32,7 @@ function RisqueRows({ lignesRisque, isChecked, toggle, remarque, setRemarque, t 
                 type="text"
                 placeholder={t("remarque_optionnelle_placeholder")}
                 className="ml-7 mb-1 border rounded px-2 py-1 text-xs"
-                style={{ borderColor: "#D6DADE", width: "calc(100% - 1.75rem)" }}
+                style={{ borderColor: colors.neutralBorderStrong, width: "calc(100% - 1.75rem)" }}
                 value={remarque(r.id)}
                 onChange={(e) => setRemarque(r.id, e.target.value)}
               />
@@ -45,11 +46,11 @@ function RisqueRows({ lignesRisque, isChecked, toggle, remarque, setRemarque, t 
 
 function ActiviteBlock({ activite, lignesRisque, isChecked, toggle, remarque, setRemarque, t }) {
   return (
-    <div className="mb-3 last:mb-0 pl-3 border-l-2" style={{ borderColor: "#D6E3E8" }}>
-      <p className="text-[13px] font-medium mb-1.5" style={{ color: "#3D4750" }}>
+    <div className="mb-3 last:mb-0 pl-3 border-l-2" style={{ borderColor: colors.neutralBorderStrong }}>
+      <p className="text-[13px] font-medium mb-1.5" style={{ color: colors.neutralTextStrong }}>
         {activite.fr}
       </p>
-      <div className="pl-3 border-l-2" style={{ borderColor: "#EDEFF1" }}>
+      <div className="pl-3 border-l-2" style={{ borderColor: colors.neutralBorderFaint }}>
         <RisqueRows lignesRisque={lignesRisque} isChecked={isChecked} toggle={toggle} remarque={remarque} setRemarque={setRemarque} t={t} />
       </div>
     </div>
@@ -116,16 +117,16 @@ function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque,
             {showGroupe && (
               <p
                 className="text-xs uppercase mt-3 mb-1.5 pt-2 border-t first:mt-0 first:pt-0 first:border-t-0"
-                style={{ color: "#5A646C", borderColor: "#E2E5E8", letterSpacing: "0.06em" }}
+                style={{ color: colors.neutralText, borderColor: colors.neutralBorder, letterSpacing: "0.06em" }}
               >
                 {cat.groupe}
               </p>
             )}
-            <div className="border rounded" style={{ borderColor: "#E2E5E8" }}>
+            <div className="border rounded" style={{ borderColor: colors.neutralBorder }}>
             <button
               onClick={() => toggleCat(cat.id)}
               className="w-full flex justify-between items-center px-3 py-2.5 text-sm font-medium"
-              style={{ background: "#EEF4F6", color: "#156082" }}
+              style={{ background: colors.navy, color: "white" }}
             >
               {cat.fr}
               {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -136,11 +137,11 @@ function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque,
                   subs.map((sub) => {
                     const subOpen = openSubs.has(sub.id);
                     return (
-                      <div key={sub.id} className="mb-2 last:mb-0 border rounded" style={{ borderColor: "#EDEFF1" }}>
+                      <div key={sub.id} className="mb-2 last:mb-0 border rounded" style={{ borderColor: colors.neutralBorderFaint }}>
                         <button
                           onClick={() => toggleSub(sub.id)}
-                          className="w-full flex justify-between items-center px-2.5 py-2 text-sm font-semibold border-b"
-                          style={{ color: "#0B3040", borderColor: subOpen ? "#E2E5E8" : "transparent" }}
+                          className="w-full flex justify-between items-center px-2.5 py-2 text-sm font-semibold border-b-2"
+                          style={{ color: colors.navy, borderColor: subOpen ? colors.turquoise : "transparent" }}
                         >
                           {sub.fr}
                           {subOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
@@ -182,7 +183,7 @@ function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque,
         );
       })}
       {visibleCats.every((c) => c.corps_metier === "universel") && (
-        <p className="text-xs" style={{ color: "#5A646C" }}>
+        <p className="text-xs" style={{ color: colors.neutralText }}>
           {t("analyse_message_corps_metier")}
         </p>
       )}
@@ -195,7 +196,7 @@ function CatalogueAbrege({ catalogue, isChecked, toggle, t }) {
     <div className="flex flex-col gap-4 mb-4">
       {catalogue.categories.map((cat) => (
         <div key={cat.id}>
-          <p className="text-sm font-semibold mb-2 pb-1 border-b" style={{ color: "#0B3040", borderColor: "#E2E5E8" }}>
+          <p className="text-sm font-semibold mb-2 pb-1 border-b" style={{ color: colors.navy, borderColor: colors.neutralBorder }}>
             {cat.fr}
           </p>
           <div className="flex flex-col gap-0.5">
@@ -207,7 +208,7 @@ function CatalogueAbrege({ catalogue, isChecked, toggle, t }) {
                   <label
                     key={r.id}
                     className="flex items-start gap-2 text-[13px] py-1"
-                    style={{ color: disabled ? "#5A646C" : "#3D4750" }}
+                    style={{ color: disabled ? colors.neutralText : colors.neutralTextStrong }}
                   >
                     <input
                       type="checkbox"
@@ -219,7 +220,7 @@ function CatalogueAbrege({ catalogue, isChecked, toggle, t }) {
                     <span style={disabled ? { textDecoration: "line-through" } : undefined}>
                       {r.sourceDanger} : {r.mesure}
                       {disabled && (
-                        <span className="block text-[11px]" style={{ color: "#B3261E", textDecoration: "none" }}>
+                        <span className="block text-[11px]" style={{ color: colors.warningText, textDecoration: "none" }}>
                           {t("analyse_non_couvert_abrege")}
                         </span>
                       )}
@@ -259,14 +260,14 @@ export default function AnalyseRisques({ dossier, setDossier, catalogueComplet, 
   return (
     <div>
       <div className="flex justify-between items-baseline mb-1">
-        <h3 className="text-lg font-semibold" style={{ color: "#0B3040" }}>
+        <h3 className="text-lg font-semibold" style={{ color: colors.navy }}>
           {modeChoisi === "abrege" ? t("analyse_titre_abrege") : t("analyse_titre_complet")}
         </h3>
-        <span className="text-sm" style={{ color: "#5A646C" }}>
+        <span className="text-sm" style={{ color: colors.neutralText }}>
           {itemsCoches.length} {t("analyse_compteur_selection")}
         </span>
       </div>
-      <p className="text-xs mb-4" style={{ color: "#5A646C" }}>
+      <p className="text-xs mb-4" style={{ color: colors.neutralText }}>
         {modeChoisi === "abrege" ? t("analyse_aide_abrege") : t("analyse_aide_complet")}
       </p>
 
@@ -287,10 +288,10 @@ export default function AnalyseRisques({ dossier, setDossier, catalogueComplet, 
       <MoadrSection dossier={dossier} setDossier={setDossier} t={t} />
 
       <div className="flex justify-between mt-6">
-        <button onClick={onBack} className="px-5 py-2 rounded text-sm border" style={{ borderColor: "#D6DADE" }}>
+        <button onClick={onBack} className="px-5 py-2 rounded text-sm border" style={{ borderColor: colors.neutralBorderStrong }}>
           {t("bouton_retour")}
         </button>
-        <button onClick={onNext} className="px-5 py-2 rounded text-sm font-medium flex items-center gap-2" style={{ background: "#0B3040", color: "white" }}>
+        <button onClick={onNext} className="px-5 py-2 rounded text-sm font-medium flex items-center gap-2" style={{ background: colors.navy, color: "white" }}>
           <FileCheck size={16} />
           {t("bouton_continuer")}
         </button>

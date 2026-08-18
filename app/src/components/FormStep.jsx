@@ -1,8 +1,9 @@
 import { Plus, Trash2 } from "lucide-react";
 import { getPath, setPath } from "../lib/paths";
+import { colors } from "../lib/colors";
 
 const INPUT_CLASS = "w-full border rounded px-3 py-2 text-sm";
-const INPUT_STYLE = { borderColor: "#D6DADE" };
+const INPUT_STYLE = { borderColor: colors.neutralBorderStrong };
 
 function TableField({ path, columns, value, onChange, t }) {
   const rows = value || [];
@@ -25,7 +26,7 @@ function TableField({ path, columns, value, onChange, t }) {
         <thead>
           <tr>
             {columns.map((c) => (
-              <th key={c.key} className="text-left text-xs font-medium pb-1.5 pr-2" style={{ color: "#5A646C" }}>
+              <th key={c.key} className="text-left text-xs font-medium pb-1.5 pr-2" style={{ color: colors.neutralText }}>
                 {t(c.labelKey)}
               </th>
             ))}
@@ -47,7 +48,7 @@ function TableField({ path, columns, value, onChange, t }) {
                 </td>
               ))}
               <td className="pb-2">
-                <button type="button" onClick={() => removeRow(i)} style={{ color: "#B3261E" }}>
+                <button type="button" onClick={() => removeRow(i)} style={{ color: colors.neutralText }}>
                   <Trash2 size={16} />
                 </button>
               </td>
@@ -59,7 +60,7 @@ function TableField({ path, columns, value, onChange, t }) {
         type="button"
         onClick={addRow}
         className="flex items-center gap-1 text-xs"
-        style={{ color: "#156082" }}
+        style={{ color: colors.blue }}
       >
         <Plus size={14} /> {t("bouton_ajouter_ligne")}
       </button>
@@ -75,7 +76,7 @@ const TRISTATE_OPTIONS = [
 
 function TriStateField({ path, value, onChange, t }) {
   return (
-    <div className="inline-flex rounded border overflow-hidden" style={{ borderColor: "#D6DADE" }}>
+    <div className="inline-flex rounded border overflow-hidden" style={{ borderColor: colors.neutralBorderStrong }}>
       {TRISTATE_OPTIONS.map((o) => {
         const active = value === o.value;
         return (
@@ -85,9 +86,9 @@ function TriStateField({ path, value, onChange, t }) {
             onClick={() => onChange(path, active ? null : o.value)}
             className="px-3 py-1.5 text-xs"
             style={{
-              background: active ? "#0B3040" : "white",
-              color: active ? "white" : "#5A646C",
-              borderRight: o.value !== "na" ? "1px solid #D6DADE" : undefined,
+              background: active ? colors.blue : "white",
+              color: active ? "white" : colors.neutralText,
+              borderRight: o.value !== "na" ? `1px solid ${colors.neutralBorderStrong}` : undefined,
             }}
           >
             {t(o.labelKey)}
@@ -126,8 +127,8 @@ function Field({ field, dossier, onChange, t }) {
   if (field.type === "readonly") {
     return (
       <div>
-        {field.labelKey && <label className="text-sm font-medium block mb-1" style={{ color: "#5A646C" }}>{t(field.labelKey)}</label>}
-        <p className="text-sm" style={{ color: "#3D4750" }}>{value || t("non_renseigne")}</p>
+        {field.labelKey && <label className="text-sm font-medium block mb-1" style={{ color: colors.neutralText }}>{t(field.labelKey)}</label>}
+        <p className="text-sm" style={{ color: colors.neutralTextStrong }}>{value || t("non_renseigne")}</p>
       </div>
     );
   }
@@ -166,15 +167,15 @@ export default function FormStep({ schema, dossier, setDossier, t, title }) {
   return (
     <div>
       {title && (
-        <h3 className="text-lg font-semibold mb-4" style={{ color: "#0B3040" }}>
+        <h3 className="text-lg font-semibold mb-4" style={{ color: colors.navy }}>
           {title}
         </h3>
       )}
       <div className="flex flex-col gap-6">
         {schema.map((group, gi) => (
-          <div key={gi} className="border rounded-lg p-4" style={{ borderColor: "#E2E5E8" }}>
+          <div key={gi} className="border rounded-lg p-4" style={{ borderColor: colors.neutralBorder }}>
             {group.titleKey && (
-              <p className="text-sm font-semibold mb-3" style={{ color: "#156082" }}>
+              <p className="text-sm font-semibold mb-3" style={{ color: colors.blue }}>
                 {t(group.titleKey)}
               </p>
             )}

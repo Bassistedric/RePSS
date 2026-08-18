@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { loadContentPack } from "./lib/contentPack";
 import { makeTranslator } from "./lib/i18n";
+import { colors } from "./lib/colors";
 import { defaultDossier } from "./lib/dossier";
 import { getSteps } from "./lib/steps";
 import { saveDossier } from "./lib/storage";
@@ -30,8 +31,8 @@ export default function App() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-6" style={{ background: "#EEF0F2" }}>
-        <p className="text-sm" style={{ color: "#B3261E" }}>
+      <div className="min-h-screen flex items-center justify-center p-6" style={{ background: colors.neutralBg }}>
+        <p className="text-sm" style={{ color: colors.error }}>
           Erreur de chargement des données : {error}
         </p>
       </div>
@@ -40,8 +41,8 @@ export default function App() {
 
   if (!pack) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-6" style={{ background: "#EEF0F2" }}>
-        <p className="text-sm" style={{ color: "#5A646C" }}>
+      <div className="min-h-screen flex items-center justify-center p-6" style={{ background: colors.neutralBg }}>
+        <p className="text-sm" style={{ color: colors.neutralText }}>
           Chargement…
         </p>
       </div>
@@ -131,8 +132,8 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6" style={{ background: "#EEF0F2" }}>
-      <div className="w-full max-w-4xl rounded-xl overflow-hidden border shadow-sm" style={{ borderColor: "#E2E5E8", background: "white" }}>
+    <div className="min-h-screen flex items-center justify-center p-6" style={{ background: colors.neutralBg }}>
+      <div className="w-full max-w-4xl rounded-xl overflow-hidden border shadow-sm" style={{ borderColor: colors.neutralBorder, background: "white" }}>
         {screen === "accueil" ? (
           <div className="p-6">
             <Accueil onStart={() => setScreen("identification")} lang={lang} setLang={setLang} entreprise={pack.entreprise} t={t} />

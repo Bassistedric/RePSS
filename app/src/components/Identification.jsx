@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { Upload } from "lucide-react";
 import { readDossierFile } from "../lib/storage";
+import { colors } from "../lib/colors";
 
 export default function Identification({ dossier, setDossier, onNext, t }) {
   const [importInfo, setImportInfo] = useState(null);
@@ -30,10 +31,10 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
 
   return (
     <div>
-      <h3 className="text-lg font-semibold mb-1" style={{ color: "#0B3040" }}>
+      <h3 className="text-lg font-semibold mb-1" style={{ color: colors.navy }}>
         {t("identification_titre")}
       </h3>
-      <p className="text-sm mb-4" style={{ color: "#5A646C" }}>
+      <p className="text-sm mb-4" style={{ color: colors.neutralText }}>
         {t("identification_sous_titre")}
       </p>
 
@@ -44,7 +45,7 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
             type="text"
             placeholder="12345"
             className="w-full border rounded px-3 py-2 text-sm"
-            style={{ borderColor: "#D6DADE" }}
+            style={{ borderColor: colors.neutralBorderStrong }}
             value={numeroChantier}
             onChange={(e) => {
               setIdentification({ numeroChantier: e.target.value });
@@ -58,7 +59,7 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
             type="text"
             placeholder="Rénovation site Gembloux"
             className="w-full border rounded px-3 py-2 text-sm"
-            style={{ borderColor: "#D6DADE" }}
+            style={{ borderColor: colors.neutralBorderStrong }}
             value={nomChantier}
             onChange={(e) => {
               setIdentification({ nomChantier: e.target.value });
@@ -74,7 +75,7 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
           <input
             type="text"
             className="w-full border rounded px-3 py-2 text-sm"
-            style={{ borderColor: "#D6DADE" }}
+            style={{ borderColor: colors.neutralBorderStrong }}
             value={pmLead}
             onChange={(e) => setIdentification({ pmLead: e.target.value })}
           />
@@ -84,7 +85,7 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
           <input
             type="text"
             className="w-full border rounded px-3 py-2 text-sm"
-            style={{ borderColor: "#D6DADE" }}
+            style={{ borderColor: colors.neutralBorderStrong }}
             value={pmSecondaire}
             onChange={(e) => setIdentification({ pmSecondaire: e.target.value })}
           />
@@ -92,17 +93,17 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
       </div>
 
       <div className="flex items-center gap-3 mb-5">
-        <div className="flex-1 h-px" style={{ background: "#E2E5E8" }} />
-        <span className="text-xs" style={{ color: "#5A646C" }}>
+        <div className="flex-1 h-px" style={{ background: colors.neutralBorder }} />
+        <span className="text-xs" style={{ color: colors.neutralText }}>
           {t("identification_ou")}
         </span>
-        <div className="flex-1 h-px" style={{ background: "#E2E5E8" }} />
+        <div className="flex-1 h-px" style={{ background: colors.neutralBorder }} />
       </div>
 
       <button
         onClick={() => fileRef.current?.click()}
         className="w-full flex items-center justify-center gap-2 border rounded px-3 py-2.5 text-sm mb-2"
-        style={{ borderColor: "#D6DADE", color: "#156082" }}
+        style={{ borderColor: colors.neutralBorderStrong, color: colors.blue }}
       >
         <Upload size={16} />
         {t("identification_reprendre_bouton")}
@@ -110,12 +111,12 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
       <input ref={fileRef} type="file" accept=".json" onChange={handleFile} className="hidden" />
 
       {importInfo && !importInfo.error && (
-        <p className="text-xs mb-5" style={{ color: "#156082" }}>
+        <p className="text-xs mb-5" style={{ color: colors.blue }}>
           {t("identification_dossier_importe")} : {t("identification_version_mot")} {importInfo.version} · {t("identification_modifie_le")} {importInfo.date}
         </p>
       )}
       {importInfo?.error && (
-        <p className="text-xs mb-5" style={{ color: "#B3261E" }}>
+        <p className="text-xs mb-5" style={{ color: colors.error }}>
           {t("identification_erreur_fichier")}
         </p>
       )}
@@ -126,7 +127,7 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
           disabled={!chantierId}
           onClick={onNext}
           className="px-5 py-2 rounded text-sm font-medium disabled:opacity-40"
-          style={{ background: "#0B3040", color: "white" }}
+          style={{ background: colors.navy, color: "white" }}
         >
           {t("bouton_continuer")}
         </button>
