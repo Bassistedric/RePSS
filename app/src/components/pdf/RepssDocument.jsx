@@ -192,6 +192,9 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
           <Section title={t("titre_adm_chantier")}>
             <KV label={t("date_debut_travaux")} value={adm.dateDebutTravaux} />
             <KV label={t("date_fin_travaux")} value={adm.dateFinTravauxEstimee} />
+            {(entreprise?.rolesApprobation?.fixes || []).map((r) => (
+              <KV key={r.fonction} label={r.fonction} value={r.nom} />
+            ))}
             {ROLES_ADMINISTRATION.map((role) => adm.responsables[role] && <KV key={role} label={t(role)} value={adm.responsables[role]} />)}
             <Table
               columns={[
@@ -259,7 +262,8 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
             <KV label="Service incendie" value="112" />
             <KV label="Service incendie (n° interne)" value={rs.serviceIncendieInterne} />
             <KV label="Centre antipoison" value="070/245.245" />
-            <KV label="Police" value="101" />
+            <KV label="Police" value={contacts.police?.tel || "101"} />
+            <KV label="Police, zone la plus proche" value={contacts.police?.site_web} />
             {hopitauxSelectionnes.map((h) => (
               <KV key={h.id} label={t("hopital_plus_proche")} value={`${h.nom_hopital}${h.nom_site ? " (" + h.nom_site + ")" : ""}, ${h.adresse}, ${h.code_postal} ${h.commune}`} />
             ))}

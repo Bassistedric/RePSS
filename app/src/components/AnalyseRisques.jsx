@@ -67,13 +67,29 @@ function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque,
   const toggleCat = toggleSet(setOpenCats);
   const toggleSub = toggleSet(setOpenSubs);
 
+  let lastGroupe;
+
   return (
     <div className="flex flex-col gap-2 mb-4">
       {visibleCats.map((cat) => {
         const isOpen = openCats.has(cat.id);
         const subs = catalogue.sousCategories.filter((s) => s.parent === cat.id);
+        // Le regroupement (cat.groupe) n'est ni sélectionnable ni pliable : c'est le
+        // niveau le plus neutre visuellement, juste un séparateur au-dessus des
+        // catégories qui le partagent (ex. "Exécution générale").
+        const showGroupe = cat.groupe && cat.groupe !== lastGroupe;
+        lastGroupe = cat.groupe;
         return (
-          <div key={cat.id} className="border rounded" style={{ borderColor: "#E2E5E8" }}>
+          <div key={cat.id}>
+            {showGroupe && (
+              <p
+                className="text-xs uppercase mt-3 mb-1.5 pt-2 border-t first:mt-0 first:pt-0 first:border-t-0"
+                style={{ color: "#5A646C", borderColor: "#E2E5E8", letterSpacing: "0.06em" }}
+              >
+                {cat.groupe}
+              </p>
+            )}
+            <div className="border rounded" style={{ borderColor: "#E2E5E8" }}>
             <button
               onClick={() => toggleCat(cat.id)}
               className="w-full flex justify-between items-center px-3 py-2.5 text-sm font-medium"
@@ -117,6 +133,7 @@ function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque,
                 })}
               </div>
             )}
+            </div>
           </div>
         );
       })}
