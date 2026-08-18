@@ -247,8 +247,26 @@ PM, date, version, `moadrEnAttente`) — jamais le contenu du JSON lui-même. Se
 
 Séparer strictement le moteur (code, jamais de contenu VMA-spécifique en dur) du
 contenu (`entreprise.json`, classeurs de contenu, logos) — changer d'entreprise doit
-se limiter à remplacer ces fichiers, jamais toucher au code. Couleurs VMA Sud :
-`#0B3040` (marine, primaire) / `#156082` (bleu, secondaire).
+se limiter à remplacer ces fichiers, jamais toucher au code.
+
+**Palette VMA Sud** (`app/src/lib/colors.js`, seul point de vérité, réutilisé tel
+quel dans le wizard et dans le PDF `RepssDocument.jsx`) : chaque couleur a un rôle
+unique, jamais interchangeable.
+
+- `navy` `#0B3040` : identité — boutons principaux, en-têtes de catégorie,
+  navigation active. Jamais un fond général.
+- `blue` `#156082` : interactif — liens, accents secondaires, contrôles.
+- `turquoise` `#1D9E75` : accent de vie (dans l'esprit du dégradé du logo),
+  usage unique et volontairement restreint : la bordure des sous-catégories de
+  l'analyse de risques. Jamais mélangé aux couleurs sémantiques.
+- Neutres chauds (`neutralBg*`, `neutralBorder*`, `neutralText*`) : non teintés
+  bleu, portent tous les fonds/bordures structurels et le texte non sémantique.
+- Sémantiques réservées, jamais réutilisées pour autre chose : `success` (vert,
+  ligne de risque cochée), `warning` (ambre, bannière MOADR + item aggravé de
+  l'abrégé), `error` (rouge, uniquement les erreurs bloquantes, ex. import de
+  fichier invalide).
+
+Aplats francs partout, pas de dégradé (sauf éventuellement l'écran d'accueil).
 
 ## 10. Décisions UX/visuelles à respecter
 

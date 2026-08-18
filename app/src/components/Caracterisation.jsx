@@ -1,3 +1,5 @@
+import { colors } from "../lib/colors";
+
 const AIDE_CRITERES = [
   { key: "heuresInf1000", labelKey: "caracterisation_critere_heures" },
   { key: "hauteur5mPlus", labelKey: "caracterisation_critere_hauteur" },
@@ -27,13 +29,13 @@ export default function Caracterisation({ dossier, setDossier, corpsMetierOption
 
   return (
     <div>
-      <h3 className="text-lg font-semibold mb-4" style={{ color: "#0B3040" }}>
+      <h3 className="text-lg font-semibold mb-4" style={{ color: colors.navy }}>
         {t("caracterisation_titre")}
       </h3>
 
       <p className="text-sm font-medium mb-2">{t("caracterisation_question")}</p>
       <div className="flex gap-5 mb-3">
-        <label className="flex items-center gap-1.5 text-sm" style={aideActive ? { color: "#5A646C" } : undefined}>
+        <label className="flex items-center gap-1.5 text-sm" style={aideActive ? { color: colors.neutralText } : undefined}>
           <input type="radio" checked={modeChoisi === "abrege"} disabled={aideActive} onChange={() => setMode("abrege")} />
           {t("caracterisation_abrege")}
         </label>
@@ -43,13 +45,13 @@ export default function Caracterisation({ dossier, setDossier, corpsMetierOption
         </label>
       </div>
       {aideActive && (
-        <p className="text-xs mb-3" style={{ color: "#B3261E" }}>
+        <p className="text-xs mb-3" style={{ color: colors.warningText }}>
           {t("caracterisation_abrege_indispo")}
         </p>
       )}
 
-      <div className="rounded p-3 mb-5" style={{ background: "#F7F8F9" }}>
-        <p className="text-xs mb-1.5" style={{ color: "#5A646C" }}>
+      <div className="rounded p-3 mb-5" style={{ background: colors.neutralBgSubtle }}>
+        <p className="text-xs mb-1.5" style={{ color: colors.neutralText }}>
           {t("caracterisation_aide_intro")}
         </p>
         {AIDE_CRITERES.map((o) => (
@@ -71,10 +73,10 @@ export default function Caracterisation({ dossier, setDossier, corpsMetierOption
       </div>
 
       <div className="flex justify-between">
-        <button onClick={onBack} className="px-5 py-2 rounded text-sm border" style={{ borderColor: "#D6DADE" }}>
+        <button onClick={onBack} className="px-5 py-2 rounded text-sm border" style={{ borderColor: colors.neutralBorderStrong }}>
           {t("bouton_retour")}
         </button>
-        <button onClick={onNext} className="px-5 py-2 rounded text-sm font-medium" style={{ background: "#0B3040", color: "white" }}>
+        <button onClick={onNext} className="px-5 py-2 rounded text-sm font-medium" style={{ background: colors.navy, color: "white" }}>
           {t("bouton_continuer")}
         </button>
       </div>

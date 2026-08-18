@@ -1,28 +1,29 @@
 import { Document, Page, View, Text, Image, StyleSheet } from "@react-pdf/renderer";
 import { ROLES_ADMINISTRATION } from "../../lib/dossier";
+import { colors } from "../../lib/colors";
 
 const styles = StyleSheet.create({
-  page: { padding: 32, fontSize: 9, fontFamily: "Helvetica", color: "#1A1F24" },
+  page: { padding: 32, fontSize: 9, fontFamily: "Helvetica", color: colors.neutralTextStrong },
   headerRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 16 },
   logo: { height: 30, objectFit: "contain" },
   title: { fontSize: 16, fontWeight: 700 },
-  subtitle: { fontSize: 10, color: "#5A646C", marginTop: 2 },
+  subtitle: { fontSize: 10, color: colors.neutralText, marginTop: 2 },
   section: { marginBottom: 14, breakInside: "avoid" },
-  sectionTitle: { fontSize: 11, fontWeight: 700, marginBottom: 6, paddingBottom: 3, borderBottom: "1pt solid #D6DADE" },
+  sectionTitle: { fontSize: 11, fontWeight: 700, marginBottom: 6, paddingBottom: 3, borderBottom: `1pt solid ${colors.neutralBorderStrong}` },
   row: { flexDirection: "row", marginBottom: 3 },
-  kvKey: { width: 160, color: "#5A646C" },
+  kvKey: { width: 160, color: colors.neutralText },
   kvVal: { flex: 1, fontWeight: 500 },
   bullet: { flexDirection: "row", marginBottom: 2 },
   bulletDot: { width: 10 },
-  tableHeader: { flexDirection: "row", borderBottom: "1pt solid #0B3040", paddingBottom: 3, marginBottom: 3 },
-  tableRow: { flexDirection: "row", borderBottom: "0.5pt solid #E2E5E8", paddingVertical: 2 },
+  tableHeader: { flexDirection: "row", borderBottom: `1pt solid ${colors.navy}`, paddingBottom: 3, marginBottom: 3 },
+  tableRow: { flexDirection: "row", borderBottom: `0.5pt solid ${colors.neutralBorder}`, paddingVertical: 2 },
   th: { fontWeight: 700, fontSize: 8 },
   td: { fontSize: 8 },
-  contactCard: { width: "48%", marginBottom: 6, fontSize: 8, border: "0.5pt solid #E2E5E8", padding: 5 },
+  contactCard: { width: "48%", marginBottom: 6, fontSize: 8, border: `0.5pt solid ${colors.neutralBorder}`, padding: 5 },
   logosRow: { flexDirection: "row", flexWrap: "wrap", gap: 10, marginTop: 4 },
-  catTitle: { fontSize: 10, fontWeight: 700, color: "#0B3040", marginTop: 8, marginBottom: 3, paddingBottom: 2, borderBottom: "1pt solid #E2E5E8" },
-  subTitle: { fontSize: 9.5, fontWeight: 700, color: "#0B3040", marginTop: 5, marginBottom: 2, paddingBottom: 2, borderBottom: "0.75pt solid #D6E3E8" },
-  actTitle: { fontSize: 9, fontWeight: 500, color: "#3D4750", marginTop: 3, marginBottom: 1, marginLeft: 6 },
+  catTitle: { fontSize: 10, fontWeight: 700, color: colors.navy, marginTop: 8, marginBottom: 3, paddingBottom: 2, borderBottom: `1pt solid ${colors.neutralBorder}` },
+  subTitle: { fontSize: 9.5, fontWeight: 700, color: colors.navy, marginTop: 5, marginBottom: 2, paddingBottom: 2, borderBottom: `1.25pt solid ${colors.turquoise}` },
+  actTitle: { fontSize: 9, fontWeight: 500, color: colors.neutralTextStrong, marginTop: 3, marginBottom: 1, marginLeft: 6 },
   ligneRisque: { marginLeft: 12, marginTop: 1, marginBottom: 1 },
 });
 
@@ -96,7 +97,7 @@ function LignesRisquePdf({ lignesRisque, cochesById, t }) {
       <Text style={{ fontWeight: 500 }}>{r.sourceDanger}</Text>
       <Text>{r.mesuresPrevention}</Text>
       {cochesById[r.id].remarques && (
-        <Text style={{ color: "#5A646C" }}>
+        <Text style={{ color: colors.neutralText }}>
           {t("remarques_descriptifs")} {cochesById[r.id].remarques}
         </Text>
       )}
@@ -332,7 +333,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
             {dossier.demandesMoadr.map((m) => (
               <View key={m.id} style={{ marginBottom: 4 }}>
                 <Text>{m.descriptionSituation}</Text>
-                <Text style={{ color: "#5A646C" }}>{m.mentionDocument}</Text>
+                <Text style={{ color: colors.neutralText }}>{m.mentionDocument}</Text>
               </View>
             ))}
           </Section>
