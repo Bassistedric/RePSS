@@ -4,12 +4,6 @@ import HopitalPicker from "./HopitalPicker";
 import { renseignementsGenerauxSchema, administratifSchema, caracteristiquesSchema, derogationsColumns } from "../lib/schema";
 import { RAPPEL_ACCIDENT_KEYS, APPEL_SECOURS_KEYS } from "../lib/rappelAccident";
 
-const TABS = [
-  { key: "renseignements", label: "Renseignements généraux" },
-  { key: "administration", label: "Administration du chantier" },
-  { key: "reglesSpecifiques", label: "Règles spécifiques" },
-];
-
 const derogationsSchema = [{ fields: [{ path: "reglesSpecifiques.derogations.items", type: "table", columns: derogationsColumns }] }];
 
 function FixedRolesTable({ fixes, t }) {
@@ -17,12 +11,12 @@ function FixedRolesTable({ fixes, t }) {
   return (
     <div className="border rounded-lg p-4" style={{ borderColor: "#E2E5E8" }}>
       <p className="text-sm font-semibold mb-3" style={{ color: "#156082" }}>
-        {t("resp_approbation")} : rôles fixes
+        {t("resp_approbation")} : {t("roles_fixes_suffixe")}
       </p>
       <div className="flex flex-col gap-1.5">
         {fixes.map((r) => (
           <div key={r.fonction} className="text-xs" style={{ color: "#3D4750" }}>
-            <span className="font-medium">{r.fonction}</span> : {r.nom || "non renseigné"}
+            <span className="font-medium">{r.fonction}</span> : {r.nom || t("non_renseigne")}
             {r.tel && <span style={{ color: "#5A646C" }}> · {r.tel}</span>}
           </div>
         ))}
@@ -48,6 +42,12 @@ export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, 
   const [tab, setTab] = useState("renseignements");
   const contacts = entreprise?.contactsReference || {};
 
+  const TABS = [
+    { key: "renseignements", label: t("titre_rens_gen") },
+    { key: "administration", label: t("titre_adm_chantier") },
+    { key: "reglesSpecifiques", label: t("titre_regles_speciales") },
+  ];
+
   function updateReglesSpecifiques(patch) {
     setDossier((prev) => ({ ...prev, reglesSpecifiques: { ...prev.reglesSpecifiques, ...patch } }));
   }
@@ -58,7 +58,7 @@ export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, 
   return (
     <div>
       <h3 className="text-lg font-semibold mb-4" style={{ color: "#0B3040" }}>
-        Infos admin.
+        {t("infos_admin_titre")}
       </h3>
 
       <div className="flex gap-1 mb-5 border-b" style={{ borderColor: "#E2E5E8" }}>
@@ -85,7 +85,7 @@ export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, 
             <FormStep schema={caracteristiquesSchema} dossier={dossier} setDossier={setDossier} t={t} />
           </div>
           <p className="text-sm font-semibold mt-5 mb-2" style={{ color: "#156082" }}>
-            Contacts de référence
+            {t("contacts_reference_titre")}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <ContactCard c={contacts.assureurLoi} />
@@ -104,13 +104,17 @@ export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, 
           <FormStep schema={administratifSchema} dossier={dossier} setDossier={setDossier} t={t} />
           <div className="border rounded-lg p-4 mt-4" style={{ borderColor: "#E2E5E8" }}>
             <p className="text-sm font-semibold mb-3" style={{ color: "#156082" }}>
-              Version du dossier
+              {t("version_dossier_titre")}
             </p>
             <div className="grid grid-cols-2 gap-3 mb-3 text-xs" style={{ color: "#5A646C" }}>
-              <span>Version : {dossier.meta.version}</span>
-              <span>Dernière modification : {dossier.meta.dateDerniereModif}</span>
+              <span>
+                {t("label_version")} : {dossier.meta.version}
+              </span>
+              <span>
+                {t("derniere_modification")} : {dossier.meta.dateDerniereModif}
+              </span>
             </div>
-            <label className="text-sm font-medium block mb-1.5">Motif de la nouvelle version (optionnel)</label>
+            <label className="text-sm font-medium block mb-1.5">{t("motif_nouvelle_version")}</label>
             <input
               type="text"
               className="w-full border rounded px-3 py-2 text-sm"
@@ -145,17 +149,17 @@ export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, 
 
           <div className="border rounded-lg p-4" style={{ borderColor: "#E2E5E8" }}>
             <p className="text-sm font-semibold mb-3" style={{ color: "#156082" }}>
-              Contacts d'urgence
+              {t("contacts_urgence_titre")}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
               <div>
-                <label className="text-sm font-medium block mb-1.5">Service incendie</label>
+                <label className="text-sm font-medium block mb-1.5">{t("service_incendie")}</label>
                 <p className="text-sm mb-1" style={{ color: "#3D4750" }}>
                   112
                 </p>
                 <input
                   type="text"
-                  placeholder="N° interne (ex. GSK)"
+                  placeholder={t("n_interne_placeholder")}
                   className="w-full border rounded px-3 py-2 text-sm"
                   style={{ borderColor: "#D6DADE" }}
                   value={dossier.reglesSpecifiques.serviceIncendieInterne}
@@ -163,19 +167,19 @@ export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, 
                 />
               </div>
               <div>
-                <label className="text-sm font-medium block mb-1.5">Centre antipoison</label>
+                <label className="text-sm font-medium block mb-1.5">{t("centre_antipoison_label")}</label>
                 <p className="text-sm" style={{ color: "#3D4750" }}>
                   070/245.245
                 </p>
               </div>
               <div>
-                <label className="text-sm font-medium block mb-1.5">Police</label>
+                <label className="text-sm font-medium block mb-1.5">{t("police_label")}</label>
                 <p className="text-sm" style={{ color: "#3D4750" }}>
                   {contacts.police?.tel || "101"}
                 </p>
                 {contacts.police?.site_web && (
                   <p className="text-xs" style={{ color: "#5A646C" }}>
-                    Zone la plus proche : {contacts.police.site_web}
+                    {t("police_zone_proche")} : {contacts.police.site_web}
                   </p>
                 )}
               </div>
@@ -204,10 +208,10 @@ export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, 
 
       <div className="flex justify-between mt-6">
         <button onClick={onBack} className="px-5 py-2 rounded text-sm border" style={{ borderColor: "#D6DADE" }}>
-          Retour
+          {t("bouton_retour")}
         </button>
         <button onClick={onNext} className="px-5 py-2 rounded text-sm font-medium" style={{ background: "#0B3040", color: "white" }}>
-          Continuer
+          {t("bouton_continuer")}
         </button>
       </div>
     </div>

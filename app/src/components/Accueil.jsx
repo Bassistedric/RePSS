@@ -1,9 +1,10 @@
 import { logoUrl } from "../lib/contentPack";
+import FlagIcon from "./FlagIcon";
 
 const LANGUES = [
-  { code: "fr", flag: "🇫🇷", label: "Français" },
-  { code: "nl", flag: "🇳🇱", label: "Nederlands" },
-  { code: "en", flag: "🇬🇧", label: "English" },
+  { code: "fr", label: "Français" },
+  { code: "nl", label: "Nederlands" },
+  { code: "en", label: "English" },
 ];
 
 export default function Accueil({ onStart, lang, setLang, entreprise, t }) {
@@ -21,13 +22,13 @@ export default function Accueil({ onStart, lang, setLang, entreprise, t }) {
             onClick={() => setLang(l.code)}
             title={l.label}
             aria-label={l.label}
-            className="w-8 h-8 rounded flex items-center justify-center text-base border"
+            className="w-8 h-8 rounded flex items-center justify-center border"
             style={{
               borderColor: lang === l.code ? "#0B3040" : "#D6DADE",
               background: lang === l.code ? "#E7EEF1" : "white",
             }}
           >
-            {l.flag}
+            <FlagIcon code={l.code} />
           </button>
         ))}
       </div>

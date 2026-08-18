@@ -6,7 +6,7 @@ import MoadrSection from "./MoadrSection";
 // simple sous-titre qui regroupe ses lignes, toujours affichées (pas de repli
 // supplémentaire, médiane 2 lignes/activité, max 8). Seuls catégorie et
 // sous-catégorie sont pliables/dépliables.
-function ActiviteBlock({ activite, lignesRisque, isChecked, toggle, remarque, setRemarque }) {
+function ActiviteBlock({ activite, lignesRisque, isChecked, toggle, remarque, setRemarque, t }) {
   return (
     <div className="mb-3 last:mb-0 pl-3 border-l-2" style={{ borderColor: "#D6E3E8" }}>
       <p className="text-[13px] font-medium mb-1.5" style={{ color: "#3D4750" }}>
@@ -33,7 +33,7 @@ function ActiviteBlock({ activite, lignesRisque, isChecked, toggle, remarque, se
               {checked && (
                 <input
                   type="text"
-                  placeholder="Remarque (optionnel)"
+                  placeholder={t("remarque_optionnelle_placeholder")}
                   className="ml-7 mb-1 border rounded px-2 py-1 text-xs"
                   style={{ borderColor: "#D6DADE", width: "calc(100% - 1.75rem)" }}
                   value={remarque(r.id)}
@@ -48,7 +48,7 @@ function ActiviteBlock({ activite, lignesRisque, isChecked, toggle, remarque, se
   );
 }
 
-function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque, setRemarque }) {
+function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque, setRemarque, t }) {
   const [openCats, setOpenCats] = useState(new Set());
   const [openSubs, setOpenSubs] = useState(new Set());
   const visibleCats = catalogue.categories.filter(
@@ -124,6 +124,7 @@ function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque,
                               toggle={toggle}
                               remarque={remarque}
                               setRemarque={setRemarque}
+                              t={t}
                             />
                           ))}
                         </div>
@@ -139,14 +140,14 @@ function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque,
       })}
       {visibleCats.every((c) => c.corps_metier === "universel") && (
         <p className="text-xs" style={{ color: "#5A646C" }}>
-          Coche un corps de métier à l'étape précédente pour voir apparaître d'autres catégories.
+          {t("analyse_message_corps_metier")}
         </p>
       )}
     </div>
   );
 }
 
-function CatalogueAbrege({ catalogue, isChecked, toggle }) {
+function CatalogueAbrege({ catalogue, isChecked, toggle, t }) {
   return (
     <div className="flex flex-col gap-4 mb-4">
       {catalogue.categories.map((cat) => (
@@ -176,7 +177,7 @@ function CatalogueAbrege({ catalogue, isChecked, toggle }) {
                       {r.sourceDanger} : {r.mesure}
                       {disabled && (
                         <span className="block text-[11px]" style={{ color: "#B3261E", textDecoration: "none" }}>
-                          Non couvert par l'abrégé, nécessite le RePSS complet.
+                          {t("analyse_non_couvert_abrege")}
                         </span>
                       )}
                     </span>
@@ -190,7 +191,7 @@ function CatalogueAbrege({ catalogue, isChecked, toggle }) {
   );
 }
 
-export default function AnalyseRisques({ dossier, setDossier, catalogueComplet, catalogueAbrege, onBack, onNext }) {
+export default function AnalyseRisques({ dossier, setDossier, catalogueComplet, catalogueAbrege, onBack, onNext, t }) {
   const { modeChoisi } = dossier.triage;
   const { corpsMetier } = dossier.caracterisation;
   const itemsCoches = dossier.analyseRisques.itemsCoches;
@@ -216,20 +217,18 @@ export default function AnalyseRisques({ dossier, setDossier, catalogueComplet, 
     <div>
       <div className="flex justify-between items-baseline mb-1">
         <h3 className="text-lg font-semibold" style={{ color: "#0B3040" }}>
-          {modeChoisi === "abrege" ? "Risques & mesures" : "Analyse de risques"}
+          {modeChoisi === "abrege" ? t("analyse_titre_abrege") : t("analyse_titre_complet")}
         </h3>
         <span className="text-sm" style={{ color: "#5A646C" }}>
-          {itemsCoches.length} sélectionnée{itemsCoches.length > 1 ? "s" : ""}
+          {itemsCoches.length} {t("analyse_compteur_selection")}
         </span>
       </div>
       <p className="text-xs mb-4" style={{ color: "#5A646C" }}>
-        {modeChoisi === "abrege"
-          ? "Catalogue abrégé : coche les dangers présents sur le chantier."
-          : "Filtré selon le corps de métier de ce chantier → coche les lignes de risque concernées."}
+        {modeChoisi === "abrege" ? t("analyse_aide_abrege") : t("analyse_aide_complet")}
       </p>
 
       {modeChoisi === "abrege" ? (
-        <CatalogueAbrege catalogue={catalogueAbrege} isChecked={isChecked} toggle={toggle} />
+        <CatalogueAbrege catalogue={catalogueAbrege} isChecked={isChecked} toggle={toggle} t={t} />
       ) : (
         <CatalogueComplet
           catalogue={catalogueComplet}
@@ -238,18 +237,19 @@ export default function AnalyseRisques({ dossier, setDossier, catalogueComplet, 
           toggle={toggle}
           remarque={remarque}
           setRemarque={setRemarque}
+          t={t}
         />
       )}
 
-      <MoadrSection dossier={dossier} setDossier={setDossier} />
+      <MoadrSection dossier={dossier} setDossier={setDossier} t={t} />
 
       <div className="flex justify-between mt-6">
         <button onClick={onBack} className="px-5 py-2 rounded text-sm border" style={{ borderColor: "#D6DADE" }}>
-          Retour
+          {t("bouton_retour")}
         </button>
         <button onClick={onNext} className="px-5 py-2 rounded text-sm font-medium flex items-center gap-2" style={{ background: "#0B3040", color: "white" }}>
           <FileCheck size={16} />
-          Continuer
+          {t("bouton_continuer")}
         </button>
       </div>
     </div>

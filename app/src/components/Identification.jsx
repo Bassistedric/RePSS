@@ -31,15 +31,15 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
   return (
     <div>
       <h3 className="text-lg font-semibold mb-1" style={{ color: "#0B3040" }}>
-        Identification du chantier
+        {t("identification_titre")}
       </h3>
       <p className="text-sm mb-4" style={{ color: "#5A646C" }}>
-        Nouveau chantier, ou reprise d'un RePSS déjà commencé
+        {t("identification_sous_titre")}
       </p>
 
       <div className="grid grid-cols-[140px_1fr] gap-3 mb-5">
         <div>
-          <label className="text-sm font-medium block mb-1.5">N° chantier</label>
+          <label className="text-sm font-medium block mb-1.5">{t("identification_numero_chantier")}</label>
           <input
             type="text"
             placeholder="12345"
@@ -70,7 +70,7 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
 
       <div className="grid grid-cols-2 gap-3 mb-5">
         <div>
-          <label className="text-sm font-medium block mb-1.5">PM lead (optionnel)</label>
+          <label className="text-sm font-medium block mb-1.5">{t("identification_pm_lead")}</label>
           <input
             type="text"
             className="w-full border rounded px-3 py-2 text-sm"
@@ -80,7 +80,7 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
           />
         </div>
         <div>
-          <label className="text-sm font-medium block mb-1.5">PM secondaire (optionnel)</label>
+          <label className="text-sm font-medium block mb-1.5">{t("identification_pm_secondaire")}</label>
           <input
             type="text"
             className="w-full border rounded px-3 py-2 text-sm"
@@ -94,7 +94,7 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
       <div className="flex items-center gap-3 mb-5">
         <div className="flex-1 h-px" style={{ background: "#E2E5E8" }} />
         <span className="text-xs" style={{ color: "#5A646C" }}>
-          ou
+          {t("identification_ou")}
         </span>
         <div className="flex-1 h-px" style={{ background: "#E2E5E8" }} />
       </div>
@@ -105,18 +105,18 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
         style={{ borderColor: "#D6DADE", color: "#156082" }}
       >
         <Upload size={16} />
-        Reprendre un RePSS existant (fichier .json)
+        {t("identification_reprendre_bouton")}
       </button>
       <input ref={fileRef} type="file" accept=".json" onChange={handleFile} className="hidden" />
 
       {importInfo && !importInfo.error && (
         <p className="text-xs mb-5" style={{ color: "#156082" }}>
-          Dossier importé : version {importInfo.version} · modifié le {importInfo.date}
+          {t("identification_dossier_importe")} : {t("identification_version_mot")} {importInfo.version} · {t("identification_modifie_le")} {importInfo.date}
         </p>
       )}
       {importInfo?.error && (
         <p className="text-xs mb-5" style={{ color: "#B3261E" }}>
-          Ce fichier ne semble pas être un dossier RePSS valide.
+          {t("identification_erreur_fichier")}
         </p>
       )}
       {!importInfo && <div className="mb-5" />}
@@ -128,7 +128,7 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
           className="px-5 py-2 rounded text-sm font-medium disabled:opacity-40"
           style={{ background: "#0B3040", color: "white" }}
         >
-          Continuer
+          {t("bouton_continuer")}
         </button>
       </div>
     </div>

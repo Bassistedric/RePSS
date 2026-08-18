@@ -3,20 +3,20 @@ import { Search, Sparkles, ClipboardList, ListChecks, FileCheck, Factory } from 
 // Le parcours bifurque juste après la Caractérisation : la branche complète et la
 // branche abrégée n'ont pas les mêmes étapes (CLAUDE.md §5).
 export const PREFIX_STEPS = [
-  { key: "identification", fallback: "Identification", icon: Search },
-  { key: "caracterisation", fallback: "Caractérisation", icon: Sparkles },
+  { key: "identification", labelKey: "step_identification", icon: Search },
+  { key: "caracterisation", labelKey: "step_caracterisation", icon: Sparkles },
 ];
 
 export const COMPLET_STEPS = [
-  { key: "infosAdmin", fallback: "Infos admin.", icon: ClipboardList },
-  { key: "analyse", fallback: "Analyse de risques", icon: ListChecks },
-  { key: "generation", fallback: "Annexes & génération", icon: FileCheck },
+  { key: "infosAdmin", labelKey: "step_infos_admin", icon: ClipboardList },
+  { key: "analyse", labelKey: "step_analyse_complet", icon: ListChecks },
+  { key: "generation", labelKey: "step_generation_complet", icon: FileCheck },
 ];
 
 export const ABREGE_STEPS = [
-  { key: "infosChantierUsine", fallback: "Infos chantier & usine", icon: Factory },
-  { key: "analyse", fallback: "Risques & mesures", icon: ListChecks },
-  { key: "generation", fallback: "Génération", icon: FileCheck },
+  { key: "infosChantierUsine", labelKey: "step_infos_chantier_usine", icon: Factory },
+  { key: "analyse", labelKey: "step_analyse_abrege", icon: ListChecks },
+  { key: "generation", labelKey: "step_generation_abrege", icon: FileCheck },
 ];
 
 export function getSteps(mode) {

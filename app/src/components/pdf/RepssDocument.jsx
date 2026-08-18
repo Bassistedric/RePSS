@@ -45,10 +45,10 @@ function KV({ label, value }) {
   );
 }
 
-const TRISTATE_LABEL = { interne: "Interne", client: "Client", na: "N.A." };
-function TriStateRow({ label, value }) {
+function TriStateRow({ label, value, t }) {
   if (!value) return null;
-  return <KV label={label} value={TRISTATE_LABEL[value] || value} />;
+  const tristateLabel = { interne: t("tristate_interne"), client: t("tristate_client"), na: t("tristate_na") };
+  return <KV label={label} value={tristateLabel[value] || value} />;
 }
 
 function Bullets({ items }) {
@@ -168,12 +168,12 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
         <View style={styles.headerRow}>
           {logoAbsoluteUrl && <Image src={logoAbsoluteUrl} style={styles.logo} />}
           <View style={{ alignItems: "flex-end" }}>
-            <Text style={styles.title}>Réponse au P.S.S.</Text>
+            <Text style={styles.title}>{t("reponse_au_pss")}</Text>
             <Text style={styles.subtitle}>
               {identification.numeroChantier} - {identification.nomChantier}
             </Text>
             <Text style={styles.subtitle}>
-              {isAbrege ? "RePSS abrégé" : "RePSS complet"} · {dossier.meta.dateDerniereModif}
+              {isAbrege ? t("repss_abrege_label") : t("repss_complet_label")} · {dossier.meta.dateDerniereModif}
               {dossier.meta.repssNumero ? ` · ${dossier.meta.repssNumero}` : ""}
             </Text>
           </View>
@@ -209,38 +209,38 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
 
         {!isAbrege && (
           <Section title={t("titre_carac_chantier")}>
-            <TriStateRow label={t("refectoire")} value={cc.refectoire} />
-            <TriStateRow label={t("wc")} value={cc.wc} />
-            <TriStateRow label={t("stockage")} value={cc.stockage} />
-            <TriStateRow label={t("zone_circulation")} value={cc.zoneCirculation} />
-            <TriStateRow label={t("zone_travail")} value={cc.zoneTravail} />
-            <TriStateRow label={t("electricite_alim_terre")} value={cc.electricite} />
-            <TriStateRow label={t("eau")} value={cc.eau} />
-            <TriStateRow label={t("garde_corps")} value={cc.gardeCorps} />
-            <TriStateRow label={t("ligne_de_vie")} value={cc.ligneDeVie} />
-            <TriStateRow label={t("filet_retention")} value={cc.filetRetention} />
+            <TriStateRow label={t("refectoire")} value={cc.refectoire} t={t} />
+            <TriStateRow label={t("wc")} value={cc.wc} t={t} />
+            <TriStateRow label={t("stockage")} value={cc.stockage} t={t} />
+            <TriStateRow label={t("zone_circulation")} value={cc.zoneCirculation} t={t} />
+            <TriStateRow label={t("zone_travail")} value={cc.zoneTravail} t={t} />
+            <TriStateRow label={t("electricite_alim_terre")} value={cc.electricite} t={t} />
+            <TriStateRow label={t("eau")} value={cc.eau} t={t} />
+            <TriStateRow label={t("garde_corps")} value={cc.gardeCorps} t={t} />
+            <TriStateRow label={t("ligne_de_vie")} value={cc.ligneDeVie} t={t} />
+            <TriStateRow label={t("filet_retention")} value={cc.filetRetention} t={t} />
             <KV label={t("particularites_acces")} value={cc.particularitesAcces} />
           </Section>
         )}
 
         {isAbrege && (
-          <Section title="Infos chantier & usine">
+          <Section title={t("titre_infos_chantier_usine")}>
             <Bullets
               items={[
-                { label: "Site SEVESO", value: icu.seveso },
-                { label: "Coactivité avec le personnel client", value: icu.coactivite },
-                { label: "Accueil sécurité requis", value: icu.accueilSecurite },
-                { label: "Présence de gaz", value: icu.presenceGaz },
+                { label: t("site_seveso"), value: icu.seveso },
+                { label: t("coactivite"), value: icu.coactivite },
+                { label: t("accueil_securite_requis"), value: icu.accueilSecurite },
+                { label: t("presence_gaz"), value: icu.presenceGaz },
                 { label: t("permis_feu"), value: icu.permisFeu },
                 { label: t("permis_travail"), value: icu.permisTravail },
               ]}
             />
-            <KV label="Matières premières / produits dangereux" value={icu.matieresPremierresDangereuses} />
-            <KV label="Pressions / températures" value={icu.pressionsTemperatures} />
-            <TriStateRow label={t("refectoire")} value={icu.locauxSociaux.refectoire} />
-            <TriStateRow label="Sanitaires" value={icu.locauxSociaux.sanitaires} />
-            <TriStateRow label="Vestiaires" value={icu.locauxSociaux.vestiaires} />
-            <TriStateRow label="Douches" value={icu.locauxSociaux.douches} />
+            <KV label={t("matieres_premieres_dangereuses")} value={icu.matieresPremierresDangereuses} />
+            <KV label={t("pressions_temperatures")} value={icu.pressionsTemperatures} />
+            <TriStateRow label={t("refectoire")} value={icu.locauxSociaux.refectoire} t={t} />
+            <TriStateRow label={t("sanitaires")} value={icu.locauxSociaux.sanitaires} t={t} />
+            <TriStateRow label={t("vestiaires")} value={icu.locauxSociaux.vestiaires} t={t} />
+            <TriStateRow label={t("douches")} value={icu.locauxSociaux.douches} t={t} />
           </Section>
         )}
 
@@ -259,11 +259,11 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
 
         {!isAbrege && (
           <Section title={t("titre_regles_speciales")}>
-            <KV label="Service incendie" value="112" />
-            <KV label="Service incendie (n° interne)" value={rs.serviceIncendieInterne} />
-            <KV label="Centre antipoison" value="070/245.245" />
-            <KV label="Police" value={contacts.police?.tel || "101"} />
-            <KV label="Police, zone la plus proche" value={contacts.police?.site_web} />
+            <KV label={t("service_incendie")} value="112" />
+            <KV label={`${t("service_incendie")} (${t("n_interne_placeholder")})`} value={rs.serviceIncendieInterne} />
+            <KV label={t("centre_antipoison_label")} value="070/245.245" />
+            <KV label={t("police_label")} value={contacts.police?.tel || "101"} />
+            <KV label={`${t("police_label")}, ${t("police_zone_proche")}`} value={contacts.police?.site_web} />
             {hopitauxSelectionnes.map((h) => (
               <KV key={h.id} label={t("hopital_plus_proche")} value={`${h.nom_hopital}${h.nom_site ? " (" + h.nom_site + ")" : ""}, ${h.adresse}, ${h.code_postal} ${h.commune}`} />
             ))}
@@ -290,7 +290,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
 
         {!isAbrege && (da.planParticulier.notes || da.planParticulier.fichier || da.listeEnginsSpeciaux.length > 0) && (
           <Section title={t("titre_plan_particulier")}>
-            <KV label="Fichier joint" value={da.planParticulier.fichier} />
+            <KV label={t("fichier_joint")} value={da.planParticulier.fichier} />
             <Text>{da.planParticulier.notes}</Text>
             <Table
               columns={[
@@ -304,7 +304,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
         )}
 
         {dossier.demandesMoadr.length > 0 && (
-          <Section title="Demandes MOADR en attente">
+          <Section title={t("moadr_section_titre_pdf")}>
             {dossier.demandesMoadr.map((m) => (
               <View key={m.id} style={{ marginBottom: 4 }}>
                 <Text>{m.descriptionSituation}</Text>
@@ -316,11 +316,11 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
       </Page>
 
       <Page size="A4" style={styles.page} wrap>
-        <Section title={t("titre_regles_generales_entreprise").replace("[nom entreprise]", entreprise?.identite?.nomAffichage || "")}>
+        <Section title={t("titre_regles_generales_entreprise").replace(/\[.*?\]/, entreprise?.identite?.nomAffichage || "")}>
           <Text>{entreprise?.reglesGeneralesAnnexe4?.texte}</Text>
         </Section>
 
-        <Section title="Contacts de référence">
+        <Section title={t("contacts_reference_titre")}>
           <View style={styles.logosRow}>
             {Object.entries(contacts)
               .filter(([key]) => !["controleTechnique", "dgBienEtre"].includes(key))

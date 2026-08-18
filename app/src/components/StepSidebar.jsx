@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Check, Circle, Save, Info, Home } from "lucide-react";
 import { getSteps } from "../lib/steps";
 
-export default function StepSidebar({ current, dossier, onNavigate, onSave }) {
+export default function StepSidebar({ current, dossier, onNavigate, onSave, t }) {
   const STEPS = getSteps(dossier.triage.modeChoisi);
   const currentIndex = STEPS.findIndex((s) => s.key === current);
   const [showInfo, setShowInfo] = useState(false);
@@ -22,14 +22,14 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave }) {
           style={{ color: "#5A646C" }}
         >
           <Home size={16} />
-          Accueil
+          {t("step_accueil")}
         </button>
         {STEPS.map((s, i) => {
           const Icon = s.icon;
           const done = i < currentIndex;
           const active = s.key === current;
           const reachable = i <= currentIndex;
-          const label = s.fallback;
+          const label = t(s.labelKey);
           return (
             <button
               key={s.key}
@@ -58,7 +58,7 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave }) {
           style={{ borderColor: "#156082", color: "#156082" }}
         >
           <Save size={14} />
-          Enregistrer
+          {t("bouton_enregistrer")}
         </button>
         <button
           onClick={() => setShowInfo((v) => !v)}
@@ -66,13 +66,11 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave }) {
           style={{ color: "#5A646C" }}
         >
           <Info size={11} />
-          Comment ça marche ?
+          {t("comment_ca_marche")}
         </button>
         {showInfo && (
           <p className="text-[11px] mt-2 leading-relaxed" style={{ color: "#5A646C" }}>
-            Télécharge l'état actuel dans un fichier .json à déposer dans le dossier SharePoint du chantier.
-            Pour reprendre plus tard : reviens sur l'écran d'identification et clique "Reprendre un RePSS
-            existant", puis choisis ce fichier.
+            {t("sidebar_info_text")}
           </p>
         )}
       </div>

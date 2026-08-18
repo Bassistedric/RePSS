@@ -78,6 +78,7 @@ export default function App() {
             corpsMetierOptions={corpsMetierOptions}
             onBack={goBack}
             onNext={goNext}
+            t={t}
           />
         );
       case "infosAdmin":
@@ -103,6 +104,7 @@ export default function App() {
             catalogueAbrege={pack.catalogueAbrege}
             onBack={goBack}
             onNext={goNext}
+            t={t}
           />
         );
       case "generation":
@@ -134,7 +136,7 @@ export default function App() {
           </div>
         ) : (
           <div className="flex">
-            <StepSidebar current={screen} dossier={dossier} onNavigate={setScreen} onSave={() => saveDossier(dossier)} />
+            <StepSidebar current={screen} dossier={dossier} onNavigate={setScreen} onSave={() => saveDossier(dossier)} t={t} />
             <div className="flex-1 p-6 overflow-y-auto" style={{ maxHeight: "90vh" }}>
               {renderScreen()}
             </div>

@@ -4,7 +4,7 @@ import { Plus, Trash2, AlertTriangle } from "lucide-react";
 // MOADR = points très spécifiques au chantier, hors catalogue. Liste non bloquante :
 // le PM peut continuer le wizard sans les résoudre, elles ressortent en bannière à
 // l'étape de génération (CLAUDE.md §5/§6, schéma §3 `demandesMoadr`).
-export default function MoadrSection({ dossier, setDossier }) {
+export default function MoadrSection({ dossier, setDossier, t }) {
   const [draft, setDraft] = useState("");
   const items = dossier.demandesMoadr;
 
@@ -15,7 +15,7 @@ export default function MoadrSection({ dossier, setDossier }) {
       descriptionSituation: draft.trim(),
       dateAjout: new Date().toISOString().slice(0, 10),
       statut: "demande",
-      mentionDocument: "Ce point sera traité à part et joint en annexe.",
+      mentionDocument: t("moadr_mention_document"),
       fichierAnnexe: null,
     };
     setDossier((prev) => ({
@@ -36,11 +36,10 @@ export default function MoadrSection({ dossier, setDossier }) {
   return (
     <div className="border rounded-lg p-4 mt-4" style={{ borderColor: "#E2E5E8" }}>
       <p className="text-sm font-semibold mb-1" style={{ color: "#156082" }}>
-        Point hors catalogue (MOADR)
+        {t("moadr_titre")}
       </p>
       <p className="text-xs mb-3" style={{ color: "#5A646C" }}>
-        Une situation spécifique au chantier n'est couverte par aucune ligne du catalogue ? Décris-la ici → elle
-        sera traitée à part et jointe en annexe, sans bloquer la suite du dossier.
+        {t("moadr_aide")}
       </p>
 
       {items.length > 0 && (
@@ -62,14 +61,14 @@ export default function MoadrSection({ dossier, setDossier }) {
       <div className="flex gap-2">
         <input
           type="text"
-          placeholder="Décrire la situation…"
+          placeholder={t("moadr_placeholder")}
           className="flex-1 border rounded px-3 py-2 text-sm"
           style={{ borderColor: "#D6DADE" }}
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
         />
         <button onClick={addMoadr} className="flex items-center gap-1 text-xs px-3 py-2 rounded border" style={{ borderColor: "#156082", color: "#156082" }}>
-          <Plus size={14} /> Ajouter
+          <Plus size={14} /> {t("bouton_ajouter")}
         </button>
       </div>
     </div>
