@@ -130,7 +130,7 @@ export default function App() {
       <div className="w-full max-w-4xl rounded-xl overflow-hidden border shadow-sm" style={{ borderColor: "#E2E5E8", background: "white" }}>
         {screen === "accueil" ? (
           <div className="p-6">
-            <Accueil onStart={() => setScreen("identification")} lang={lang} setLang={setLang} entreprise={pack.entreprise} />
+            <Accueil onStart={() => setScreen("identification")} lang={lang} setLang={setLang} entreprise={pack.entreprise} t={t} />
           </div>
         ) : (
           <div className="flex">
