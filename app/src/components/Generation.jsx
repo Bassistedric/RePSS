@@ -1,0 +1,210 @@
+import { useEffect } from "react";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import { FileCheck, Save, AlertTriangle, Plus, Trash2, CheckCircle2 } from "lucide-react";
+import RepssDocument from "./pdf/RepssDocument";
+import { logoUrl } from "../lib/contentPack";
+import { saveDossier } from "../lib/storage";
+
+function AutoDoc({ label }) {
+  return (
+    <div className="flex items-center gap-2 text-sm py-1" style={{ color: "#3D4750" }}>
+      <CheckCircle2 size={15} style={{ color: "#3E9B57" }} />
+      {label}
+      <span className="text-xs" style={{ color: "#5A646C" }}>
+        généré automatiquement
+      </span>
+    </div>
+  );
+}
+
+export default function Generation({ dossier, setDossier, entreprise, catalogueComplet, catalogueAbrege, hopitaux, t, lang, setLang, onBack }) {
+  const isAbrege = dossier.triage.modeChoisi === "abrege";
+  const brand = entreprise?.branding || {};
+  const logoAbsoluteUrl = brand.logo ? new URL(logoUrl(brand.logo), window.location.origin).href : null;
+  const filename = `RePSS_${dossier.identification.numeroChantier || "brouillon"}.pdf`;
+  const { listeEnginsSpeciaux, planParticulier } = dossier.documentsAccompagnants;
+
+  function updateDocs(patch) {
+    setDossier((prev) => ({ ...prev, documentsAccompagnants: { ...prev.documentsAccompagnants, ...patch } }));
+  }
+  function updatePlanParticulier(patch) {
+    updateDocs({ planParticulier: { ...planParticulier, ...patch } });
+  }
+  function addEngin() {
+    updateDocs({ listeEnginsSpeciaux: [...listeEnginsSpeciaux, { typeEngin: "", phase: "", nombre: "" }] });
+  }
+  function updateEngin(i, key, val) {
+    updateDocs({ listeEnginsSpeciaux: listeEnginsSpeciaux.map((r, idx) => (idx === i ? { ...r, [key]: val } : r)) });
+  }
+  function removeEngin(i) {
+    updateDocs({ listeEnginsSpeciaux: listeEnginsSpeciaux.filter((_, idx) => idx !== i) });
+  }
+
+  // Le numéro RePSS n'est attribué qu'à cette étape (jamais avant, pour ne pas
+  // gaspiller de numéros sur un brouillon), dès l'arrivée sur l'écran de génération.
+  useEffect(() => {
+    if (dossier.meta.repssNumero) return;
+    const numero = `REPSS-${new Date().getFullYear()}-${String(Date.now()).slice(-5)}`;
+    setDossier((prev) => (prev.meta.repssNumero ? prev : { ...prev, meta: { ...prev.meta, repssNumero: numero, statut: "genere" } }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <div>
+      <h3 className="text-lg font-semibold mb-4" style={{ color: "#0B3040" }}>
+        {isAbrege ? "Génération" : "Annexes & génération"}
+      </h3>
+
+      {dossier.meta.moadrEnAttente && (
+        <div className="flex items-start gap-2 border rounded-lg px-3 py-2.5 mb-4" style={{ borderColor: "#F0C36D", background: "#FFF8E8" }}>
+          <AlertTriangle size={16} className="mt-0.5 shrink-0" style={{ color: "#8A6300" }} />
+          <div className="text-xs" style={{ color: "#5A4300" }}>
+            <p className="font-medium mb-1">{dossier.demandesMoadr.length} demande(s) MOADR en attente</p>
+            {dossier.demandesMoadr.map((m) => (
+              <p key={m.id}>
+                {m.descriptionSituation} → {m.mentionDocument}
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="border rounded-lg p-4 mb-4" style={{ borderColor: "#E2E5E8" }}>
+        <p className="text-sm font-semibold mb-2" style={{ color: "#156082" }}>
+          Documents automatiques
+        </p>
+        <AutoDoc label="Émargement" />
+        {!isAbrege && <AutoDoc label="Grille Kinney" />}
+        <AutoDoc label={t("titre_regles_generales_entreprise").replace("[nom entreprise]", entreprise?.identite?.nomAffichage || "")} />
+        {!isAbrege && <AutoDoc label={t("titre_liste_sous_traitants")} />}
+      </div>
+
+      {!isAbrege && (
+        <div className="border rounded-lg p-4 mb-4" style={{ borderColor: "#E2E5E8" }}>
+          <p className="text-sm font-semibold mb-3" style={{ color: "#156082" }}>
+            {t("titre_plan_particulier")}
+          </p>
+          <input
+            type="file"
+            className="text-sm mb-2"
+            onChange={(e) => updatePlanParticulier({ fichier: e.target.files[0]?.name ?? null })}
+          />
+          {planParticulier.fichier && (
+            <p className="text-xs mb-2" style={{ color: "#5A646C" }}>
+              Fichier joint : {planParticulier.fichier}
+            </p>
+          )}
+          <textarea
+            placeholder="Notes complémentaires"
+            className="w-full border rounded px-3 py-2 text-sm mb-4"
+            style={{ borderColor: "#D6DADE" }}
+            rows={2}
+            value={planParticulier.notes}
+            onChange={(e) => updatePlanParticulier({ notes: e.target.value })}
+          />
+
+          <p className="text-sm font-semibold mb-2" style={{ color: "#156082" }}>
+            {t("titre_liste_engins_speciaux")}
+          </p>
+          <table className="w-full text-sm mb-2">
+            <thead>
+              <tr>
+                <th className="text-left text-xs font-medium pb-1.5 pr-2" style={{ color: "#5A646C" }}>
+                  {t("type_engin")}
+                </th>
+                <th className="text-left text-xs font-medium pb-1.5 pr-2" style={{ color: "#5A646C" }}>
+                  {t("phase")}
+                </th>
+                <th className="text-left text-xs font-medium pb-1.5 pr-2" style={{ color: "#5A646C" }}>
+                  {t("nombre")}
+                </th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>
+              {listeEnginsSpeciaux.map((r, i) => (
+                <tr key={i}>
+                  <td className="pr-2 pb-2">
+                    <input className="w-full border rounded px-2 py-1.5 text-sm" style={{ borderColor: "#D6DADE" }} value={r.typeEngin} onChange={(e) => updateEngin(i, "typeEngin", e.target.value)} />
+                  </td>
+                  <td className="pr-2 pb-2">
+                    <input className="w-full border rounded px-2 py-1.5 text-sm" style={{ borderColor: "#D6DADE" }} value={r.phase} onChange={(e) => updateEngin(i, "phase", e.target.value)} />
+                  </td>
+                  <td className="pr-2 pb-2">
+                    <input type="number" className="w-full border rounded px-2 py-1.5 text-sm" style={{ borderColor: "#D6DADE" }} value={r.nombre} onChange={(e) => updateEngin(i, "nombre", e.target.value)} />
+                  </td>
+                  <td className="pb-2">
+                    <button onClick={() => removeEngin(i)} style={{ color: "#B3261E" }}>
+                      <Trash2 size={16} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <button onClick={addEngin} className="flex items-center gap-1 text-xs" style={{ color: "#156082" }}>
+            <Plus size={14} /> Ajouter une ligne
+          </button>
+        </div>
+      )}
+
+      <div className="border rounded-lg p-4 mb-6" style={{ borderColor: "#E2E5E8" }}>
+        <label className="text-sm font-medium block mb-1.5">Langue du document</label>
+        <select
+          value={lang}
+          onChange={(e) => setLang(e.target.value)}
+          className="border rounded px-3 py-2 text-sm"
+          style={{ borderColor: "#D6DADE" }}
+        >
+          <option value="fr">Français</option>
+          <option value="nl">Nederlands</option>
+          <option value="en">English</option>
+        </select>
+        {dossier.meta.repssNumero && (
+          <p className="text-xs mt-2" style={{ color: "#5A646C" }}>
+            Numéro RePSS attribué : {dossier.meta.repssNumero}
+          </p>
+        )}
+      </div>
+
+      <div className="flex justify-between items-center">
+        <button onClick={onBack} className="px-5 py-2 rounded text-sm border" style={{ borderColor: "#D6DADE" }}>
+          Retour
+        </button>
+        <div className="flex gap-2">
+          <button
+            onClick={() => saveDossier(dossier)}
+            className="flex items-center gap-2 px-4 py-2 rounded text-sm border"
+            style={{ borderColor: "#156082", color: "#156082" }}
+          >
+            <Save size={16} />
+            Enregistrer le .json
+          </button>
+          <PDFDownloadLink
+            document={
+              <RepssDocument
+                dossier={dossier}
+                entreprise={entreprise}
+                catalogueComplet={catalogueComplet}
+                catalogueAbrege={catalogueAbrege}
+                hopitaux={hopitaux}
+                t={t}
+                logoAbsoluteUrl={logoAbsoluteUrl}
+              />
+            }
+            fileName={filename}
+            className="flex items-center gap-2 px-5 py-2 rounded text-sm font-medium"
+            style={{ background: "#0B3040", color: "white" }}
+          >
+            {({ loading }) => (
+              <>
+                <FileCheck size={16} />
+                {loading ? "Génération…" : "Générer le PDF"}
+              </>
+            )}
+          </PDFDownloadLink>
+        </div>
+      </div>
+    </div>
+  );
+}

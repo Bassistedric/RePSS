@@ -5,7 +5,7 @@ import { readDossierFile } from "../lib/storage";
 export default function Identification({ dossier, setDossier, onNext, t }) {
   const [importInfo, setImportInfo] = useState(null);
   const fileRef = useRef(null);
-  const { numeroChantier, nomChantier } = dossier.identification;
+  const { numeroChantier, nomChantier, pmLead, pmSecondaire } = dossier.identification;
   const chantierId = numeroChantier && nomChantier ? `${numeroChantier} - ${nomChantier}` : "";
 
   function setIdentification(patch) {
@@ -33,7 +33,7 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
       <h3 className="text-lg font-semibold mb-1" style={{ color: "#0B3040" }}>
         Identification du chantier
       </h3>
-      <p className="text-sm mb-4" style={{ color: "#7A8590" }}>
+      <p className="text-sm mb-4" style={{ color: "#5A646C" }}>
         Nouveau chantier, ou reprise d'un RePSS déjà commencé
       </p>
 
@@ -68,9 +68,32 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
         </div>
       </div>
 
+      <div className="grid grid-cols-2 gap-3 mb-5">
+        <div>
+          <label className="text-sm font-medium block mb-1.5">PM lead (optionnel)</label>
+          <input
+            type="text"
+            className="w-full border rounded px-3 py-2 text-sm"
+            style={{ borderColor: "#D6DADE" }}
+            value={pmLead}
+            onChange={(e) => setIdentification({ pmLead: e.target.value })}
+          />
+        </div>
+        <div>
+          <label className="text-sm font-medium block mb-1.5">PM secondaire (optionnel)</label>
+          <input
+            type="text"
+            className="w-full border rounded px-3 py-2 text-sm"
+            style={{ borderColor: "#D6DADE" }}
+            value={pmSecondaire}
+            onChange={(e) => setIdentification({ pmSecondaire: e.target.value })}
+          />
+        </div>
+      </div>
+
       <div className="flex items-center gap-3 mb-5">
         <div className="flex-1 h-px" style={{ background: "#E2E5E8" }} />
-        <span className="text-xs" style={{ color: "#A7AFB6" }}>
+        <span className="text-xs" style={{ color: "#5A646C" }}>
           ou
         </span>
         <div className="flex-1 h-px" style={{ background: "#E2E5E8" }} />
