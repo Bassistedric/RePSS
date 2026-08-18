@@ -145,7 +145,64 @@
         "logo": "cbe_logo.png",
         "notes": ""
       }
+    },
+    "police": {
+      "nom": "Police (recherche de la zone la plus proche)",
+      "contact": "",
+      "adresse": "",
+      "email": "",
+      "tel": "101",
+      "site_web": "zone-police.be/zones",
+      "logo": "police_logo.png",
+      "notes": "annuaire officiel des zones de police par province, pas de commissariat unique"
     }
+  },
+  "rolesApprobation": {
+    "fixes": [
+      {
+        "fonction": "BU Building Technologies - Site Manager",
+        "type": "fixe",
+        "nom": "Marc Hindryckx",
+        "email": "marchindryckx@vma.be",
+        "tel": "071/12.92.00"
+      },
+      {
+        "fonction": "Administrative Officer",
+        "type": "fixe",
+        "nom": "Lisiane Herregods",
+        "email": "lisianeherregods@vma.be",
+        "tel": "071/12.92.03"
+      },
+      {
+        "fonction": "Conseiller en Prévention - Niv.1, Responsable SIPPT",
+        "type": "fixe",
+        "nom": "Cédric Comblé",
+        "email": "cedriccomble@vma.be",
+        "tel": "0497/97.42.44"
+      },
+      {
+        "fonction": "Conseiller en Prévention - Niv.1",
+        "type": "fixe",
+        "nom": null,
+        "email": null,
+        "tel": "0484/813.826"
+      },
+      {
+        "fonction": "Membre du SIPPT - Niv.3",
+        "type": "fixe",
+        "nom": "Sébahattin Yilmaz",
+        "email": "sebahattinyilmaz@vma.be",
+        "tel": "0497/86.85.52"
+      }
+    ],
+    "variables": [
+      "Tender Engineer",
+      "Operations Manager",
+      "Project Manager",
+      "Assistant Project Manager",
+      "Project Engineer",
+      "Site Supervisor"
+    ]
   },
   "reglesGeneralesAnnexe4": {
     "statut": "brouillon_partiel",

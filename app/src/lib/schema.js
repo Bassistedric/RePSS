@@ -44,7 +44,7 @@ export const administratifSchema = [
     ],
   },
   {
-    titleKey: "titre_adm_chantier",
+    titleKey: "resp_approbation",
     fields: ROLES_ADMINISTRATION.map((role) => ({
       path: `administratif.responsables.${role}`,
       labelKey: role,

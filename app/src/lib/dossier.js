@@ -1,19 +1,14 @@
-// Rôles du tableau "Responsable d'approbation" (Infos admin > Administration du
-// chantier). Mélange de rôles fixes et variables par chantier — tous traités comme
-// des champs texte éditables tant qu'aucune donnée fixe n'est fournie par
-// entreprise.json (voir CLAUDE.md §5, point encore ouvert).
+// Rôles VARIABLES du tableau "Responsable d'approbation" (Infos admin >
+// Administration du chantier) : édités par chantier. Les rôles fixes
+// (BU Site Manager, Administrative Officer, CP Niv.1 (x2), Membre SIPPT) sont
+// affichés en lecture seule depuis entreprise.json > rolesApprobation.fixes.
 export const ROLES_ADMINISTRATION = [
-  "role_bu_site_manager",
   "role_tender_engineer",
   "role_operations_manager",
   "role_project_manager",
   "role_assistant_pm",
   "role_project_engineer",
   "role_site_supervisor",
-  "role_administrative_officer",
-  "role_cp_niv1_sippt",
-  "role_cp_niv1",
-  "role_membre_sippt_niv3",
 ];
 
 function today() {

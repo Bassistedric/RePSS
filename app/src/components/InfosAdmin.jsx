@@ -2,6 +2,7 @@ import { useState } from "react";
 import FormStep from "./FormStep";
 import HopitalPicker from "./HopitalPicker";
 import { renseignementsGenerauxSchema, administratifSchema, caracteristiquesSchema, derogationsColumns } from "../lib/schema";
+import { RAPPEL_ACCIDENT_KEYS, APPEL_SECOURS_KEYS } from "../lib/rappelAccident";
 
 const TABS = [
   { key: "renseignements", label: "Renseignements généraux" },
@@ -10,6 +11,25 @@ const TABS = [
 ];
 
 const derogationsSchema = [{ fields: [{ path: "reglesSpecifiques.derogations.items", type: "table", columns: derogationsColumns }] }];
+
+function FixedRolesTable({ fixes, t }) {
+  if (!fixes?.length) return null;
+  return (
+    <div className="border rounded-lg p-4" style={{ borderColor: "#E2E5E8" }}>
+      <p className="text-sm font-semibold mb-3" style={{ color: "#156082" }}>
+        {t("resp_approbation")} : rôles fixes
+      </p>
+      <div className="flex flex-col gap-1.5">
+        {fixes.map((r) => (
+          <div key={r.fonction} className="text-xs" style={{ color: "#3D4750" }}>
+            <span className="font-medium">{r.fonction}</span> : {r.nom || "non renseigné"}
+            {r.tel && <span style={{ color: "#5A646C" }}> · {r.tel}</span>}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function ContactCard({ c }) {
   if (!c) return null;
@@ -78,6 +98,9 @@ export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, 
 
       {tab === "administration" && (
         <div>
+          <div className="mb-4">
+            <FixedRolesTable fixes={entreprise?.rolesApprobation?.fixes} t={t} />
+          </div>
           <FormStep schema={administratifSchema} dossier={dossier} setDossier={setDossier} t={t} />
           <div className="border rounded-lg p-4 mt-4" style={{ borderColor: "#E2E5E8" }}>
             <p className="text-sm font-semibold mb-3" style={{ color: "#156082" }}>
@@ -101,6 +124,25 @@ export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, 
 
       {tab === "reglesSpecifiques" && (
         <div className="flex flex-col gap-4">
+          <div className="border rounded-lg p-4" style={{ borderColor: "#E2E5E8" }}>
+            <p className="text-sm font-semibold mb-2" style={{ color: "#156082" }}>
+              {t("titre_rappel_accident")}
+            </p>
+            <ul className="text-xs mb-3 pl-4 list-disc" style={{ color: "#3D4750" }}>
+              {RAPPEL_ACCIDENT_KEYS.map((k) => (
+                <li key={k}>{t(k)}</li>
+              ))}
+            </ul>
+            <p className="text-sm font-semibold mb-2" style={{ color: "#156082" }}>
+              {t("titre_appel_secours")}
+            </p>
+            <ul className="text-xs pl-4 list-disc" style={{ color: "#3D4750" }}>
+              {APPEL_SECOURS_KEYS.map((k) => (
+                <li key={k}>{t(k)}</li>
+              ))}
+            </ul>
+          </div>
+
           <div className="border rounded-lg p-4" style={{ borderColor: "#E2E5E8" }}>
             <p className="text-sm font-semibold mb-3" style={{ color: "#156082" }}>
               Contacts d'urgence
@@ -129,8 +171,13 @@ export default function InfosAdmin({ dossier, setDossier, entreprise, hopitaux, 
               <div>
                 <label className="text-sm font-medium block mb-1.5">Police</label>
                 <p className="text-sm" style={{ color: "#3D4750" }}>
-                  101 → commissariat le plus proche via le site de la police fédérale
+                  {contacts.police?.tel || "101"}
                 </p>
+                {contacts.police?.site_web && (
+                  <p className="text-xs" style={{ color: "#5A646C" }}>
+                    Zone la plus proche : {contacts.police.site_web}
+                  </p>
+                )}
               </div>
             </div>
             <HopitalPicker dossier={dossier} setDossier={setDossier} hopitaux={hopitaux} t={t} />
