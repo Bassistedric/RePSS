@@ -34,7 +34,7 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
       <label className="text-sm font-medium block mb-1.5">{t("hopital_plus_proche")}</label>
       <input
         type="text"
-        placeholder="Code postal du chantier"
+        placeholder={t("hopital_code_postal_placeholder")}
         className="w-full border rounded px-3 py-2 text-sm mb-2"
         style={{ borderColor: "#D6DADE" }}
         value={codePostalChantier}
@@ -54,7 +54,7 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
         ))}
         {selected.length === 0 && (
           <p className="text-xs" style={{ color: "#5A646C" }}>
-            Saisis le code postal du chantier pour une suggestion automatique.
+            {t("hopital_saisis_code_postal")}
           </p>
         )}
       </div>
@@ -65,7 +65,7 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
           className="flex-1 border rounded px-2 py-1.5 text-xs"
           style={{ borderColor: "#D6DADE" }}
         >
-          <option value="">Ajouter un autre hôpital manuellement…</option>
+          <option value="">{t("hopital_ajouter_manuellement")}</option>
           {hopitaux.map((h) => (
             <option key={h.id} value={h.id}>
               {h.nom_hopital} {h.nom_site ? `(${h.nom_site})` : ""}, {h.code_postal} {h.commune}
@@ -73,7 +73,7 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
           ))}
         </select>
         <button onClick={addManual} className="text-xs px-3 py-1.5 rounded border" style={{ borderColor: "#D6DADE" }}>
-          Ajouter
+          {t("bouton_ajouter")}
         </button>
       </div>
     </div>

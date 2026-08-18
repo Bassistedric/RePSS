@@ -71,21 +71,21 @@ export const administratifSchema = [
 export const infosChantierUsineSchema = [
   {
     fields: [
-      { path: "infosChantierUsine.seveso", label: "Site SEVESO", type: "boolean" },
-      { path: "infosChantierUsine.coactivite", label: "Coactivité avec le personnel client", type: "boolean" },
-      { path: "infosChantierUsine.accueilSecurite", label: "Accueil sécurité requis", type: "boolean" },
-      { path: "infosChantierUsine.presenceGaz", label: "Présence de gaz", type: "boolean" },
-      { path: "infosChantierUsine.matieresPremierresDangereuses", label: "Matières premières / produits dangereux", type: "textarea" },
-      { path: "infosChantierUsine.pressionsTemperatures", label: "Pressions / températures particulières", type: "textarea" },
+      { path: "infosChantierUsine.seveso", labelKey: "site_seveso", type: "boolean" },
+      { path: "infosChantierUsine.coactivite", labelKey: "coactivite", type: "boolean" },
+      { path: "infosChantierUsine.accueilSecurite", labelKey: "accueil_securite_requis", type: "boolean" },
+      { path: "infosChantierUsine.presenceGaz", labelKey: "presence_gaz", type: "boolean" },
+      { path: "infosChantierUsine.matieresPremierresDangereuses", labelKey: "matieres_premieres_dangereuses", type: "textarea" },
+      { path: "infosChantierUsine.pressionsTemperatures", labelKey: "pressions_temperatures", type: "textarea" },
     ],
   },
   {
     titleKey: "installations_particulieres",
     fields: [
       { path: "infosChantierUsine.locauxSociaux.refectoire", labelKey: "refectoire", type: "tristate" },
-      { path: "infosChantierUsine.locauxSociaux.sanitaires", label: "Sanitaires", type: "tristate" },
-      { path: "infosChantierUsine.locauxSociaux.vestiaires", label: "Vestiaires", type: "tristate" },
-      { path: "infosChantierUsine.locauxSociaux.douches", label: "Douches", type: "tristate" },
+      { path: "infosChantierUsine.locauxSociaux.sanitaires", labelKey: "sanitaires", type: "tristate" },
+      { path: "infosChantierUsine.locauxSociaux.vestiaires", labelKey: "vestiaires", type: "tristate" },
+      { path: "infosChantierUsine.locauxSociaux.douches", labelKey: "douches", type: "tristate" },
     ],
   },
   {

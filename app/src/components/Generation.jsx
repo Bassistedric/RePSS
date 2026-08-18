@@ -5,13 +5,13 @@ import RepssDocument from "./pdf/RepssDocument";
 import { logoUrl } from "../lib/contentPack";
 import { saveDossier } from "../lib/storage";
 
-function AutoDoc({ label }) {
+function AutoDoc({ label, t }) {
   return (
     <div className="flex items-center gap-2 text-sm py-1" style={{ color: "#3D4750" }}>
       <CheckCircle2 size={15} style={{ color: "#3E9B57" }} />
       {label}
       <span className="text-xs" style={{ color: "#5A646C" }}>
-        généré automatiquement
+        {t("genere_auto")}
       </span>
     </div>
   );
@@ -52,14 +52,16 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
   return (
     <div>
       <h3 className="text-lg font-semibold mb-4" style={{ color: "#0B3040" }}>
-        {isAbrege ? "Génération" : "Annexes & génération"}
+        {isAbrege ? t("step_generation_abrege") : t("step_generation_complet")}
       </h3>
 
       {dossier.meta.moadrEnAttente && (
         <div className="flex items-start gap-2 border rounded-lg px-3 py-2.5 mb-4" style={{ borderColor: "#F0C36D", background: "#FFF8E8" }}>
           <AlertTriangle size={16} className="mt-0.5 shrink-0" style={{ color: "#8A6300" }} />
           <div className="text-xs" style={{ color: "#5A4300" }}>
-            <p className="font-medium mb-1">{dossier.demandesMoadr.length} demande(s) MOADR en attente</p>
+            <p className="font-medium mb-1">
+              {dossier.demandesMoadr.length} {t("moadr_demandes_en_attente")}
+            </p>
             {dossier.demandesMoadr.map((m) => (
               <p key={m.id}>
                 {m.descriptionSituation} → {m.mentionDocument}
@@ -71,12 +73,12 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
 
       <div className="border rounded-lg p-4 mb-4" style={{ borderColor: "#E2E5E8" }}>
         <p className="text-sm font-semibold mb-2" style={{ color: "#156082" }}>
-          Documents automatiques
+          {t("documents_auto_titre")}
         </p>
-        <AutoDoc label="Émargement" />
-        {!isAbrege && <AutoDoc label="Grille Kinney" />}
-        <AutoDoc label={t("titre_regles_generales_entreprise").replace("[nom entreprise]", entreprise?.identite?.nomAffichage || "")} />
-        {!isAbrege && <AutoDoc label={t("titre_liste_sous_traitants")} />}
+        <AutoDoc label={t("emargement_label")} t={t} />
+        {!isAbrege && <AutoDoc label={t("grille_kinney_label")} t={t} />}
+        <AutoDoc label={t("titre_regles_generales_entreprise").replace(/\[.*?\]/, entreprise?.identite?.nomAffichage || "")} t={t} />
+        {!isAbrege && <AutoDoc label={t("titre_liste_sous_traitants")} t={t} />}
       </div>
 
       {!isAbrege && (
@@ -91,11 +93,11 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
           />
           {planParticulier.fichier && (
             <p className="text-xs mb-2" style={{ color: "#5A646C" }}>
-              Fichier joint : {planParticulier.fichier}
+              {t("fichier_joint")} : {planParticulier.fichier}
             </p>
           )}
           <textarea
-            placeholder="Notes complémentaires"
+            placeholder={t("notes_complementaires_placeholder")}
             className="w-full border rounded px-3 py-2 text-sm mb-4"
             style={{ borderColor: "#D6DADE" }}
             rows={2}
@@ -143,13 +145,13 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
             </tbody>
           </table>
           <button onClick={addEngin} className="flex items-center gap-1 text-xs" style={{ color: "#156082" }}>
-            <Plus size={14} /> Ajouter une ligne
+            <Plus size={14} /> {t("bouton_ajouter_ligne")}
           </button>
         </div>
       )}
 
       <div className="border rounded-lg p-4 mb-6" style={{ borderColor: "#E2E5E8" }}>
-        <label className="text-sm font-medium block mb-1.5">Langue du document</label>
+        <label className="text-sm font-medium block mb-1.5">{t("langue_document_label")}</label>
         <select
           value={lang}
           onChange={(e) => setLang(e.target.value)}
@@ -162,14 +164,14 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
         </select>
         {dossier.meta.repssNumero && (
           <p className="text-xs mt-2" style={{ color: "#5A646C" }}>
-            Numéro RePSS attribué : {dossier.meta.repssNumero}
+            {t("numero_repss_attribue")} : {dossier.meta.repssNumero}
           </p>
         )}
       </div>
 
       <div className="flex justify-between items-center">
         <button onClick={onBack} className="px-5 py-2 rounded text-sm border" style={{ borderColor: "#D6DADE" }}>
-          Retour
+          {t("bouton_retour")}
         </button>
         <div className="flex gap-2">
           <button
@@ -178,7 +180,7 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
             style={{ borderColor: "#156082", color: "#156082" }}
           >
             <Save size={16} />
-            Enregistrer le .json
+            {t("enregistrer_json_bouton")}
           </button>
           <PDFDownloadLink
             document={
@@ -199,7 +201,7 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
             {({ loading }) => (
               <>
                 <FileCheck size={16} />
-                {loading ? "Génération…" : "Générer le PDF"}
+                {loading ? t("generation_en_cours") : t("generer_pdf_bouton")}
               </>
             )}
           </PDFDownloadLink>

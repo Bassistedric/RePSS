@@ -61,19 +61,19 @@ function TableField({ path, columns, value, onChange, t }) {
         className="flex items-center gap-1 text-xs"
         style={{ color: "#156082" }}
       >
-        <Plus size={14} /> Ajouter une ligne
+        <Plus size={14} /> {t("bouton_ajouter_ligne")}
       </button>
     </div>
   );
 }
 
 const TRISTATE_OPTIONS = [
-  { value: "interne", label: "Interne" },
-  { value: "client", label: "Client" },
-  { value: "na", label: "N.A." },
+  { value: "interne", labelKey: "tristate_interne" },
+  { value: "client", labelKey: "tristate_client" },
+  { value: "na", labelKey: "tristate_na" },
 ];
 
-function TriStateField({ path, value, onChange }) {
+function TriStateField({ path, value, onChange, t }) {
   return (
     <div className="inline-flex rounded border overflow-hidden" style={{ borderColor: "#D6DADE" }}>
       {TRISTATE_OPTIONS.map((o) => {
@@ -90,7 +90,7 @@ function TriStateField({ path, value, onChange }) {
               borderRight: o.value !== "na" ? "1px solid #D6DADE" : undefined,
             }}
           >
-            {o.label}
+            {t(o.labelKey)}
           </button>
         );
       })}
@@ -118,7 +118,7 @@ function Field({ field, dossier, onChange, t }) {
     return (
       <div className="flex flex-col gap-1 py-1">
         <span className="text-sm">{field.labelKey ? t(field.labelKey) : field.label}</span>
-        <TriStateField path={field.path} value={value} onChange={onChange} />
+        <TriStateField path={field.path} value={value} onChange={onChange} t={t} />
       </div>
     );
   }
@@ -127,7 +127,7 @@ function Field({ field, dossier, onChange, t }) {
     return (
       <div>
         {field.labelKey && <label className="text-sm font-medium block mb-1" style={{ color: "#5A646C" }}>{t(field.labelKey)}</label>}
-        <p className="text-sm" style={{ color: "#3D4750" }}>{value || "non renseigné"}</p>
+        <p className="text-sm" style={{ color: "#3D4750" }}>{value || t("non_renseigne")}</p>
       </div>
     );
   }
