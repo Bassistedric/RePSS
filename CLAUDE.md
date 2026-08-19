@@ -214,9 +214,35 @@ classeur source). Ces lignes doivent être **groupées à l'affichage** :
   schéma — `itemsCoches` continue de référencer des `risqueId` individuels, juste
   plusieurs à la fois.
 
-L'activité reste un simple sous-titre non cliquable regroupant ses groupes de risque
-(pas de repli supplémentaire à ce niveau). Seuls catégorie et sous-catégorie sont
-pliables/dépliables (accordéon).
+**Bundle au niveau de l'activité entière (nouveau mécanisme, distinct du regroupement
+par `sourceDanger`)** : certaines activités décrivent une **action/opération précise**
+(ex. "Travaux de soudure", "Introduction dans bâtiment de cabine HT…") dont tous les
+risques associés sont **automatiques** — dès que cette action a lieu, tous ses risques
+s'appliquent sans exception, même s'ils ont chacun un `sourceDanger` distinct (ex.
+"Travaux de soudure" a 4 `sourceDanger` différents : accidents divers, retour de
+flamme, électrocution, brûlure — tous présents dès qu'il y a soudure, aucun choix).
+D'autres activités décrivent une **catégorie/condition** avec plusieurs scénarios
+réellement indépendants et optionnels (ex. "Accès au chantier", "Stockage",
+"Utilisation de certains produits") — celles-là gardent une case par groupe de
+`sourceDanger`, comme décrit ci-dessus.
+
+Cette distinction est un jugement métier, pas déductible automatiquement des données.
+Nouveau champ sur l'onglet `Activites` de `RePSS_Analyse_Risques.xlsx`, remonté dans
+`catalogue_risques.json` (`activites[].granularite`) :
+- `"activite"` : une seule case à cocher sur l'activité elle-même (libellé = le texte
+  de l'activité) ; cocher ajoute **tous** les `risqueId` de cette activité à
+  `itemsCoches` d'un coup ; les `risques` de chaque ligne s'affichent comme puces
+  informatives sous la case, jamais individuellement cochables, et le `sourceDanger`
+  ne doit **pas** être ré-affiché en double sur une ligne à part (c'était le bug
+  visible en conversation : le titre de l'activité et le `sourceDanger` identique
+  apparaissaient deux fois côte à côte).
+- `"risque"` : comportement par défaut déjà décrit (groupement par `sourceDanger`).
+
+Chaque activité a aussi `confiance` (`"Oui"` = validé par Ced, `"À vérifier"` =
+premier classement automatique par Claude, à corriger) et `notes`. **Seules les
+lignes `confiance = "Oui"` doivent être considérées fiables** ; les autres sont un
+brouillon de départ, la classification peut changer à mesure que Ced relit le
+catalogue. Ne pas figer de logique métier sur les valeurs `"À vérifier"`.
 
 **Structure réelle du catalogue, irrégulière** : la profondeur n'est pas fixe à 4
 niveaux partout. Certaines catégories vont jusqu'à catégorie > sous-catégorie >
