@@ -189,12 +189,46 @@ pressions/températures, présence gaz) — absents du complet.
 Étapes : Identification → Caractérisation → Infos chantier & usine → Risques &
 mesures → Génération (plus court que le complet).
 
-## 6. Analyse de risques — granularité et affichage (correction importante)
+## 6. Analyse de risques — granularité et affichage (corrections importantes)
 
-**La case à cocher, c'est la ligne de risque, jamais l'activité.** L'activité est un
-simple sous-titre visuel qui regroupe ses lignes de risque (toujours affichées en
-liste, sans repli supplémentaire — médiane 2 lignes/activité, max 8, donc pas besoin
-de les cacher). Seuls catégorie et sous-catégorie sont pliables/dépliables (accordéon).
+**La case à cocher correspond à un `sourceDanger` unique, pas systématiquement à une
+ligne de risque individuelle.** Plusieurs lignes de `catalogue_risques.json` peuvent
+partager exactement le même texte `sourceDanger` sous une même activité (ex. "Portance
+du sol insuffisant" avec 5 `risques` différents : versement du camion, renversement de
+la charge, rupture d'élingues, coincement en cours du guidage, écrasement du
+personnel — chacune avec sa propre évaluation Kinney, d'où des lignes séparées dans le
+classeur source). Ces lignes doivent être **groupées à l'affichage** :
+
+- Regrouper les lignes de risque d'une même activité par `sourceDanger` identique
+  (clé de groupement : `parent` + `sourceDanger`).
+- Si un groupe ne contient qu'une seule ligne (cas le plus fréquent), rien ne change :
+  une case à cocher, le texte de `risques` affiché comme libellé (pas `sourceDanger`,
+  qui souvent répète juste le libellé de l'activité — un cas observé affichait
+  "Produits dangereux (bonbonnes, acides…)" 4 fois identiques car `sourceDanger`
+  était affiché au lieu de `risques`).
+- Si un groupe contient plusieurs lignes, afficher **une seule case à cocher** avec le
+  `sourceDanger` comme libellé, et lister les `risques` de chaque ligne du groupe comme
+  puces informatives en dessous (non cochables individuellement). Cocher la case
+  ajoute **tous** les `risqueId` du groupe à `analyseRisques.itemsCoches` d'un coup ;
+  décocher les retire tous ensemble. Pas besoin d'un nouvel identifiant de groupe côté
+  schéma — `itemsCoches` continue de référencer des `risqueId` individuels, juste
+  plusieurs à la fois.
+
+L'activité reste un simple sous-titre non cliquable regroupant ses groupes de risque
+(pas de repli supplémentaire à ce niveau). Seuls catégorie et sous-catégorie sont
+pliables/dépliables (accordéon).
+
+**Structure réelle du catalogue, irrégulière** : la profondeur n'est pas fixe à 4
+niveaux partout. Certaines catégories vont jusqu'à catégorie > sous-catégorie >
+activité > risque (ex. "Mesures générales"), d'autres sautent la sous-catégorie
+(catégorie > activité > risque, ex. "Manutention et levage"), d'autres sautent aussi
+l'activité (catégorie > risque directement, ex. "Travaux de percements"). Le composant
+d'affichage doit être générique : à chaque niveau, chercher d'abord des enfants de
+type sous-catégorie ; s'il n'y en a pas, chercher des enfants de type activité
+directement rattachés ; s'il n'y en a pas non plus, chercher des lignes de risque
+directement rattachées. `repss_prototype.jsx` ne montrait que le cas à 4 niveaux
+pleins (Mesures générales, HVAC-Froid), donc cette variation n'était pas visible dans
+l'exemple fourni au départ.
 
 **Filtrage par corps de métier** : catégories universelles (Mesures générales +
 Exécution générale, codes 10 et 21-27) toujours affichées ; catégories 31/32/33
@@ -208,11 +242,12 @@ délibérée plutôt qu'un copier-coller. Reconstruire cette hiérarchie à la g
 parcourant `catalogue_risques.json` filtré par `corpsMetier`, en ne détaillant
 (source/risques/Kinney/mesures) que les lignes présentes dans `itemsCoches`.
 
-**Typographie en cascade** (déjà dans `repss_prototype.jsx`, à reprendre) :
+**Typographie en cascade** (déjà dans `repss_prototype.jsx`, à reprendre, plus le
+niveau de regroupement `groupe` à ajouter au-dessus — voir §12 palette) :
 sous-catégorie en gras bleu marine avec bordure basse, activité en poids moyen
-indentée sous une bordure gauche, ligne de risque encore indentée sous une deuxième
-bordure plus discrète — la hiérarchie doit se lire visuellement sans lire le texte.
-Ligne cochée = fond vert clair + case à accent vert (signal positif).
+indentée sous une bordure gauche, ligne/groupe de risque encore indentée sous une
+deuxième bordure plus discrète — la hiérarchie doit se lire visuellement sans lire le
+texte. Ligne cochée = fond vert clair + case à accent vert (signal positif).
 
 ## 7. Contrôle à 3 états (correction remontée par un PM)
 
@@ -247,26 +282,8 @@ PM, date, version, `moadrEnAttente`) — jamais le contenu du JSON lui-même. Se
 
 Séparer strictement le moteur (code, jamais de contenu VMA-spécifique en dur) du
 contenu (`entreprise.json`, classeurs de contenu, logos) — changer d'entreprise doit
-se limiter à remplacer ces fichiers, jamais toucher au code.
-
-**Palette VMA Sud** (`app/src/lib/colors.js`, seul point de vérité, réutilisé tel
-quel dans le wizard et dans le PDF `RepssDocument.jsx`) : chaque couleur a un rôle
-unique, jamais interchangeable.
-
-- `navy` `#0B3040` : identité — boutons principaux, en-têtes de catégorie,
-  navigation active. Jamais un fond général.
-- `blue` `#156082` : interactif — liens, accents secondaires, contrôles.
-- `turquoise` `#1D9E75` : accent de vie (dans l'esprit du dégradé du logo),
-  usage unique et volontairement restreint : la bordure des sous-catégories de
-  l'analyse de risques. Jamais mélangé aux couleurs sémantiques.
-- Neutres chauds (`neutralBg*`, `neutralBorder*`, `neutralText*`) : non teintés
-  bleu, portent tous les fonds/bordures structurels et le texte non sémantique.
-- Sémantiques réservées, jamais réutilisées pour autre chose : `success` (vert,
-  ligne de risque cochée), `warning` (ambre, bannière MOADR + item aggravé de
-  l'abrégé), `error` (rouge, uniquement les erreurs bloquantes, ex. import de
-  fichier invalide).
-
-Aplats francs partout, pas de dégradé (sauf éventuellement l'écran d'accueil).
+se limiter à remplacer ces fichiers, jamais toucher au code. Couleurs VMA Sud :
+`#0B3040` (marine, primaire) / `#156082` (bleu, secondaire).
 
 ## 10. Décisions UX/visuelles à respecter
 
@@ -282,7 +299,24 @@ Aplats francs partout, pas de dégradé (sauf éventuellement l'écran d'accueil
   retourner directement (pas seulement via le bouton Retour) ; les étapes pas encore
   atteintes restent désactivées.
 
-## 11. Points encore ouverts (à trancher, pas encore décidés)
+## 11. Palette de couleurs
+
+Le premier jet (tout en bleu-gris clair dégradé) manque de hiérarchie et de vie.
+Système à appliquer :
+- **Navy `#0B3040`** réservé à l'identité : boutons principaux, en-têtes de catégorie,
+  navigation active. Jamais comme fond général/par défaut.
+- **Bleu `#156082`** pour les éléments interactifs (liens, accents secondaires).
+- **Gris neutre chaud** (pas teinté bleu) pour tous les fonds/bordures structurels
+  (cartes, séparateurs, fonds de page).
+- **Turquoise `#1D9E75`** (dans l'esprit du dégradé du logo VMA) comme accent de
+  « vie », un seul usage précis et cohérent dans toute l'app (ex. bordure gauche des
+  sous-catégories, voir §6) — jamais mélangé aux couleurs sémantiques ci-dessous.
+- **Sémantique, jamais utilisée pour autre chose** : vert clair = coché/positif (déjà
+  en place) ; ambre = attention (bannière MOADR, item `risqueAggrave`) ; rouge =
+  erreur bloquante uniquement.
+- Éviter les dégradés en dehors d'un éventuel écran d'accueil ; aplats francs ailleurs.
+
+## 12. Points encore ouverts (à trancher, pas encore décidés)
 
 - Bureau d'architecture / B.E. Tech. Spéciales / Coordinateur Sécurité : traités
   comme variables par chantier par hypothèse, jamais confirmés formellement par Ced.
