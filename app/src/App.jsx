@@ -132,10 +132,10 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6" style={{ background: colors.neutralBg }}>
-      <div className="w-full max-w-4xl rounded-xl overflow-hidden border shadow-sm" style={{ borderColor: colors.neutralBorder, background: "white" }}>
+    <div className="min-h-screen flex items-center justify-center p-8" style={{ background: colors.neutralBg }}>
+      <div className="w-full max-w-5xl rounded-xl overflow-hidden border shadow-sm" style={{ borderColor: colors.neutralBorder, background: "white" }}>
         {screen === "accueil" ? (
-          <div className="p-6">
+          <div className="p-8">
             <Accueil onStart={() => setScreen("identification")} lang={lang} setLang={setLang} entreprise={pack.entreprise} t={t} />
           </div>
         ) : (
@@ -149,7 +149,7 @@ export default function App() {
               infosAdminTab={infosAdminTab}
               setInfosAdminTab={setInfosAdminTab}
             />
-            <div className="flex-1 p-6 overflow-y-auto" style={{ maxHeight: "90vh" }}>
+            <div className="flex-1 p-8 overflow-y-auto" style={{ maxHeight: "90vh" }}>
               {renderScreen()}
             </div>
           </div>

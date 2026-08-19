@@ -32,18 +32,22 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
 
   return (
     <div>
-      <label className="text-sm font-medium block mb-1.5">{t("hopital_plus_proche")}</label>
+      <label className="text-sm font-medium block mb-2">{t("hopital_plus_proche")}</label>
       <input
         type="text"
         placeholder={t("hopital_code_postal_placeholder")}
-        className="w-full border rounded px-3 py-2 text-sm mb-2"
+        className="w-full border rounded px-3.5 py-2.5 text-sm mb-2.5"
         style={{ borderColor: colors.neutralBorderStrong }}
         value={codePostalChantier}
         onChange={(e) => onCodePostalChange(e.target.value)}
       />
-      <div className="flex flex-col gap-1.5 mb-2">
+      <div className="flex flex-col gap-2 mb-2.5">
         {selected.map((h) => (
-          <div key={h.id} className="flex items-center justify-between text-xs border rounded px-2.5 py-1.5" style={{ borderColor: colors.neutralBorder }}>
+          <div
+            key={h.id}
+            className="flex items-center justify-between text-sm border rounded px-3 py-2"
+            style={{ borderColor: colors.neutralBorder, background: "white" }}
+          >
             <span>
               {h.nom_hopital}
               {h.nom_site ? ` (${h.nom_site})` : ""}, {h.adresse}, {h.code_postal} {h.commune}
@@ -54,17 +58,17 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
           </div>
         ))}
         {selected.length === 0 && (
-          <p className="text-xs" style={{ color: colors.neutralText }}>
+          <p className="text-sm" style={{ color: colors.neutralText }}>
             {t("hopital_saisis_code_postal")}
           </p>
         )}
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-2.5">
         <select
           value={manualId}
           onChange={(e) => setManualId(e.target.value)}
-          className="flex-1 border rounded px-2 py-1.5 text-xs"
-          style={{ borderColor: colors.neutralBorderStrong }}
+          className="flex-1 border rounded px-2.5 py-2 text-sm"
+          style={{ borderColor: colors.neutralBorderStrong, background: "white" }}
         >
           <option value="">{t("hopital_ajouter_manuellement")}</option>
           {hopitaux.map((h) => (
@@ -73,7 +77,11 @@ export default function HopitalPicker({ dossier, setDossier, hopitaux, t }) {
             </option>
           ))}
         </select>
-        <button onClick={addManual} className="text-xs px-3 py-1.5 rounded border" style={{ borderColor: colors.neutralBorderStrong }}>
+        <button
+          onClick={addManual}
+          className="text-sm px-3.5 py-2 rounded border"
+          style={{ borderColor: colors.neutralBorderStrong, background: "white" }}
+        >
           {t("bouton_ajouter")}
         </button>
       </div>

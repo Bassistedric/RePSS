@@ -10,7 +10,11 @@
 export const colors = {
   // Identité : boutons principaux, en-têtes de catégorie, navigation active.
   navy: "#0B3040",
-  // Fond très clair pour signaler un état actif de navigation (jamais un fond général).
+  // Fond très clair pour les usages d'identité qui ont besoin d'un fond plutôt
+  // que d'un aplat plein : état actif de navigation, bandeaux de catégorie de
+  // l'analyse de risques (texte navy sur fond pâle plutôt qu'aplat navy répété
+  // 11 fois, qui n'est plus un signal et écrase le contraste des niveaux
+  // dessous). Jamais un fond général pour autant.
   navyTint: "#DEE6E5",
 
   // Interactif : liens, accents secondaires, contrôles.
