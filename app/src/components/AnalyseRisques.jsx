@@ -2,44 +2,76 @@ import { useState } from "react";
 import { ChevronDown, ChevronUp, FileCheck } from "lucide-react";
 import MoadrSection from "./MoadrSection";
 import { colors } from "../lib/colors";
+import { grouperLignesParSourceDanger } from "../lib/catalogue";
 
 // §6 : la case à cocher est la ligne de risque, jamais l'activité. L'activité est un
 // simple sous-titre qui regroupe ses lignes, toujours affichées (pas de repli
 // supplémentaire, médiane 2 lignes/activité, max 8). Seuls catégorie et
 // sous-catégorie sont pliables/dépliables.
+//
+// Plusieurs lignes peuvent partager le même sourceDanger sous une même activité
+// (une évaluation Kinney distincte par conséquence possible) : elles sont
+// regroupées en une seule case. Cocher/décocher agit sur tout le groupe d'un coup.
+function RisqueGroupRow({ groupe, isChecked, toggle, remarque, setRemarque, t }) {
+  const ids = groupe.membres.map((m) => m.id);
+  const checked = ids.every((id) => isChecked(id));
+  const single = groupe.membres.length === 1;
+  const label = single ? groupe.membres[0].risques : groupe.sourceDanger;
+  const remarqueId = ids[0];
+
+  return (
+    <div>
+      <label
+        className="flex items-start gap-2 text-[13px] py-1 pl-2 pr-2 rounded"
+        style={{ color: colors.neutralText, ...(checked ? { background: colors.successBg, color: colors.neutralTextStrong } : {}) }}
+      >
+        <input
+          type="checkbox"
+          className="mt-0.5"
+          style={{ accentColor: colors.successAccent }}
+          checked={checked}
+          onChange={() => toggle(ids)}
+        />
+        {label}
+      </label>
+      {!single && (
+        <ul className="ml-7 mb-1 list-disc pl-4 flex flex-col gap-0.5" style={{ color: colors.neutralText }}>
+          {groupe.membres.map((m) => (
+            <li key={m.id} className="text-xs">
+              {m.risques}
+            </li>
+          ))}
+        </ul>
+      )}
+      {checked && (
+        <input
+          type="text"
+          placeholder={t("remarque_optionnelle_placeholder")}
+          className="ml-7 mb-1 border rounded px-2 py-1 text-xs"
+          style={{ borderColor: colors.neutralBorderStrong, width: "calc(100% - 1.75rem)" }}
+          value={remarque(remarqueId)}
+          onChange={(e) => setRemarque(ids, e.target.value)}
+        />
+      )}
+    </div>
+  );
+}
+
 function RisqueRows({ lignesRisque, isChecked, toggle, remarque, setRemarque, t }) {
+  const groupes = grouperLignesParSourceDanger(lignesRisque);
   return (
     <div className="flex flex-col gap-1">
-      {lignesRisque.map((r) => {
-        const checked = isChecked(r.id);
-        return (
-          <div key={r.id}>
-            <label
-              className="flex items-start gap-2 text-[13px] py-1 pl-2 pr-2 rounded"
-              style={{ color: colors.neutralText, ...(checked ? { background: colors.successBg, color: colors.neutralTextStrong } : {}) }}
-            >
-              <input
-                type="checkbox"
-                className="mt-0.5"
-                style={{ accentColor: colors.successAccent }}
-                checked={checked}
-                onChange={() => toggle(r.id)}
-              />
-              {r.sourceDanger}
-            </label>
-            {checked && (
-              <input
-                type="text"
-                placeholder={t("remarque_optionnelle_placeholder")}
-                className="ml-7 mb-1 border rounded px-2 py-1 text-xs"
-                style={{ borderColor: colors.neutralBorderStrong, width: "calc(100% - 1.75rem)" }}
-                value={remarque(r.id)}
-                onChange={(e) => setRemarque(r.id, e.target.value)}
-              />
-            )}
-          </div>
-        );
-      })}
+      {groupes.map((groupe) => (
+        <RisqueGroupRow
+          key={groupe.membres[0].id}
+          groupe={groupe}
+          isChecked={isChecked}
+          toggle={toggle}
+          remarque={remarque}
+          setRemarque={setRemarque}
+          t={t}
+        />
+      ))}
     </div>
   );
 }
@@ -243,17 +275,24 @@ export default function AnalyseRisques({ dossier, setDossier, catalogueComplet, 
   function isChecked(id) {
     return itemsCoches.some((i) => i.risqueId === id);
   }
-  function toggle(id) {
-    const next = isChecked(id)
-      ? itemsCoches.filter((i) => i.risqueId !== id)
-      : [...itemsCoches, { risqueId: id, remarques: "" }];
+  // §6 : un groupe de lignes partageant le même sourceDanger se coche/décoche en
+  // bloc → toggle accepte un seul id ou un tableau d'ids, traité comme un tout
+  // (tous cochés ou tous décochés d'un coup).
+  function toggle(idOrIds) {
+    const ids = Array.isArray(idOrIds) ? idOrIds : [idOrIds];
+    const allChecked = ids.every(isChecked);
+    const next = allChecked
+      ? itemsCoches.filter((i) => !ids.includes(i.risqueId))
+      : [...itemsCoches, ...ids.filter((id) => !isChecked(id)).map((id) => ({ risqueId: id, remarques: "" }))];
     setDossier((prev) => ({ ...prev, analyseRisques: { itemsCoches: next } }));
   }
   function remarque(id) {
     return itemsCoches.find((i) => i.risqueId === id)?.remarques ?? "";
   }
-  function setRemarque(id, text) {
-    const next = itemsCoches.map((i) => (i.risqueId === id ? { ...i, remarques: text } : i));
+  // Un groupe partage une seule remarque, appliquée à tous ses risqueId.
+  function setRemarque(idOrIds, text) {
+    const ids = Array.isArray(idOrIds) ? idOrIds : [idOrIds];
+    const next = itemsCoches.map((i) => (ids.includes(i.risqueId) ? { ...i, remarques: text } : i));
     setDossier((prev) => ({ ...prev, analyseRisques: { itemsCoches: next } }));
   }
 

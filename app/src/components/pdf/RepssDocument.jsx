@@ -1,6 +1,7 @@
 import { Document, Page, View, Text, Image, StyleSheet } from "@react-pdf/renderer";
 import { ROLES_ADMINISTRATION } from "../../lib/dossier";
 import { colors } from "../../lib/colors";
+import { grouperLignesParSourceDanger } from "../../lib/catalogue";
 
 const styles = StyleSheet.create({
   page: { padding: 32, fontSize: 9, fontFamily: "Helvetica", color: colors.neutralTextStrong },
@@ -91,16 +92,25 @@ function Table({ columns, rows }) {
   );
 }
 
+// §6 : plusieurs lignes cochées peuvent partager le même sourceDanger (une
+// évaluation Kinney distincte par conséquence possible) → un seul en-tête par
+// sourceDanger, chaque ligne du groupe détaillée (risques/mesures/remarque) dessous.
 function LignesRisquePdf({ lignesRisque, cochesById, t }) {
-  return lignesRisque.map((r) => (
-    <View key={r.id} style={styles.ligneRisque}>
-      <Text style={{ fontWeight: 500 }}>{r.sourceDanger}</Text>
-      <Text>{r.mesuresPrevention}</Text>
-      {cochesById[r.id].remarques && (
-        <Text style={{ color: colors.neutralText }}>
-          {t("remarques_descriptifs")} {cochesById[r.id].remarques}
-        </Text>
-      )}
+  const groupes = grouperLignesParSourceDanger(lignesRisque);
+  return groupes.map((groupe) => (
+    <View key={groupe.membres[0].id} style={styles.ligneRisque}>
+      <Text style={{ fontWeight: 500 }}>{groupe.sourceDanger}</Text>
+      {groupe.membres.map((r) => (
+        <View key={r.id} style={{ marginTop: 1 }}>
+          <Text>{r.risques}</Text>
+          <Text>{r.mesuresPrevention}</Text>
+          {cochesById[r.id].remarques && (
+            <Text style={{ color: colors.neutralText }}>
+              {t("remarques_descriptifs")} {cochesById[r.id].remarques}
+            </Text>
+          )}
+        </View>
+      ))}
     </View>
   ));
 }
