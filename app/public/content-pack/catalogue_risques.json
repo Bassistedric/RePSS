@@ -133,271 +133,406 @@
       "id": "cat10_mesures_generales_sub1_act1",
       "code_origine": "10.1.1",
       "fr": "Implantation",
-      "parent": "cat10_mesures_generales_sub1"
+      "parent": "cat10_mesures_generales_sub1",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat10_mesures_generales_sub1_act2",
       "code_origine": "10.1.2",
       "fr": "Accès au chantier",
-      "parent": "cat10_mesures_generales_sub1"
+      "parent": "cat10_mesures_generales_sub1",
+      "granularite": "risque",
+      "confiance": "Oui",
+      "notes": "confirmé en conversation"
     },
     {
       "id": "cat10_mesures_generales_sub1_act3",
       "code_origine": "10.1.3",
       "fr": "Pose de signalisation",
-      "parent": "cat10_mesures_generales_sub1"
+      "parent": "cat10_mesures_generales_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat10_mesures_generales_sub1_act4",
       "code_origine": "10.1.4",
       "fr": "Mise en place des conteneurs et baraquements par camion grue avec bras de déchargement",
-      "parent": "cat10_mesures_generales_sub1"
+      "parent": "cat10_mesures_generales_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat10_mesures_generales_sub1_act5",
       "code_origine": "10.1.5",
       "fr": "Raccordement électrique, téléphonique, mise à la terre avec outillage spécifique",
-      "parent": "cat10_mesures_generales_sub1"
+      "parent": "cat10_mesures_generales_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat10_mesures_generales_sub1_act6",
       "code_origine": "10.1.6",
       "fr": "Vestiaires",
-      "parent": "cat10_mesures_generales_sub1"
+      "parent": "cat10_mesures_generales_sub1",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat10_mesures_generales_sub1_act7",
       "code_origine": "10.1.7",
       "fr": "Réfectoire pour les repas",
-      "parent": "cat10_mesures_generales_sub1"
+      "parent": "cat10_mesures_generales_sub1",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat10_mesures_generales_sub1_act8",
       "code_origine": "10.1.8",
       "fr": "Sanitaires",
-      "parent": "cat10_mesures_generales_sub1"
+      "parent": "cat10_mesures_generales_sub1",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat10_mesures_generales_sub2_act1",
       "code_origine": "10.2.1",
       "fr": "Déplacement sur chantier",
-      "parent": "cat10_mesures_generales_sub2"
+      "parent": "cat10_mesures_generales_sub2",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat10_mesures_generales_sub2_act2",
       "code_origine": "10.2.2",
       "fr": "Manoeuvre sur chantier",
-      "parent": "cat10_mesures_generales_sub2"
+      "parent": "cat10_mesures_generales_sub2",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat10_mesures_generales_sub3_act1",
       "code_origine": "10.3.1",
       "fr": "Réception de matériels/matériaux lourds",
-      "parent": "cat10_mesures_generales_sub3"
+      "parent": "cat10_mesures_generales_sub3",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat10_mesures_generales_sub3_act2",
       "code_origine": "10.3.2",
       "fr": "Réception de matériel spécifique : extincteurs, foreuses, lapidaires, pinces hydrauliques, échafaudages, harnais de sécurité, appareils de levage et accessoires, poulies, palans, tirfor, élingues, sangles, , etc.",
-      "parent": "cat10_mesures_generales_sub3"
+      "parent": "cat10_mesures_generales_sub3",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat10_mesures_generales_sub3_act3",
       "code_origine": "10.3.3",
       "fr": "Réception de matériel spécifique : Nacelles - Elévateur à fourche - Elevateur télescopique à fourche",
-      "parent": "cat10_mesures_generales_sub3"
+      "parent": "cat10_mesures_generales_sub3",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat10_mesures_generales_sub3_act4",
       "code_origine": "10.3.4",
       "fr": "Stockage",
-      "parent": "cat10_mesures_generales_sub3"
+      "parent": "cat10_mesures_generales_sub3",
+      "granularite": "risque",
+      "confiance": "Oui",
+      "notes": "confirmé en conversation"
     },
     {
       "id": "cat21_manutention_et_levage_act1",
       "code_origine": "21.1.1",
       "fr": "Manutention manuelle",
-      "parent": "cat21_manutention_et_levage"
+      "parent": "cat21_manutention_et_levage",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat21_manutention_et_levage_act2",
       "code_origine": "21.1.2",
       "fr": "Levage mécanique de matériaux, de matériels",
-      "parent": "cat21_manutention_et_levage"
+      "parent": "cat21_manutention_et_levage",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat22_travaux_en_hauteur_act1",
       "code_origine": "22.1.1",
       "fr": "Mesures générales pour tout type de travail en hauteur",
-      "parent": "cat22_travaux_en_hauteur"
+      "parent": "cat22_travaux_en_hauteur",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat22_travaux_en_hauteur_act2",
       "code_origine": "22.1.2",
       "fr": "Escalier",
-      "parent": "cat22_travaux_en_hauteur"
+      "parent": "cat22_travaux_en_hauteur",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat22_travaux_en_hauteur_act3",
       "code_origine": "22.1.3",
       "fr": "Nacelle",
-      "parent": "cat22_travaux_en_hauteur"
+      "parent": "cat22_travaux_en_hauteur",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat22_travaux_en_hauteur_act4",
       "code_origine": "22.1.4",
       "fr": "Échelle",
-      "parent": "cat22_travaux_en_hauteur"
+      "parent": "cat22_travaux_en_hauteur",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat22_travaux_en_hauteur_act5",
       "code_origine": "22.1.5",
       "fr": "Échafaudages",
-      "parent": "cat22_travaux_en_hauteur"
+      "parent": "cat22_travaux_en_hauteur",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat31_electricite_basse_et_moye_sub1_act1",
       "code_origine": "31.1.1",
       "fr": "Introduction dans bâtiment de cabine HT, transfo HT, TGBT, groupe de secours, no break, etc. avec camion transporteur avec grue, élingues, chaîne, crochets, manilles, etc.",
-      "parent": "cat31_electricite_basse_et_moye_sub1"
+      "parent": "cat31_electricite_basse_et_moye_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat31_electricite_basse_et_moye_sub1_act2",
       "code_origine": "31.1.2",
       "fr": "Mise en place, dénudage, raccordement et contrôle isolement des câbles en cabine HT, transfo HT, TGBT, groupe de secours, no break,",
-      "parent": "cat31_electricite_basse_et_moye_sub1"
+      "parent": "cat31_electricite_basse_et_moye_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat31_electricite_basse_et_moye_sub1_act3",
       "code_origine": "31.1.3",
       "fr": "Mise hors / sous tension de la cabine HT",
-      "parent": "cat31_electricite_basse_et_moye_sub1"
+      "parent": "cat31_electricite_basse_et_moye_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat31_electricite_basse_et_moye_sub1_act4",
       "code_origine": "31.1.4",
       "fr": "Mise hors / sous tension du groupe électrogène, du tableau TGBT, etc.",
-      "parent": "cat31_electricite_basse_et_moye_sub1"
+      "parent": "cat31_electricite_basse_et_moye_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat31_electricite_basse_et_moye_sub2_act1",
       "code_origine": "31.2.1",
       "fr": "Pose des supports de chemin de câbles à une hauteur < à 2 m avec une escabeau et en utilisant de l’outillage spécifique (lapidaire, perceuse, poste à souder, etc.)",
-      "parent": "cat31_electricite_basse_et_moye_sub2"
+      "parent": "cat31_electricite_basse_et_moye_sub2",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat31_electricite_basse_et_moye_sub2_act2",
       "code_origine": "31.2.2",
       "fr": "Pose des supports de chemin de câbles à une hauteur > à 2 m avec un échafaudage ou une nacelle et en utilisant de l’outillage spécifique (lapidaire, perceuse, poste à souder, etc.)",
-      "parent": "cat31_electricite_basse_et_moye_sub2"
+      "parent": "cat31_electricite_basse_et_moye_sub2",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat31_electricite_basse_et_moye_sub2_act3",
       "code_origine": "31.2.3",
       "fr": "Tirage de câbles à une hauteur < 2 m avec escabeaux et outillage spécifique (vérin – axe ou dérouleuse)",
-      "parent": "cat31_electricite_basse_et_moye_sub2"
+      "parent": "cat31_electricite_basse_et_moye_sub2",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat31_electricite_basse_et_moye_sub2_act4",
       "code_origine": "31.2.4",
       "fr": "Tirage de câbles à une hauteur >2 m avec échafaudage ou nacelle et outillage spécifique (vérin – axe ou dérouleuse)",
-      "parent": "cat31_electricite_basse_et_moye_sub2"
+      "parent": "cat31_electricite_basse_et_moye_sub2",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat31_electricite_basse_et_moye_sub2_act5",
       "code_origine": "31.2.5",
       "fr": "Tirage de câble dans les vides techniques",
-      "parent": "cat31_electricite_basse_et_moye_sub2"
+      "parent": "cat31_electricite_basse_et_moye_sub2",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat31_electricite_basse_et_moye_sub2_act6",
       "code_origine": "31.2.6",
       "fr": "Tirage de câble dans les tranchées",
-      "parent": "cat31_electricite_basse_et_moye_sub2"
+      "parent": "cat31_electricite_basse_et_moye_sub2",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat31_electricite_basse_et_moye_sub2_act7",
       "code_origine": "31.2.7",
       "fr": "Exécution de tranchées avec outillage et engin spécifique ( pelle, pioche, excavatrice, etc.)",
-      "parent": "cat31_electricite_basse_et_moye_sub2"
+      "parent": "cat31_electricite_basse_et_moye_sub2",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat31_electricite_basse_et_moye_sub2_act8",
       "code_origine": "31.2.8",
       "fr": "Pose de tubage",
-      "parent": "cat31_electricite_basse_et_moye_sub2"
+      "parent": "cat31_electricite_basse_et_moye_sub2",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat32_hvac_froid_sub1_act1",
       "code_origine": "32.1.1",
       "fr": "Utilisation de certains produits",
-      "parent": "cat32_hvac_froid_sub1"
+      "parent": "cat32_hvac_froid_sub1",
+      "granularite": "risque",
+      "confiance": "Oui",
+      "notes": "confirmé en conversation (HVAC)"
     },
     {
       "id": "cat32_hvac_froid_sub1_act2",
       "code_origine": "32.1.2",
       "fr": "Travaux de soudure",
-      "parent": "cat32_hvac_froid_sub1"
+      "parent": "cat32_hvac_froid_sub1",
+      "granularite": "activite",
+      "confiance": "Oui",
+      "notes": "confirmé en conversation (HVAC)"
     },
     {
       "id": "cat32_hvac_froid_sub1_act3",
       "code_origine": "32.1.3",
       "fr": "Travaux d'isolation",
-      "parent": "cat32_hvac_froid_sub1"
+      "parent": "cat32_hvac_froid_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat32_hvac_froid_sub1_act4",
       "code_origine": "32.1.4",
       "fr": "Travaux d'électricité",
-      "parent": "cat32_hvac_froid_sub1"
+      "parent": "cat32_hvac_froid_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat32_hvac_froid_sub1_act5",
       "code_origine": "32.1.1",
       "fr": "Travaux de détection (fuite de gaz, …)",
-      "parent": "cat32_hvac_froid_sub1"
+      "parent": "cat32_hvac_froid_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat32_hvac_froid_sub1_act6",
       "code_origine": "32.1.6",
       "fr": "Mise en service et intervention",
-      "parent": "cat32_hvac_froid_sub1"
+      "parent": "cat32_hvac_froid_sub1",
+      "granularite": "risque",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat32_hvac_froid_sub1_act7",
       "code_origine": "32.1.7",
       "fr": "Travaux de démontage",
-      "parent": "cat32_hvac_froid_sub1"
+      "parent": "cat32_hvac_froid_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat32_hvac_froid_sub1_act8",
       "code_origine": "32.1.8",
       "fr": "Travaux de terrassement et pose de canalisations",
-      "parent": "cat32_hvac_froid_sub1"
+      "parent": "cat32_hvac_froid_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat33_photovoltaique_sub1_act1",
       "code_origine": "32.1.1",
       "fr": "Engin de levage",
-      "parent": "cat33_photovoltaique_sub1"
+      "parent": "cat33_photovoltaique_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat33_photovoltaique_sub1_act2",
       "code_origine": "32.1.2",
       "fr": "Travail en toiture",
-      "parent": "cat33_photovoltaique_sub1"
+      "parent": "cat33_photovoltaique_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat33_photovoltaique_sub1_act3",
       "code_origine": "32.1.3",
       "fr": "Travail au vent",
-      "parent": "cat33_photovoltaique_sub1"
+      "parent": "cat33_photovoltaique_sub1",
+      "granularite": "activite",
+      "confiance": "À vérifier",
+      "notes": null
     },
     {
       "id": "cat33_photovoltaique_sub1_act4",
       "code_origine": "32.1.4",
       "fr": "Travaux de soudure - découpe",
-      "parent": "cat33_photovoltaique_sub1"
+      "parent": "cat33_photovoltaique_sub1",
+      "granularite": "activite",
+      "confiance": "Oui",
+      "notes": "même logique que Travaux de soudure (HVAC)"
     }
   ],
   "lignesRisque": [

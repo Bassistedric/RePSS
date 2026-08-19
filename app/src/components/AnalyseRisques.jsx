@@ -89,6 +89,55 @@ function ActiviteBlock({ activite, lignesRisque, isChecked, toggle, remarque, se
   );
 }
 
+// §6 : `granularite: "activite"` = action précise dont tous les risques sont
+// automatiques dès qu'elle a lieu (ex. "Travaux de soudure") : une seule case sur
+// l'activité elle-même, qui ajoute tous ses risqueId d'un coup ; ses `risques`
+// s'affichent comme puces informatives, jamais individuellement cochables, et le
+// sourceDanger de chaque ligne n'est jamais ré-affiché (déjà porté par l'activité).
+function ActiviteBundleBlock({ activite, lignesRisque, isChecked, toggle, remarque, setRemarque, t }) {
+  const ids = lignesRisque.map((r) => r.id);
+  const checked = ids.length > 0 && ids.every((id) => isChecked(id));
+  const remarqueId = ids[0];
+
+  return (
+    <div className="mb-3 last:mb-0 pl-3 border-l-2" style={{ borderColor: colors.neutralBorderStrong }}>
+      <label
+        className="flex items-start gap-2 text-[13px] font-medium py-1 pl-2 pr-2 rounded"
+        style={{ color: colors.neutralTextStrong, ...(checked ? { background: colors.successBg } : {}) }}
+      >
+        <input
+          type="checkbox"
+          className="mt-0.5"
+          style={{ accentColor: colors.successAccent }}
+          checked={checked}
+          disabled={ids.length === 0}
+          onChange={() => toggle(ids)}
+        />
+        {activite.fr}
+      </label>
+      {lignesRisque.length > 0 && (
+        <ul className="ml-7 mt-1 list-disc pl-4 flex flex-col gap-0.5" style={{ color: colors.neutralText }}>
+          {lignesRisque.map((r) => (
+            <li key={r.id} className="text-xs">
+              {r.risques}
+            </li>
+          ))}
+        </ul>
+      )}
+      {checked && (
+        <input
+          type="text"
+          placeholder={t("remarque_optionnelle_placeholder")}
+          className="ml-7 mt-1 border rounded px-2 py-1 text-xs"
+          style={{ borderColor: colors.neutralBorderStrong, width: "calc(100% - 1.75rem)" }}
+          value={remarque(remarqueId)}
+          onChange={(e) => setRemarque(ids, e.target.value)}
+        />
+      )}
+    </div>
+  );
+}
+
 // La hiérarchie n'a pas une profondeur fixe (certaines catégories/sous-catégories
 // sautent un ou deux niveaux intermédiaires). À un niveau donné, on cherche d'abord
 // des activités rattachées ; si aucune, les lignes de risque sont rattachées
@@ -96,18 +145,22 @@ function ActiviteBlock({ activite, lignesRisque, isChecked, toggle, remarque, se
 function ActivitesOuRisques({ catalogue, parentId, isChecked, toggle, remarque, setRemarque, t }) {
   const acts = catalogue.activites.filter((a) => a.parent === parentId);
   if (acts.length > 0) {
-    return acts.map((act) => (
-      <ActiviteBlock
-        key={act.id}
-        activite={act}
-        lignesRisque={catalogue.lignesRisque.filter((r) => r.parent === act.id)}
-        isChecked={isChecked}
-        toggle={toggle}
-        remarque={remarque}
-        setRemarque={setRemarque}
-        t={t}
-      />
-    ));
+    return acts.map((act) => {
+      const lignesRisque = catalogue.lignesRisque.filter((r) => r.parent === act.id);
+      const Block = act.granularite === "activite" ? ActiviteBundleBlock : ActiviteBlock;
+      return (
+        <Block
+          key={act.id}
+          activite={act}
+          lignesRisque={lignesRisque}
+          isChecked={isChecked}
+          toggle={toggle}
+          remarque={remarque}
+          setRemarque={setRemarque}
+          t={t}
+        />
+      );
+    });
   }
   const lignesDirectes = catalogue.lignesRisque.filter((r) => r.parent === parentId);
   return <RisqueRows lignesRisque={lignesDirectes} isChecked={isChecked} toggle={toggle} remarque={remarque} setRemarque={setRemarque} t={t} />;
