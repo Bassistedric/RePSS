@@ -1,10 +1,18 @@
 import { Document, Page, View, Text, Image, StyleSheet } from "@react-pdf/renderer";
 import { ROLES_ADMINISTRATION } from "../../lib/dossier";
 import { colors } from "../../lib/colors";
-import { grouperLignesParSourceDanger } from "../../lib/catalogue";
+import { couleurNiveau, legendeKinney, formatNombre } from "../../lib/kinney";
 
+// §12 : structure complète du PDF, spécifiée dans CLAUDE.md — couverture, page
+// d'explication, table des matières, renseignements/administration/caractéristiques/
+// règles spécifiques, Annexe 1 (légende Kinney), analyse de risques (vrai tableau
+// paysage), émargement, Annexe 2/3/4.
 const styles = StyleSheet.create({
   page: { padding: 32, fontSize: 9, fontFamily: "Helvetica", color: colors.neutralTextStrong },
+  pageLandscape: { padding: 24, fontSize: 8, fontFamily: "Helvetica", color: colors.neutralTextStrong },
+
+  footer: { position: "absolute", bottom: 14, left: 32, right: 32, fontSize: 7, color: colors.neutralText, textAlign: "center" },
+
   headerRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 16 },
   logo: { height: 30, objectFit: "contain" },
   title: { fontSize: 16, fontWeight: 700 },
@@ -16,17 +24,97 @@ const styles = StyleSheet.create({
   kvVal: { flex: 1, fontWeight: 500 },
   bullet: { flexDirection: "row", marginBottom: 2 },
   bulletDot: { width: 10 },
+
   tableHeader: { flexDirection: "row", borderBottom: `1pt solid ${colors.navy}`, paddingBottom: 3, marginBottom: 3 },
   tableRow: { flexDirection: "row", borderBottom: `0.5pt solid ${colors.neutralBorder}`, paddingVertical: 2 },
   th: { fontWeight: 700, fontSize: 8 },
   td: { fontSize: 8 },
-  contactCard: { width: "48%", marginBottom: 6, fontSize: 8, border: `0.5pt solid ${colors.neutralBorder}`, padding: 5 },
-  logosRow: { flexDirection: "row", flexWrap: "wrap", gap: 10, marginTop: 4 },
+
+  contactCard: { width: "31%", marginBottom: 8, marginRight: "2%", fontSize: 7.5, border: `0.5pt solid ${colors.neutralBorder}`, padding: 6 },
+  contactLogo: { height: 16, objectFit: "contain", marginBottom: 4 },
+  logosRow: { flexDirection: "row", flexWrap: "wrap" },
+
+  // --- Couverture ---
+  coverPage: { padding: 0, fontFamily: "Helvetica" },
+  coverTop: { padding: 40 },
+  coverLogo: { height: 46, objectFit: "contain", marginBottom: 40 },
+  coverTitle: { fontSize: 26, fontWeight: 700, color: colors.navy },
+  coverModeLabel: { fontSize: 13, color: colors.neutralText, marginTop: 6 },
+  coverBox: { marginTop: 50, padding: 16, borderRadius: 4, border: `1.5pt solid ${colors.navy}`, backgroundColor: colors.navyTint },
+  coverBoxLabel: { fontSize: 8, color: colors.navy, textTransform: "uppercase", letterSpacing: 1 },
+  coverBoxValue: { fontSize: 15, fontWeight: 700, color: colors.navy, marginTop: 3 },
+  coverMetaRow: { flexDirection: "row", marginTop: 40, justifyContent: "space-between" },
+  coverMetaItem: { fontSize: 9, color: colors.neutralText },
+
+  // --- Table des matières ---
+  tocEntry: { flexDirection: "row", alignItems: "flex-end", marginBottom: 8 },
+  tocLabel: { fontSize: 10.5 },
+  tocDots: { flex: 1, borderBottom: `0.75pt dotted ${colors.neutralBorderStrong}`, marginHorizontal: 4, marginBottom: 2 },
+  tocIndexBadge: { width: 18, fontSize: 9, color: colors.neutralText },
+
+  // --- Catégorie/sous-catégorie/activité (hiérarchie de titres) ---
   catTitle: { fontSize: 10, fontWeight: 700, color: colors.navy, marginTop: 8, marginBottom: 3, paddingBottom: 2, borderBottom: `1pt solid ${colors.neutralBorder}` },
   subTitle: { fontSize: 9.5, fontWeight: 700, color: colors.navy, marginTop: 5, marginBottom: 2, paddingBottom: 2, borderBottom: `1.25pt solid ${colors.turquoise}` },
   actTitle: { fontSize: 9, fontWeight: 500, color: colors.neutralTextStrong, marginTop: 3, marginBottom: 1, marginLeft: 6 },
   ligneRisque: { marginLeft: 12, marginTop: 1, marginBottom: 1 },
+
+  // --- Annexe 1 : légende Kinney ---
+  kinneyFormule: { fontSize: 11, fontWeight: 700, color: colors.navy, textAlign: "center", marginVertical: 10 },
+  kinneyGrids: { flexDirection: "row", gap: 10 },
+  kinneyGrid: { flex: 1 },
+  kinneyGridTitle: { fontSize: 9, fontWeight: 700, color: colors.navy, marginBottom: 3, paddingBottom: 2, borderBottom: `1pt solid ${colors.neutralBorder}` },
+  kinneyGridRow: { flexDirection: "row", borderBottom: `0.5pt solid ${colors.neutralBorder}`, paddingVertical: 2.5 },
+  kinneyGridValeur: { width: 26, fontWeight: 700 },
+  kinneyNiveauRow: { flexDirection: "row", alignItems: "center", marginBottom: 4 },
+  kinneyNiveauSwatch: { width: 14, height: 10, marginRight: 6, borderRadius: 2 },
+
+  // --- Tableau d'analyse de risques (paysage) ---
+  rtHeaderGroup: { flexDirection: "row", borderTop: `1pt solid ${colors.navy}` },
+  rtHeaderSub: { flexDirection: "row", borderBottom: `1pt solid ${colors.navy}`, paddingBottom: 3, marginBottom: 2 },
+  rtHeaderCell: { fontWeight: 700, fontSize: 7, color: colors.navy, textAlign: "center", paddingHorizontal: 2 },
+  rtHeaderCellGroup: { fontWeight: 700, fontSize: 7, color: colors.navy, textAlign: "center", paddingVertical: 2, backgroundColor: colors.navyTint },
+  rtBanner: { paddingVertical: 3, marginTop: 3, marginBottom: 1 },
+  rtBannerCategorie: { backgroundColor: colors.navy },
+  rtBannerCategorieText: { color: "white", fontSize: 9, fontWeight: 700, textAlign: "center" },
+  rtBannerSousCategorie: { backgroundColor: colors.navyTint },
+  rtBannerSousCategorieText: { color: colors.navy, fontSize: 8.5, fontWeight: 700, textAlign: "center" },
+  rtBannerActivite: { backgroundColor: colors.neutralBgSubtle },
+  rtBannerActiviteText: { color: colors.neutralTextStrong, fontSize: 8, fontWeight: 500, textAlign: "center" },
+  rtRow: { flexDirection: "row", borderBottom: `0.5pt solid ${colors.neutralBorder}`, paddingVertical: 3, minHeight: 16 },
+  rtCell: { fontSize: 7, paddingHorizontal: 2 },
+  rtEvalCell: { fontSize: 7, fontWeight: 700, textAlign: "center", paddingVertical: 2, borderRadius: 2, marginHorizontal: 1 },
+
+  // --- Émargement ---
+  emargeRow: { flexDirection: "row", borderBottom: `0.5pt solid ${colors.neutralBorder}`, minHeight: 22 },
+  emargeHeaderCell: { fontWeight: 700, fontSize: 8, paddingVertical: 4, paddingHorizontal: 3 },
+  emargeCell: { fontSize: 8, paddingVertical: 4, paddingHorizontal: 3 },
 });
+
+// Largeurs de colonnes du tableau d'analyse de risques (somme = 100%).
+const RT_COLS = {
+  ref: 4,
+  sourceDanger: 15,
+  risques: 15,
+  p: 5,
+  e: 5,
+  g: 5,
+  eval: 7,
+  mesures: 22,
+  pRes: 5,
+  eRes: 5,
+  gRes: 5,
+  evalRes: 7,
+};
+
+function PageFooter({ t }) {
+  return (
+    <Text
+      style={styles.footer}
+      fixed
+      render={({ pageNumber, totalPages }) => `${t("page")} ${pageNumber} / ${totalPages}`}
+    />
+  );
+}
 
 function Section({ title, children }) {
   return (
@@ -92,134 +180,424 @@ function Table({ columns, rows }) {
   );
 }
 
-// §6 : plusieurs lignes cochées peuvent partager le même sourceDanger (une
-// évaluation Kinney distincte par conséquence possible) → un seul en-tête par
-// sourceDanger, chaque ligne du groupe détaillée (risques/mesures/remarque) dessous.
-function LignesRisquePdf({ lignesRisque, cochesById, t }) {
-  const groupes = grouperLignesParSourceDanger(lignesRisque);
-  return groupes.map((groupe) => (
-    <View key={groupe.membres[0].id} style={styles.ligneRisque}>
-      <Text style={{ fontWeight: 500 }}>{groupe.sourceDanger}</Text>
-      {groupe.membres.map((r) => (
-        <View key={r.id} style={{ marginTop: 1 }}>
-          <Text>{r.risques}</Text>
-          <Text>{r.mesuresPrevention}</Text>
-          {cochesById[r.id].remarques && (
-            <Text style={{ color: colors.neutralText }}>
-              {t("remarques_descriptifs")} {cochesById[r.id].remarques}
-            </Text>
-          )}
+function titreReglesGenerales(t, entreprise) {
+  return t("titre_regles_generales_entreprise").replace(/\[.*?\]/, entreprise?.identite?.nomAffichage || "");
+}
+
+function ContactCardPdf({ c, logoSrc }) {
+  if (!c) return null;
+  return (
+    <View style={styles.contactCard}>
+      {c.logo && <Image src={logoSrc(c.logo)} style={styles.contactLogo} />}
+      <Text style={{ fontWeight: 700 }}>{c.nom}</Text>
+      {c.adresse ? <Text>{c.adresse}</Text> : null}
+      {(c.tel || c.email) && (
+        <Text>{[c.tel, c.email].filter(Boolean).join(" · ")}</Text>
+      )}
+      {c.site_web ? <Text>{c.site_web}</Text> : null}
+    </View>
+  );
+}
+
+// ============================================================
+// Page 1 — Couverture
+// ============================================================
+function CouverturePage({ dossier, entreprise, t, logoAbsoluteUrl }) {
+  const { identification, meta, triage } = dossier;
+  const isAbrege = triage.modeChoisi === "abrege";
+  return (
+    <Page size="A4" style={styles.coverPage}>
+      <View style={styles.coverTop}>
+        {logoAbsoluteUrl && <Image src={logoAbsoluteUrl} style={styles.coverLogo} />}
+        <Text style={styles.coverTitle}>{t("reponse_au_pss")}</Text>
+        <Text style={styles.coverModeLabel}>{isAbrege ? t("repss_abrege_label") : t("repss_complet_label")}</Text>
+
+        <View style={styles.coverBox}>
+          <Text style={styles.coverBoxLabel}>{t("identification_numero_chantier")}</Text>
+          <Text style={styles.coverBoxValue}>{identification.numeroChantier || "-"}</Text>
+        </View>
+        <View style={[styles.coverBox, { marginTop: 10 }]}>
+          <Text style={styles.coverBoxLabel}>{t("nom_chantier")}</Text>
+          <Text style={styles.coverBoxValue}>{identification.nomChantier || "-"}</Text>
+        </View>
+
+        <View style={styles.coverMetaRow}>
+          <Text style={styles.coverMetaItem}>{meta.dateDerniereModif}</Text>
+          {meta.repssNumero && <Text style={styles.coverMetaItem}>{meta.repssNumero}</Text>}
+          <Text style={styles.coverMetaItem}>{entreprise?.identite?.nomAffichage}</Text>
+        </View>
+      </View>
+    </Page>
+  );
+}
+
+// ============================================================
+// Page 2 — Page d'explication
+// ============================================================
+function ExplicationPage({ t }) {
+  return (
+    <Page size="A4" style={styles.page}>
+      <Text style={styles.title}>{t("page_explication_titre")}</Text>
+      <Text style={{ marginTop: 14, lineHeight: 1.5 }}>{t("page_explication_texte")}</Text>
+      <PageFooter t={t} />
+    </Page>
+  );
+}
+
+// ============================================================
+// Page 3 — Table des matières
+// ============================================================
+// Note technique : react-pdf ne permet pas de connaître à l'avance le numéro de
+// page final d'une section dont la longueur dépend du contenu du dossier (ex.
+// l'analyse de risques peut faire 1 page comme 6) sans un rendu en deux passes.
+// Cette table des matières liste donc les sections dans l'ordre, sans numéro de
+// page — à améliorer dans une itération dédiée si un vrai renvoi de page est requis.
+function TableMatieresPage({ t, isAbrege, entreprise }) {
+  const entries = isAbrege
+    ? [t("titre_infos_chantier_usine"), t("analyse_titre_abrege"), t("emargement_label"), titreReglesGenerales(t, entreprise)]
+    : [
+        t("titre_rens_gen"),
+        t("titre_adm_chantier"),
+        t("titre_carac_chantier"),
+        t("titre_regles_speciales"),
+        `${t("annexe_label")} 1 — ${t("annexe1_legende_kinney_titre")}`,
+        t("titre_analyse_risques_chantier"),
+        t("emargement_label"),
+        `${t("annexe_label")} 2 — ${t("titre_plan_particulier")}`,
+        `${t("annexe_label")} 3 — ${t("titre_liste_engins_speciaux")}`,
+        `${t("annexe_label")} 4 — ${titreReglesGenerales(t, entreprise)}`,
+      ];
+  return (
+    <Page size="A4" style={styles.page}>
+      <Text style={styles.title}>{t("table_matieres_titre")}</Text>
+      <View style={{ marginTop: 18 }}>
+        {entries.map((label, i) => (
+          <View key={i} style={styles.tocEntry}>
+            <Text style={styles.tocIndexBadge}>{i + 1}.</Text>
+            <Text style={styles.tocLabel}>{label}</Text>
+            <View style={styles.tocDots} />
+          </View>
+        ))}
+      </View>
+      <PageFooter t={t} />
+    </Page>
+  );
+}
+
+// ============================================================
+// Annexe 1 — Légende Kinney
+// ============================================================
+function KinneyGrid({ title, rows }) {
+  return (
+    <View style={styles.kinneyGrid}>
+      <Text style={styles.kinneyGridTitle}>{title}</Text>
+      {rows.map((r) => (
+        <View key={r.texte} style={styles.kinneyGridRow}>
+          <Text style={styles.kinneyGridValeur}>{formatNombre(r.valeur)}</Text>
+          <Text style={{ flex: 1 }}>{r.texte}</Text>
         </View>
       ))}
     </View>
-  ));
+  );
 }
 
-// La hiérarchie n'a pas une profondeur fixe (certaines catégories/sous-catégories
-// sautent un ou deux niveaux intermédiaires) : à un niveau donné on cherche d'abord
-// des activités rattachées, sinon les lignes de risque cochées directement
-// rattachées à ce niveau.
-function ActivitesOuLignesPdf({ catalogue, parentId, cochesById, t }) {
-  const acts = catalogue.activites.filter((a) => a.parent === parentId);
-  if (acts.length > 0) {
-    return acts.map((act) => {
-      const lignes = catalogue.lignesRisque.filter((r) => r.parent === act.id && cochesById[r.id]);
-      return (
-        <View key={act.id} wrap={false}>
-          <Text style={styles.actTitle}>{act.fr}</Text>
-          <LignesRisquePdf lignesRisque={lignes} cochesById={cochesById} t={t} />
-        </View>
-      );
-    });
+function Annexe1KinneyPage({ catalogue, t }) {
+  const legende = legendeKinney(catalogue);
+  const niveaux = ["Acceptable", "Attention requise", "Correction nécessaire", "Mesure immédiate", "Envisager l'arrêt"];
+  return (
+    <Page size="A4" style={styles.page} wrap>
+      <Text style={styles.title}>
+        {t("annexe_label")} 1 — {t("annexe1_legende_kinney_titre")}
+      </Text>
+      <Text style={{ marginTop: 10, color: colors.neutralText, lineHeight: 1.4 }}>{t("kinney_legende_intro")}</Text>
+      <Text style={styles.kinneyFormule}>{t("kinney_formule")}</Text>
+
+      <View style={styles.kinneyGrids}>
+        <KinneyGrid title={t("kinney_probabilite")} rows={legende.probabilite} />
+        <KinneyGrid title={t("kinney_exposition")} rows={legende.exposition} />
+        <KinneyGrid title={t("kinney_gravite")} rows={legende.gravite} />
+      </View>
+
+      <View style={{ marginTop: 20 }}>
+        <Text style={styles.kinneyGridTitle}>{t("niveau_risque_label")}</Text>
+        {niveaux.map((n) => {
+          const c = couleurNiveau(n);
+          return (
+            <View key={n} style={styles.kinneyNiveauRow}>
+              <View style={[styles.kinneyNiveauSwatch, { backgroundColor: c.bg }]} />
+              <Text>{n}</Text>
+            </View>
+          );
+        })}
+      </View>
+      <PageFooter t={t} />
+    </Page>
+  );
+}
+
+// ============================================================
+// Analyse de risques — vrai tableau paysage (§12, le plus urgent)
+// ============================================================
+
+// La hiérarchie n'a pas une profondeur fixe (§6) : à chaque niveau on résout
+// d'abord des sous-catégories, sinon des activités, sinon des lignes de risque
+// directement rattachées. Construit une liste plate de "lignes de tableau"
+// (bandeaux de titre + lignes de données) dans l'ordre d'affichage.
+function construireLignesTableau(catalogue, corpsMetier, cochesById) {
+  const lignes = [];
+
+  function pousserActivitesOuRisques(parentId) {
+    const acts = catalogue.activites.filter((a) => a.parent === parentId);
+    if (acts.length > 0) {
+      for (const act of acts) {
+        lignes.push({ type: "activite", label: act.fr });
+        const risques = catalogue.lignesRisque.filter((r) => r.parent === act.id && cochesById[r.id]);
+        for (const r of risques) lignes.push({ type: "risque", ligne: r, coche: cochesById[r.id] });
+      }
+      return;
+    }
+    const risquesDirects = catalogue.lignesRisque.filter((r) => r.parent === parentId && cochesById[r.id]);
+    for (const r of risquesDirects) lignes.push({ type: "risque", ligne: r, coche: cochesById[r.id] });
   }
-  const lignesDirectes = catalogue.lignesRisque.filter((r) => r.parent === parentId && cochesById[r.id]);
-  return <LignesRisquePdf lignesRisque={lignesDirectes} cochesById={cochesById} t={t} />;
-}
 
-// §6 : la hiérarchie catégorie > sous-catégorie > activité est toujours affichée en
-// entier (même sans ligne cochée dessous) pour prouver une revue délibérée ; seules
-// les lignes de risque cochées sont détaillées.
-function AnalyseRisquesComplet({ catalogue, corpsMetier, itemsCoches, t }) {
-  const cochesById = Object.fromEntries(itemsCoches.map((i) => [i.risqueId, i]));
   const visibleCats = catalogue.categories.filter((c) => c.corps_metier === "universel" || corpsMetier.includes(c.corps_metier));
+  for (const cat of visibleCats) {
+    lignes.push({ type: "categorie", label: cat.fr });
+    const subs = catalogue.sousCategories.filter((s) => s.parent === cat.id);
+    if (subs.length > 0) {
+      for (const sub of subs) {
+        lignes.push({ type: "sousCategorie", label: sub.fr });
+        pousserActivitesOuRisques(sub.id);
+      }
+    } else {
+      pousserActivitesOuRisques(cat.id);
+    }
+  }
+  return lignes;
+}
 
+function EvalCell({ score, niveau, width }) {
+  const c = couleurNiveau(niveau);
   return (
-    <View>
-      {visibleCats.map((cat) => {
-        const subs = catalogue.sousCategories.filter((s) => s.parent === cat.id);
-        return (
-          <View key={cat.id} wrap>
-            <Text style={styles.catTitle}>{cat.fr}</Text>
-            {subs.length > 0 ? (
-              subs.map((sub) => (
-                <View key={sub.id}>
-                  <Text style={styles.subTitle}>{sub.fr}</Text>
-                  <ActivitesOuLignesPdf catalogue={catalogue} parentId={sub.id} cochesById={cochesById} t={t} />
-                </View>
-              ))
-            ) : (
-              <ActivitesOuLignesPdf catalogue={catalogue} parentId={cat.id} cochesById={cochesById} t={t} />
-            )}
-          </View>
-        );
-      })}
+    <View style={{ width: `${width}%` }}>
+      <View style={[styles.rtEvalCell, { backgroundColor: c.bg }]}>
+        <Text style={{ color: c.texte }}>{formatNombre(score)}</Text>
+      </View>
     </View>
   );
 }
 
-function AnalyseRisquesAbrege({ catalogue, itemsCoches }) {
+function RisqueDataRow({ ref: refNum, ligne, remarques, t }) {
+  return (
+    <View style={styles.rtRow} wrap={false}>
+      <Text style={[styles.rtCell, { width: `${RT_COLS.ref}%` }]}>{refNum}</Text>
+      <Text style={[styles.rtCell, { width: `${RT_COLS.sourceDanger}%` }]}>{ligne.sourceDanger}</Text>
+      <View style={{ width: `${RT_COLS.risques}%` }}>
+        <Text style={styles.rtCell}>{ligne.risques}</Text>
+        {remarques ? (
+          <Text style={[styles.rtCell, { color: colors.neutralText, fontStyle: "italic" }]}>
+            {t("remarques_descriptifs")} {remarques}
+          </Text>
+        ) : null}
+      </View>
+      <Text style={[styles.rtCell, { width: `${RT_COLS.p}%`, textAlign: "center" }]}>{formatNombre(ligne.evaluationInitiale.probabilite.valeur)}</Text>
+      <Text style={[styles.rtCell, { width: `${RT_COLS.e}%`, textAlign: "center" }]}>{formatNombre(ligne.evaluationInitiale.exposition.valeur)}</Text>
+      <Text style={[styles.rtCell, { width: `${RT_COLS.g}%`, textAlign: "center" }]}>{formatNombre(ligne.evaluationInitiale.gravite.valeur)}</Text>
+      <EvalCell score={ligne.evaluationInitiale.score} niveau={ligne.evaluationInitiale.niveau} width={RT_COLS.eval} />
+      <Text style={[styles.rtCell, { width: `${RT_COLS.mesures}%` }]}>{ligne.mesuresPrevention}</Text>
+      <Text style={[styles.rtCell, { width: `${RT_COLS.pRes}%`, textAlign: "center" }]}>{formatNombre(ligne.evaluationResiduelle.probabilite.valeur)}</Text>
+      <Text style={[styles.rtCell, { width: `${RT_COLS.eRes}%`, textAlign: "center" }]}>{formatNombre(ligne.evaluationResiduelle.exposition.valeur)}</Text>
+      <Text style={[styles.rtCell, { width: `${RT_COLS.gRes}%`, textAlign: "center" }]}>{formatNombre(ligne.evaluationResiduelle.gravite.valeur)}</Text>
+      <EvalCell score={ligne.evaluationResiduelle.score} niveau={ligne.evaluationResiduelle.niveau} width={RT_COLS.evalRes} />
+    </View>
+  );
+}
+
+function AnalyseRisquesTablePage({ catalogue, corpsMetier, itemsCoches, t }) {
+  const cochesById = Object.fromEntries(itemsCoches.map((i) => [i.risqueId, i]));
+  const lignes = construireLignesTableau(catalogue, corpsMetier, cochesById);
+  let refCounter = 0;
+
+  return (
+    <Page size="A4" orientation="landscape" style={styles.pageLandscape} wrap>
+      <Text style={{ fontSize: 12, fontWeight: 700, color: colors.navy, marginBottom: 8 }}>
+        {t("titre_analyse_risques_chantier")}
+      </Text>
+
+      <View fixed>
+        <View style={styles.rtHeaderGroup}>
+          <Text style={{ width: `${RT_COLS.ref + RT_COLS.sourceDanger + RT_COLS.risques}%` }} />
+          <Text style={[styles.rtHeaderCellGroup, { width: `${RT_COLS.p + RT_COLS.e + RT_COLS.g + RT_COLS.eval}%` }]}>
+            {t("evaluation_initiale_label")}
+          </Text>
+          <Text style={{ width: `${RT_COLS.mesures}%` }} />
+          <Text style={[styles.rtHeaderCellGroup, { width: `${RT_COLS.pRes + RT_COLS.eRes + RT_COLS.gRes + RT_COLS.evalRes}%` }]}>
+            {t("evaluation_residuelle_label")}
+          </Text>
+        </View>
+        <View style={styles.rtHeaderSub}>
+          <Text style={[styles.rtHeaderCell, { width: `${RT_COLS.ref}%` }]}>{t("risque_col_ref")}</Text>
+          <Text style={[styles.rtHeaderCell, { width: `${RT_COLS.sourceDanger}%` }]}>{t("risque_col_source_danger")}</Text>
+          <Text style={[styles.rtHeaderCell, { width: `${RT_COLS.risques}%` }]}>{t("risque_col_risques")}</Text>
+          <Text style={[styles.rtHeaderCell, { width: `${RT_COLS.p}%` }]}>{t("kinney_probabilite")}</Text>
+          <Text style={[styles.rtHeaderCell, { width: `${RT_COLS.e}%` }]}>{t("kinney_exposition")}</Text>
+          <Text style={[styles.rtHeaderCell, { width: `${RT_COLS.g}%` }]}>{t("kinney_gravite")}</Text>
+          <Text style={[styles.rtHeaderCell, { width: `${RT_COLS.eval}%` }]}>{t("evaluation_label")}</Text>
+          <Text style={[styles.rtHeaderCell, { width: `${RT_COLS.mesures}%` }]}>{t("mesures_prevention_label")}</Text>
+          <Text style={[styles.rtHeaderCell, { width: `${RT_COLS.pRes}%` }]}>{t("kinney_probabilite")}</Text>
+          <Text style={[styles.rtHeaderCell, { width: `${RT_COLS.eRes}%` }]}>{t("kinney_exposition")}</Text>
+          <Text style={[styles.rtHeaderCell, { width: `${RT_COLS.gRes}%` }]}>{t("kinney_gravite")}</Text>
+          <Text style={[styles.rtHeaderCell, { width: `${RT_COLS.evalRes}%` }]}>{t("evaluation_label")}</Text>
+        </View>
+      </View>
+
+      {lignes.map((l, i) => {
+        if (l.type === "categorie") {
+          return (
+            <View key={i} style={[styles.rtBanner, styles.rtBannerCategorie]} wrap={false}>
+              <Text style={styles.rtBannerCategorieText}>{l.label}</Text>
+            </View>
+          );
+        }
+        if (l.type === "sousCategorie") {
+          return (
+            <View key={i} style={[styles.rtBanner, styles.rtBannerSousCategorie]} wrap={false}>
+              <Text style={styles.rtBannerSousCategorieText}>{l.label}</Text>
+            </View>
+          );
+        }
+        if (l.type === "activite") {
+          return (
+            <View key={i} style={[styles.rtBanner, styles.rtBannerActivite]} wrap={false}>
+              <Text style={styles.rtBannerActiviteText}>{l.label}</Text>
+            </View>
+          );
+        }
+        refCounter += 1;
+        return <RisqueDataRow key={l.ligne.id} ref={refCounter} ligne={l.ligne} remarques={l.coche.remarques} t={t} />;
+      })}
+
+      <PageFooter t={t} />
+    </Page>
+  );
+}
+
+// ============================================================
+// Analyse de risques — format abrégé (pas de Kinney, §5)
+// ============================================================
+function AnalyseRisquesAbregePage({ catalogue, itemsCoches, t }) {
   const cochesById = Object.fromEntries(itemsCoches.map((i) => [i.risqueId, i]));
   return (
-    <View>
-      {catalogue.categories.map((cat) => {
-        const items = catalogue.risques.filter((r) => r.categorieId === cat.id && cochesById[r.id]);
-        if (items.length === 0) return null;
-        return (
-          <View key={cat.id} wrap={false}>
-            <Text style={styles.subTitle}>{cat.fr}</Text>
-            {items.map((r) => (
-              <View key={r.id} style={styles.ligneRisque}>
-                <Text style={{ fontWeight: 500 }}>{r.sourceDanger}</Text>
-                <Text>{r.mesure}</Text>
-              </View>
-            ))}
-          </View>
-        );
-      })}
-    </View>
+    <Page size="A4" style={styles.page} wrap>
+      <Text style={styles.title}>{t("analyse_titre_abrege")}</Text>
+      <View style={{ marginTop: 10 }}>
+        {catalogue.categories.map((cat) => {
+          const items = catalogue.risques.filter((r) => r.categorieId === cat.id && cochesById[r.id]);
+          if (items.length === 0) return null;
+          return (
+            <View key={cat.id} wrap={false}>
+              <Text style={styles.subTitle}>{cat.fr}</Text>
+              {items.map((r) => (
+                <View key={r.id} style={styles.ligneRisque}>
+                  <Text style={{ fontWeight: 500 }}>{r.sourceDanger}</Text>
+                  <Text>{r.mesure}</Text>
+                </View>
+              ))}
+            </View>
+          );
+        })}
+      </View>
+      <PageFooter t={t} />
+    </Page>
   );
 }
 
-export default function RepssDocument({ dossier, entreprise, catalogueComplet, catalogueAbrege, hopitaux, t, logoAbsoluteUrl }) {
-  const { identification, renseignementsGeneraux: rg, administratif: adm, caracteristiques: cc, triage, caracterisation, reglesSpecifiques: rs, documentsAccompagnants: da, infosChantierUsine: icu } = dossier;
+// ============================================================
+// Émargement
+// ============================================================
+function EmargementPage({ t }) {
+  const lignesVides = Array.from({ length: 18 });
+  return (
+    <Page size="A4" style={styles.page} wrap>
+      <Text style={styles.title}>{t("emargement_label")}</Text>
+      <View style={{ marginTop: 14 }}>
+        <View style={[styles.emargeRow, { borderBottom: `1pt solid ${colors.navy}` }]}>
+          <Text style={[styles.emargeHeaderCell, { width: "22%" }]}>{t("tbl_nom")}</Text>
+          <Text style={[styles.emargeHeaderCell, { width: "18%" }]}>{t("prenom")}</Text>
+          <Text style={[styles.emargeHeaderCell, { width: "26%" }]}>{t("entreprise")}</Text>
+          <Text style={[styles.emargeHeaderCell, { width: "14%" }]}>{t("date")}</Text>
+          <Text style={[styles.emargeHeaderCell, { width: "20%" }]}>{t("signature")}</Text>
+        </View>
+        {lignesVides.map((_, i) => (
+          <View key={i} style={styles.emargeRow}>
+            <Text style={[styles.emargeCell, { width: "22%" }]} />
+            <Text style={[styles.emargeCell, { width: "18%" }]} />
+            <Text style={[styles.emargeCell, { width: "26%" }]} />
+            <Text style={[styles.emargeCell, { width: "14%" }]} />
+            <Text style={[styles.emargeCell, { width: "20%" }]} />
+          </View>
+        ))}
+      </View>
+      <PageFooter t={t} />
+    </Page>
+  );
+}
+
+// ============================================================
+// Document principal
+// ============================================================
+export default function RepssDocument({ dossier, entreprise, catalogueComplet, catalogueAbrege, hopitaux, t, logoAbsoluteUrl, logosBaseUrl }) {
+  const {
+    renseignementsGeneraux: rg,
+    administratif: adm,
+    triage,
+    caracterisation,
+    reglesSpecifiques: rs,
+    documentsAccompagnants: da,
+    infosChantierUsine: icu,
+    historiqueVersions,
+  } = dossier;
   const isAbrege = triage.modeChoisi === "abrege";
 
   const hopitauxSelectionnes = rs.hopitalPlusProcheIds.map((id) => hopitaux.find((h) => h.id === id)).filter(Boolean);
   const contacts = entreprise?.contactsReference || {};
+  const icones = entreprise?.iconesUrgence || {};
+  const logoSrc = (filename) => (filename ? `${logosBaseUrl}${filename}` : null);
+
+  const responsablesFixes = entreprise?.rolesApprobation?.fixes || [];
+  const responsablesVariables = ROLES_ADMINISTRATION.filter((role) => adm.responsables[role]).map((role) => ({
+    fonction: t(role),
+    nom: adm.responsables[role],
+  }));
 
   return (
     <Document>
-      <Page size="A4" style={styles.page} wrap>
-        <View style={styles.headerRow}>
-          {logoAbsoluteUrl && <Image src={logoAbsoluteUrl} style={styles.logo} />}
-          <View style={{ alignItems: "flex-end" }}>
-            <Text style={styles.title}>{t("reponse_au_pss")}</Text>
-            <Text style={styles.subtitle}>
-              {identification.numeroChantier} - {identification.nomChantier}
-            </Text>
-            <Text style={styles.subtitle}>
-              {isAbrege ? t("repss_abrege_label") : t("repss_complet_label")} · {dossier.meta.dateDerniereModif}
-              {dossier.meta.repssNumero ? ` · ${dossier.meta.repssNumero}` : ""}
-            </Text>
-          </View>
-        </View>
+      <CouverturePage dossier={dossier} entreprise={entreprise} t={t} logoAbsoluteUrl={logoAbsoluteUrl} />
+      <ExplicationPage t={t} />
+      <TableMatieresPage t={t} isAbrege={isAbrege} entreprise={entreprise} />
 
+      <Page size="A4" style={styles.page} wrap>
         {!isAbrege && (
           <Section title={t("titre_rens_gen")}>
             <KV label={t("client")} value={rg.client} />
             <KV label={t("bureau_architecture")} value={rg.bureauArchitecture} />
             <KV label={t("coordinateur_securite")} value={rg.coordinateurSecurite} />
             <KV label={t("adresse_chantier")} value={rg.adresseChantier} />
+
+            <Text style={[styles.sectionTitle, { marginTop: 10 }]}>{t("contacts_reference_titre")}</Text>
+            <View style={styles.logosRow}>
+              {Object.entries(contacts)
+                .filter(([key]) => !["controleTechnique", "dgBienEtre"].includes(key))
+                .map(([key, c]) => (
+                  <ContactCardPdf key={key} c={c} logoSrc={logoSrc} />
+                ))}
+              {Object.entries(contacts.controleTechnique || {}).map(([key, c]) => (
+                <ContactCardPdf key={key} c={c} logoSrc={logoSrc} />
+              ))}
+              {Object.entries(contacts.dgBienEtre || {}).map(([key, c]) => (
+                <ContactCardPdf key={key} c={c} logoSrc={logoSrc} />
+              ))}
+            </View>
           </Section>
         )}
 
@@ -227,34 +605,59 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
           <Section title={t("titre_adm_chantier")}>
             <KV label={t("date_debut_travaux")} value={adm.dateDebutTravaux} />
             <KV label={t("date_fin_travaux")} value={adm.dateFinTravauxEstimee} />
-            {(entreprise?.rolesApprobation?.fixes || []).map((r) => (
-              <KV key={r.fonction} label={r.fonction} value={r.nom} />
-            ))}
-            {ROLES_ADMINISTRATION.map((role) => adm.responsables[role] && <KV key={role} label={t(role)} value={adm.responsables[role]} />)}
+
+            <Text style={{ fontWeight: 700, marginTop: 6, marginBottom: 3 }}>{t("resp_approbation")}</Text>
             <Table
               columns={[
-                { key: "societe", label: t("societe") },
-                { key: "natureTravaux", label: t("nature_travaux"), flex: 2 },
-                { key: "responsable", label: t("responsable") },
+                { key: "fonction", label: t("fonction"), flex: 2 },
+                { key: "nom", label: t("tbl_nom"), flex: 1.5 },
+                { key: "email", label: t("tbl_email"), flex: 1.5 },
+                { key: "tel", label: t("tbl_tel"), flex: 1 },
               ]}
-              rows={da.sousTraitants}
+              rows={[
+                ...responsablesFixes.map((r) => ({ fonction: r.fonction, nom: r.nom, email: r.email, tel: r.tel })),
+                ...responsablesVariables,
+              ]}
             />
+
+            {historiqueVersions?.length > 0 && (
+              <>
+                <Text style={{ fontWeight: 700, marginTop: 8, marginBottom: 3 }}>{t("label_version")}</Text>
+                <Table
+                  columns={[
+                    { key: "version", label: t("label_version"), flex: 1 },
+                    { key: "date", label: t("date"), flex: 1 },
+                    { key: "motif", label: t("motif_nouvelle_version"), flex: 3 },
+                  ]}
+                  rows={historiqueVersions}
+                />
+              </>
+            )}
+
+            {da.sousTraitants?.length > 0 && (
+              <>
+                <Text style={{ fontWeight: 700, marginTop: 8, marginBottom: 3 }}>{t("titre_liste_sous_traitants")}</Text>
+                <Table
+                  columns={[
+                    { key: "societe", label: t("societe") },
+                    { key: "natureTravaux", label: t("nature_travaux"), flex: 2 },
+                    { key: "responsable", label: t("responsable") },
+                  ]}
+                  rows={da.sousTraitants}
+                />
+              </>
+            )}
           </Section>
         )}
 
         {!isAbrege && (
           <Section title={t("titre_carac_chantier")}>
-            <TriStateRow label={t("refectoire")} value={cc.refectoire} t={t} />
-            <TriStateRow label={t("wc")} value={cc.wc} t={t} />
-            <TriStateRow label={t("stockage")} value={cc.stockage} t={t} />
-            <TriStateRow label={t("zone_circulation")} value={cc.zoneCirculation} t={t} />
-            <TriStateRow label={t("zone_travail")} value={cc.zoneTravail} t={t} />
-            <TriStateRow label={t("electricite_alim_terre")} value={cc.electricite} t={t} />
-            <TriStateRow label={t("eau")} value={cc.eau} t={t} />
-            <TriStateRow label={t("garde_corps")} value={cc.gardeCorps} t={t} />
-            <TriStateRow label={t("ligne_de_vie")} value={cc.ligneDeVie} t={t} />
-            <TriStateRow label={t("filet_retention")} value={cc.filetRetention} t={t} />
-            <KV label={t("particularites_acces")} value={cc.particularitesAcces} />
+            <Bullets
+              items={[
+                { label: t("carac_chantier_plan_installation"), value: true },
+                { label: t("carac_chantier_point_rassemblement"), value: true },
+              ]}
+            />
           </Section>
         )}
 
@@ -279,34 +682,45 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
           </Section>
         )}
 
-        <Section title={t("titre_analyse_risques_chantier")}>
-          {isAbrege ? (
-            <AnalyseRisquesAbrege catalogue={catalogueAbrege} itemsCoches={dossier.analyseRisques.itemsCoches} />
-          ) : (
-            <AnalyseRisquesComplet
-              catalogue={catalogueComplet}
-              corpsMetier={caracterisation.corpsMetier}
-              itemsCoches={dossier.analyseRisques.itemsCoches}
-              t={t}
-            />
-          )}
-        </Section>
-
         {!isAbrege && (
           <Section title={t("titre_regles_speciales")}>
-            <KV label={t("service_incendie")} value="112" />
-            <KV label={`${t("service_incendie")} (${t("n_interne_placeholder")})`} value={rs.serviceIncendieInterne} />
-            <KV label={t("centre_antipoison_label")} value="070/245.245" />
-            <KV label={t("police_label")} value={contacts.police?.tel || "101"} />
-            <KV label={`${t("police_label")}, ${t("police_zone_proche")}`} value={contacts.police?.site_web} />
-            {hopitauxSelectionnes.map((h) => (
-              <KV key={h.id} label={t("hopital_plus_proche")} value={`${h.nom_hopital}${h.nom_site ? " (" + h.nom_site + ")" : ""}, ${h.adresse}, ${h.code_postal} ${h.commune}`} />
-            ))}
-          </Section>
-        )}
+            <Text style={{ fontWeight: 700, marginBottom: 3 }}>{t("titre_rappel_accident")}</Text>
+            <Text style={{ marginBottom: 8, lineHeight: 1.4 }}>{t("titre_appel_secours")}</Text>
 
-        {!isAbrege && (
-          <Section title={t("titre_derogations_pss")}>
+            <View style={styles.logosRow}>
+              <View style={styles.contactCard}>
+                {icones.pompier?.logo && <Image src={logoSrc(icones.pompier.logo)} style={styles.contactLogo} />}
+                <Text style={{ fontWeight: 700 }}>{t("service_incendie")}</Text>
+                <Text>112</Text>
+                {rs.serviceIncendieInterne && <Text>{rs.serviceIncendieInterne}</Text>}
+              </View>
+              <View style={styles.contactCard}>
+                {icones.antipoison?.logo && <Image src={logoSrc(icones.antipoison.logo)} style={styles.contactLogo} />}
+                <Text style={{ fontWeight: 700 }}>{t("centre_antipoison_label")}</Text>
+                <Text>070/245.245</Text>
+              </View>
+              <View style={styles.contactCard}>
+                {icones.police?.logo && <Image src={logoSrc(icones.police.logo)} style={styles.contactLogo} />}
+                <Text style={{ fontWeight: 700 }}>{t("police_label")}</Text>
+                <Text>{contacts.police?.tel || "101"}</Text>
+                {contacts.police?.site_web && <Text>{contacts.police.site_web}</Text>}
+              </View>
+              {hopitauxSelectionnes.map((h) => (
+                <View key={h.id} style={styles.contactCard}>
+                  {icones.hopital?.logo && <Image src={logoSrc(icones.hopital.logo)} style={styles.contactLogo} />}
+                  <Text style={{ fontWeight: 700 }}>{t("hopital_plus_proche")}</Text>
+                  <Text>
+                    {h.nom_hopital}
+                    {h.nom_site ? ` (${h.nom_site})` : ""}
+                  </Text>
+                  <Text>
+                    {h.adresse}, {h.code_postal} {h.commune}
+                  </Text>
+                </View>
+              ))}
+            </View>
+
+            <Text style={[styles.sectionTitle, { marginTop: 10 }]}>{t("titre_derogations_pss")}</Text>
             {rs.derogations.neant ? (
               <Text>{t("neant")}</Text>
             ) : (
@@ -323,21 +737,6 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
           </Section>
         )}
 
-        {!isAbrege && (da.planParticulier.notes || da.planParticulier.fichier || da.listeEnginsSpeciaux.length > 0) && (
-          <Section title={t("titre_plan_particulier")}>
-            <KV label={t("fichier_joint")} value={da.planParticulier.fichier} />
-            <Text>{da.planParticulier.notes}</Text>
-            <Table
-              columns={[
-                { key: "typeEngin", label: t("type_engin") },
-                { key: "phase", label: t("phase") },
-                { key: "nombre", label: t("nombre") },
-              ]}
-              rows={da.listeEnginsSpeciaux}
-            />
-          </Section>
-        )}
-
         {dossier.demandesMoadr.length > 0 && (
           <Section title={t("moadr_section_titre_pdf")}>
             {dossier.demandesMoadr.map((m) => (
@@ -348,47 +747,51 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
             ))}
           </Section>
         )}
+        <PageFooter t={t} />
       </Page>
 
-      <Page size="A4" style={styles.page} wrap>
-        <Section title={t("titre_regles_generales_entreprise").replace(/\[.*?\]/, entreprise?.identite?.nomAffichage || "")}>
-          <Text>{entreprise?.reglesGeneralesAnnexe4?.texte}</Text>
-        </Section>
+      {!isAbrege && <Annexe1KinneyPage catalogue={catalogueComplet} t={t} />}
 
-        <Section title={t("contacts_reference_titre")}>
-          <View style={styles.logosRow}>
-            {Object.entries(contacts)
-              .filter(([key]) => !["controleTechnique", "dgBienEtre"].includes(key))
-              .map(([key, c]) => (
-                <View key={key} style={styles.contactCard}>
-                  <Text style={{ fontWeight: 700 }}>{c.nom}</Text>
-                  <Text>{c.adresse}</Text>
-                  <Text>
-                    {c.tel} {c.email}
-                  </Text>
-                  <Text>{c.site_web}</Text>
-                </View>
-              ))}
-            {Object.entries(contacts.controleTechnique || {}).map(([key, c]) => (
-              <View key={key} style={styles.contactCard}>
-                <Text style={{ fontWeight: 700 }}>{c.nom}</Text>
-                <Text>{c.adresse}</Text>
-                <Text>
-                  {c.tel} {c.email}
-                </Text>
-              </View>
-            ))}
-            {Object.entries(contacts.dgBienEtre || {}).map(([key, c]) => (
-              <View key={key} style={styles.contactCard}>
-                <Text style={{ fontWeight: 700 }}>{c.nom}</Text>
-                <Text>{c.adresse}</Text>
-                <Text>
-                  {c.tel} {c.email}
-                </Text>
-              </View>
-            ))}
-          </View>
+      {isAbrege ? (
+        <AnalyseRisquesAbregePage catalogue={catalogueAbrege} itemsCoches={dossier.analyseRisques.itemsCoches} t={t} />
+      ) : (
+        <AnalyseRisquesTablePage
+          catalogue={catalogueComplet}
+          corpsMetier={caracterisation.corpsMetier}
+          itemsCoches={dossier.analyseRisques.itemsCoches}
+          t={t}
+        />
+      )}
+
+      <EmargementPage t={t} />
+
+      {!isAbrege && (da.planParticulier.notes || da.planParticulier.fichier || da.listeEnginsSpeciaux.length > 0) && (
+        <Page size="A4" style={styles.page} wrap>
+          <Section title={`${t("annexe_label")} 2 — ${t("titre_plan_particulier")}`}>
+            <KV label={t("fichier_joint")} value={da.planParticulier.fichier} />
+            <Text>{da.planParticulier.notes}</Text>
+          </Section>
+          {da.listeEnginsSpeciaux.length > 0 && (
+            <Section title={`${t("annexe_label")} 3 — ${t("titre_liste_engins_speciaux")}`}>
+              <Table
+                columns={[
+                  { key: "typeEngin", label: t("type_engin") },
+                  { key: "phase", label: t("phase") },
+                  { key: "nombre", label: t("nombre") },
+                ]}
+                rows={da.listeEnginsSpeciaux}
+              />
+            </Section>
+          )}
+          <PageFooter t={t} />
+        </Page>
+      )}
+
+      <Page size="A4" style={styles.page} wrap>
+        <Section title={`${t("annexe_label")} 4 — ${titreReglesGenerales(t, entreprise)}`}>
+          <Text style={{ lineHeight: 1.4 }}>{entreprise?.reglesGeneralesAnnexe4?.texte}</Text>
         </Section>
+        <PageFooter t={t} />
       </Page>
     </Document>
   );

@@ -286,7 +286,27 @@
     "moadr_section_titre_pdf": "MOADR-aanvragen in behandeling",
     "hopital_code_postal_placeholder": "Postcode van de bouwplaats",
     "hopital_saisis_code_postal": "Voer de postcode van de bouwplaats in voor een automatische suggestie.",
-    "hopital_ajouter_manuellement": "Handmatig een ander ziekenhuis toevoegen…"
+    "hopital_ajouter_manuellement": "Handmatig een ander ziekenhuis toevoegen…",
+    "page_explication_titre": "Over dit document",
+    "page_explication_texte": "Dit document vormt het antwoord van het bedrijf op het Veiligheids- en Gezondheidsplan (V&G-plan) opgesteld door de veiligheidscoördinator voor deze werf. Het beschrijft de organisatie, de preventiemaatregelen en de geïdentificeerde risico's voor de werken uitgevoerd door vma sud. Het wordt automatisch gegenereerd op basis van de door de projectleider ingevoerde gegevens en moet in de SharePoint-map van de werf worden geplaatst.",
+    "table_matieres_titre": "Inhoudsopgave",
+    "carac_chantier_plan_installation": "Algemeen inrichtingsplan bij te voegen.",
+    "carac_chantier_point_rassemblement": "Verzamelpunt geïdentificeerd.",
+    "annexe_label": "Bijlage",
+    "annexe1_legende_kinney_titre": "Kinney-legende",
+    "kinney_formule": "R = Waarschijnlijkheid × Blootstelling × Ernst",
+    "kinney_legende_intro": "De Kinney-methode beoordeelt elk risico aan de hand van het product van drie factoren. De bekomen score bepaalt het risiconiveau en de te nemen preventiemaatregelen.",
+    "evaluation_label": "Beoordeling",
+    "evaluation_initiale_label": "Initiële beoordeling",
+    "evaluation_residuelle_label": "Residuele beoordeling (na maatregelen)",
+    "mesures_prevention_label": "Preventiemaatregelen",
+    "risque_col_ref": "Ref.",
+    "risque_col_source_danger": "Gevarenbronnen of afwijking",
+    "risque_col_risques": "Risico's",
+    "tbl_nom": "Naam",
+    "tbl_email": "E-mail",
+    "tbl_tel": "Tel.",
+    "niveau_risque_label": "Risiconiveau"
   },
   "risques": []
 }

@@ -268,15 +268,6 @@ délibérée plutôt qu'un copier-coller. Reconstruire cette hiérarchie à la g
 parcourant `catalogue_risques.json` filtré par `corpsMetier`, en ne détaillant
 (source/risques/Kinney/mesures) que les lignes présentes dans `itemsCoches`.
 
-**Étiquette de groupe pour « Mesures générales »** : cette catégorie n'a pas de
-valeur `groupe` dans les données (contrairement à « Exécution générale » et
-« Risques spécifiques métiers »), car elle n'est jamais partagée avec d'autres
-catégories. Pour la symétrie visuelle (toutes les catégories ont une étiquette de
-groupe au-dessus, aucune n'est orpheline en haut de liste), le composant affiche
-quand même une étiquette dans ce cas précis, à base du nom de la catégorie
-elle-même — une règle d'affichage générique (première catégorie sans `groupe`),
-pas une valeur codée en dur pour « Mesures générales ».
-
 **Typographie en cascade** (déjà dans `repss_prototype.jsx`, à reprendre, plus le
 niveau de regroupement `groupe` à ajouter au-dessus — voir §12 palette) :
 sous-catégorie en gras bleu marine avec bordure basse, activité en poids moyen
@@ -333,36 +324,13 @@ se limiter à remplacer ces fichiers, jamais toucher au code. Couleurs VMA Sud :
 - Barre latérale de navigation : les étapes déjà complétées sont cliquables pour y
   retourner directement (pas seulement via le bouton Retour) ; les étapes pas encore
   atteintes restent désactivées.
-- **Base plus généreuse** : desktop uniquement, pas de contrainte mobile → taille de
-  police de base et espacements (padding/gap) légèrement augmentés partout par
-  rapport aux valeurs par défaut de Tailwind. Concrètement, `html { font-size }` est
-  relevé dans `index.css` (les échelles de taille de texte et d'espacement de
-  Tailwind étant en rem, un seul réglage grossit tout uniformément), en plus de
-  paddings/gaps explicitement élargis sur les cartes, boutons et listes.
-- **3 niveaux typographiques cohérents**, partagés par tout le wizard (composant
-  `ScreenTitle.jsx`, réutilisé sur chaque écran) :
-  1. *Titre d'écran* : encadré (carte avec fond `neutralBgSubtle`), navy, gras, le
-     plus grand des trois — couleur d'accent dédiée à ce rôle, jamais réutilisée pour
-     un sous-titre.
-  2. *Sous-titre de section* (ex. « Documents automatiques », « Contacts d'urgence ») :
-     bleu, semi-gras, taille intermédiaire.
-  3. *Texte normal* : neutre, taille de base.
-- **Toute zone encadrée** (carte avec bordure) a un fond `neutralBgSubtle` (légèrement
-  plus soutenu que le blanc du contenu d'écran) pour se détacher visuellement — pas
-  seulement une bordure fine. Exceptions volontaires : les petites zones imbriquées
-  *à l'intérieur* d'une carte déjà teintée (ex. lignes d'hôpitaux sélectionnés dans
-  « Contacts d'urgence », items MOADR) restent blanches pour créer un effet de
-  calque plutôt que d'empiler deux teintes identiques.
 
 ## 11. Palette de couleurs
 
 Le premier jet (tout en bleu-gris clair dégradé) manque de hiérarchie et de vie.
 Système à appliquer :
 - **Navy `#0B3040`** réservé à l'identité : boutons principaux, en-têtes de catégorie,
-  navigation active. Jamais comme fond général/par défaut. Les bandeaux de catégorie
-  de l'analyse de risques (§6) sont du **texte navy sur fond pâle** (`navyTint`), pas
-  un aplat navy plein : répété 11 fois, l'aplat plein n'est plus un signal et écrase
-  le contraste disponible pour les niveaux sous-catégorie/activité en dessous.
+  navigation active. Jamais comme fond général/par défaut.
 - **Bleu `#156082`** pour les éléments interactifs (liens, accents secondaires).
 - **Gris neutre chaud** (pas teinté bleu) pour tous les fonds/bordures structurels
   (cartes, séparateurs, fonds de page).
@@ -374,7 +342,74 @@ Système à appliquer :
   erreur bloquante uniquement.
 - Éviter les dégradés en dehors d'un éventuel écran d'accueil ; aplats francs ailleurs.
 
-## 12. Points encore ouverts (à trancher, pas encore décidés)
+## 12. Génération du document PDF (jamais spécifié jusqu'ici — cahier des charges)
+
+Le PDF généré doit reprendre la structure du document de référence existant
+(`E_F_04_VMA_RePSS`), pas être improvisé. Ordre des pages, mis à jour avec toutes
+les décisions prises dans ce document :
+
+1. **Couverture** : logo entreprise, nom du chantier et numéro de chantier en
+   encadrés de couleur, photo/illustration si fournie. Pas de case
+   Soumission/Exécution (notion pas retenue dans le nouveau système).
+2. **Page d'explication** : texte fixe court sur la portée du document (dans
+   `UI_Textes`, à compléter si absent).
+3. **Table des matières** avec numéros de page.
+4. **Renseignements Généraux** : tables Client/Maître d'ouvrage/Maître d'œuvre,
+   Bureau d'architecture, Coordinateur Sécurité (variables), puis les contacts de
+   référence (Assureur Loi, CNAC-Constructiv, Volta, CESI-SEPP, Service Externe de
+   Contrôle Technique, DG Bien-être) lus depuis `entreprise.json`, **avec leur logo**
+   (`contactsReference.*.logo`), pas juste le texte.
+5. **Administration du chantier** : table Responsable d'approbation (colonnes
+   Fonction/Nom/Email/Tel — pas de Paraphe/Date, supprimées §7), dates début/fin
+   travaux, historique de versions (`historiqueVersions`, pas de table
+   Révision/Modification séparée), liste des sous-traitants.
+6. **Caractéristiques du chantier** : réduit aux 2 mentions fixes décidées (plan
+   général d'installation à joindre, point de rassemblement identifié) — pas de
+   tableau de cases à cocher comme dans l'ancien document.
+7. **Règles spécifiques au chantier** : texte complet "Rappel des règles en cas
+   d'accident" + "Lors de l'appel aux services de secours" (dans `UI_Textes`,
+   19 lignes ajoutées), table contacts d'urgence avec logos (`iconesUrgence`),
+   Dérogations au PSS (sans signature).
+8. **Annexe 1 — Légende Kinney** : reproduire la grille de référence (probabilité/
+   exposition/gravité, formule R = P×E×G, seuils de criticité colorés) — contenu
+   fixe, déjà dans `UI_Textes` (grille Kinney) mais jamais mis en page.
+9. **Analyse de risques spécifique au chantier** : voir structure de tableau
+   ci-dessous — **la partie la plus visible actuellement absente**.
+10. **Émargement** : table Nom/Prénom/Entreprise/Date/Signature.
+11. **Annexe 2 — Plan particulier** : zone d'insertion du fichier uploadé par le PM.
+12. **Annexe 3 — Liste des engins spéciaux** : table Type/Phase/Nombre.
+13. **Annexe 4 — Règles générales VMA Sud** : texte complet depuis
+    `entreprise.json.reglesGeneralesAnnexe4.texte`.
+
+### Structure du tableau d'analyse de risques (point le plus critique)
+
+Ce n'est **pas une liste de titres à plat** (ce que produit la version actuelle) —
+c'est un **vrai tableau, en orientation paysage**, avec ces colonnes, dans cet
+ordre : `Réf.` | `Sources de danger ou déviation` | `Risques` | `Probabilité` /
+`Exposition` / `Gravité` / `Évaluation` (initiale) | `Mesures de prévention` |
+`Probabilité` / `Exposition` / `Gravité` / `Évaluation` (résiduelle, après mesures).
+
+- Lignes de catégorie/sous-catégorie/activité : bandeau plein largeur, texte
+  centré, pas de contenu dans les autres colonnes (comme aujourd'hui, mais dans un
+  vrai tableau plutôt qu'à plat).
+- Lignes de risque (ou groupe, voir §6) : chaque colonne remplie depuis
+  `catalogue_risques.json` (`sourceDanger`, `risques`, `evaluationInitiale.*`,
+  `mesuresPrevention`, `evaluationResiduelle.*`).
+- **Couleur de la cellule `Évaluation`** dérivée de `eval_ini_niveau` /
+  `eval_res_niveau`, déjà présents dans les données — pas besoin de recalculer :
+  - contient "arrêt" → rouge foncé
+  - contient "immédiate" → rouge
+  - contient "correction" → orange
+  - contient "attention" → jaune
+  - contient "acceptable" → vert
+- Respecter les règles déjà posées ailleurs : titres toujours visibles même sans
+  ligne cochée dessous (§6), granularité activité/risque selon `granularite` (§6).
+
+Cette section est un vrai chantier à part entière, probablement à traiter comme
+une tâche dédiée plutôt qu'un ajustement — le template de rendu PDF n'existe pas
+encore vraiment, il est à construire depuis cette spec.
+
+## 13. Points encore ouverts (à trancher, pas encore décidés)
 
 - Bureau d'architecture / B.E. Tech. Spéciales / Coordinateur Sécurité : traités
   comme variables par chantier par hypothèse, jamais confirmés formellement par Ced.
