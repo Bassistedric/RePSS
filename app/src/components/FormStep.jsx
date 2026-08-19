@@ -1,8 +1,9 @@
 import { Plus, Trash2 } from "lucide-react";
 import { getPath, setPath } from "../lib/paths";
 import { colors } from "../lib/colors";
+import ScreenTitle from "./ScreenTitle";
 
-const INPUT_CLASS = "w-full border rounded px-3 py-2 text-sm";
+const INPUT_CLASS = "w-full border rounded px-3.5 py-2.5 text-sm";
 const INPUT_STYLE = { borderColor: colors.neutralBorderStrong };
 
 function TableField({ path, columns, value, onChange, t }) {
@@ -22,11 +23,11 @@ function TableField({ path, columns, value, onChange, t }) {
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full text-sm border-collapse mb-2">
+      <table className="w-full text-sm border-collapse mb-3">
         <thead>
           <tr>
             {columns.map((c) => (
-              <th key={c.key} className="text-left text-xs font-medium pb-1.5 pr-2" style={{ color: colors.neutralText }}>
+              <th key={c.key} className="text-left text-sm font-medium pb-2 pr-3" style={{ color: colors.neutralText }}>
                 {t(c.labelKey)}
               </th>
             ))}
@@ -37,7 +38,7 @@ function TableField({ path, columns, value, onChange, t }) {
           {rows.map((row, i) => (
             <tr key={i}>
               {columns.map((c) => (
-                <td key={c.key} className="pr-2 pb-2">
+                <td key={c.key} className="pr-3 pb-3">
                   <input
                     type={c.type === "number" ? "number" : c.type === "date" ? "date" : "text"}
                     className={INPUT_CLASS}
@@ -47,7 +48,7 @@ function TableField({ path, columns, value, onChange, t }) {
                   />
                 </td>
               ))}
-              <td className="pb-2">
+              <td className="pb-3">
                 <button type="button" onClick={() => removeRow(i)} style={{ color: colors.neutralText }}>
                   <Trash2 size={16} />
                 </button>
@@ -59,7 +60,7 @@ function TableField({ path, columns, value, onChange, t }) {
       <button
         type="button"
         onClick={addRow}
-        className="flex items-center gap-1 text-xs"
+        className="flex items-center gap-1.5 text-sm"
         style={{ color: colors.blue }}
       >
         <Plus size={14} /> {t("bouton_ajouter_ligne")}
@@ -84,7 +85,7 @@ function TriStateField({ path, value, onChange, t }) {
             key={o.value}
             type="button"
             onClick={() => onChange(path, active ? null : o.value)}
-            className="px-3 py-1.5 text-xs"
+            className="px-3.5 py-2 text-sm"
             style={{
               background: active ? colors.blue : "white",
               color: active ? "white" : colors.neutralText,
@@ -108,7 +109,7 @@ function Field({ field, dossier, onChange, t }) {
 
   if (field.type === "boolean") {
     return (
-      <label className="flex items-center gap-2 text-sm py-1">
+      <label className="flex items-center gap-2 text-sm py-1.5">
         <input type="checkbox" checked={!!value} onChange={(e) => onChange(field.path, e.target.checked)} />
         {field.labelKey ? t(field.labelKey) : field.label}
       </label>
@@ -117,7 +118,7 @@ function Field({ field, dossier, onChange, t }) {
 
   if (field.type === "tristate") {
     return (
-      <div className="flex flex-col gap-1 py-1">
+      <div className="flex flex-col gap-1.5 py-1.5">
         <span className="text-sm">{field.labelKey ? t(field.labelKey) : field.label}</span>
         <TriStateField path={field.path} value={value} onChange={onChange} t={t} />
       </div>
@@ -127,7 +128,7 @@ function Field({ field, dossier, onChange, t }) {
   if (field.type === "readonly") {
     return (
       <div>
-        {field.labelKey && <label className="text-sm font-medium block mb-1" style={{ color: colors.neutralText }}>{t(field.labelKey)}</label>}
+        {field.labelKey && <label className="text-sm font-medium block mb-1.5" style={{ color: colors.neutralText }}>{t(field.labelKey)}</label>}
         <p className="text-sm" style={{ color: colors.neutralTextStrong }}>{value || t("non_renseigne")}</p>
       </div>
     );
@@ -137,7 +138,7 @@ function Field({ field, dossier, onChange, t }) {
 
   return (
     <div>
-      {label && <label className="text-sm font-medium block mb-1.5">{label}</label>}
+      {label && <label className="text-sm font-medium block mb-2">{label}</label>}
       {field.type === "textarea" ? (
         <textarea
           className={INPUT_CLASS}
@@ -159,27 +160,30 @@ function Field({ field, dossier, onChange, t }) {
   );
 }
 
-export default function FormStep({ schema, dossier, setDossier, t, title }) {
+// `nested` : quand ce FormStep est lui-même à l'intérieur d'une autre carte déjà
+// teintée (ex. dérogations PSS dans Infos admin.), ses groupes restent blancs pour
+// rester lisibles sur ce fond au lieu d'empiler deux teintes identiques.
+export default function FormStep({ schema, dossier, setDossier, t, title, nested }) {
   function onChange(path, value) {
     setDossier((prev) => setPath(prev, path, value));
   }
 
   return (
     <div>
-      {title && (
-        <h3 className="text-lg font-semibold mb-4" style={{ color: colors.navy }}>
-          {title}
-        </h3>
-      )}
-      <div className="flex flex-col gap-6">
+      {title && <ScreenTitle title={title} />}
+      <div className="flex flex-col gap-7">
         {schema.map((group, gi) => (
-          <div key={gi} className="border rounded-lg p-4" style={{ borderColor: colors.neutralBorder }}>
+          <div
+            key={gi}
+            className="border rounded-lg p-5"
+            style={{ borderColor: colors.neutralBorder, background: nested ? "white" : colors.neutralBgSubtle }}
+          >
             {group.titleKey && (
-              <p className="text-sm font-semibold mb-3" style={{ color: colors.blue }}>
+              <p className="text-base font-semibold mb-4" style={{ color: colors.blue }}>
                 {t(group.titleKey)}
               </p>
             )}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4">
               {group.fields.map((field) => {
                 const isWide = field.type === "table" || field.type === "textarea";
                 return (

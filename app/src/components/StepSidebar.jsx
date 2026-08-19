@@ -13,14 +13,14 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
     numeroChantier && nomChantier ? `${numeroChantier} - ${nomChantier}` : numeroChantier || nomChantier || "Chantier";
 
   return (
-    <div className="w-56 shrink-0 border-r p-4 flex flex-col" style={{ background: colors.neutralBgSubtle, borderColor: colors.neutralBorder }}>
-      <p className="text-xs mb-4 truncate" style={{ color: colors.neutralText }}>
+    <div className="w-64 shrink-0 border-r p-5 flex flex-col" style={{ background: colors.neutralBgSubtle, borderColor: colors.neutralBorder }}>
+      <p className="text-sm mb-5 truncate" style={{ color: colors.neutralText }}>
         {chantierLabel}
       </p>
-      <div className="flex flex-col gap-1 flex-1 overflow-y-auto">
+      <div className="flex flex-col gap-1.5 flex-1 overflow-y-auto">
         <button
           onClick={() => onNavigate("accueil")}
-          className="flex items-center gap-2 px-2 py-2 rounded text-sm text-left mb-1"
+          className="flex items-center gap-2 px-2.5 py-2 rounded text-sm text-left mb-1"
           style={{ color: colors.neutralText }}
         >
           <Home size={16} />
@@ -37,7 +37,7 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
               <button
                 onClick={() => reachable && onNavigate(s.key)}
                 disabled={!reachable}
-                className="w-full flex items-center gap-2 px-2 py-2 rounded text-sm text-left"
+                className="w-full flex items-center gap-2 px-2.5 py-2 rounded text-sm text-left"
                 style={{
                   cursor: reachable ? "pointer" : "default",
                   ...(active
@@ -51,7 +51,7 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
               {/* Sous-menu dépliable : seule "Infos admin." a des sous-sections, et
                   uniquement affiché tant que cette étape est active. */}
               {s.key === "infosAdmin" && active && (
-                <div className="flex flex-col gap-0.5 mt-0.5 mb-1 ml-3 pl-2 border-l" style={{ borderColor: colors.neutralBorderStrong }}>
+                <div className="flex flex-col gap-1 mt-1 mb-1.5 ml-3 pl-2.5 border-l" style={{ borderColor: colors.neutralBorderStrong }}>
                   {INFOS_ADMIN_TABS.map((tb) => {
                     const tabActive = infosAdminTab === tb.key;
                     const complete = tb.isComplete(dossier);
@@ -59,7 +59,7 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
                       <button
                         key={tb.key}
                         onClick={() => setInfosAdminTab(tb.key)}
-                        className="flex items-center gap-2 px-2 py-1.5 rounded text-xs text-left"
+                        className="flex items-center gap-2 px-2.5 py-1.5 rounded text-xs text-left"
                         style={
                           tabActive
                             ? { background: colors.navyTint, color: colors.navy, fontWeight: 500 }
@@ -82,11 +82,11 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
         })}
       </div>
 
-      <div className="pt-3 border-t" style={{ borderColor: colors.neutralBorder }}>
+      <div className="pt-4 border-t" style={{ borderColor: colors.neutralBorder }}>
         <button
           onClick={onSave}
           disabled={!numeroChantier && !nomChantier}
-          className="w-full flex items-center justify-center gap-2 text-xs px-3 py-2 rounded border disabled:opacity-40"
+          className="w-full flex items-center justify-center gap-2 text-sm px-3 py-2.5 rounded border disabled:opacity-40"
           style={{ borderColor: colors.blue, color: colors.blue }}
         >
           <Save size={14} />
@@ -94,14 +94,14 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
         </button>
         <button
           onClick={() => setShowInfo((v) => !v)}
-          className="flex items-center gap-1 text-[11px] mt-1.5 mx-auto"
+          className="flex items-center gap-1 text-xs mt-2 mx-auto"
           style={{ color: colors.neutralText }}
         >
           <Info size={11} />
           {t("comment_ca_marche")}
         </button>
         {showInfo && (
-          <p className="text-[11px] mt-2 leading-relaxed" style={{ color: colors.neutralText }}>
+          <p className="text-xs mt-2 leading-relaxed" style={{ color: colors.neutralText }}>
             {t("sidebar_info_text")}
           </p>
         )}

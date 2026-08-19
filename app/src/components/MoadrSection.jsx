@@ -35,19 +35,23 @@ export default function MoadrSection({ dossier, setDossier, t }) {
   }
 
   return (
-    <div className="border rounded-lg p-4 mt-4" style={{ borderColor: colors.neutralBorder }}>
-      <p className="text-sm font-semibold mb-1" style={{ color: colors.blue }}>
+    <div className="border rounded-lg p-5 mt-5" style={{ borderColor: colors.neutralBorder, background: colors.neutralBgSubtle }}>
+      <p className="text-base font-semibold mb-1.5" style={{ color: colors.blue }}>
         {t("moadr_titre")}
       </p>
-      <p className="text-xs mb-3" style={{ color: colors.neutralText }}>
+      <p className="text-sm mb-3.5" style={{ color: colors.neutralText }}>
         {t("moadr_aide")}
       </p>
 
       {items.length > 0 && (
-        <div className="flex flex-col gap-1.5 mb-3">
+        <div className="flex flex-col gap-2 mb-3.5">
           {items.map((m) => (
-            <div key={m.id} className="flex items-start justify-between gap-2 text-xs border rounded px-2.5 py-1.5" style={{ borderColor: colors.neutralBorder }}>
-              <span className="flex items-start gap-1.5" style={{ color: colors.neutralTextStrong }}>
+            <div
+              key={m.id}
+              className="flex items-start justify-between gap-2 text-sm border rounded px-3 py-2"
+              style={{ borderColor: colors.neutralBorder, background: "white" }}
+            >
+              <span className="flex items-start gap-2" style={{ color: colors.neutralTextStrong }}>
                 <AlertTriangle size={13} className="mt-0.5 shrink-0" style={{ color: colors.warningText }} />
                 {m.descriptionSituation}
               </span>
@@ -59,16 +63,16 @@ export default function MoadrSection({ dossier, setDossier, t }) {
         </div>
       )}
 
-      <div className="flex gap-2">
+      <div className="flex gap-2.5">
         <input
           type="text"
           placeholder={t("moadr_placeholder")}
-          className="flex-1 border rounded px-3 py-2 text-sm"
-          style={{ borderColor: colors.neutralBorderStrong }}
+          className="flex-1 border rounded px-3.5 py-2.5 text-sm"
+          style={{ borderColor: colors.neutralBorderStrong, background: "white" }}
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
         />
-        <button onClick={addMoadr} className="flex items-center gap-1 text-xs px-3 py-2 rounded border" style={{ borderColor: colors.blue, color: colors.blue }}>
+        <button onClick={addMoadr} className="flex items-center gap-1.5 text-sm px-3.5 py-2.5 rounded border" style={{ borderColor: colors.blue, color: colors.blue, background: "white" }}>
           <Plus size={14} /> {t("bouton_ajouter")}
         </button>
       </div>

@@ -1,4 +1,5 @@
 import { colors } from "../lib/colors";
+import ScreenTitle from "./ScreenTitle";
 
 const AIDE_CRITERES = [
   { key: "heuresInf1000", labelKey: "caracterisation_critere_heures" },
@@ -29,41 +30,39 @@ export default function Caracterisation({ dossier, setDossier, corpsMetierOption
 
   return (
     <div>
-      <h3 className="text-lg font-semibold mb-4" style={{ color: colors.navy }}>
-        {t("caracterisation_titre")}
-      </h3>
+      <ScreenTitle title={t("caracterisation_titre")} />
 
-      <p className="text-sm font-medium mb-2">{t("caracterisation_question")}</p>
-      <div className="flex gap-5 mb-3">
-        <label className="flex items-center gap-1.5 text-sm" style={aideActive ? { color: colors.neutralText } : undefined}>
+      <p className="text-sm font-medium mb-2.5">{t("caracterisation_question")}</p>
+      <div className="flex gap-6 mb-3.5">
+        <label className="flex items-center gap-2 text-sm" style={aideActive ? { color: colors.neutralText } : undefined}>
           <input type="radio" checked={modeChoisi === "abrege"} disabled={aideActive} onChange={() => setMode("abrege")} />
           {t("caracterisation_abrege")}
         </label>
-        <label className="flex items-center gap-1.5 text-sm">
+        <label className="flex items-center gap-2 text-sm">
           <input type="radio" checked={modeChoisi === "complet"} onChange={() => setMode("complet")} />
           {t("caracterisation_complet")}
         </label>
       </div>
       {aideActive && (
-        <p className="text-xs mb-3" style={{ color: colors.warningText }}>
+        <p className="text-sm mb-3.5" style={{ color: colors.warningText }}>
           {t("caracterisation_abrege_indispo")}
         </p>
       )}
 
-      <div className="rounded p-3 mb-5" style={{ background: colors.neutralBgSubtle }}>
-        <p className="text-xs mb-1.5" style={{ color: colors.neutralText }}>
+      <div className="rounded-lg p-4 mb-6 border" style={{ background: colors.neutralBgSubtle, borderColor: colors.neutralBorder }}>
+        <p className="text-sm mb-2" style={{ color: colors.neutralText }}>
           {t("caracterisation_aide_intro")}
         </p>
         {AIDE_CRITERES.map((o) => (
-          <label key={o.key} className="flex items-center gap-2 text-sm py-0.5">
+          <label key={o.key} className="flex items-center gap-2 text-sm py-1">
             <input type="checkbox" checked={aideAuChoix[o.key]} onChange={() => toggleAide(o.key)} />
             {t(o.labelKey)}
           </label>
         ))}
       </div>
 
-      <p className="text-sm font-medium mb-2">{t("caracterisation_corps_metier")}</p>
-      <div className="grid grid-cols-2 gap-2 mb-6">
+      <p className="text-sm font-medium mb-2.5">{t("caracterisation_corps_metier")}</p>
+      <div className="grid grid-cols-2 gap-2.5 mb-7">
         {corpsMetierOptions.map((o) => (
           <label key={o.id} className="flex items-center gap-2 text-sm">
             <input type="checkbox" checked={corpsMetier.includes(o.id)} onChange={() => toggleCorpsMetier(o.id)} />
@@ -73,10 +72,10 @@ export default function Caracterisation({ dossier, setDossier, corpsMetierOption
       </div>
 
       <div className="flex justify-between">
-        <button onClick={onBack} className="px-5 py-2 rounded text-sm border" style={{ borderColor: colors.neutralBorderStrong }}>
+        <button onClick={onBack} className="px-6 py-2.5 rounded text-sm border" style={{ borderColor: colors.neutralBorderStrong }}>
           {t("bouton_retour")}
         </button>
-        <button onClick={onNext} className="px-5 py-2 rounded text-sm font-medium" style={{ background: colors.navy, color: "white" }}>
+        <button onClick={onNext} className="px-6 py-2.5 rounded text-sm font-medium" style={{ background: colors.navy, color: "white" }}>
           {t("bouton_continuer")}
         </button>
       </div>

@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Desktop uniquement (CLAUDE.md §10) : on a de la marge, base légèrement plus
+   grande que le défaut Tailwind. Comme les échelles de taille de texte et
+   d'espacement de Tailwind sont en rem, ce seul réglage grossit uniformément
+   tout le texte ET tous les paddings/gaps de l'app. */
+html {
+  font-size: 17px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;

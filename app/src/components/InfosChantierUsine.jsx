@@ -6,11 +6,11 @@ export default function InfosChantierUsine({ dossier, setDossier, t, onBack, onN
   return (
     <div>
       <FormStep schema={infosChantierUsineSchema} dossier={dossier} setDossier={setDossier} t={t} title={t("titre_infos_chantier_usine")} />
-      <div className="flex justify-between mt-6">
-        <button onClick={onBack} className="px-5 py-2 rounded text-sm border" style={{ borderColor: colors.neutralBorderStrong }}>
+      <div className="flex justify-between mt-7">
+        <button onClick={onBack} className="px-6 py-2.5 rounded text-sm border" style={{ borderColor: colors.neutralBorderStrong }}>
           {t("bouton_retour")}
         </button>
-        <button onClick={onNext} className="px-5 py-2 rounded text-sm font-medium" style={{ background: colors.navy, color: "white" }}>
+        <button onClick={onNext} className="px-6 py-2.5 rounded text-sm font-medium" style={{ background: colors.navy, color: "white" }}>
           {t("bouton_continuer")}
         </button>
       </div>

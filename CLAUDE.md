@@ -268,6 +268,15 @@ délibérée plutôt qu'un copier-coller. Reconstruire cette hiérarchie à la g
 parcourant `catalogue_risques.json` filtré par `corpsMetier`, en ne détaillant
 (source/risques/Kinney/mesures) que les lignes présentes dans `itemsCoches`.
 
+**Étiquette de groupe pour « Mesures générales »** : cette catégorie n'a pas de
+valeur `groupe` dans les données (contrairement à « Exécution générale » et
+« Risques spécifiques métiers »), car elle n'est jamais partagée avec d'autres
+catégories. Pour la symétrie visuelle (toutes les catégories ont une étiquette de
+groupe au-dessus, aucune n'est orpheline en haut de liste), le composant affiche
+quand même une étiquette dans ce cas précis, à base du nom de la catégorie
+elle-même — une règle d'affichage générique (première catégorie sans `groupe`),
+pas une valeur codée en dur pour « Mesures générales ».
+
 **Typographie en cascade** (déjà dans `repss_prototype.jsx`, à reprendre, plus le
 niveau de regroupement `groupe` à ajouter au-dessus — voir §12 palette) :
 sous-catégorie en gras bleu marine avec bordure basse, activité en poids moyen
@@ -324,13 +333,36 @@ se limiter à remplacer ces fichiers, jamais toucher au code. Couleurs VMA Sud :
 - Barre latérale de navigation : les étapes déjà complétées sont cliquables pour y
   retourner directement (pas seulement via le bouton Retour) ; les étapes pas encore
   atteintes restent désactivées.
+- **Base plus généreuse** : desktop uniquement, pas de contrainte mobile → taille de
+  police de base et espacements (padding/gap) légèrement augmentés partout par
+  rapport aux valeurs par défaut de Tailwind. Concrètement, `html { font-size }` est
+  relevé dans `index.css` (les échelles de taille de texte et d'espacement de
+  Tailwind étant en rem, un seul réglage grossit tout uniformément), en plus de
+  paddings/gaps explicitement élargis sur les cartes, boutons et listes.
+- **3 niveaux typographiques cohérents**, partagés par tout le wizard (composant
+  `ScreenTitle.jsx`, réutilisé sur chaque écran) :
+  1. *Titre d'écran* : encadré (carte avec fond `neutralBgSubtle`), navy, gras, le
+     plus grand des trois — couleur d'accent dédiée à ce rôle, jamais réutilisée pour
+     un sous-titre.
+  2. *Sous-titre de section* (ex. « Documents automatiques », « Contacts d'urgence ») :
+     bleu, semi-gras, taille intermédiaire.
+  3. *Texte normal* : neutre, taille de base.
+- **Toute zone encadrée** (carte avec bordure) a un fond `neutralBgSubtle` (légèrement
+  plus soutenu que le blanc du contenu d'écran) pour se détacher visuellement — pas
+  seulement une bordure fine. Exceptions volontaires : les petites zones imbriquées
+  *à l'intérieur* d'une carte déjà teintée (ex. lignes d'hôpitaux sélectionnés dans
+  « Contacts d'urgence », items MOADR) restent blanches pour créer un effet de
+  calque plutôt que d'empiler deux teintes identiques.
 
 ## 11. Palette de couleurs
 
 Le premier jet (tout en bleu-gris clair dégradé) manque de hiérarchie et de vie.
 Système à appliquer :
 - **Navy `#0B3040`** réservé à l'identité : boutons principaux, en-têtes de catégorie,
-  navigation active. Jamais comme fond général/par défaut.
+  navigation active. Jamais comme fond général/par défaut. Les bandeaux de catégorie
+  de l'analyse de risques (§6) sont du **texte navy sur fond pâle** (`navyTint`), pas
+  un aplat navy plein : répété 11 fois, l'aplat plein n'est plus un signal et écrase
+  le contraste disponible pour les niveaux sous-catégorie/activité en dessous.
 - **Bleu `#156082`** pour les éléments interactifs (liens, accents secondaires).
 - **Gris neutre chaud** (pas teinté bleu) pour tous les fonds/bordures structurels
   (cartes, séparateurs, fonds de page).
