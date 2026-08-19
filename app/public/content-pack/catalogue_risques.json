@@ -206,7 +206,7 @@
       "code_origine": "10.2.1",
       "fr": "Déplacement sur chantier",
       "parent": "cat10_mesures_generales_sub2",
-      "granularite": "risque",
+      "granularite": "activite",
       "confiance": "Oui",
       "notes": null
     },
@@ -215,7 +215,7 @@
       "code_origine": "10.2.2",
       "fr": "Manoeuvre sur chantier",
       "parent": "cat10_mesures_generales_sub2",
-      "granularite": "risque",
+      "granularite": "activite",
       "confiance": "Oui",
       "notes": null
     },
@@ -251,7 +251,7 @@
       "code_origine": "10.3.4",
       "fr": "Stockage",
       "parent": "cat10_mesures_generales_sub3",
-      "granularite": "risque",
+      "granularite": "activite",
       "confiance": "Oui",
       "notes": "confirmé en conversation"
     },
@@ -260,7 +260,7 @@
       "code_origine": "21.1.1",
       "fr": "Manutention manuelle",
       "parent": "cat21_manutention_et_levage",
-      "granularite": "risque",
+      "granularite": "activite",
       "confiance": "Oui",
       "notes": null
     },
