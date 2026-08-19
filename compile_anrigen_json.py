@@ -13,7 +13,7 @@ def rows_of(sheet, headers):
 
 categories = rows_of("Categories", ["id", "code_origine", "fr", "corps_metier", "groupe"])
 souscategories = rows_of("SousCategories", ["id", "code_origine", "fr", "parent"])
-activites = rows_of("Activites", ["id", "code_origine", "fr", "parent"])
+activites = rows_of("Activites", ["id", "code_origine", "fr", "parent", "granularite", "confiance", "notes"])
 
 risque_headers = [
     "id", "parent", "sourceDanger", "risques",

@@ -147,7 +147,7 @@ function ActivitesOuRisques({ catalogue, parentId, isChecked, toggle, remarque, 
   if (acts.length > 0) {
     return acts.map((act) => {
       const lignesRisque = catalogue.lignesRisque.filter((r) => r.parent === act.id);
-      const Block = act.granularite === "activite" ? ActiviteBundleBlock : ActiviteBlock;
+      const Block = act.granularite?.toLowerCase() === "activite" ? ActiviteBundleBlock : ActiviteBlock;
       return (
         <Block
           key={act.id}
