@@ -286,7 +286,27 @@
     "moadr_section_titre_pdf": "Pending MOADR requests",
     "hopital_code_postal_placeholder": "Site postcode",
     "hopital_saisis_code_postal": "Enter the site's postcode for an automatic suggestion.",
-    "hopital_ajouter_manuellement": "Add another hospital manually…"
+    "hopital_ajouter_manuellement": "Add another hospital manually…",
+    "page_explication_titre": "About this document",
+    "page_explication_texte": "This document constitutes the company's response to the Health and Safety Plan (H&SP) established by the safety coordinator for this site. It describes the organisation, prevention measures and risks identified for the works carried out by vma sud. It is generated automatically from the information entered by the project manager and must be filed in the site's SharePoint folder.",
+    "table_matieres_titre": "Table of contents",
+    "carac_chantier_plan_installation": "General site layout plan to be attached.",
+    "carac_chantier_point_rassemblement": "Assembly point identified.",
+    "annexe_label": "Appendix",
+    "annexe1_legende_kinney_titre": "Kinney legend",
+    "kinney_formule": "R = Probability × Exposure × Severity",
+    "kinney_legende_intro": "The Kinney method assesses each risk by multiplying three factors. The resulting score determines the risk level and the prevention measures to be taken.",
+    "evaluation_label": "Assessment",
+    "evaluation_initiale_label": "Initial assessment",
+    "evaluation_residuelle_label": "Residual assessment (after measures)",
+    "mesures_prevention_label": "Prevention measures",
+    "risque_col_ref": "Ref.",
+    "risque_col_source_danger": "Hazard sources or deviation",
+    "risque_col_risques": "Risks",
+    "tbl_nom": "Name",
+    "tbl_email": "Email",
+    "tbl_tel": "Tel.",
+    "niveau_risque_label": "Risk level"
   },
   "risques": []
 }

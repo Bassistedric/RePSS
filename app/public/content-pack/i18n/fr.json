@@ -286,7 +286,27 @@
     "moadr_section_titre_pdf": "Demandes MOADR en attente",
     "hopital_code_postal_placeholder": "Code postal du chantier",
     "hopital_saisis_code_postal": "Saisis le code postal du chantier pour une suggestion automatique.",
-    "hopital_ajouter_manuellement": "Ajouter un autre hôpital manuellement…"
+    "hopital_ajouter_manuellement": "Ajouter un autre hôpital manuellement…",
+    "page_explication_titre": "À propos de ce document",
+    "page_explication_texte": "Ce document constitue la réponse de l'entreprise au Plan de Sécurité et de Santé (P.S.S.) établi par le coordinateur sécurité pour ce chantier. Il décrit l'organisation, les mesures de prévention et les risques identifiés pour les travaux réalisés par vma sud. Il est généré automatiquement à partir des informations encodées par le chef de projet et doit être déposé dans le dossier SharePoint du chantier.",
+    "table_matieres_titre": "Table des matières",
+    "carac_chantier_plan_installation": "Plan général d'installation à joindre.",
+    "carac_chantier_point_rassemblement": "Point de rassemblement identifié.",
+    "annexe_label": "Annexe",
+    "annexe1_legende_kinney_titre": "Légende Kinney",
+    "kinney_formule": "R = Probabilité × Exposition × Gravité",
+    "kinney_legende_intro": "La méthode Kinney évalue chaque risque par le produit de trois facteurs. Le score obtenu détermine le niveau de risque et les mesures de prévention à prendre.",
+    "evaluation_label": "Évaluation",
+    "evaluation_initiale_label": "Évaluation initiale",
+    "evaluation_residuelle_label": "Évaluation résiduelle (après mesures)",
+    "mesures_prevention_label": "Mesures de prévention",
+    "risque_col_ref": "Réf.",
+    "risque_col_source_danger": "Sources de danger ou déviation",
+    "risque_col_risques": "Risques",
+    "tbl_nom": "Nom",
+    "tbl_email": "Email",
+    "tbl_tel": "Tél.",
+    "niveau_risque_label": "Niveau de risque"
   },
   "risques": []
 }

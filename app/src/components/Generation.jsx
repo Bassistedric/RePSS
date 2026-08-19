@@ -23,6 +23,9 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
   const isAbrege = dossier.triage.modeChoisi === "abrege";
   const brand = entreprise?.branding || {};
   const logoAbsoluteUrl = brand.logo ? new URL(logoUrl(brand.logo), window.location.origin).href : null;
+  // §12 : les tables de contacts (référence, urgence) affichent le logo de chaque
+  // organisme — même traitement que le logo principal, en absolu pour react-pdf.
+  const logosBaseUrl = new URL(`${import.meta.env.BASE_URL}content-pack/logos/`, window.location.origin).href;
   const filename = `RePSS_${dossier.identification.numeroChantier || "brouillon"}.pdf`;
   const { listeEnginsSpeciaux, planParticulier } = dossier.documentsAccompagnants;
 
@@ -192,6 +195,7 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
                 hopitaux={hopitaux}
                 t={t}
                 logoAbsoluteUrl={logoAbsoluteUrl}
+                logosBaseUrl={logosBaseUrl}
               />
             }
             fileName={filename}
