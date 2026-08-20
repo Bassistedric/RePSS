@@ -4,7 +4,7 @@ import { colors } from "../lib/colors";
 import ScreenTitle from "./ScreenTitle";
 
 const INPUT_CLASS = "w-full border rounded px-3.5 py-2.5 text-sm";
-const INPUT_STYLE = { borderColor: colors.neutralBorderStrong };
+const INPUT_STYLE = { borderColor: colors.neutralBorderStrong, background: "white" };
 
 function TableField({ path, columns, value, onChange, t }) {
   const rows = value || [];
@@ -185,7 +185,7 @@ export default function FormStep({ schema, dossier, setDossier, t, title, nested
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4">
               {group.fields.map((field) => {
-                const isWide = field.type === "table" || field.type === "textarea";
+                const isWide = field.type === "table" || field.type === "textarea" || field.wide;
                 return (
                   <div key={field.path} className={isWide ? "sm:col-span-2" : ""}>
                     <Field field={field} dossier={dossier} onChange={onChange} t={t} />
