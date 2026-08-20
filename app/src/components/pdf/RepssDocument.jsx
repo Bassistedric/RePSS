@@ -19,6 +19,13 @@ const styles = StyleSheet.create({
   subtitle: { fontSize: 10, color: colors.neutralText, marginTop: 2 },
   section: { marginBottom: 14, breakInside: "avoid" },
   sectionTitle: { fontSize: 11, fontWeight: 700, marginBottom: 6, paddingBottom: 3, borderBottom: `1pt solid ${colors.neutralBorderStrong}` },
+  sectionBoxed: {
+    padding: 14,
+    borderRadius: 4,
+    border: `1pt solid ${colors.neutralBorder}`,
+    backgroundColor: colors.neutralBgSubtle,
+  },
+  sectionBoxedTitle: { fontSize: 11, fontWeight: 700, color: colors.navy, marginBottom: 8 },
   row: { flexDirection: "row", marginBottom: 3 },
   kvKey: { width: 160, color: colors.neutralText },
   kvVal: { flex: 1, fontWeight: 500 },
@@ -137,7 +144,18 @@ function PageFooter({ t }) {
   );
 }
 
-function Section({ title, children }) {
+// `boxed` : test de généralisation du principe de zone encadrée de la page
+// d'explication (§CLAUDE.md) au reste du document, une section à la fois avant
+// de trancher pour les autres.
+function Section({ title, children, boxed }) {
+  if (boxed) {
+    return (
+      <View style={[styles.section, styles.sectionBoxed]}>
+        {title && <Text style={styles.sectionBoxedTitle}>{title}</Text>}
+        {children}
+      </View>
+    );
+  }
   return (
     <View style={styles.section}>
       {title && <Text style={styles.sectionTitle}>{title}</Text>}
@@ -626,7 +644,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
 
       <Page size="A4" style={styles.page} wrap>
         {!isAbrege && (
-          <Section title={t("titre_rens_gen")}>
+          <Section title={t("titre_rens_gen")} boxed>
             <KV label={t("client")} value={rg.client} />
             <KV label={t("bureau_architecture")} value={rg.bureauArchitecture} />
             <KV label={t("coordinateur_securite")} value={rg.coordinateurSecurite} />
