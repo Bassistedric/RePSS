@@ -320,7 +320,12 @@
     "hopital_code_postal_manquant": "Renseigne le code postal du chantier dans Renseignements généraux pour lancer la recherche automatique, ou saisis-le ici.",
     "hopital_reutiliser_code_postal": "Reprendre le code postal du chantier ({cp})",
     "renseignements_titre": "Renseignements",
-    "adresse_chantier_titre": "Adresse chantier"
+    "adresse_chantier_titre": "Adresse chantier",
+    "niveau_acceptable": "Acceptable",
+    "niveau_attention": "Attention requise",
+    "niveau_correction": "Correction nécessaire",
+    "niveau_immediate": "Mesure immédiate",
+    "niveau_arret": "Envisager l'arrêt"
   },
   "risques": []
 }

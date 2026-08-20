@@ -25,7 +25,7 @@ Fichiers déjà livrés (classeur maître → JSON compilé → script de compil
 |---|---|---|
 | `RePSS_UI_Textes_maitre.xlsx` | `fr.json` / `en.json` / `nl.json` | `compile_ui_textes.py` |
 | `RePSS_Entreprise_Reference.xlsx` | `entreprise.json` | `compile_entreprise_json.py` |
-| `RePSS_Analyse_Risques.xlsx` | `catalogue_risques.json` | `compile_anrigen_json.py` |
+| `RePSS_Analyse_Risques.xlsx` / `_EN.xlsx` / `_NL.xlsx` | `catalogue_risques.json` / `_en.json` / `_nl.json` | `compile_anrigen_json.py` |
 | `RePSS_Analyse_Risques_Abrege.xlsx` | `catalogue_risques_abrege.json` | `compile_anrigen_abrege_json.py` |
 | `RePSS_Liste_Hopitaux.xlsx` | `liste_hopitaux.json` | `compile_hopitaux_json.py` |
 
@@ -39,8 +39,15 @@ démo). **Repars de ce fichier, ne recommence pas les écrans qu'il couvre déj�
 Deux catégories bien séparées :
 - **Données de base** (`UI_Textes`) : labels fixes, traduits FR/EN/NL, réutilisés par
   id stable partout où c'est identique (ex. `nom`, `adresse`, `contact`).
-- **Analyse de risque** : traduction **volontairement pas encore faite** — le champ
-  `risques` de `fr/en/nl.json` est vide, à compléter plus tard. Ne pas bloquer dessus.
+- **Analyse de risque (catalogue complet)** : traduit — `RePSS_Analyse_Risques_EN.xlsx`
+  / `_NL.xlsx`, même structure/ids que le classeur français (source de vérité pour la
+  structure et les valeurs Kinney numériques), compilés en `catalogue_risques_en.json`
+  / `_nl.json`. Sélectionné par langue dès le wizard (Caractérisation, Analyse de
+  risques), pas seulement à la génération du PDF — `analyseRisques.itemsCoches`
+  référence des `risqueId` stables entre les 3 langues, donc l'encodage peut se faire
+  dans une langue et le PDF se générer dans une autre. Le champ `risques` de
+  `fr/en/nl.json` (UI_Textes) reste volontairement vide : ce n'est pas là que vit
+  cette traduction. **Catalogue abrégé** : toujours fr uniquement, pas encore traduit.
 
 Le document généré est **mono-langue par génération** (le PM choisit la langue avant
 de générer), jamais bilingue dans le même PDF.
@@ -421,5 +428,12 @@ encore vraiment, il est à construire depuis cette spec.
   formelle avant de passer à `valide`.
 - Recherche de commissariat de police : volontairement non construite (lien externe
   à la place) — à revisiter si une vraie source de données apparaît.
-- Traduction EN/NL du catalogue d'analyse de risque : reportée, `risques: []` dans
-  les packs de langue en attendant.
+- Traduction EN/NL du catalogue d'analyse de risque **abrégé** (`RePSS_Analyse_Risques_Abrege.xlsx`) :
+  pas encore faite (le catalogue **complet** l'est, cf. §2) — reste fr uniquement pour
+  l'instant, à traiter si le format abrégé est utilisé à l'international.
+- Traduction EN/NL du catalogue complet : première traduction retraduite proprement
+  par Claude (ids/structure identiques au classeur fr, texte relu pour éviter le
+  mélange de langues et les troncatures observés dans un premier essai d'outil externe) —
+  à faire relire par un locuteur natif technique (électricité/HVAC/PV) côté QHSE avant
+  validation formelle, notamment les choix de terminologie signalés lors de la
+  traduction (ex. traductions de "MO"/"CSS", "TGBT", "nacelle", "consignation").
