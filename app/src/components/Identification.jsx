@@ -1,17 +1,37 @@
 import { useRef, useState } from "react";
-import { Upload } from "lucide-react";
+import { Upload, X } from "lucide-react";
 import { readDossierFile } from "../lib/storage";
+import { resizeImageToDataUrl } from "../lib/imageResize";
 import { colors } from "../lib/colors";
 import ScreenTitle from "./ScreenTitle";
 
 export default function Identification({ dossier, setDossier, onNext, t }) {
   const [importInfo, setImportInfo] = useState(null);
+  const [imageError, setImageError] = useState(false);
   const fileRef = useRef(null);
-  const { numeroChantier, nomChantier, pmLead, pmSecondaire } = dossier.identification;
+  const imageFileRef = useRef(null);
+  const { numeroChantier, nomChantier, pmLead, pmSecondaire, imagePageDeGarde } = dossier.identification;
   const chantierId = numeroChantier && nomChantier ? `${numeroChantier} - ${nomChantier}` : "";
 
   function setIdentification(patch) {
     setDossier((prev) => ({ ...prev, identification: { ...prev.identification, ...patch } }));
+  }
+
+  async function handleImageFile(e) {
+    const file = e.target.files[0];
+    e.target.value = "";
+    if (!file) return;
+    if (!["image/png", "image/jpeg"].includes(file.type)) {
+      setImageError(true);
+      return;
+    }
+    try {
+      const dataUrl = await resizeImageToDataUrl(file);
+      setIdentification({ imagePageDeGarde: dataUrl });
+      setImageError(false);
+    } catch {
+      setImageError(true);
+    }
   }
 
   async function handleFile(e) {
@@ -86,6 +106,49 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
             onChange={(e) => setIdentification({ pmSecondaire: e.target.value })}
           />
         </div>
+      </div>
+
+      <div className="border rounded-lg p-5 mb-6" style={{ borderColor: colors.neutralBorder, background: colors.neutralBgSubtle }}>
+        <p className="text-base font-semibold mb-1.5" style={{ color: colors.blue }}>
+          {t("identification_image_page_de_garde_titre")}
+        </p>
+        <p className="text-sm mb-3.5" style={{ color: colors.neutralText }}>
+          {t("identification_image_page_de_garde_texte")}
+        </p>
+        <div className="flex items-center gap-3.5">
+          {imagePageDeGarde && (
+            <img
+              src={imagePageDeGarde}
+              alt=""
+              className="h-16 w-28 object-cover rounded border"
+              style={{ borderColor: colors.neutralBorder }}
+            />
+          )}
+          <button
+            onClick={() => imageFileRef.current?.click()}
+            className="flex items-center gap-2 border rounded px-3.5 py-2 text-sm"
+            style={{ borderColor: colors.neutralBorderStrong, color: colors.blue, background: "white" }}
+          >
+            <Upload size={14} />
+            {t("identification_image_page_de_garde_bouton")}
+          </button>
+          {imagePageDeGarde && (
+            <button
+              onClick={() => setIdentification({ imagePageDeGarde: null })}
+              className="flex items-center gap-1.5 text-sm"
+              style={{ color: colors.neutralText }}
+            >
+              <X size={14} />
+              {t("identification_image_page_de_garde_reinitialiser")}
+            </button>
+          )}
+        </div>
+        <input ref={imageFileRef} type="file" accept="image/png,image/jpeg" onChange={handleImageFile} className="hidden" />
+        {imageError && (
+          <p className="text-sm mt-2.5" style={{ color: colors.error }}>
+            {t("identification_image_page_de_garde_erreur")}
+          </p>
+        )}
       </div>
 
       <div className="flex items-center gap-3 mb-6">

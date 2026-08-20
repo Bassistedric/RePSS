@@ -39,6 +39,10 @@ export function defaultDossier() {
       nomChantier: "",
       pmLead: "",
       pmSecondaire: "",
+      // Image de couverture propre au chantier (data URL), à la place de l'image
+      // générique de entreprise.json > branding.photoCouverture. null = image
+      // générique. Pas de backend : stockée directement dans le dossier JSON.
+      imagePageDeGarde: null,
     },
     triage: {
       modeChoisi: "complet", // "abrege" | "complet"

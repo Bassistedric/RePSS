@@ -26,8 +26,10 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
   // §12 : les tables de contacts (référence, urgence) affichent le logo de chaque
   // organisme — même traitement que le logo principal, en absolu pour react-pdf.
   const logosBaseUrl = new URL(`${import.meta.env.BASE_URL}content-pack/logos/`, window.location.origin).href;
-  // Photo/illustration de couverture (§12, optionnelle) : même dossier que les logos.
-  const photoCouvertureAbsoluteUrl = brand.photoCouverture ? `${logosBaseUrl}${brand.photoCouverture}` : null;
+  // Photo/illustration de couverture (§12, optionnelle) : celle propre au chantier
+  // (Identification, data URL) prime sur l'image générique de entreprise.json.
+  const photoCouvertureAbsoluteUrl =
+    dossier.identification.imagePageDeGarde || (brand.photoCouverture ? `${logosBaseUrl}${brand.photoCouverture}` : null);
   const filename = `RePSS_${dossier.identification.numeroChantier || "brouillon"}.pdf`;
   const { listeEnginsSpeciaux, planParticulier } = dossier.documentsAccompagnants;
 
