@@ -3,12 +3,12 @@
 // (BU Site Manager, Administrative Officer, CP Niv.1 (x2), Membre SIPPT) sont
 // affichés en lecture seule depuis entreprise.json > rolesApprobation.fixes.
 export const ROLES_ADMINISTRATION = [
-  "role_tender_engineer",
   "role_operations_manager",
   "role_project_manager",
   "role_assistant_pm",
-  "role_project_engineer",
   "role_site_supervisor",
+  "role_project_engineer",
+  "role_tender_engineer",
 ];
 
 function today() {
@@ -71,7 +71,9 @@ export function defaultDossier() {
       dateDebutTravaux: "",
       dateFinTravauxEstimee: "",
       motifNouvelleVersion: "",
-      responsables: Object.fromEntries(ROLES_ADMINISTRATION.map((r) => [r, ""])),
+      responsables: Object.fromEntries(
+        ROLES_ADMINISTRATION.map((r) => [r, { nom: "", email: "", gsm: "" }])
+      ),
     },
     reglesSpecifiques: {
       serviceIncendieInterne: "",

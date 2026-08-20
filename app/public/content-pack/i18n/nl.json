@@ -306,6 +306,7 @@
     "tbl_nom": "Naam",
     "tbl_email": "E-mail",
     "tbl_tel": "Tel.",
+    "gsm": "Gsm-nr.",
     "niveau_risque_label": "Risiconiveau",
     "explication_bloc1_titre": "Doel van dit document",
     "explication_bloc2_titre": "Informatieplicht",

@@ -306,6 +306,7 @@
     "tbl_nom": "Nom",
     "tbl_email": "Email",
     "tbl_tel": "Tél.",
+    "gsm": "N° de GSM",
     "niveau_risque_label": "Niveau de risque",
     "explication_bloc1_titre": "Objet du document",
     "explication_bloc2_titre": "Obligation d'information",
