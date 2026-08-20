@@ -167,24 +167,23 @@ function ActivitesOuRisques({ catalogue, parentId, isChecked, toggle, remarque, 
   return <RisqueRows lignesRisque={lignesDirectes} isChecked={isChecked} toggle={toggle} remarque={remarque} setRemarque={setRemarque} t={t} />;
 }
 
+// Accordéon à un seul niveau ouvert à la fois, à chaque profondeur (catégorie et
+// sous-catégorie) : ouvrir une catégorie referme les autres, plus lisible qu'un
+// empilement de plusieurs catégories dépliées en même temps.
 function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque, setRemarque, t }) {
-  const [openCats, setOpenCats] = useState(new Set());
-  const [openSubs, setOpenSubs] = useState(new Set());
+  const [openCat, setOpenCat] = useState(null);
+  const [openSub, setOpenSub] = useState(null);
   const visibleCats = catalogue.categories.filter(
     (c) => c.corps_metier === "universel" || corpsMetier.includes(c.corps_metier)
   );
 
-  function toggleSet(setter) {
-    return (id) =>
-      setter((prev) => {
-        const next = new Set(prev);
-        if (next.has(id)) next.delete(id);
-        else next.add(id);
-        return next;
-      });
+  function toggleCat(id) {
+    setOpenCat((prev) => (prev === id ? null : id));
+    setOpenSub(null);
   }
-  const toggleCat = toggleSet(setOpenCats);
-  const toggleSub = toggleSet(setOpenSubs);
+  function toggleSub(id) {
+    setOpenSub((prev) => (prev === id ? null : id));
+  }
 
   let lastGroupe;
   let isFirstCat = true;
@@ -192,7 +191,7 @@ function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque,
   return (
     <div className="flex flex-col gap-2.5 mb-5">
       {visibleCats.map((cat) => {
-        const isOpen = openCats.has(cat.id);
+        const isOpen = openCat === cat.id;
         const subs = catalogue.sousCategories.filter((s) => s.parent === cat.id);
         // Le regroupement (cat.groupe) n'est ni sélectionnable ni pliable : c'est le
         // niveau le plus neutre visuellement, juste un séparateur au-dessus des
@@ -228,7 +227,7 @@ function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque,
               <div className="px-4 py-4">
                 {subs.length > 0 ? (
                   subs.map((sub) => {
-                    const subOpen = openSubs.has(sub.id);
+                    const subOpen = openSub === sub.id;
                     return (
                       <div key={sub.id} className="mb-2.5 last:mb-0 border rounded-lg" style={{ borderColor: colors.neutralBorderFaint }}>
                         <button

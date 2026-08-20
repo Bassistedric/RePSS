@@ -4,7 +4,7 @@ import { getSteps } from "../lib/steps";
 import { INFOS_ADMIN_TABS } from "../lib/infosAdminTabs";
 import { colors } from "../lib/colors";
 
-export default function StepSidebar({ current, dossier, onNavigate, onSave, t, infosAdminTab, setInfosAdminTab }) {
+export default function StepSidebar({ current, furthestStepIndex, dossier, onNavigate, onSave, t, infosAdminTab, setInfosAdminTab }) {
   const STEPS = getSteps(dossier.triage.modeChoisi);
   const currentIndex = STEPS.findIndex((s) => s.key === current);
   const [showInfo, setShowInfo] = useState(false);
@@ -30,7 +30,9 @@ export default function StepSidebar({ current, dossier, onNavigate, onSave, t, i
           const Icon = s.icon;
           const done = i < currentIndex;
           const active = s.key === current;
-          const reachable = i <= currentIndex;
+          // Navigation libre jusqu'à l'étape la plus lointaine déjà atteinte, pas
+          // seulement l'étape courante (CLAUDE.md §10 : navigation libre en arrière).
+          const reachable = i <= Math.max(currentIndex, furthestStepIndex ?? 0);
           const label = t(s.labelKey);
           return (
             <div key={s.key}>

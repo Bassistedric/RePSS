@@ -48,6 +48,20 @@ const styles = StyleSheet.create({
   coverMetaRow: { flexDirection: "row", justifyContent: "space-between", paddingTop: 14, borderTop: `0.5pt solid ${colors.neutralBorder}` },
   coverMetaItem: { fontSize: 9, color: colors.neutralText },
 
+  // --- Page d'explication ---
+  explicationContent: { flex: 1, flexDirection: "column" },
+  explicationBloc: {
+    marginTop: 16,
+    padding: 14,
+    borderRadius: 4,
+    border: `1pt solid ${colors.neutralBorder}`,
+    backgroundColor: colors.neutralBgSubtle,
+  },
+  explicationBlocTitre: { fontSize: 11, fontWeight: 700, color: colors.navy, marginBottom: 6 },
+  explicationBlocTexte: { lineHeight: 1.5 },
+  explicationSpacer: { flexGrow: 1 },
+  explicationLogo: { height: 100, objectFit: "contain", alignSelf: "center", opacity: 0.22, marginBottom: 4 },
+
   // --- Table des matières ---
   tocEntry: { flexDirection: "row", alignItems: "flex-end", marginBottom: 8 },
   tocLabel: { fontSize: 10.5 },
@@ -240,11 +254,28 @@ function CouverturePage({ dossier, entreprise, t, logoAbsoluteUrl, photoCouvertu
 // ============================================================
 // Page 2 — Page d'explication
 // ============================================================
-function ExplicationPage({ t }) {
+function ExplicationBloc({ titre, texte }) {
+  return (
+    <View style={styles.explicationBloc}>
+      <Text style={styles.explicationBlocTitre}>{titre}</Text>
+      <Text style={styles.explicationBlocTexte}>{texte}</Text>
+    </View>
+  );
+}
+
+function ExplicationPage({ t, logoAbsoluteUrl }) {
   return (
     <Page size="A4" style={styles.page}>
-      <Text style={styles.title}>{t("page_explication_titre")}</Text>
-      <Text style={{ marginTop: 14, lineHeight: 1.5 }}>{t("page_explication_texte")}</Text>
+      <View style={styles.explicationContent}>
+        <Text style={styles.title}>{t("page_explication_titre")}</Text>
+
+        <ExplicationBloc titre={t("explication_bloc1_titre")} texte={t("page_explication_texte")} />
+        <ExplicationBloc titre={t("explication_bloc2_titre")} texte={t("explication_bloc2_texte")} />
+        <ExplicationBloc titre={t("explication_bloc3_titre")} texte={t("explication_bloc3_texte")} />
+
+        <View style={styles.explicationSpacer} />
+        {logoAbsoluteUrl && <Image src={logoAbsoluteUrl} style={styles.explicationLogo} />}
+      </View>
       <PageFooter t={t} />
     </Page>
   );
@@ -585,7 +616,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
         logoAbsoluteUrl={logoAbsoluteUrl}
         photoCouvertureAbsoluteUrl={photoCouvertureAbsoluteUrl}
       />
-      <ExplicationPage t={t} />
+      <ExplicationPage t={t} logoAbsoluteUrl={logoAbsoluteUrl} />
       <TableMatieresPage t={t} isAbrege={isAbrege} entreprise={entreprise} />
 
       <Page size="A4" style={styles.page} wrap>

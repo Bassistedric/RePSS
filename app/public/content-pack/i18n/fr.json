@@ -306,7 +306,12 @@
     "tbl_nom": "Nom",
     "tbl_email": "Email",
     "tbl_tel": "Tél.",
-    "niveau_risque_label": "Niveau de risque"
+    "niveau_risque_label": "Niveau de risque",
+    "explication_bloc1_titre": "Objet du document",
+    "explication_bloc2_titre": "Obligation d'information",
+    "explication_bloc2_texte": "Ce document doit être porté à la connaissance de l'ensemble du personnel vma sud, des intérimaires et des sous-traitants intervenant sur ce chantier, dans le cadre de la procédure d'accueil et d'ouverture de chantier. Cette information est une obligation légale, préalable à toute intervention sur le site.",
+    "explication_bloc3_titre": "Dépôt et prise de connaissance",
+    "explication_bloc3_texte": "Ce document doit être déposé dans le dossier SharePoint du chantier. La prise de connaissance par chaque intervenant doit être enregistrée par signature sur la page « Émargement » en fin de document."
   },
   "risques": []
 }

@@ -306,7 +306,12 @@
     "tbl_nom": "Name",
     "tbl_email": "Email",
     "tbl_tel": "Tel.",
-    "niveau_risque_label": "Risk level"
+    "niveau_risque_label": "Risk level",
+    "explication_bloc1_titre": "Purpose of this document",
+    "explication_bloc2_titre": "Duty to inform",
+    "explication_bloc2_texte": "This document must be brought to the attention of all vma sud staff, temporary workers and subcontractors working on this site, as part of the site induction and opening procedure. This information is a legal requirement, to be completed before any work begins on site.",
+    "explication_bloc3_titre": "Filing and acknowledgement",
+    "explication_bloc3_texte": "This document must be filed in the site's SharePoint folder. Acknowledgement of having read it must be recorded by each person's signature on the “Attendance sheet” (Émargement) page at the end of the document."
   },
   "risques": []
 }
