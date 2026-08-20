@@ -144,13 +144,15 @@ function PageFooter({ t }) {
   );
 }
 
-// `boxed` : test de généralisation du principe de zone encadrée de la page
-// d'explication (§CLAUDE.md) au reste du document, une section à la fois avant
-// de trancher pour les autres.
+// `boxed` : principe de zone encadrée de la page d'explication (§CLAUDE.md),
+// généralisé aux autres sections du document. `wrap={false}` empêche la zone
+// d'être coupée par un saut de page automatique : si elle ne tient pas dans
+// l'espace restant, elle bascule entière sur la page suivante plutôt que
+// d'être scindée en deux.
 function Section({ title, children, boxed }) {
   if (boxed) {
     return (
-      <View style={[styles.section, styles.sectionBoxed]}>
+      <View style={[styles.section, styles.sectionBoxed]} wrap={false}>
         {title && <Text style={styles.sectionBoxedTitle}>{title}</Text>}
         {children}
       </View>
@@ -668,7 +670,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
         )}
 
         {!isAbrege && (
-          <Section title={t("titre_adm_chantier")}>
+          <Section title={t("titre_adm_chantier")} boxed>
             <KV label={t("date_debut_travaux")} value={adm.dateDebutTravaux} />
             <KV label={t("date_fin_travaux")} value={adm.dateFinTravauxEstimee} />
 
@@ -717,7 +719,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
         )}
 
         {!isAbrege && (
-          <Section title={t("titre_carac_chantier")}>
+          <Section title={t("titre_carac_chantier")} boxed>
             <Bullets
               items={[
                 { label: t("carac_chantier_plan_installation"), value: true },
@@ -728,7 +730,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
         )}
 
         {isAbrege && (
-          <Section title={t("titre_infos_chantier_usine")}>
+          <Section title={t("titre_infos_chantier_usine")} boxed>
             <Bullets
               items={[
                 { label: t("site_seveso"), value: icu.seveso },
@@ -749,7 +751,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
         )}
 
         {!isAbrege && (
-          <Section title={t("titre_regles_speciales")}>
+          <Section title={t("titre_regles_speciales")} boxed>
             <Text style={{ fontWeight: 700, marginBottom: 3 }}>{t("titre_rappel_accident")}</Text>
             <Text style={{ marginBottom: 8, lineHeight: 1.4 }}>{t("titre_appel_secours")}</Text>
 
@@ -804,7 +806,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
         )}
 
         {dossier.demandesMoadr.length > 0 && (
-          <Section title={t("moadr_section_titre_pdf")}>
+          <Section title={t("moadr_section_titre_pdf")} boxed>
             {dossier.demandesMoadr.map((m) => (
               <View key={m.id} style={{ marginBottom: 4 }}>
                 <Text>{m.descriptionSituation}</Text>
@@ -833,12 +835,12 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
 
       {!isAbrege && (da.planParticulier.notes || da.planParticulier.fichier || da.listeEnginsSpeciaux.length > 0) && (
         <Page size="A4" style={styles.page} wrap>
-          <Section title={`${t("annexe_label")} 2 — ${t("titre_plan_particulier")}`}>
+          <Section title={`${t("annexe_label")} 2 — ${t("titre_plan_particulier")}`} boxed>
             <KV label={t("fichier_joint")} value={da.planParticulier.fichier} />
             <Text>{da.planParticulier.notes}</Text>
           </Section>
           {da.listeEnginsSpeciaux.length > 0 && (
-            <Section title={`${t("annexe_label")} 3 — ${t("titre_liste_engins_speciaux")}`}>
+            <Section title={`${t("annexe_label")} 3 — ${t("titre_liste_engins_speciaux")}`} boxed>
               <Table
                 columns={[
                   { key: "typeEngin", label: t("type_engin") },
@@ -854,7 +856,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
       )}
 
       <Page size="A4" style={styles.page} wrap>
-        <Section title={`${t("annexe_label")} 4 — ${titreReglesGenerales(t, entreprise)}`}>
+        <Section title={`${t("annexe_label")} 4 — ${titreReglesGenerales(t, entreprise)}`} boxed>
           <Text style={{ lineHeight: 1.4 }}>{entreprise?.reglesGeneralesAnnexe4?.texte}</Text>
         </Section>
         <PageFooter t={t} />
