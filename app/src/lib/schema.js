@@ -10,7 +10,10 @@ export const renseignementsGenerauxSchema = [
       { path: "renseignementsGeneraux.client", labelKey: "client", type: "text" },
       { path: "renseignementsGeneraux.bureauArchitecture", labelKey: "bureau_architecture", type: "text" },
       { path: "renseignementsGeneraux.coordinateurSecurite", labelKey: "coordinateur_securite", type: "text" },
-      { path: "renseignementsGeneraux.adresseChantier", labelKey: "adresse_chantier", type: "textarea" },
+      { path: "renseignementsGeneraux.rue", labelKey: "adresse_rue", type: "text", wide: true },
+      { path: "renseignementsGeneraux.numero", labelKey: "adresse_numero", type: "text" },
+      { path: "renseignementsGeneraux.codePostal", labelKey: "adresse_code_postal", type: "text" },
+      { path: "renseignementsGeneraux.ville", labelKey: "adresse_ville", type: "text", wide: true },
     ],
   },
 ];
