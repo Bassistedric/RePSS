@@ -27,6 +27,13 @@ annexe4 = {r["cle"]: (r["valeur"] or "") for r in annexe4_rows}
 icones_urgence_rows = rows_of("IconesUrgence", ["id", "label", "logo"])
 icones_urgence = {r["id"]: {"label": r["label"], "logo": r["logo"]} for r in icones_urgence_rows}
 
+roles_rows = rows_of("Roles_Approbation", ["fonction", "type", "nom", "email", "tel"])
+roles_fixes = [
+    {"fonction": r["fonction"], "type": r["type"], "nom": r["nom"], "email": r["email"], "tel": r["tel"]}
+    for r in roles_rows if r["type"] == "fixe"
+]
+roles_variables = [r["fonction"] for r in roles_rows if r["type"] == "variable"]
+
 data = {
     "identite": {
         "nomAffichage": identite.get("nomAffichage", ""),
@@ -34,6 +41,7 @@ data = {
     },
     "branding": {
         "logo": identite.get("logo", ""),
+        "photoCouverture": identite.get("photoCouverture", ""),
         "couleurPrincipale": identite.get("couleurPrincipale", ""),
         "couleurSecondaire": identite.get("couleurSecondaire", ""),
     },
@@ -61,6 +69,11 @@ data = {
             "liege": contacts.get("dgBienEtreLiege", {}),
             "namurLiegeLuxBW": contacts.get("dgBienEtreNamurLiegeLuxBW", {}),
         },
+        "police": contacts.get("policeRecherche", {}),
+    },
+    "rolesApprobation": {
+        "fixes": roles_fixes,
+        "variables": roles_variables,
     },
     "reglesGeneralesAnnexe4": annexe4,
     "iconesUrgence": icones_urgence,
