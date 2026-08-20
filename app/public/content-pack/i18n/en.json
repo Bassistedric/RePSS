@@ -325,7 +325,12 @@
     "niveau_attention": "Attention required",
     "niveau_correction": "Correction required",
     "niveau_immediate": "Immediate action",
-    "niveau_arret": "Consider stopping the work"
+    "niveau_arret": "Consider stopping the work",
+    "identification_image_page_de_garde_titre": "Cover page image",
+    "identification_image_page_de_garde_texte": "If you want to replace the generic cover page image with your own, upload it here.",
+    "identification_image_page_de_garde_bouton": "Upload an image",
+    "identification_image_page_de_garde_reinitialiser": "Revert to the default image",
+    "identification_image_page_de_garde_erreur": "Invalid file: please use a PNG or JPG image."
   },
   "risques": []
 }
