@@ -318,7 +318,9 @@
     "adresse_ville": "Stad",
     "hopital_code_postal_utilise": "Postcode gebruikt voor de zoekopdracht: {cp} (van het bouwplaatsadres)",
     "hopital_code_postal_manquant": "Vul de postcode van de bouwplaats in bij Algemene Inlichtingen om de automatische zoekopdracht te starten, of voer deze hier in.",
-    "hopital_reutiliser_code_postal": "Postcode van de bouwplaats overnemen ({cp})"
+    "hopital_reutiliser_code_postal": "Postcode van de bouwplaats overnemen ({cp})",
+    "renseignements_titre": "Inlichtingen",
+    "adresse_chantier_titre": "Adres bouwplaats"
   },
   "risques": []
 }

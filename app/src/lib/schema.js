@@ -6,10 +6,16 @@ import { ROLES_ADMINISTRATION } from "./dossier";
 
 export const renseignementsGenerauxSchema = [
   {
+    titleKey: "renseignements_titre",
     fields: [
       { path: "renseignementsGeneraux.client", labelKey: "client", type: "text" },
       { path: "renseignementsGeneraux.bureauArchitecture", labelKey: "bureau_architecture", type: "text" },
       { path: "renseignementsGeneraux.coordinateurSecurite", labelKey: "coordinateur_securite", type: "text" },
+    ],
+  },
+  {
+    titleKey: "adresse_chantier_titre",
+    fields: [
       { path: "renseignementsGeneraux.rue", labelKey: "adresse_rue", type: "text", wide: true },
       { path: "renseignementsGeneraux.numero", labelKey: "adresse_numero", type: "text" },
       { path: "renseignementsGeneraux.codePostal", labelKey: "adresse_code_postal", type: "text" },
