@@ -318,7 +318,9 @@
     "adresse_ville": "City",
     "hopital_code_postal_utilise": "Postcode used for the search: {cp} (from the site address)",
     "hopital_code_postal_manquant": "Fill in the site's postcode in General Information to launch the automatic search, or enter it here.",
-    "hopital_reutiliser_code_postal": "Reuse the site's postcode ({cp})"
+    "hopital_reutiliser_code_postal": "Reuse the site's postcode ({cp})",
+    "renseignements_titre": "Information",
+    "adresse_chantier_titre": "Site address"
   },
   "risques": []
 }

@@ -318,7 +318,9 @@
     "adresse_ville": "Ville",
     "hopital_code_postal_utilise": "Code postal utilisé pour la recherche : {cp} (depuis l'adresse du chantier)",
     "hopital_code_postal_manquant": "Renseigne le code postal du chantier dans Renseignements généraux pour lancer la recherche automatique, ou saisis-le ici.",
-    "hopital_reutiliser_code_postal": "Reprendre le code postal du chantier ({cp})"
+    "hopital_reutiliser_code_postal": "Reprendre le code postal du chantier ({cp})",
+    "renseignements_titre": "Renseignements",
+    "adresse_chantier_titre": "Adresse chantier"
   },
   "risques": []
 }
