@@ -69,6 +69,44 @@ function TableField({ path, columns, value, onChange, t }) {
   );
 }
 
+function ApprovalRolesField({ path, roles, value, onChange, t }) {
+  function contactFor(role) {
+    const contact = value?.[role];
+    // Les anciens dossiers stockaient uniquement le nom sous forme de chaîne.
+    return typeof contact === "string" ? { nom: contact, email: "", gsm: "" } : (contact || {});
+  }
+
+  function updateContact(role, key, nextValue) {
+    onChange(path, {
+      ...(value || {}),
+      [role]: { ...contactFor(role), [key]: nextValue },
+    });
+  }
+
+  return (
+    <div className="overflow-x-auto">
+      <div className="grid min-w-3xl grid-cols-[minmax(15rem,1.2fr)_minmax(13rem,1fr)_minmax(11rem,0.8fr)] gap-x-4 gap-y-3 items-end">
+        <span className="text-sm font-medium" style={{ color: colors.neutralText }}>{t("tbl_nom")}</span>
+        <span className="text-sm font-medium" style={{ color: colors.neutralText }}>{t("tbl_email")}</span>
+        <span className="text-sm font-medium" style={{ color: colors.neutralText }}>{t("gsm")}</span>
+        {roles.map((role) => {
+          const contact = contactFor(role);
+          return (
+            <div key={role} className="contents">
+              <label className="text-sm font-medium">
+                <span className="block mb-1.5">{t(role)}</span>
+                <input type="text" className={INPUT_CLASS} style={INPUT_STYLE} value={contact.nom ?? ""} onChange={(e) => updateContact(role, "nom", e.target.value)} />
+              </label>
+              <input aria-label={`${t(role)} – ${t("tbl_email")}`} type="email" className={INPUT_CLASS} style={INPUT_STYLE} value={contact.email ?? ""} onChange={(e) => updateContact(role, "email", e.target.value)} />
+              <input aria-label={`${t(role)} – ${t("gsm")}`} type="tel" className={INPUT_CLASS} style={INPUT_STYLE} value={contact.gsm ?? ""} onChange={(e) => updateContact(role, "gsm", e.target.value)} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 const TRISTATE_OPTIONS = [
   { value: "interne", labelKey: "tristate_interne" },
   { value: "client", labelKey: "tristate_client" },
@@ -105,6 +143,10 @@ function Field({ field, dossier, onChange, t }) {
 
   if (field.type === "table") {
     return <TableField path={field.path} columns={field.columns} value={value} onChange={onChange} t={t} />;
+  }
+
+  if (field.type === "approvalRoles") {
+    return <ApprovalRolesField path={field.path} roles={field.roles} value={value} onChange={onChange} t={t} />;
   }
 
   if (field.type === "boolean") {
@@ -185,7 +227,7 @@ export default function FormStep({ schema, dossier, setDossier, t, title, nested
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4">
               {group.fields.map((field) => {
-                const isWide = field.type === "table" || field.type === "textarea" || field.wide;
+                const isWide = field.type === "table" || field.type === "approvalRoles" || field.type === "textarea" || field.wide;
                 return (
                   <div key={field.path} className={isWide ? "sm:col-span-2" : ""}>
                     <Field field={field} dossier={dossier} onChange={onChange} t={t} />

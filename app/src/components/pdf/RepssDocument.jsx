@@ -634,10 +634,11 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
   const logoSrc = (filename) => (filename ? `${logosBaseUrl}${filename}` : null);
 
   const responsablesFixes = entreprise?.rolesApprobation?.fixes || [];
-  const responsablesVariables = ROLES_ADMINISTRATION.filter((role) => adm.responsables[role]).map((role) => ({
-    fonction: t(role),
-    nom: adm.responsables[role],
-  }));
+  const responsablesVariables = ROLES_ADMINISTRATION.map((role) => {
+    const saved = adm.responsables?.[role];
+    const contact = typeof saved === "string" ? { nom: saved } : (saved || {});
+    return { fonction: t(role), nom: contact.nom, email: contact.email, tel: contact.gsm };
+  }).filter((contact) => contact.nom || contact.email || contact.tel);
 
   return (
     <Document>
