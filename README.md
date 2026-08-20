@@ -46,6 +46,21 @@ cd app
 npm run build   # sortie dans app/dist
 ```
 
+## Mise à jour des données d'entreprise
+
+Le classeur `RePSS_Entreprise_Reference.xlsx` est la source de référence, mais
+l'application ne le lit pas directement. Après chaque modification du classeur,
+il faut régénérer le fichier JSON consommé par l'application :
+
+```bash
+python -m pip install openpyxl
+python compile_entreprise_json.py
+```
+
+Il faut ensuite versionner et pousser à la fois le classeur et
+`app/public/content-pack/entreprise.json`. Un push sur `main` qui modifie le JSON
+déclenche automatiquement le redéploiement GitHub Pages.
+
 ## Sauvegarde / reprise d'un dossier
 
 Comme dans le prototype : le bouton "Enregistrer" télécharge l'état complet
