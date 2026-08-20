@@ -15,6 +15,14 @@ function today() {
   return new Date().toISOString().slice(0, 10);
 }
 
+// Recompose l'adresse du chantier (rue/numéro/code postal/ville, §CLAUDE.md
+// scindés en 4 champs) en une seule ligne lisible, pour le PDF.
+export function formatAdresseChantier(rg) {
+  const ligne1 = [rg.rue, rg.numero].filter(Boolean).join(" ");
+  const ligne2 = [rg.codePostal, rg.ville].filter(Boolean).join(" ");
+  return [ligne1, ligne2].filter(Boolean).join(", ");
+}
+
 export function defaultDossier() {
   const date = today();
   return {
@@ -48,7 +56,10 @@ export function defaultDossier() {
     // --- Branche complet : "Infos admin.", 3 sous-onglets ---
     renseignementsGeneraux: {
       client: "",
-      adresseChantier: "",
+      rue: "",
+      numero: "",
+      codePostal: "",
+      ville: "",
       bureauArchitecture: "",
       coordinateurSecurite: "",
     },

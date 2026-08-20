@@ -11,7 +11,8 @@ export const INFOS_ADMIN_TABS = [
         d.renseignementsGeneraux.client ||
           d.renseignementsGeneraux.bureauArchitecture ||
           d.renseignementsGeneraux.coordinateurSecurite ||
-          d.renseignementsGeneraux.adresseChantier
+          d.renseignementsGeneraux.rue ||
+          d.renseignementsGeneraux.codePostal
       ),
   },
   {

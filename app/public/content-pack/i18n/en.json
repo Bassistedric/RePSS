@@ -311,7 +311,14 @@
     "explication_bloc2_titre": "Duty to inform",
     "explication_bloc2_texte": "This document must be brought to the attention of all vma sud staff, temporary workers and subcontractors working on this site, as part of the site induction and opening procedure. This information is a legal requirement, to be completed before any work begins on site.",
     "explication_bloc3_titre": "Filing and acknowledgement",
-    "explication_bloc3_texte": "This document must be filed in the site's SharePoint folder. Acknowledgement of having read it must be recorded by each person's signature on the “Attendance sheet” (Émargement) page at the end of the document."
+    "explication_bloc3_texte": "This document must be filed in the site's SharePoint folder. Acknowledgement of having read it must be recorded by each person's signature on the “Attendance sheet” (Émargement) page at the end of the document.",
+    "adresse_rue": "Street",
+    "adresse_numero": "No.",
+    "adresse_code_postal": "Postcode",
+    "adresse_ville": "City",
+    "hopital_code_postal_utilise": "Postcode used for the search: {cp} (from the site address)",
+    "hopital_code_postal_manquant": "Fill in the site's postcode in General Information to launch the automatic search, or enter it here.",
+    "hopital_reutiliser_code_postal": "Reuse the site's postcode ({cp})"
   },
   "risques": []
 }

@@ -311,7 +311,14 @@
     "explication_bloc2_titre": "Informatieplicht",
     "explication_bloc2_texte": "Dit document moet ter kennis worden gebracht van alle vma sud-personeelsleden, uitzendkrachten en onderaannemers die op deze werf actief zijn, in het kader van de onthaal- en openingsprocedure van de werf. Deze informatieverstrekking is een wettelijke verplichting, voorafgaand aan elke interventie op de werf.",
     "explication_bloc3_titre": "Indiening en kennisname",
-    "explication_bloc3_texte": "Dit document moet worden geplaatst in de SharePoint-map van de werf. De kennisname door elke betrokkene moet worden vastgelegd door een handtekening op de pagina 'Aanwezigheidslijst' (Émargement) aan het einde van het document."
+    "explication_bloc3_texte": "Dit document moet worden geplaatst in de SharePoint-map van de werf. De kennisname door elke betrokkene moet worden vastgelegd door een handtekening op de pagina 'Aanwezigheidslijst' (Émargement) aan het einde van het document.",
+    "adresse_rue": "Straat",
+    "adresse_numero": "Nr.",
+    "adresse_code_postal": "Postcode",
+    "adresse_ville": "Stad",
+    "hopital_code_postal_utilise": "Postcode gebruikt voor de zoekopdracht: {cp} (van het bouwplaatsadres)",
+    "hopital_code_postal_manquant": "Vul de postcode van de bouwplaats in bij Algemene Inlichtingen om de automatische zoekopdracht te starten, of voer deze hier in.",
+    "hopital_reutiliser_code_postal": "Postcode van de bouwplaats overnemen ({cp})"
   },
   "risques": []
 }

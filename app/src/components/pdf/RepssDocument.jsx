@@ -1,5 +1,5 @@
 import { Document, Page, View, Text, Image, StyleSheet } from "@react-pdf/renderer";
-import { ROLES_ADMINISTRATION } from "../../lib/dossier";
+import { ROLES_ADMINISTRATION, formatAdresseChantier } from "../../lib/dossier";
 import { colors } from "../../lib/colors";
 import { couleurNiveau, legendeKinney, formatNombre } from "../../lib/kinney";
 
@@ -625,7 +625,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
             <KV label={t("client")} value={rg.client} />
             <KV label={t("bureau_architecture")} value={rg.bureauArchitecture} />
             <KV label={t("coordinateur_securite")} value={rg.coordinateurSecurite} />
-            <KV label={t("adresse_chantier")} value={rg.adresseChantier} />
+            <KV label={t("adresse_chantier")} value={formatAdresseChantier(rg)} />
 
             <Text style={[styles.sectionTitle, { marginTop: 10 }]}>{t("contacts_reference_titre")}</Text>
             <View style={styles.logosRow}>
