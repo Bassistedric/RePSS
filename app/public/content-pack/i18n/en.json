@@ -306,6 +306,7 @@
     "tbl_nom": "Name",
     "tbl_email": "Email",
     "tbl_tel": "Tel.",
+    "gsm": "Mobile no.",
     "niveau_risque_label": "Risk level",
     "explication_bloc1_titre": "Purpose of this document",
     "explication_bloc2_titre": "Duty to inform",
