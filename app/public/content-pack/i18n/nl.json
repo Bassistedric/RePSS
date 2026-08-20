@@ -306,7 +306,12 @@
     "tbl_nom": "Naam",
     "tbl_email": "E-mail",
     "tbl_tel": "Tel.",
-    "niveau_risque_label": "Risiconiveau"
+    "niveau_risque_label": "Risiconiveau",
+    "explication_bloc1_titre": "Doel van dit document",
+    "explication_bloc2_titre": "Informatieplicht",
+    "explication_bloc2_texte": "Dit document moet ter kennis worden gebracht van alle vma sud-personeelsleden, uitzendkrachten en onderaannemers die op deze werf actief zijn, in het kader van de onthaal- en openingsprocedure van de werf. Deze informatieverstrekking is een wettelijke verplichting, voorafgaand aan elke interventie op de werf.",
+    "explication_bloc3_titre": "Indiening en kennisname",
+    "explication_bloc3_texte": "Dit document moet worden geplaatst in de SharePoint-map van de werf. De kennisname door elke betrokkene moet worden vastgelegd door een handtekening op de pagina 'Aanwezigheidslijst' (Émargement) aan het einde van het document."
   },
   "risques": []
 }
