@@ -22,12 +22,25 @@ export default function App() {
   const [screen, setScreen] = useState("accueil");
   const [dossier, setDossier] = useState(defaultDossier);
   const [infosAdminTab, setInfosAdminTab] = useState("renseignements");
+  // Plus haut index d'étape jamais atteint : distinct de l'étape courante pour que
+  // revenir en arrière dans la sidebar ne "referme" pas l'accès aux étapes déjà
+  // remplies plus loin (sinon on est forcé de repasser par "Continuer" à chaque fois).
+  const [furthestStepIndex, setFurthestStepIndex] = useState(0);
 
   useEffect(() => {
     loadContentPack()
       .then(setPack)
       .catch((e) => setError(e.message));
   }, []);
+
+  // Le parcours bifurque juste après la Caractérisation selon le mode choisi
+  // (CLAUDE.md §5) : la liste d'étapes dépend donc de triage.modeChoisi. Calculé ici
+  // (avant les retours anticipés ci-dessous) pour respecter les règles des Hooks.
+  const steps = getSteps(dossier.triage.modeChoisi);
+  const stepIndex = steps.findIndex((s) => s.key === screen);
+  useEffect(() => {
+    if (stepIndex > furthestStepIndex) setFurthestStepIndex(stepIndex);
+  }, [stepIndex, furthestStepIndex]);
 
   if (error) {
     return (
@@ -55,10 +68,6 @@ export default function App() {
     .map((c) => ({ id: c.corps_metier, label: c.fr }))
     .filter((o, i, arr) => arr.findIndex((x) => x.id === o.id) === i);
 
-  // Le parcours bifurque juste après la Caractérisation selon le mode choisi
-  // (CLAUDE.md §5) : la liste d'étapes dépend donc de triage.modeChoisi.
-  const steps = getSteps(dossier.triage.modeChoisi);
-  const stepIndex = steps.findIndex((s) => s.key === screen);
   function goNext() {
     const next = steps[stepIndex + 1];
     if (next) setScreen(next.key);
@@ -142,6 +151,7 @@ export default function App() {
           <div className="flex">
             <StepSidebar
               current={screen}
+              furthestStepIndex={furthestStepIndex}
               dossier={dossier}
               onNavigate={setScreen}
               onSave={() => saveDossier(dossier)}
