@@ -1,13 +1,15 @@
-// §12 : couleur de la cellule "Évaluation" dérivée du texte eval_ini_niveau /
-// eval_res_niveau déjà présent dans catalogue_risques.json — jamais recalculée.
+// §12 : couleur de la cellule "Évaluation" dérivée de `niveauCode` (compilé à
+// partir du texte `niveau` français, seule langue de référence pour ce calcul —
+// voir compile_anrigen_multilang_json.py), jamais du texte affiché lui-même :
+// un code stable évite toute dépendance à la langue choisie pour le PDF.
 // Palette Kinney à 5 niveaux, volontairement séparée de la palette UI de l'app
 // (colors.js) : c'est une échelle de criticité imprimée, pas un état d'interface.
 const NIVEAUX = [
-  { test: (s) => s.includes("arrêt") || s.includes("arret"), bg: "#7A1F1F", texte: "white" },
-  { test: (s) => s.includes("immédiate") || s.includes("immediate"), bg: "#C1392B", texte: "white" },
-  { test: (s) => s.includes("correction"), bg: "#E08B2F", texte: "white" },
-  { test: (s) => s.includes("attention"), bg: "#E8C547", texte: "#3A2E00" },
-  { test: (s) => s.includes("acceptable"), bg: "#3E9B57", texte: "white" },
+  { code: "arret", bg: "#7A1F1F", texte: "white" },
+  { code: "immediate", bg: "#C1392B", texte: "white" },
+  { code: "correction", bg: "#E08B2F", texte: "white" },
+  { code: "attention", bg: "#E8C547", texte: "#3A2E00" },
+  { code: "acceptable", bg: "#3E9B57", texte: "white" },
 ];
 const NIVEAU_PAR_DEFAUT = { bg: "#E3DFD9", texte: "#3A352E" };
 
@@ -21,30 +23,60 @@ export function formatNombre(valeur) {
   return String(Math.round(n * 100) / 100);
 }
 
-export function couleurNiveau(niveau) {
-  const s = (niveau || "").toLowerCase();
-  return (NIVEAUX.find((n) => n.test(s)) || NIVEAU_PAR_DEFAUT);
+export function couleurNiveau(niveauCode) {
+  return NIVEAUX.find((n) => n.code === niveauCode) || NIVEAU_PAR_DEFAUT;
 }
 
+// Vocabulaire fixe Probabilité/Exposition/Gravité de l'échelle Kinney (§12) :
+// même échelle numérique quelle que soit la langue, donc le texte de légende est
+// dérivé de `valeur` + UI_Textes (déjà traduit en fr/en/nl), jamais du champ
+// `texte` du catalogue lui-même — ça évite de dupliquer cette traduction dans
+// les 3 catalogues de risques alors qu'elle existe déjà une seule fois ici.
+const PROBABILITE_KEYS = {
+  "0.2": "kinney_p_pratiquement_impossible",
+  "0.5": "kinney_p_si_tout_va_de_travers",
+  1: "kinney_p_possible_simultane",
+  3: "kinney_p_inhabituel_possible",
+  6: "kinney_p_tout_a_fait_possible",
+  10: "kinney_p_va_se_produire",
+};
+const EXPOSITION_KEYS = {
+  "0.5": "kinney_e_2_3x_an",
+  1: "kinney_e_chaque_mois",
+  3: "kinney_e_chaque_semaine",
+  6: "kinney_e_2_3x_jour",
+  10: "kinney_e_h_travail",
+};
+const GRAVITE_KEYS = {
+  1: "kinney_g_premiers_soins",
+  3: "kinney_g_incapacite",
+  7: "kinney_g_invalidite",
+  15: "kinney_g_1_mort",
+  40: "kinney_g_plusieurs_morts",
+};
+
 // Légende Annexe 1 : dérivée dynamiquement de catalogue_risques.json (jamais codée
-// en dur dans l'app) — l'ensemble des couples (texte, valeur) réellement utilisés
-// pour chaque facteur, triés par valeur croissante.
-export function legendeKinney(catalogue) {
-  const probabilite = new Map();
-  const exposition = new Map();
-  const gravite = new Map();
+// en dur dans l'app) — l'ensemble des valeurs réellement utilisées pour chaque
+// facteur, triées par valeur croissante, avec leur libellé traduit dans la langue
+// du document (`t`).
+export function legendeKinney(catalogue, t) {
+  const probabilite = new Set();
+  const exposition = new Set();
+  const gravite = new Set();
   for (const r of catalogue.lignesRisque) {
     for (const ev of [r.evaluationInitiale, r.evaluationResiduelle]) {
-      probabilite.set(ev.probabilite.texte, ev.probabilite.valeur);
-      exposition.set(ev.exposition.texte, ev.exposition.valeur);
-      gravite.set(ev.gravite.texte, ev.gravite.valeur);
+      probabilite.add(ev.probabilite.valeur);
+      exposition.add(ev.exposition.valeur);
+      gravite.add(ev.gravite.valeur);
     }
   }
-  const toSortedRows = (m) =>
-    [...m.entries()].sort((a, b) => parseFloat(a[1]) - parseFloat(b[1])).map(([texte, valeur]) => ({ texte, valeur }));
+  const toSortedRows = (s, keys) =>
+    [...s]
+      .sort((a, b) => parseFloat(a) - parseFloat(b))
+      .map((valeur) => ({ texte: keys[valeur] ? t(keys[valeur]) : valeur, valeur }));
   return {
-    probabilite: toSortedRows(probabilite),
-    exposition: toSortedRows(exposition),
-    gravite: toSortedRows(gravite),
+    probabilite: toSortedRows(probabilite, PROBABILITE_KEYS),
+    exposition: toSortedRows(exposition, EXPOSITION_KEYS),
+    gravite: toSortedRows(gravite, GRAVITE_KEYS),
   };
 }

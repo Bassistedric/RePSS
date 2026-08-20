@@ -320,7 +320,12 @@
     "hopital_code_postal_manquant": "Fill in the site's postcode in General Information to launch the automatic search, or enter it here.",
     "hopital_reutiliser_code_postal": "Reuse the site's postcode ({cp})",
     "renseignements_titre": "Information",
-    "adresse_chantier_titre": "Site address"
+    "adresse_chantier_titre": "Site address",
+    "niveau_acceptable": "Acceptable",
+    "niveau_attention": "Attention required",
+    "niveau_correction": "Correction required",
+    "niveau_immediate": "Immediate action",
+    "niveau_arret": "Consider stopping the work"
   },
   "risques": []
 }

@@ -320,7 +320,12 @@
     "hopital_code_postal_manquant": "Vul de postcode van de bouwplaats in bij Algemene Inlichtingen om de automatische zoekopdracht te starten, of voer deze hier in.",
     "hopital_reutiliser_code_postal": "Postcode van de bouwplaats overnemen ({cp})",
     "renseignements_titre": "Inlichtingen",
-    "adresse_chantier_titre": "Adres bouwplaats"
+    "adresse_chantier_titre": "Adres bouwplaats",
+    "niveau_acceptable": "Aanvaardbaar",
+    "niveau_attention": "Aandacht vereist",
+    "niveau_correction": "Correctie noodzakelijk",
+    "niveau_immediate": "Onmiddellijke maatregel",
+    "niveau_arret": "Stopzetting overwegen"
   },
   "risques": []
 }

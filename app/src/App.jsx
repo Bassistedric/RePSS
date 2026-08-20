@@ -63,7 +63,12 @@ export default function App() {
   }
 
   const t = makeTranslator(pack.i18n, lang);
-  const corpsMetierOptions = pack.catalogueComplet.categories
+  // Le catalogue complet existe en fr/en/nl (RePSS_Analyse_Risques_EN/NL.xlsx) :
+  // sélectionné selon la langue courante, avant même l'étape Génération, pour que
+  // le wizard (Caractérisation, Analyse de risques) s'affiche déjà dans la langue
+  // choisie et pas seulement le PDF final.
+  const catalogueComplet = pack.catalogueComplet[lang] || pack.catalogueComplet.fr;
+  const corpsMetierOptions = catalogueComplet.categories
     .filter((c) => c.corps_metier !== "universel")
     .map((c) => ({ id: c.corps_metier, label: c.fr }))
     .filter((o, i, arr) => arr.findIndex((x) => x.id === o.id) === i);
@@ -113,7 +118,7 @@ export default function App() {
           <AnalyseRisques
             dossier={dossier}
             setDossier={setDossier}
-            catalogueComplet={pack.catalogueComplet}
+            catalogueComplet={catalogueComplet}
             catalogueAbrege={pack.catalogueAbrege}
             onBack={goBack}
             onNext={goNext}
@@ -126,7 +131,7 @@ export default function App() {
             dossier={dossier}
             setDossier={setDossier}
             entreprise={pack.entreprise}
-            catalogueComplet={pack.catalogueComplet}
+            catalogueComplet={catalogueComplet}
             catalogueAbrege={pack.catalogueAbrege}
             hopitaux={pack.hopitaux}
             t={t}

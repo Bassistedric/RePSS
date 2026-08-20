@@ -363,9 +363,16 @@ function KinneyGrid({ title, rows }) {
   );
 }
 
+const NIVEAUX_LEGENDE = [
+  { code: "acceptable", labelKey: "niveau_acceptable" },
+  { code: "attention", labelKey: "niveau_attention" },
+  { code: "correction", labelKey: "niveau_correction" },
+  { code: "immediate", labelKey: "niveau_immediate" },
+  { code: "arret", labelKey: "niveau_arret" },
+];
+
 function Annexe1KinneyPage({ catalogue, t }) {
-  const legende = legendeKinney(catalogue);
-  const niveaux = ["Acceptable", "Attention requise", "Correction nécessaire", "Mesure immédiate", "Envisager l'arrêt"];
+  const legende = legendeKinney(catalogue, t);
   return (
     <Page size="A4" style={styles.page} wrap>
       <Text style={styles.title}>
@@ -382,12 +389,12 @@ function Annexe1KinneyPage({ catalogue, t }) {
 
       <View style={{ marginTop: 20 }}>
         <Text style={styles.kinneyGridTitle}>{t("niveau_risque_label")}</Text>
-        {niveaux.map((n) => {
-          const c = couleurNiveau(n);
+        {NIVEAUX_LEGENDE.map((n) => {
+          const c = couleurNiveau(n.code);
           return (
-            <View key={n} style={styles.kinneyNiveauRow}>
+            <View key={n.code} style={styles.kinneyNiveauRow}>
               <View style={[styles.kinneyNiveauSwatch, { backgroundColor: c.bg }]} />
-              <Text>{n}</Text>
+              <Text>{t(n.labelKey)}</Text>
             </View>
           );
         })}
@@ -438,8 +445,8 @@ function construireLignesTableau(catalogue, corpsMetier, cochesById) {
   return lignes;
 }
 
-function EvalCell({ score, niveau, width }) {
-  const c = couleurNiveau(niveau);
+function EvalCell({ score, niveauCode, width }) {
+  const c = couleurNiveau(niveauCode);
   return (
     <View style={{ width: `${width}%` }}>
       <View style={[styles.rtEvalCell, { backgroundColor: c.bg }]}>
@@ -465,12 +472,12 @@ function RisqueDataRow({ ref: refNum, ligne, remarques, t }) {
       <Text style={[styles.rtCell, { width: `${RT_COLS.p}%`, textAlign: "center" }]}>{formatNombre(ligne.evaluationInitiale.probabilite.valeur)}</Text>
       <Text style={[styles.rtCell, { width: `${RT_COLS.e}%`, textAlign: "center" }]}>{formatNombre(ligne.evaluationInitiale.exposition.valeur)}</Text>
       <Text style={[styles.rtCell, { width: `${RT_COLS.g}%`, textAlign: "center" }]}>{formatNombre(ligne.evaluationInitiale.gravite.valeur)}</Text>
-      <EvalCell score={ligne.evaluationInitiale.score} niveau={ligne.evaluationInitiale.niveau} width={RT_COLS.eval} />
+      <EvalCell score={ligne.evaluationInitiale.score} niveauCode={ligne.evaluationInitiale.niveauCode} width={RT_COLS.eval} />
       <Text style={[styles.rtCell, { width: `${RT_COLS.mesures}%` }]}>{ligne.mesuresPrevention}</Text>
       <Text style={[styles.rtCell, { width: `${RT_COLS.pRes}%`, textAlign: "center" }]}>{formatNombre(ligne.evaluationResiduelle.probabilite.valeur)}</Text>
       <Text style={[styles.rtCell, { width: `${RT_COLS.eRes}%`, textAlign: "center" }]}>{formatNombre(ligne.evaluationResiduelle.exposition.valeur)}</Text>
       <Text style={[styles.rtCell, { width: `${RT_COLS.gRes}%`, textAlign: "center" }]}>{formatNombre(ligne.evaluationResiduelle.gravite.valeur)}</Text>
-      <EvalCell score={ligne.evaluationResiduelle.score} niveau={ligne.evaluationResiduelle.niveau} width={RT_COLS.evalRes} />
+      <EvalCell score={ligne.evaluationResiduelle.score} niveauCode={ligne.evaluationResiduelle.niveauCode} width={RT_COLS.evalRes} />
     </View>
   );
 }
