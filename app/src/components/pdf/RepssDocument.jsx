@@ -36,14 +36,16 @@ const styles = StyleSheet.create({
 
   // --- Couverture ---
   coverPage: { padding: 0, fontFamily: "Helvetica" },
-  coverTop: { padding: 40 },
-  coverLogo: { height: 46, objectFit: "contain", marginBottom: 40 },
-  coverTitle: { fontSize: 26, fontWeight: 700, color: colors.navy },
-  coverModeLabel: { fontSize: 13, color: colors.neutralText, marginTop: 6 },
-  coverBox: { marginTop: 50, padding: 16, borderRadius: 4, border: `1.5pt solid ${colors.navy}`, backgroundColor: colors.navyTint },
-  coverBoxLabel: { fontSize: 8, color: colors.navy, textTransform: "uppercase", letterSpacing: 1 },
-  coverBoxValue: { fontSize: 15, fontWeight: 700, color: colors.navy, marginTop: 3 },
-  coverMetaRow: { flexDirection: "row", marginTop: 40, justifyContent: "space-between" },
+  coverContent: { flex: 1, padding: 40, flexDirection: "column" },
+  coverLogo: { height: 46, objectFit: "contain", marginBottom: 40, alignSelf: "center" },
+  coverTitle: { fontSize: 26, fontWeight: 700, color: colors.navy, textAlign: "center" },
+  coverModeLabel: { fontSize: 13, color: colors.neutralText, marginTop: 6, textAlign: "center" },
+  coverBox: { marginTop: 40, padding: 16, borderRadius: 4, border: `1.5pt solid ${colors.navy}`, backgroundColor: colors.navyTint, alignItems: "center" },
+  coverBoxLabel: { fontSize: 8, color: colors.navy, textTransform: "uppercase", letterSpacing: 1, textAlign: "center" },
+  coverBoxValue: { fontSize: 15, fontWeight: 700, color: colors.navy, marginTop: 3, textAlign: "center" },
+  coverPhoto: { width: "100%", height: 240, objectFit: "cover", marginTop: 24, borderRadius: 4 },
+  coverSpacer: { flexGrow: 1 },
+  coverMetaRow: { flexDirection: "row", justifyContent: "space-between", paddingTop: 14, borderTop: `0.5pt solid ${colors.neutralBorder}` },
   coverMetaItem: { fontSize: 9, color: colors.neutralText },
 
   // --- Table des matières ---
@@ -202,12 +204,12 @@ function ContactCardPdf({ c, logoSrc }) {
 // ============================================================
 // Page 1 — Couverture
 // ============================================================
-function CouverturePage({ dossier, entreprise, t, logoAbsoluteUrl }) {
+function CouverturePage({ dossier, entreprise, t, logoAbsoluteUrl, photoCouvertureAbsoluteUrl }) {
   const { identification, meta, triage } = dossier;
   const isAbrege = triage.modeChoisi === "abrege";
   return (
     <Page size="A4" style={styles.coverPage}>
-      <View style={styles.coverTop}>
+      <View style={styles.coverContent}>
         {logoAbsoluteUrl && <Image src={logoAbsoluteUrl} style={styles.coverLogo} />}
         <Text style={styles.coverTitle}>{t("reponse_au_pss")}</Text>
         <Text style={styles.coverModeLabel}>{isAbrege ? t("repss_abrege_label") : t("repss_complet_label")}</Text>
@@ -220,6 +222,10 @@ function CouverturePage({ dossier, entreprise, t, logoAbsoluteUrl }) {
           <Text style={styles.coverBoxLabel}>{t("nom_chantier")}</Text>
           <Text style={styles.coverBoxValue}>{identification.nomChantier || "-"}</Text>
         </View>
+
+        {photoCouvertureAbsoluteUrl && <Image src={photoCouvertureAbsoluteUrl} style={styles.coverPhoto} />}
+
+        <View style={styles.coverSpacer} />
 
         <View style={styles.coverMetaRow}>
           <Text style={styles.coverMetaItem}>{meta.dateDerniereModif}</Text>
@@ -546,7 +552,7 @@ function EmargementPage({ t }) {
 // ============================================================
 // Document principal
 // ============================================================
-export default function RepssDocument({ dossier, entreprise, catalogueComplet, catalogueAbrege, hopitaux, t, logoAbsoluteUrl, logosBaseUrl }) {
+export default function RepssDocument({ dossier, entreprise, catalogueComplet, catalogueAbrege, hopitaux, t, logoAbsoluteUrl, logosBaseUrl, photoCouvertureAbsoluteUrl }) {
   const {
     renseignementsGeneraux: rg,
     administratif: adm,
@@ -572,7 +578,13 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
 
   return (
     <Document>
-      <CouverturePage dossier={dossier} entreprise={entreprise} t={t} logoAbsoluteUrl={logoAbsoluteUrl} />
+      <CouverturePage
+        dossier={dossier}
+        entreprise={entreprise}
+        t={t}
+        logoAbsoluteUrl={logoAbsoluteUrl}
+        photoCouvertureAbsoluteUrl={photoCouvertureAbsoluteUrl}
+      />
       <ExplicationPage t={t} />
       <TableMatieresPage t={t} isAbrege={isAbrege} entreprise={entreprise} />
 

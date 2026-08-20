@@ -5,6 +5,7 @@
   },
   "branding": {
     "logo": "vma_logo.png",
+    "photoCouverture": "",
     "couleurPrincipale": "#0B3040",
     "couleurSecondaire": "#156082"
   },
