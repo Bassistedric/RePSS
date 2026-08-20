@@ -34,6 +34,11 @@ const styles = StyleSheet.create({
   contactLogo: { height: 16, objectFit: "contain", marginBottom: 4 },
   logosRow: { flexDirection: "row", flexWrap: "wrap" },
 
+  // Règles spécifiques : contacts d'urgence, logos plus grands que ceux des
+  // contacts de référence (§12) pour rester lisibles dans un contexte d'urgence.
+  contactCardUrgence: { width: "31%", marginBottom: 8, marginRight: "2%", fontSize: 7.5, border: `0.5pt solid ${colors.neutralBorder}`, padding: 8 },
+  contactLogoUrgence: { height: 32, objectFit: "contain", marginBottom: 5 },
+
   // --- Couverture ---
   coverPage: { padding: 0, fontFamily: "Helvetica" },
   coverContent: { flex: 1, padding: 40, flexDirection: "column" },
@@ -731,26 +736,26 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
             <Text style={{ marginBottom: 8, lineHeight: 1.4 }}>{t("titre_appel_secours")}</Text>
 
             <View style={styles.logosRow}>
-              <View style={styles.contactCard}>
-                {icones.pompier?.logo && <Image src={logoSrc(icones.pompier.logo)} style={styles.contactLogo} />}
+              <View style={styles.contactCardUrgence}>
+                {icones.pompier?.logo && <Image src={logoSrc(icones.pompier.logo)} style={styles.contactLogoUrgence} />}
                 <Text style={{ fontWeight: 700 }}>{t("service_incendie")}</Text>
                 <Text>112</Text>
                 {rs.serviceIncendieInterne && <Text>{rs.serviceIncendieInterne}</Text>}
               </View>
-              <View style={styles.contactCard}>
-                {icones.antipoison?.logo && <Image src={logoSrc(icones.antipoison.logo)} style={styles.contactLogo} />}
+              <View style={styles.contactCardUrgence}>
+                {icones.antipoison?.logo && <Image src={logoSrc(icones.antipoison.logo)} style={styles.contactLogoUrgence} />}
                 <Text style={{ fontWeight: 700 }}>{t("centre_antipoison_label")}</Text>
                 <Text>070/245.245</Text>
               </View>
-              <View style={styles.contactCard}>
-                {icones.police?.logo && <Image src={logoSrc(icones.police.logo)} style={styles.contactLogo} />}
+              <View style={styles.contactCardUrgence}>
+                {icones.police?.logo && <Image src={logoSrc(icones.police.logo)} style={styles.contactLogoUrgence} />}
                 <Text style={{ fontWeight: 700 }}>{t("police_label")}</Text>
                 <Text>{contacts.police?.tel || "101"}</Text>
                 {contacts.police?.site_web && <Text>{contacts.police.site_web}</Text>}
               </View>
               {hopitauxSelectionnes.map((h) => (
-                <View key={h.id} style={styles.contactCard}>
-                  {icones.hopital?.logo && <Image src={logoSrc(icones.hopital.logo)} style={styles.contactLogo} />}
+                <View key={h.id} style={styles.contactCardUrgence}>
+                  {icones.hopital?.logo && <Image src={logoSrc(icones.hopital.logo)} style={styles.contactLogoUrgence} />}
                   <Text style={{ fontWeight: 700 }}>{t("hopital_plus_proche")}</Text>
                   <Text>
                     {h.nom_hopital}
