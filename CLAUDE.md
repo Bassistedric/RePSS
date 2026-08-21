@@ -196,6 +196,84 @@ pressions/températures, présence gaz) — absents du complet.
 Étapes : Identification → Caractérisation → Infos chantier & usine → Risques &
 mesures → Génération (plus court que le complet).
 
+#### Contenu détaillé de l'étape "Infos chantier & usine" (cahier des charges précis)
+
+Repris champ par champ depuis le document de référence existant (`E_F_04_VMA_RePSS_abrégé`) :
+
+- **Bloc "vma sud / Client"** : la colonne vma sud est **supprimée entièrement**
+  (fixe, redondante avec `entreprise.json`, déjà connue). Ne garder que la colonne
+  **Client**, réduite à 5 champs : Nom de l'entreprise, Représentant de l'employeur,
+  Adresse, GSM, Email — pas de champ "Téléphone" fixe séparé, pas de "Fonction".
+- **Renseignements du lieu d'exécution** :
+  - `Présence de coactivité ?` (Oui/Non) — **nouveau critère bloquant** : répondre
+    "Oui" doit forcer le passage en RePSS complet et verrouiller "Abrégé", exactement
+    comme les 4 critères de l'aide au choix en Caractérisation (§ Caractérisation),
+    mais déclenché plus tard dans le parcours puisque cette question n'apparaît
+    qu'à cette étape-ci, après que le PM ait déjà choisi "Abrégé".
+  - `SEVESO ?` et `Existe-t-il un accueil sécurité à devoir passer ?` : Oui/Non
+    simple, aucune logique de verrouillage, restent tels quels.
+- **Renseignements sur l'installation d'intervention (si usine)** : conservé tel
+  quel, mais **sans valeur "NA" pré-remplie par défaut** — les champs (Matières
+  premières mise en œuvre, Produits dangereux utilisés) restent vides, c'est au PM
+  de taper "NA" lui-même si réellement non applicable, pas une valeur par défaut du
+  système.
+- **Renseignements généraux** : `Lieux spécifique de l'exécution du travail` devient
+  `Lieux d'exécution spécifique chez le client` (libellé clarifié). Le champ
+  `Mode opératoire abrégé (nature des travaux)` doit avoir une **grande zone de
+  texte** (le PM y liste plusieurs opérations en puces, cf. exemple réel : 3 lignes
+  minimum visibles sans scroll) — actuellement trop exigu dans le document de
+  référence. Le reste des champs de ce bloc (dates début/fin, représentant vma sud
+  sur site, régime de travail, effectif moyen, sous-traitants) reste inchangé.
+- **Mesures générales de sécurité** (ouverture de chantier réalisée par le client,
+  Oui/Non) : inchangé.
+- **Habilitations** : reste une grille à cocher (Chariot élévateur, Nacelle, Pontier,
+  Levage/Télescopique, BA4, BA5, Soudeur, Frigoriste), avec possibilité d'ajouter
+  **plusieurs** lignes "Autre" libres (pas limité à une seule, contrairement au
+  document de référence).
+- **Locaux sociaux et engins mis à disposition** : inchangé, contrôle à 3 états
+  (Interne/Client/N.A.) déjà spécifié §7.
+- **Équipements de protection individuelle** : liste inchangée, mais **ajouter les
+  pictogrammes** (casque, chaussures, lunettes, gants/combinaison — pictogrammes
+  d'obligation bleus ronds, style ISO 7010, absents de la version web actuelle bien
+  que présents dans le document de référence).
+- **Protection pour l'environnement** (évacuation déchets / gaz frigorifiques) :
+  inchangé, garde le choix vma sud/Client (contrairement à la section Risques
+  ci-dessous, où ce choix disparaît).
+- **Mesures générales de sécurité** (permis de travail, consignation, permis espace
+  restreint, permis de fouille, permis de feu, mode opératoire d'exécution) :
+  inchangé, garde le choix vma sud/Client.
+
+#### Identification des risques (changement de comportement)
+
+- **Supprimer le choix "vma sud" / "Client"** par ligne — chaque item reste une
+  simple case à cocher (`sourceDanger` + `mesure`), cohérent avec
+  `catalogue_risques_abrege.json` tel qu'il existe déjà (pas de champ responsable
+  dans ce catalogue).
+- **Ajouter une case "Tout cocher" au niveau du titre de chaque catégorie** (ex.
+  "Travaux en hauteur") : la cocher sélectionne d'un coup tous les items de cette
+  catégorie en dessous (Chute échelle/échafaudage<5m, Chute d'objets, Chute endroits
+  non protégés — sans l'item aggravé, qui reste désactivé). Décocher le titre
+  décoche tout le groupe. **Si le PM décoche ensuite un seul item individuellement,
+  la case "Tout cocher" du titre redevient simplement décochée** (pas d'état
+  intermédiaire/indéterminé — comportement binaire simple, tranché en conversation).
+
+#### Le reste
+
+**Organisation des secours** (numéro d'urgence, contacts internes) et
+**Approbation** (signatures vma sud/Client) : inchangés. **Émargement** : ne fait
+plus partie du flux principal du wizard, devient une annexe automatique
+(`documentsAccompagnants.emargement.genereAutomatiquement: true`), comme pour la
+branche complète.
+
+#### Génération PDF de la branche abrégée
+
+Comme pour la branche complète (§12), la génération PDF de l'abrégé n'a jamais été
+spécifiée en détail — à traiter comme un chantier à part, en réutilisant la même
+mise en page de référence (bandeaux de titre bleu marine, tableaux à deux colonnes)
+que le document `E_F_04_VMA_RePSS_abrégé` existant, mais avec toutes les
+simplifications ci-dessus déjà appliquées (pas de colonne vma sud sur
+l'identification client, pas de "NA" pré-rempli, etc.).
+
 ## 6. Analyse de risques — granularité et affichage (corrections importantes)
 
 **La case à cocher correspond à un `sourceDanger` unique, pas systématiquement à une
