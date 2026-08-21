@@ -130,6 +130,13 @@ const styles = StyleSheet.create({
   signatureBox: { width: 220, height: 42, border: `0.75pt solid ${colors.neutralBorderStrong}` },
   signatureChantier: { fontSize: 8, color: colors.neutralText, marginBottom: 8 },
 
+  // --- Infos chantier & usine (abrégé) : bandeaux de titre bleu marine, même
+  // principe que les bandeaux de catégorie du tableau d'analyse de risques (§12,
+  // "Génération PDF de la branche abrégée" : reprendre la mise en page de
+  // référence — bandeaux de titre bleu marine, tableaux à deux colonnes).
+  icuBanner: { backgroundColor: colors.navy, paddingVertical: 4, paddingHorizontal: 6, marginTop: 10, marginBottom: 5 },
+  icuBannerText: { color: "white", fontSize: 9, fontWeight: 700 },
+
   // --- Caractéristiques du chantier : contrôle à 3 états, même forme que le web
   // (FormStep.jsx TriStateField) plutôt qu'un simple texte, §CLAUDE.md §7.
   tristateRow: { flexDirection: "row", alignItems: "center", marginBottom: 4 },
@@ -257,6 +264,14 @@ function SignatureRow({ label }) {
     <View style={styles.signatureRow}>
       <Text style={styles.signatureRole}>{label}</Text>
       <View style={styles.signatureBox} />
+    </View>
+  );
+}
+
+function IcuBanner({ label }) {
+  return (
+    <View style={styles.icuBanner} wrap={false}>
+      <Text style={styles.icuBannerText}>{label}</Text>
     </View>
   );
 }
@@ -642,6 +657,11 @@ function AnalyseRisquesTablePage({ catalogue, corpsMetier, itemsCoches, t }) {
 // ============================================================
 // Analyse de risques — format abrégé (pas de Kinney, §5)
 // ============================================================
+// §6/§12 : vrai tableau à deux colonnes (source de danger / mesure), bandeau de
+// titre bleu marine, même principe que le tableau paysage du complet — et les
+// titres de catégorie restent toujours visibles même sans ligne cochée dessous
+// (preuve d'une revue délibérée, pas d'un copier-coller), comme le fait déjà la
+// liste des sous-traitants sur la page précédente.
 function AnalyseRisquesAbregePage({ catalogue, itemsCoches, t }) {
   const cochesById = Object.fromEntries(itemsCoches.map((i) => [i.risqueId, i]));
   return (
@@ -650,16 +670,27 @@ function AnalyseRisquesAbregePage({ catalogue, itemsCoches, t }) {
       <View style={{ marginTop: 10 }}>
         {catalogue.categories.map((cat) => {
           const items = catalogue.risques.filter((r) => r.categorieId === cat.id && cochesById[r.id]);
-          if (items.length === 0) return null;
           return (
-            <View key={cat.id} wrap={false}>
-              <Text style={styles.subTitle}>{cat.fr}</Text>
-              {items.map((r) => (
-                <View key={r.id} style={styles.ligneRisque}>
-                  <Text style={{ fontWeight: 500 }}>{r.sourceDanger}</Text>
-                  <Text>{r.mesure}</Text>
+            <View key={cat.id} style={{ marginBottom: 10 }} wrap={false}>
+              <View style={[styles.rtBanner, styles.rtBannerCategorie]}>
+                <Text style={styles.rtBannerCategorieText}>{cat.fr}</Text>
+              </View>
+              {items.length > 0 ? (
+                <View style={{ marginTop: 4 }}>
+                  <View style={styles.tableHeader}>
+                    <Text style={[styles.th, { flex: 1 }]}>{t("risque_col_source_danger")}</Text>
+                    <Text style={[styles.th, { flex: 1 }]}>{t("mesures_prevention_label")}</Text>
+                  </View>
+                  {items.map((r) => (
+                    <View key={r.id} style={styles.tableRow}>
+                      <Text style={[styles.td, { flex: 1 }]}>{r.sourceDanger}</Text>
+                      <Text style={[styles.td, { flex: 1 }]}>{r.mesure}</Text>
+                    </View>
+                  ))}
                 </View>
-              ))}
+              ) : (
+                <Text style={{ marginTop: 4, color: colors.neutralText }}>{t("neant")}</Text>
+              )}
             </View>
           );
         })}
@@ -835,14 +866,14 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
 
         {isAbrege && (
           <Section title={t("titre_infos_chantier_usine")} boxed>
-            <Text style={styles.sectionTitle}>{t("icu_client_titre")}</Text>
+            <IcuBanner label={t("icu_client_titre")} />
             <KV label={t("icu_nom_entreprise")} value={icu.client.nomEntreprise} />
             <KV label={t("icu_representant_employeur")} value={icu.client.representantEmployeur} />
             <KV label={t("adresse")} value={icu.client.adresse} />
             <KV label={t("gsm")} value={icu.client.gsm} />
             <KV label={t("email")} value={icu.client.email} />
 
-            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_lieu_execution_titre")}</Text>
+            <IcuBanner label={t("icu_lieu_execution_titre")} />
             <Bullets
               items={[
                 { label: t("coactivite"), value: icu.coactivite },
@@ -851,7 +882,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
               ]}
             />
 
-            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_installation_titre")}</Text>
+            <IcuBanner label={t("icu_installation_titre")} />
             <KV label={t("icu_matieres_premieres")} value={icu.matieresPremieres} />
             <KV label={t("icu_produits_dangereux")} value={icu.produitsDangereux} />
             <KV label={t("icu_description_process")} value={icu.descriptionProcess} />
@@ -859,7 +890,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
             <Bullets items={[{ label: t("presence_gaz"), value: icu.presenceGaz }]} />
             <KV label={t("icu_presence_gaz_detail")} value={icu.presenceGazDetail} />
 
-            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_renseignements_generaux_titre")}</Text>
+            <IcuBanner label={t("icu_renseignements_generaux_titre")} />
             <KV label={t("icu_lieu_execution_specifique")} value={icu.lieuExecutionSpecifique} />
             <KV label={t("icu_mode_operatoire")} value={icu.modeOperatoireAbrege} />
             <KV label={t("date_debut_travaux")} value={icu.dateDebutTravaux} />
@@ -872,7 +903,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
             />
             <KV label={t("icu_effectif_moyen")} value={icu.effectifMoyenParPoste} />
 
-            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_sous_traitants_titre")}</Text>
+            <IcuBanner label={t("icu_sous_traitants_titre")} />
             {icu.sousTraitants?.length > 0 ? (
               <Table
                 columns={[
@@ -887,7 +918,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
 
             <Bullets items={[{ label: t("icu_ouverture_chantier"), value: icu.ouvertureChantierParClient }]} />
 
-            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_habilitations_titre")}</Text>
+            <IcuBanner label={t("icu_habilitations_titre")} />
             <Bullets
               items={[
                 { label: t("icu_hab_chariot"), value: icu.habilitations.chariotElevateur },
@@ -902,7 +933,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
               ]}
             />
 
-            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_locaux_sociaux_titre")}</Text>
+            <IcuBanner label={t("icu_locaux_sociaux_titre")} />
             <TriStateRow label={t("refectoire")} value={icu.locauxSociaux.refectoire} t={t} />
             <TriStateRow label={t("sanitaires")} value={icu.locauxSociaux.sanitaires} t={t} />
             <TriStateRow label={t("vestiaires")} value={icu.locauxSociaux.vestiaires} t={t} />
@@ -915,7 +946,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
             />
             <KV label={t("icu_engins_disposition_detail")} value={icu.enginsMisADispositionDetail} />
 
-            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_epi_titre")}</Text>
+            <IcuBanner label={t("icu_epi_titre")} />
             <Bullets
               items={[
                 { label: t("icu_epi_casque"), value: icu.epi.casque },
@@ -930,11 +961,11 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
             />
             <KV label={t("icu_epi_autres")} value={icu.epi.autres} />
 
-            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_protection_env_titre")}</Text>
+            <IcuBanner label={t("icu_protection_env_titre")} />
             <TriStateRow label={t("icu_evacuation_dechets")} value={icu.protectionEnvironnement.evacuationDechets} t={t} />
             <TriStateRow label={t("icu_evacuation_gaz")} value={icu.protectionEnvironnement.evacuationGazFrigorifiques} t={t} />
 
-            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_permis_titre")}</Text>
+            <IcuBanner label={t("icu_permis_titre")} />
             <TriStateRow label={t("icu_permis_travail_obligatoire")} value={icu.permisTravail.permisTravailObligatoire} t={t} />
             <TriStateRow label={t("icu_consignation_installations")} value={icu.permisTravail.consignationInstallations} t={t} />
             <TriStateRow label={t("icu_permis_espace_restreint")} value={icu.permisTravail.permisEspaceRestreint} t={t} />
@@ -942,7 +973,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
             <TriStateRow label={t("icu_permis_feu")} value={icu.permisTravail.permisFeu} t={t} />
             <TriStateRow label={t("icu_mode_operatoire_execution")} value={icu.permisTravail.modeOperatoireExecution} t={t} />
 
-            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_organisation_secours_titre")}</Text>
+            <IcuBanner label={t("icu_organisation_secours_titre")} />
             <KV label={t("icu_numero_urgence_interne")} value={icu.organisationSecours.numeroUrgenceInterne} />
             <Bullets
               items={[
@@ -953,7 +984,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
               ]}
             />
 
-            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_approbation_titre")}</Text>
+            <IcuBanner label={t("icu_approbation_titre")} />
             <KV label={t("icu_approbation_vma_responsable")} value={icu.approbation.vmaResponsableNom} />
             <KV label={t("icu_approbation_vma_conseiller")} value={icu.approbation.vmaConseillerPreventionNom} />
             <KV label={t("icu_approbation_client_responsable")} value={icu.approbation.clientResponsableNom} />
