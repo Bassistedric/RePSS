@@ -835,22 +835,128 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
 
         {isAbrege && (
           <Section title={t("titre_infos_chantier_usine")} boxed>
+            <Text style={styles.sectionTitle}>{t("icu_client_titre")}</Text>
+            <KV label={t("icu_nom_entreprise")} value={icu.client.nomEntreprise} />
+            <KV label={t("icu_representant_employeur")} value={icu.client.representantEmployeur} />
+            <KV label={t("adresse")} value={icu.client.adresse} />
+            <KV label={t("gsm")} value={icu.client.gsm} />
+            <KV label={t("email")} value={icu.client.email} />
+
+            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_lieu_execution_titre")}</Text>
             <Bullets
               items={[
-                { label: t("site_seveso"), value: icu.seveso },
                 { label: t("coactivite"), value: icu.coactivite },
+                { label: t("site_seveso"), value: icu.seveso },
                 { label: t("accueil_securite_requis"), value: icu.accueilSecurite },
-                { label: t("presence_gaz"), value: icu.presenceGaz },
-                { label: t("permis_feu"), value: icu.permisFeu },
-                { label: t("permis_travail"), value: icu.permisTravail },
               ]}
             />
-            <KV label={t("matieres_premieres_dangereuses")} value={icu.matieresPremierresDangereuses} />
+
+            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_installation_titre")}</Text>
+            <KV label={t("icu_matieres_premieres")} value={icu.matieresPremieres} />
+            <KV label={t("icu_produits_dangereux")} value={icu.produitsDangereux} />
+            <KV label={t("icu_description_process")} value={icu.descriptionProcess} />
             <KV label={t("pressions_temperatures")} value={icu.pressionsTemperatures} />
+            <Bullets items={[{ label: t("presence_gaz"), value: icu.presenceGaz }]} />
+            <KV label={t("icu_presence_gaz_detail")} value={icu.presenceGazDetail} />
+
+            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_renseignements_generaux_titre")}</Text>
+            <KV label={t("icu_lieu_execution_specifique")} value={icu.lieuExecutionSpecifique} />
+            <KV label={t("icu_mode_operatoire")} value={icu.modeOperatoireAbrege} />
+            <KV label={t("date_debut_travaux")} value={icu.dateDebutTravaux} />
+            <KV label={t("icu_date_fin_travaux_presumee")} value={icu.dateFinTravauxPresumee} />
+            <KV label={t("icu_representant_vma_nom")} value={icu.representantVmaNom} />
+            <KV label={t("fonction")} value={icu.representantVmaFonction} />
+            <KV
+              label={t("icu_regime_travail")}
+              value={icu.regimeTravail === "2_postes" ? t("icu_regime_2_postes") : icu.regimeTravail === "1_poste" ? t("icu_regime_1_poste") : ""}
+            />
+            <KV label={t("icu_effectif_moyen")} value={icu.effectifMoyenParPoste} />
+
+            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_sous_traitants_titre")}</Text>
+            {icu.sousTraitants?.length > 0 ? (
+              <Table
+                columns={[
+                  { key: "nom", label: t("icu_nom_sous_traitant") },
+                  { key: "activites", label: t("icu_activites_sous_traitant"), flex: 2 },
+                ]}
+                rows={icu.sousTraitants}
+              />
+            ) : (
+              <Text>{t("neant")}</Text>
+            )}
+
+            <Bullets items={[{ label: t("icu_ouverture_chantier"), value: icu.ouvertureChantierParClient }]} />
+
+            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_habilitations_titre")}</Text>
+            <Bullets
+              items={[
+                { label: t("icu_hab_chariot"), value: icu.habilitations.chariotElevateur },
+                { label: t("icu_hab_nacelle"), value: icu.habilitations.nacelle },
+                { label: t("icu_hab_pontier"), value: icu.habilitations.pontier },
+                { label: t("icu_hab_levage"), value: icu.habilitations.levageTelescopique },
+                { label: t("icu_hab_ba4"), value: icu.habilitations.ba4 },
+                { label: t("icu_hab_ba5"), value: icu.habilitations.ba5 },
+                { label: t("icu_hab_soudeur"), value: icu.habilitations.soudeur },
+                { label: t("icu_hab_frigoriste"), value: icu.habilitations.frigoriste },
+                ...(icu.habilitations.autres || []).filter(Boolean).map((v) => ({ label: v, value: true })),
+              ]}
+            />
+
+            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_locaux_sociaux_titre")}</Text>
             <TriStateRow label={t("refectoire")} value={icu.locauxSociaux.refectoire} t={t} />
             <TriStateRow label={t("sanitaires")} value={icu.locauxSociaux.sanitaires} t={t} />
             <TriStateRow label={t("vestiaires")} value={icu.locauxSociaux.vestiaires} t={t} />
             <TriStateRow label={t("douches")} value={icu.locauxSociaux.douches} t={t} />
+
+            <Bullets
+              items={[
+                { label: t("icu_engins_disposition"), value: icu.enginsMisADisposition },
+              ]}
+            />
+            <KV label={t("icu_engins_disposition_detail")} value={icu.enginsMisADispositionDetail} />
+
+            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_epi_titre")}</Text>
+            <Bullets
+              items={[
+                { label: t("icu_epi_casque"), value: icu.epi.casque },
+                { label: t("icu_epi_chaussures"), value: icu.epi.chaussures },
+                { label: t("icu_epi_lunettes"), value: icu.epi.lunettes },
+                { label: t("icu_epi_gants_combinaison"), value: icu.epi.gantsCombinaison },
+                { label: t("icu_epi_protection_auditive"), value: icu.epi.protectionAuditive },
+                { label: t("icu_epi_masque_anti_poussiere"), value: icu.epi.masqueAntiPoussiere },
+                { label: t("icu_epi_protection_faciale"), value: icu.epi.protectionFaciale },
+                { label: t("icu_epi_harnais"), value: icu.epi.harnaisSecurite },
+              ]}
+            />
+            <KV label={t("icu_epi_autres")} value={icu.epi.autres} />
+
+            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_protection_env_titre")}</Text>
+            <TriStateRow label={t("icu_evacuation_dechets")} value={icu.protectionEnvironnement.evacuationDechets} t={t} />
+            <TriStateRow label={t("icu_evacuation_gaz")} value={icu.protectionEnvironnement.evacuationGazFrigorifiques} t={t} />
+
+            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_permis_titre")}</Text>
+            <TriStateRow label={t("icu_permis_travail_obligatoire")} value={icu.permisTravail.permisTravailObligatoire} t={t} />
+            <TriStateRow label={t("icu_consignation_installations")} value={icu.permisTravail.consignationInstallations} t={t} />
+            <TriStateRow label={t("icu_permis_espace_restreint")} value={icu.permisTravail.permisEspaceRestreint} t={t} />
+            <TriStateRow label={t("icu_permis_fouille")} value={icu.permisTravail.permisFouille} t={t} />
+            <TriStateRow label={t("icu_permis_feu")} value={icu.permisTravail.permisFeu} t={t} />
+            <TriStateRow label={t("icu_mode_operatoire_execution")} value={icu.permisTravail.modeOperatoireExecution} t={t} />
+
+            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_organisation_secours_titre")}</Text>
+            <KV label={t("icu_numero_urgence_interne")} value={icu.organisationSecours.numeroUrgenceInterne} />
+            <Bullets
+              items={[
+                { label: `${t("icu_infirmerie")}${icu.organisationSecours.infirmerie.numero ? ` : ${icu.organisationSecours.infirmerie.numero}` : ""}`, value: icu.organisationSecours.infirmerie.actif },
+                { label: `${t("icu_service_securite")}${icu.organisationSecours.serviceSecurite.numero ? ` : ${icu.organisationSecours.serviceSecurite.numero}` : ""}`, value: icu.organisationSecours.serviceSecurite.actif },
+                { label: `${t("icu_pompiers")}${icu.organisationSecours.pompiers.numero ? ` : ${icu.organisationSecours.pompiers.numero}` : ""}`, value: icu.organisationSecours.pompiers.actif },
+                { label: `${t("icu_gardiennage")}${icu.organisationSecours.gardiennage.numero ? ` : ${icu.organisationSecours.gardiennage.numero}` : ""}`, value: icu.organisationSecours.gardiennage.actif },
+              ]}
+            />
+
+            <Text style={[styles.sectionTitle, { marginTop: 8 }]}>{t("icu_approbation_titre")}</Text>
+            <KV label={t("icu_approbation_vma_responsable")} value={icu.approbation.vmaResponsableNom} />
+            <KV label={t("icu_approbation_vma_conseiller")} value={icu.approbation.vmaConseillerPreventionNom} />
+            <KV label={t("icu_approbation_client_responsable")} value={icu.approbation.clientResponsableNom} />
           </Section>
         )}
 

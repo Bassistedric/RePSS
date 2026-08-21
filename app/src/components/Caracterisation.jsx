@@ -11,7 +11,10 @@ const AIDE_CRITERES = [
 export default function Caracterisation({ dossier, setDossier, corpsMetierOptions, onBack, onNext, t }) {
   const { modeChoisi, aideAuChoix } = dossier.triage;
   const { corpsMetier } = dossier.caracterisation;
-  const aideActive = Object.values(aideAuChoix).some(Boolean);
+  // La coactivité (nouveau critère bloquant de l'étape "Infos chantier & usine")
+  // verrouille "Abrégé" au même titre que les 4 critères de l'aide au choix, même
+  // si elle n'est cochée qu'une fois cette étape ultérieure atteinte.
+  const aideActive = Object.values(aideAuChoix).some(Boolean) || dossier.infosChantierUsine.coactivite;
 
   function updateTriage(patch) {
     setDossier((prev) => ({ ...prev, triage: { ...prev.triage, ...patch } }));

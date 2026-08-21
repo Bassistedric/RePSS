@@ -97,16 +97,89 @@ export function defaultDossier() {
     },
 
     // --- Branche abrégé : "Infos chantier & usine" ---
+    // Reprend champ par champ E_F_04_VMA_RePSS_abrégé (cahier des charges détaillé,
+    // voir CLAUDE.md). La colonne "vma sud" du document de référence est supprimée
+    // (fixe, déjà connue via entreprise.json) : seule la colonne Client subsiste.
     infosChantierUsine: {
-      seveso: false,
+      client: {
+        nomEntreprise: "",
+        representantEmployeur: "",
+        adresse: "",
+        gsm: "",
+        email: "",
+      },
+      // Nouveau critère bloquant (comme les 4 critères de l'aide au choix en
+      // Caractérisation) : Oui force modeChoisi = "complet" et verrouille "Abrégé".
       coactivite: false,
+      seveso: false,
       accueilSecurite: false,
-      matieresPremierresDangereuses: "",
+      // Pas de "NA" pré-rempli par défaut : au PM de le taper s'il y a lieu.
+      matieresPremierres: "",
+      produitsDangereux: "",
+      descriptionProcess: "",
       pressionsTemperatures: "",
       presenceGaz: false,
+      presenceGazDetail: "",
+      lieuExecutionSpecifique: "",
+      modeOperatoireAbrege: "",
+      dateDebutTravaux: "",
+      dateFinTravauxPresumee: "",
+      representantVmaNom: "",
+      representantVmaFonction: "",
+      regimeTravail: "", // "1_poste" | "2_postes"
+      effectifMoyenParPoste: "",
+      sousTraitants: [], // [{ nom, activites }]
+      ouvertureChantierParClient: false,
+      habilitations: {
+        chariotElevateur: false,
+        nacelle: false,
+        pontier: false,
+        levageTelescopique: false,
+        ba4: false,
+        ba5: false,
+        soudeur: false,
+        frigoriste: false,
+        autres: [], // lignes libres, non limitées à une seule
+      },
+      // §7 : contrôle à 3 états (Interne/Client/N.A.), pas une case vma sud/Client.
       locauxSociaux: { refectoire: null, sanitaires: null, vestiaires: null, douches: null },
-      permisFeu: false,
-      permisTravail: false,
+      enginsMisADisposition: false,
+      enginsMisADispositionDetail: "",
+      epi: {
+        casque: false,
+        chaussures: false,
+        lunettes: false,
+        gantsCombinaison: false,
+        protectionAuditive: false,
+        masqueAntiPoussiere: false,
+        protectionFaciale: false,
+        harnaisSecurite: false,
+        autres: "",
+      },
+      protectionEnvironnement: {
+        evacuationDechets: null,
+        evacuationGazFrigorifiques: null,
+      },
+      permisTravail: {
+        permisTravailObligatoire: null,
+        consignationInstallations: null,
+        permisEspaceRestreint: null,
+        permisFouille: null,
+        permisFeu: null,
+        modeOperatoireExecution: null,
+      },
+      organisationSecours: {
+        numeroUrgenceInterne: "",
+        infirmerie: { actif: false, numero: "" },
+        serviceSecurite: { actif: false, numero: "" },
+        pompiers: { actif: false, numero: "" },
+        gardiennage: { actif: false, numero: "" },
+      },
+      approbation: {
+        vmaResponsableNom: "",
+        vmaConseillerPreventionNom: "",
+        clientResponsableNom: "",
+      },
     },
 
     // --- Analyse de risques : la ligne de risque est l'unité cochée (§6) ---

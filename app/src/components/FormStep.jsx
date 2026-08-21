@@ -188,7 +188,7 @@ function Field({ field, dossier, onChange, t }) {
         <textarea
           className={INPUT_CLASS}
           style={INPUT_STYLE}
-          rows={3}
+          rows={field.rows || 3}
           value={value ?? ""}
           onChange={(e) => onChange(field.path, e.target.value)}
         />
