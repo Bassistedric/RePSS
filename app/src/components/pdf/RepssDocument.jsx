@@ -2,6 +2,7 @@ import { Document, Page, View, Text, Image, StyleSheet } from "@react-pdf/render
 import { ROLES_ADMINISTRATION, formatAdresseChantier } from "../../lib/dossier";
 import { colors } from "../../lib/colors";
 import { couleurNiveau, legendeKinney, formatNombre } from "../../lib/kinney";
+import { RAPPEL_ACCIDENT_KEYS, APPEL_SECOURS_KEYS } from "../../lib/rappelAccident";
 
 // §12 : structure complète du PDF, spécifiée dans CLAUDE.md — couverture, page
 // d'explication, table des matières, renseignements/administration/caractéristiques/
@@ -127,6 +128,17 @@ const styles = StyleSheet.create({
   },
   signatureRole: { fontSize: 9, fontWeight: 500 },
   signatureBox: { width: 220, height: 42, border: `0.75pt solid ${colors.neutralBorderStrong}` },
+  signatureChantier: { fontSize: 8, color: colors.neutralText, marginBottom: 8 },
+
+  // --- Caractéristiques du chantier : contrôle à 3 états, même forme que le web
+  // (FormStep.jsx TriStateField) plutôt qu'un simple texte, §CLAUDE.md §7.
+  tristateRow: { flexDirection: "row", alignItems: "center", marginBottom: 4 },
+  tristateLabel: { width: 160, color: colors.neutralText },
+  tristateOptions: { flexDirection: "row" },
+  tristateBox: { paddingVertical: 3, paddingHorizontal: 8, border: `0.75pt solid ${colors.neutralBorderStrong}`, marginRight: 4, borderRadius: 2 },
+  tristateBoxActive: { backgroundColor: colors.blue, borderColor: colors.blue },
+  tristateBoxTextActive: { color: "white", fontWeight: 700 },
+  tristateBoxTextInactive: { color: colors.neutralText },
 });
 
 // Largeurs de colonnes du tableau d'analyse de risques (somme = 100%).
@@ -192,6 +204,48 @@ function TriStateRow({ label, value, t }) {
   const tristateLabel = { interne: t("tristate_interne"), client: t("tristate_client"), na: t("tristate_na") };
   return <KV label={label} value={tristateLabel[value] || value} />;
 }
+
+// Caractéristiques du chantier : même forme que le contrôle à 3 états du web
+// (FormStep.jsx TriStateField) — la case correspondant à la valeur choisie est
+// colorée, les 2 autres restent neutres, plutôt qu'un simple texte.
+const TRISTATE_PDF_OPTIONS = [
+  { value: "interne", labelKey: "tristate_interne" },
+  { value: "client", labelKey: "tristate_client" },
+  { value: "na", labelKey: "tristate_na" },
+];
+
+function TriStateBoxRow({ label, value, t }) {
+  if (!value) return null;
+  return (
+    <View style={styles.tristateRow}>
+      <Text style={styles.tristateLabel}>{label}</Text>
+      <View style={styles.tristateOptions}>
+        {TRISTATE_PDF_OPTIONS.map((o) => {
+          const active = value === o.value;
+          return (
+            <View key={o.value} style={[styles.tristateBox, active && styles.tristateBoxActive]}>
+              <Text style={active ? styles.tristateBoxTextActive : styles.tristateBoxTextInactive}>{t(o.labelKey)}</Text>
+            </View>
+          );
+        })}
+      </View>
+    </View>
+  );
+}
+
+// Ordre identique à caracteristiquesSchema (lib/schema.js).
+const CARACTERISTIQUES_FIELDS = [
+  { key: "refectoire", labelKey: "refectoire" },
+  { key: "wc", labelKey: "wc" },
+  { key: "stockage", labelKey: "stockage" },
+  { key: "zoneCirculation", labelKey: "zone_circulation" },
+  { key: "zoneTravail", labelKey: "zone_travail" },
+  { key: "electricite", labelKey: "electricite_alim_terre" },
+  { key: "eau", labelKey: "eau" },
+  { key: "gardeCorps", labelKey: "garde_corps" },
+  { key: "ligneDeVie", labelKey: "ligne_de_vie" },
+  { key: "filetRetention", labelKey: "filet_retention" },
+];
 
 // Annexe 4 : bloc "Signature" (remplace l'intitulé "Avis" du document de
 // référence, §12) — 3 rôles fixes, jamais de donnée chantier, sur le même
@@ -642,10 +696,12 @@ function EmargementPage({ t }) {
 // ============================================================
 export default function RepssDocument({ dossier, entreprise, catalogueComplet, catalogueAbrege, hopitaux, t, logoAbsoluteUrl, logosBaseUrl, photoCouvertureAbsoluteUrl }) {
   const {
+    identification,
     renseignementsGeneraux: rg,
     administratif: adm,
     triage,
     caracterisation,
+    caracteristiques,
     reglesSpecifiques: rs,
     documentsAccompagnants: da,
     infosChantierUsine: icu,
@@ -735,18 +791,18 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
               </>
             )}
 
-            {da.sousTraitants?.length > 0 && (
-              <>
-                <Text style={{ fontWeight: 700, marginTop: 8, marginBottom: 3 }}>{t("titre_liste_sous_traitants")}</Text>
-                <Table
-                  columns={[
-                    { key: "societe", label: t("societe") },
-                    { key: "natureTravaux", label: t("nature_travaux"), flex: 2 },
-                    { key: "responsable", label: t("responsable") },
-                  ]}
-                  rows={da.sousTraitants}
-                />
-              </>
+            <Text style={{ fontWeight: 700, marginTop: 8, marginBottom: 3 }}>{t("titre_liste_sous_traitants")}</Text>
+            {da.sousTraitants?.length > 0 ? (
+              <Table
+                columns={[
+                  { key: "societe", label: t("societe") },
+                  { key: "natureTravaux", label: t("nature_travaux"), flex: 2 },
+                  { key: "responsable", label: t("responsable") },
+                ]}
+                rows={da.sousTraitants}
+              />
+            ) : (
+              <Text>{t("neant")}</Text>
             )}
           </Section>
         )}
@@ -759,6 +815,12 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
                 { label: t("carac_chantier_point_rassemblement"), value: true },
               ]}
             />
+            <View style={{ marginTop: 8 }}>
+              {CARACTERISTIQUES_FIELDS.map((f) => (
+                <TriStateBoxRow key={f.key} label={t(f.labelKey)} value={caracteristiques[f.key]} t={t} />
+              ))}
+            </View>
+            <KV label={t("particularites_acces")} value={caracteristiques.particularitesAcces || "/"} />
           </Section>
         )}
 
@@ -786,9 +848,12 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
         {!isAbrege && (
           <Section title={t("titre_regles_speciales")} boxed>
             <Text style={{ fontWeight: 700, marginBottom: 3 }}>{t("titre_rappel_accident")}</Text>
-            <Text style={{ marginBottom: 8, lineHeight: 1.4 }}>{t("titre_appel_secours")}</Text>
+            <Bullets items={RAPPEL_ACCIDENT_KEYS.map((k) => ({ label: t(k), value: true }))} />
 
-            <View style={styles.logosRow}>
+            <Text style={{ fontWeight: 700, marginTop: 8, marginBottom: 3 }}>{t("titre_appel_secours")}</Text>
+            <Bullets items={APPEL_SECOURS_KEYS.map((k) => ({ label: t(k), value: true }))} />
+
+            <View style={[styles.logosRow, { marginTop: 8 }]}>
               <View style={styles.contactCardUrgence}>
                 {icones.pompier?.logo && <Image src={logoSrc(icones.pompier.logo)} style={styles.contactLogoUrgence} />}
                 <Text style={{ fontWeight: 700 }}>{t("service_incendie")}</Text>
@@ -893,6 +958,11 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
           <Text style={{ lineHeight: 1.4 }}>{entreprise?.reglesGeneralesAnnexe4?.texte}</Text>
         </Section>
         <Section title={t("annexe4_signature_titre")} boxed>
+          {/* Nom + n° de chantier rappelés ici (anti-fraude) : cette feuille signée
+              ne doit pas pouvoir être réutilisée telle quelle pour un autre chantier. */}
+          <Text style={styles.signatureChantier}>
+            {t("identification_numero_chantier")} {identification.numeroChantier || "-"} — {identification.nomChantier || "-"}
+          </Text>
           {ANNEXE4_SIGNATAIRES.map((key) => (
             <SignatureRow key={key} label={t(key)} />
           ))}
