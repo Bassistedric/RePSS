@@ -306,7 +306,6 @@
     "tbl_nom": "Name",
     "tbl_email": "Email",
     "tbl_tel": "Tel.",
-    "gsm": "Mobile no.",
     "niveau_risque_label": "Risk level",
     "explication_bloc1_titre": "Purpose of this document",
     "explication_bloc2_titre": "Duty to inform",
@@ -331,7 +330,8 @@
     "identification_image_page_de_garde_texte": "If you want to replace the generic cover page image with your own, upload it here.",
     "identification_image_page_de_garde_bouton": "Upload an image",
     "identification_image_page_de_garde_reinitialiser": "Revert to the default image",
-    "identification_image_page_de_garde_erreur": "Invalid file: please use a PNG or JPG image."
+    "identification_image_page_de_garde_erreur": "Invalid file: please use a PNG or JPG image.",
+    "annexe4_signature_titre": "Signature"
   },
   "risques": []
 }

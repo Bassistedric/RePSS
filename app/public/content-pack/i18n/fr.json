@@ -306,7 +306,6 @@
     "tbl_nom": "Nom",
     "tbl_email": "Email",
     "tbl_tel": "Tél.",
-    "gsm": "N° de GSM",
     "niveau_risque_label": "Niveau de risque",
     "explication_bloc1_titre": "Objet du document",
     "explication_bloc2_titre": "Obligation d'information",
@@ -331,7 +330,8 @@
     "identification_image_page_de_garde_texte": "Si vous voulez remplacer l'image générique de la page de garde par votre propre image, téléchargez-la ici.",
     "identification_image_page_de_garde_bouton": "Télécharger une image",
     "identification_image_page_de_garde_reinitialiser": "Revenir à l'image par défaut",
-    "identification_image_page_de_garde_erreur": "Fichier invalide : utilisez une image PNG ou JPG."
+    "identification_image_page_de_garde_erreur": "Fichier invalide : utilisez une image PNG ou JPG.",
+    "annexe4_signature_titre": "Signature"
   },
   "risques": []
 }

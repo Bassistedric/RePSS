@@ -116,6 +116,17 @@ const styles = StyleSheet.create({
   emargeRow: { flexDirection: "row", borderBottom: `0.5pt solid ${colors.neutralBorder}`, minHeight: 22 },
   emargeHeaderCell: { fontWeight: 700, fontSize: 8, paddingVertical: 4, paddingHorizontal: 3 },
   emargeCell: { fontSize: 8, paddingVertical: 4, paddingHorizontal: 3 },
+
+  // --- Annexe 4 : signature (Operations Manager/Project Manager/Responsable SIPPT) ---
+  signatureRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderBottom: `0.5pt solid ${colors.neutralBorder}`,
+    paddingVertical: 10,
+  },
+  signatureRole: { fontSize: 9, fontWeight: 500 },
+  signatureBox: { width: 220, height: 42, border: `0.75pt solid ${colors.neutralBorderStrong}` },
 });
 
 // Largeurs de colonnes du tableau d'analyse de risques (somme = 100%).
@@ -180,6 +191,20 @@ function TriStateRow({ label, value, t }) {
   if (!value) return null;
   const tristateLabel = { interne: t("tristate_interne"), client: t("tristate_client"), na: t("tristate_na") };
   return <KV label={label} value={tristateLabel[value] || value} />;
+}
+
+// Annexe 4 : bloc "Signature" (remplace l'intitulé "Avis" du document de
+// référence, §12) — 3 rôles fixes, jamais de donnée chantier, sur le même
+// principe que RAPPEL_ACCIDENT_KEYS/APPEL_SECOURS_KEYS (lib/rappelAccident.js).
+const ANNEXE4_SIGNATAIRES = ["role_operations_manager", "role_project_manager", "role_cp_niv1_sippt"];
+
+function SignatureRow({ label }) {
+  return (
+    <View style={styles.signatureRow}>
+      <Text style={styles.signatureRole}>{label}</Text>
+      <View style={styles.signatureBox} />
+    </View>
+  );
 }
 
 function Bullets({ items }) {
@@ -866,6 +891,11 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
       <Page size="A4" style={styles.page} wrap>
         <Section title={`${t("annexe_label")} 4 — ${titreReglesGenerales(t, entreprise)}`} boxed>
           <Text style={{ lineHeight: 1.4 }}>{entreprise?.reglesGeneralesAnnexe4?.texte}</Text>
+        </Section>
+        <Section title={t("annexe4_signature_titre")} boxed>
+          {ANNEXE4_SIGNATAIRES.map((key) => (
+            <SignatureRow key={key} label={t(key)} />
+          ))}
         </Section>
         <PageFooter t={t} />
       </Page>

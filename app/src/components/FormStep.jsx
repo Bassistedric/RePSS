@@ -85,7 +85,7 @@ function ApprovalRolesField({ path, roles, value, onChange, t }) {
 
   return (
     <div className="overflow-x-auto">
-      <div className="grid min-w-3xl grid-cols-[minmax(15rem,1.2fr)_minmax(13rem,1fr)_minmax(11rem,0.8fr)] gap-x-4 gap-y-3 items-end">
+      <div className="grid min-w-[32rem] grid-cols-[minmax(10rem,1.2fr)_minmax(8.5rem,1fr)_minmax(7.5rem,0.8fr)] gap-x-4 gap-y-3 items-end">
         <span className="text-sm font-medium" style={{ color: colors.neutralText }}>{t("tbl_nom")}</span>
         <span className="text-sm font-medium" style={{ color: colors.neutralText }}>{t("tbl_email")}</span>
         <span className="text-sm font-medium" style={{ color: colors.neutralText }}>{t("gsm")}</span>
