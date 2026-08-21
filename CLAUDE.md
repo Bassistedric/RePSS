@@ -437,7 +437,10 @@ encore vraiment, il est à construire depuis cette spec.
 - Adresse ATK dans `entreprise.json` : divergence avec le registre public FOD
   Economie, gardée telle que fournie par Ced, à vérifier.
 - Statut `brouillon_partiel` du texte Annexe 4 : nécessite une relecture QHSE
-  formelle avant de passer à `valide`.
+  formelle avant de passer à `valide`. Traduit EN/NL (`texte_en`/`texte_nl` dans
+  `RePSS_Entreprise_Reference.xlsx` > `Annexe4_Statut`, même mécanisme clé/valeur
+  que `texte`) — traduction à faire relire en même temps que le texte français,
+  pas encore validée non plus.
 - Recherche de commissariat de police : volontairement non construite (lien externe
   à la place) — à revisiter si une vraie source de données apparaît.
 - Traduction EN/NL du catalogue d'analyse de risque **abrégé** (`RePSS_Analyse_Risques_Abrege.xlsx`) :
