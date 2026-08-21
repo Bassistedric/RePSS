@@ -369,10 +369,18 @@ les décisions prises dans ce document :
 5. **Administration du chantier** : table Responsable d'approbation (colonnes
    Fonction/Nom/Email/Tel — pas de Paraphe/Date, supprimées §7), dates début/fin
    travaux, historique de versions (`historiqueVersions`, pas de table
-   Révision/Modification séparée), liste des sous-traitants.
-6. **Caractéristiques du chantier** : réduit aux 2 mentions fixes décidées (plan
-   général d'installation à joindre, point de rassemblement identifié) — pas de
-   tableau de cases à cocher comme dans l'ancien document.
+   Révision/Modification séparée), liste des sous-traitants — titre **toujours
+   affiché même sans sous-traitant** (`Néant.` sinon), même principe que les
+   titres de catégorie de l'analyse de risques (§6).
+6. **Caractéristiques du chantier** : **correction remontée par un PM** — affiche
+   en plus des 2 mentions fixes (plan général d'installation à joindre, point de
+   rassemblement identifié) le détail des contrôles à 3 états de `caracteristiques`
+   (Réfectoire/W.C./Stockage/Zone de circulation/Zone de travail/Électricité/Eau/
+   Garde-corps/Ligne de vie/Filet de rétention), **même forme que le web** (case
+   colorée pour la valeur choisie parmi Interne/Client/N.A., pas juste du texte) —
+   et `particularitesAcces` (`/` si vide). Décision initiale (réduire à un simple
+   rappel textuel, sans détail) abandonnée : l'app collecte déjà cette donnée dans
+   le wizard, elle doit apparaître dans le document généré.
 7. **Règles spécifiques au chantier** : texte complet "Rappel des règles en cas
    d'accident" + "Lors de l'appel aux services de secours" (dans `UI_Textes`,
    19 lignes ajoutées), table contacts d'urgence avec logos (`iconesUrgence`),
@@ -386,7 +394,11 @@ les décisions prises dans ce document :
 11. **Annexe 2 — Plan particulier** : zone d'insertion du fichier uploadé par le PM.
 12. **Annexe 3 — Liste des engins spéciaux** : table Type/Phase/Nombre.
 13. **Annexe 4 — Règles générales VMA Sud** : texte complet depuis
-    `entreprise.json.reglesGeneralesAnnexe4.texte`.
+    `entreprise.json.reglesGeneralesAnnexe4.texte`, suivi d'un bloc **Signature**
+    (remplace l'intitulé "Avis" du document de référence) — Operations Manager /
+    Project Manager / Responsable SIPPT, chacun avec un espace pour signer à la
+    main. Le n° et le nom du chantier sont rappelés dans cet encadré (anti-fraude :
+    empêche qu'une page signée serve pour un autre chantier).
 
 ### Structure du tableau d'analyse de risques (point le plus critique)
 

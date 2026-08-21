@@ -95,10 +95,13 @@ function ApprovalRolesField({ path, roles, value, onChange, t }) {
             <div key={role} className="contents">
               <label className="text-sm font-medium">
                 <span className="block mb-1.5">{t(role)}</span>
-                <input type="text" className={INPUT_CLASS} style={INPUT_STYLE} value={contact.nom ?? ""} onChange={(e) => updateContact(role, "nom", e.target.value)} />
+                <input type="text" autoComplete="off" className={INPUT_CLASS} style={INPUT_STYLE} value={contact.nom ?? ""} onChange={(e) => updateContact(role, "nom", e.target.value)} />
               </label>
-              <input aria-label={`${t(role)} – ${t("tbl_email")}`} type="email" className={INPUT_CLASS} style={INPUT_STYLE} value={contact.email ?? ""} onChange={(e) => updateContact(role, "email", e.target.value)} />
-              <input aria-label={`${t(role)} – ${t("gsm")}`} type="tel" className={INPUT_CLASS} style={INPUT_STYLE} value={contact.gsm ?? ""} onChange={(e) => updateContact(role, "gsm", e.target.value)} />
+              {/* autoComplete="off" : sans ça, le navigateur propose/renseigne le même
+                  email/tél. enregistré (souvent celui de la personne qui remplit)
+                  sur toutes les lignes de rôles variables au lieu de laisser vide. */}
+              <input aria-label={`${t(role)} – ${t("tbl_email")}`} type="email" autoComplete="off" className={INPUT_CLASS} style={INPUT_STYLE} value={contact.email ?? ""} onChange={(e) => updateContact(role, "email", e.target.value)} />
+              <input aria-label={`${t(role)} – ${t("gsm")}`} type="tel" autoComplete="off" className={INPUT_CLASS} style={INPUT_STYLE} value={contact.gsm ?? ""} onChange={(e) => updateContact(role, "gsm", e.target.value)} />
             </div>
           );
         })}
