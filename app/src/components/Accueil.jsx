@@ -73,9 +73,12 @@ export default function Accueil({ onStart, lang, setLang, entreprise, t }) {
       <p className="text-sm" style={{ color: colors.neutralText }}>
         {t("accueil_credits")}
       </p>
-      <span className="absolute bottom-3 right-4 text-xs" style={{ color: colors.neutralText }}>
-        By Cco
-      </span>
+      <img
+        src={logoUrl("winston_bycco_logo_small.png")}
+        alt="By Cco"
+        className="absolute bottom-3 right-4"
+        style={{ height: 32, opacity: 0.85 }}
+      />
     </div>
   );
 }
