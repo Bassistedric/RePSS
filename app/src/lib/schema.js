@@ -76,20 +76,76 @@ export const administratifSchema = [
   },
 ];
 
-// Branche abrégée : "Infos chantier & usine", orientée intervention en usine client.
+// Bloc "Client" de l'abrégé : la colonne "vma sud" du document de référence est
+// supprimée (fixe, déjà connue via entreprise.json), seule la colonne Client reste,
+// réduite à 5 champs (pas de "Téléphone" fixe séparé, pas de "Fonction").
+export const infosChantierUsineClientSchema = [
+  {
+    titleKey: "icu_client_titre",
+    fields: [
+      { path: "infosChantierUsine.client.nomEntreprise", labelKey: "icu_nom_entreprise", type: "text", wide: true },
+      { path: "infosChantierUsine.client.representantEmployeur", labelKey: "icu_representant_employeur", type: "text", wide: true },
+      { path: "infosChantierUsine.client.adresse", labelKey: "adresse", type: "text", wide: true },
+      { path: "infosChantierUsine.client.gsm", labelKey: "gsm", type: "text" },
+      { path: "infosChantierUsine.client.email", labelKey: "email", type: "text" },
+    ],
+  },
+];
+
+// Branche abrégée : "Infos chantier & usine", reprise champ par champ du document de
+// référence E_F_04_VMA_RePSS_abrégé (cahier des charges détaillé, CLAUDE.md). Les
+// blocs à structure propre (Client, habilitations, sous-traitants, EPI,
+// organisation des secours, approbation) sont construits à la main dans
+// InfosChantierUsine.jsx plutôt que via ce schéma générique.
 export const infosChantierUsineSchema = [
   {
+    titleKey: "icu_lieu_execution_titre",
     fields: [
       { path: "infosChantierUsine.seveso", labelKey: "site_seveso", type: "boolean" },
-      { path: "infosChantierUsine.coactivite", labelKey: "coactivite", type: "boolean" },
       { path: "infosChantierUsine.accueilSecurite", labelKey: "accueil_securite_requis", type: "boolean" },
-      { path: "infosChantierUsine.presenceGaz", labelKey: "presence_gaz", type: "boolean" },
-      { path: "infosChantierUsine.matieresPremierresDangereuses", labelKey: "matieres_premieres_dangereuses", type: "textarea" },
-      { path: "infosChantierUsine.pressionsTemperatures", labelKey: "pressions_temperatures", type: "textarea" },
     ],
   },
   {
-    titleKey: "installations_particulieres",
+    titleKey: "icu_installation_titre",
+    fields: [
+      { path: "infosChantierUsine.matieresPremieres", labelKey: "icu_matieres_premieres", type: "textarea" },
+      { path: "infosChantierUsine.produitsDangereux", labelKey: "icu_produits_dangereux", type: "textarea" },
+      { path: "infosChantierUsine.descriptionProcess", labelKey: "icu_description_process", type: "textarea" },
+      { path: "infosChantierUsine.pressionsTemperatures", labelKey: "pressions_temperatures", type: "text" },
+      { path: "infosChantierUsine.presenceGaz", labelKey: "presence_gaz", type: "boolean" },
+      { path: "infosChantierUsine.presenceGazDetail", labelKey: "icu_presence_gaz_detail", type: "text" },
+    ],
+  },
+  {
+    titleKey: "icu_renseignements_generaux_titre",
+    fields: [
+      { path: "infosChantierUsine.lieuExecutionSpecifique", labelKey: "icu_lieu_execution_specifique", type: "text", wide: true },
+      { path: "infosChantierUsine.modeOperatoireAbrege", labelKey: "icu_mode_operatoire", type: "textarea", wide: true, rows: 5 },
+      { path: "infosChantierUsine.dateDebutTravaux", labelKey: "date_debut_travaux", type: "date" },
+      { path: "infosChantierUsine.dateFinTravauxPresumee", labelKey: "icu_date_fin_travaux_presumee", type: "date" },
+      { path: "infosChantierUsine.representantVmaNom", labelKey: "icu_representant_vma_nom", type: "text" },
+      { path: "infosChantierUsine.representantVmaFonction", labelKey: "fonction", type: "text" },
+      { path: "infosChantierUsine.effectifMoyenParPoste", labelKey: "icu_effectif_moyen", type: "number" },
+    ],
+  },
+  {
+    titleKey: "icu_sous_traitants_titre",
+    fields: [
+      {
+        path: "infosChantierUsine.sousTraitants",
+        type: "table",
+        columns: [
+          { key: "nom", labelKey: "icu_nom_sous_traitant", type: "text" },
+          { key: "activites", labelKey: "icu_activites_sous_traitant", type: "text" },
+        ],
+      },
+    ],
+  },
+  {
+    fields: [{ path: "infosChantierUsine.ouvertureChantierParClient", labelKey: "icu_ouverture_chantier", type: "boolean" }],
+  },
+  {
+    titleKey: "icu_locaux_sociaux_titre",
     fields: [
       { path: "infosChantierUsine.locauxSociaux.refectoire", labelKey: "refectoire", type: "tristate" },
       { path: "infosChantierUsine.locauxSociaux.sanitaires", labelKey: "sanitaires", type: "tristate" },
@@ -99,8 +155,34 @@ export const infosChantierUsineSchema = [
   },
   {
     fields: [
-      { path: "infosChantierUsine.permisFeu", labelKey: "permis_feu", type: "boolean" },
-      { path: "infosChantierUsine.permisTravail", labelKey: "permis_travail", type: "boolean" },
+      { path: "infosChantierUsine.enginsMisADisposition", labelKey: "icu_engins_disposition", type: "boolean" },
+      { path: "infosChantierUsine.enginsMisADispositionDetail", labelKey: "icu_engins_disposition_detail", type: "text" },
+    ],
+  },
+  {
+    titleKey: "icu_protection_env_titre",
+    fields: [
+      { path: "infosChantierUsine.protectionEnvironnement.evacuationDechets", labelKey: "icu_evacuation_dechets", type: "tristate" },
+      { path: "infosChantierUsine.protectionEnvironnement.evacuationGazFrigorifiques", labelKey: "icu_evacuation_gaz", type: "tristate" },
+    ],
+  },
+  {
+    titleKey: "icu_permis_titre",
+    fields: [
+      { path: "infosChantierUsine.permisTravail.permisTravailObligatoire", labelKey: "icu_permis_travail_obligatoire", type: "tristate" },
+      { path: "infosChantierUsine.permisTravail.consignationInstallations", labelKey: "icu_consignation_installations", type: "tristate" },
+      { path: "infosChantierUsine.permisTravail.permisEspaceRestreint", labelKey: "icu_permis_espace_restreint", type: "tristate" },
+      { path: "infosChantierUsine.permisTravail.permisFouille", labelKey: "icu_permis_fouille", type: "tristate" },
+      { path: "infosChantierUsine.permisTravail.permisFeu", labelKey: "icu_permis_feu", type: "tristate" },
+      { path: "infosChantierUsine.permisTravail.modeOperatoireExecution", labelKey: "icu_mode_operatoire_execution", type: "tristate" },
+    ],
+  },
+  {
+    titleKey: "icu_approbation_titre",
+    fields: [
+      { path: "infosChantierUsine.approbation.vmaResponsableNom", labelKey: "icu_approbation_vma_responsable", type: "text" },
+      { path: "infosChantierUsine.approbation.vmaConseillerPreventionNom", labelKey: "icu_approbation_vma_conseiller", type: "text" },
+      { path: "infosChantierUsine.approbation.clientResponsableNom", labelKey: "icu_approbation_client_responsable", type: "text" },
     ],
   },
 ];
