@@ -283,18 +283,39 @@ function CatalogueComplet({ catalogue, corpsMetier, isChecked, toggle, remarque,
   );
 }
 
+// §6 (branche abrégée) : une case "Tout cocher" par catégorie sélectionne/désélectionne
+// d'un coup tous les items non-aggravés de la catégorie. Comportement binaire simple
+// (pas d'état indéterminé) : la case reflète juste "tous cochés ?" à chaque rendu, donc
+// décocher un seul item individuellement la fait retomber à décochée automatiquement.
 function CatalogueAbrege({ catalogue, isChecked, toggle, t }) {
   return (
     <div className="flex flex-col gap-5 mb-5">
-      {catalogue.categories.map((cat) => (
-        <div key={cat.id}>
-          <p className="text-base font-semibold mb-2.5 pb-1.5 border-b" style={{ color: colors.navy, borderColor: colors.neutralBorder }}>
-            {cat.fr}
-          </p>
-          <div className="flex flex-col gap-1">
-            {catalogue.risques
-              .filter((r) => r.categorieId === cat.id)
-              .map((r) => {
+      {catalogue.categories.map((cat) => {
+        const risquesCat = catalogue.risques.filter((r) => r.categorieId === cat.id);
+        const selectableIds = risquesCat.filter((r) => !r.risqueAggrave).map((r) => r.id);
+        const toutCoche = selectableIds.length > 0 && selectableIds.every(isChecked);
+
+        return (
+          <div key={cat.id}>
+            <label
+              className="flex items-center justify-between gap-2.5 mb-2.5 pb-1.5 border-b cursor-pointer"
+              style={{ borderColor: colors.neutralBorder }}
+            >
+              <span className="text-base font-semibold" style={{ color: colors.navy }}>
+                {cat.fr}
+              </span>
+              <span className="flex items-center gap-1.5 text-xs font-normal" style={{ color: colors.neutralText }}>
+                {t("analyse_tout_cocher")}
+                <input
+                  type="checkbox"
+                  checked={toutCoche}
+                  disabled={selectableIds.length === 0}
+                  onChange={() => toggle(selectableIds)}
+                />
+              </span>
+            </label>
+            <div className="flex flex-col gap-1">
+              {risquesCat.map((r) => {
                 const disabled = r.risqueAggrave;
                 return (
                   <label
@@ -320,9 +341,10 @@ function CatalogueAbrege({ catalogue, isChecked, toggle, t }) {
                   </label>
                 );
               })}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

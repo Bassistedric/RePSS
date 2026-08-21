@@ -331,7 +331,8 @@
     "identification_image_page_de_garde_bouton": "Een afbeelding uploaden",
     "identification_image_page_de_garde_reinitialiser": "Terug naar de standaardafbeelding",
     "identification_image_page_de_garde_erreur": "Ongeldig bestand: gebruik een PNG- of JPG-afbeelding.",
-    "annexe4_signature_titre": "Handtekening"
+    "annexe4_signature_titre": "Handtekening",
+    "analyse_tout_cocher": "Alles aanvinken"
   },
   "risques": []
 }
