@@ -1,6 +1,13 @@
-import openpyxl, json
+import json
+from pathlib import Path
 
-wb = openpyxl.load_workbook("/mnt/user-data/outputs/RePSS_Entreprise_Reference.xlsx", data_only=True)
+import openpyxl
+
+ROOT = Path(__file__).resolve().parent
+SOURCE = ROOT / "RePSS_Entreprise_Reference.xlsx"
+OUTPUT = ROOT / "app" / "public" / "content-pack" / "entreprise.json"
+
+wb = openpyxl.load_workbook(SOURCE, data_only=True)
 
 def rows_of(sheet, headers):
     ws = wb[sheet]
@@ -79,7 +86,7 @@ data = {
     "iconesUrgence": icones_urgence,
 }
 
-with open("/mnt/user-data/outputs/entreprise.json", "w", encoding="utf-8") as f:
+with OUTPUT.open("w", encoding="utf-8") as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
 print("OK")
