@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import { FileCheck, Save, AlertTriangle, Plus, Trash2, CheckCircle2 } from "lucide-react";
+import { FileCheck, Loader2, Save, AlertTriangle, Plus, Trash2, CheckCircle2 } from "lucide-react";
 import RepssDocument from "./pdf/RepssDocument";
 import { logoUrl } from "../lib/contentPack";
 import { saveDossier } from "../lib/storage";
@@ -189,7 +189,14 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
             <Save size={16} />
             {t("enregistrer_json_bouton")}
           </button>
+          {/* key={lang} : force un remontage complet quand la langue change plutôt que
+              de compter sur PDFDownloadLink pour détecter le changement de `document` —
+              sans ça, il reste un court instant où le lien pointe encore vers le blob
+              de l'ancienne langue alors que le bouton a déjà l'air normal/cliquable.
+              onClick + instance.loading : garde-fou supplémentaire, au cas où le clic
+              survienne pendant cet instant avant que le rendu ne reflète `loading`. */}
           <PDFDownloadLink
+            key={lang}
             document={
               <RepssDocument
                 dossier={dossier}
@@ -204,14 +211,17 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
               />
             }
             fileName={filename}
+            onClick={(event, instance) => {
+              if (instance?.loading) event.preventDefault();
+            }}
             className="flex items-center gap-2 px-6 py-2.5 rounded text-sm font-medium"
             style={{ background: colors.navy, color: "white" }}
           >
             {({ loading }) => (
-              <>
-                <FileCheck size={16} />
+              <span className="flex items-center gap-2" style={{ opacity: loading ? 0.7 : 1, cursor: loading ? "default" : "pointer" }}>
+                {loading ? <Loader2 size={16} className="animate-spin" /> : <FileCheck size={16} />}
                 {loading ? t("generation_en_cours") : t("generer_pdf_bouton")}
-              </>
+              </span>
             )}
           </PDFDownloadLink>
         </div>
