@@ -205,6 +205,7 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
                 catalogueAbrege={catalogueAbrege}
                 hopitaux={hopitaux}
                 t={t}
+                lang={lang}
                 logoAbsoluteUrl={logoAbsoluteUrl}
                 logosBaseUrl={logosBaseUrl}
                 photoCouvertureAbsoluteUrl={photoCouvertureAbsoluteUrl}

@@ -304,6 +304,15 @@ function titreReglesGenerales(t, entreprise) {
   return t("titre_regles_generales_entreprise").replace(/\[.*?\]/, entreprise?.identite?.nomAffichage || "");
 }
 
+// Annexe 4 : texte légal traduit dans entreprise.json (texte/texte_en/texte_nl,
+// RePSS_Entreprise_Reference.xlsx > Annexe4_Statut) — replie sur le français si la
+// traduction manque, plutôt que d'afficher un bloc vide.
+function texteReglesGeneralesAnnexe4(lang, entreprise) {
+  const annexe4 = entreprise?.reglesGeneralesAnnexe4 || {};
+  const parLangue = { en: annexe4.texte_en, nl: annexe4.texte_nl };
+  return parLangue[lang] || annexe4.texte;
+}
+
 function ContactCardPdf({ c, logoSrc }) {
   if (!c) return null;
   return (
@@ -694,7 +703,7 @@ function EmargementPage({ t }) {
 // ============================================================
 // Document principal
 // ============================================================
-export default function RepssDocument({ dossier, entreprise, catalogueComplet, catalogueAbrege, hopitaux, t, logoAbsoluteUrl, logosBaseUrl, photoCouvertureAbsoluteUrl }) {
+export default function RepssDocument({ dossier, entreprise, catalogueComplet, catalogueAbrege, hopitaux, t, lang, logoAbsoluteUrl, logosBaseUrl, photoCouvertureAbsoluteUrl }) {
   const {
     identification,
     renseignementsGeneraux: rg,
@@ -955,7 +964,7 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
 
       <Page size="A4" style={styles.page} wrap>
         <Section title={`${t("annexe_label")} 4 — ${titreReglesGenerales(t, entreprise)}`} boxed>
-          <Text style={{ lineHeight: 1.4 }}>{entreprise?.reglesGeneralesAnnexe4?.texte}</Text>
+          <Text style={{ lineHeight: 1.4 }}>{texteReglesGeneralesAnnexe4(lang, entreprise)}</Text>
         </Section>
         <Section title={t("annexe4_signature_titre")} boxed>
           {/* Nom + n° de chantier rappelés ici (anti-fraude) : cette feuille signée
