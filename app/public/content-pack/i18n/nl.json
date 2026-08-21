@@ -306,7 +306,6 @@
     "tbl_nom": "Naam",
     "tbl_email": "E-mail",
     "tbl_tel": "Tel.",
-    "gsm": "Gsm-nr.",
     "niveau_risque_label": "Risiconiveau",
     "explication_bloc1_titre": "Doel van dit document",
     "explication_bloc2_titre": "Informatieplicht",
@@ -331,7 +330,8 @@
     "identification_image_page_de_garde_texte": "Als u de generieke afbeelding op het voorblad wilt vervangen door uw eigen afbeelding, upload deze dan hier.",
     "identification_image_page_de_garde_bouton": "Een afbeelding uploaden",
     "identification_image_page_de_garde_reinitialiser": "Terug naar de standaardafbeelding",
-    "identification_image_page_de_garde_erreur": "Ongeldig bestand: gebruik een PNG- of JPG-afbeelding."
+    "identification_image_page_de_garde_erreur": "Ongeldig bestand: gebruik een PNG- of JPG-afbeelding.",
+    "annexe4_signature_titre": "Handtekening"
   },
   "risques": []
 }
