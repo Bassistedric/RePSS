@@ -506,7 +506,51 @@ Cette section est un vrai chantier à part entière, probablement à traiter com
 une tâche dédiée plutôt qu'un ajustement — le template de rendu PDF n'existe pas
 encore vraiment, il est à construire depuis cette spec.
 
-## 13. Points encore ouverts (à trancher, pas encore décidés)
+## 13. MOADR (Mode Opératoire avec Analyse de Risque)
+
+Troisième type de document de l'app, distinct du RePSS complet/abrégé — en cours de
+conception, à construire depuis le classeur Word existant (`F_0X_VMA_MOADR_Blanco.dotm`),
+qui est un squelette quasiment vide (section 5.2 "Tableau d'Analyse de Risques"
+totalement vide dans le fichier source, aucun tableau à en reprendre).
+
+**Architecture** : outil autonome, accessible depuis deux entrées — directement
+depuis l'écran d'accueil ("Créer un MOADR", à côté de "Créer un RePSS"), ou depuis
+une demande MOADR faite au sein d'un RePSS (`demandesMoadr`, §3) — les deux mènent
+au même outil, un seul MOADR à maintenir. Quand il est lancé depuis un RePSS, le
+PDF généré est joint en annexe de ce RePSS (`fichierAnnexe` de la demande
+correspondante) plutôt que de rester un document isolé.
+
+**Pré-remplissage automatique** : quand le MOADR est ouvert depuis une demande
+faite dans un RePSS, les champs déjà connus à ce moment (chantier, date, contexte)
+doivent se pré-remplir automatiquement plutôt que d'être retapés — uniquement
+saisis manuellement quand le MOADR est créé de façon autonome depuis l'accueil.
+
+**Échelle Kinney** : la même que le reste du RePSS (Gravité 1/3/7/15/40/100,
+Probabilité 0,1-10, Exposition 0,2-10, niveaux Acceptable/Attention requise/
+Correction nécessaire/Mesure immédiate/Envisager l'arrêt, couleurs déjà définies
+§12) — **pas** l'échelle simplifiée du document Word d'origine (Gravité/Probabilité
+1-5, Exposition 1-4), jugée incohérente avec le reste des documents VMA Sud.
+
+**Construction de l'analyse de risque en direct** (pas de catalogue préexistant,
+chaque MOADR décrit une situation propre au chantier) — inspirée d'un autre outil
+de Ced, principes à reprendre :
+- Un formulaire d'ajout de ligne, pas une liste pré-cochée : Tâche/étape, Danger,
+  Situation dangereuse, Mesures existantes — **tous en texte libre**, à remplir
+  par le PM (pas de liste fixe de catégories de danger, contrairement à l'outil de
+  référence qui n'a servi que d'exemple pour la mise en page/couleurs).
+- **Risque initial et risque résiduel affichés côte à côte dans le formulaire
+  lui-même**, avant l'enregistrement de la ligne — fond teinté rouge pour le
+  risque initial, fond teinté vert pour le résiduel, calcul Kinney en direct à
+  mesure que Probabilité/Exposition/Gravité sont choisis (menus déroulants sur
+  le vocabulaire fixe, pas de saisie libre des scores).
+- Une fois la ligne ajoutée, elle apparaît dans un tableau récapitulatif : chaque
+  risque affiché comme badge coloré avec le niveau, les 3 facteurs en rappel
+  court, et une mention d'action ("Action nécessaire" / "Acceptable"...) — légende
+  des 4-5 niveaux avec pastille de couleur en bas du tableau.
+- Actions globales : vider le tableau, enregistrer l'analyse complète, annuler.
+- Référence auto-générée par ligne d'analyse (même logique que `REPSS-2026-XXX`).
+
+## 14. Points encore ouverts (à trancher, pas encore décidés)
 
 - Bureau d'architecture / B.E. Tech. Spéciales / Coordinateur Sécurité : traités
   comme variables par chantier par hypothèse, jamais confirmés formellement par Ced.
