@@ -1054,7 +1054,13 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
             {dossier.demandesMoadr.map((m) => (
               <View key={m.id} style={{ marginBottom: 4 }}>
                 <Text>{m.descriptionSituation}</Text>
-                <Text style={{ color: colors.neutralText }}>{m.mentionDocument}</Text>
+                {/* §13 : le MOADR généré depuis cette demande est référencé ici plutôt
+                    que réellement joint (pas de backend pour fusionner deux PDF). */}
+                {m.statut === "traite" && m.fichierAnnexe ? (
+                  <Text style={{ color: colors.success }}>{m.fichierAnnexe}</Text>
+                ) : (
+                  <Text style={{ color: colors.neutralText }}>{m.mentionDocument}</Text>
+                )}
               </View>
             ))}
           </Section>

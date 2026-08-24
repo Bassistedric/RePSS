@@ -26,6 +26,9 @@ export default function App() {
   // §13 : le MOADR est un troisième type de document, distinct du dossier RePSS
   // (pas de mode "abrégé/complet" à gérer) — son propre état, en parallèle.
   const [moadrDossier, setMoadrDossier] = useState(defaultMoadrDossier);
+  // Écran RePSS à retrouver au retour du MOADR : null si lancé depuis l'accueil
+  // (retour à l'accueil), sinon l'étape du wizard quittée pour y aller.
+  const [screenAvantMoadr, setScreenAvantMoadr] = useState(null);
   const [infosAdminTab, setInfosAdminTab] = useState("renseignements");
   // Plus haut index d'étape jamais atteint : distinct de l'étape courante pour que
   // revenir en arrière dans la sidebar ne "referme" pas l'accès aux étapes déjà
@@ -87,6 +90,46 @@ export default function App() {
     if (prev) setScreen(prev.key);
   }
 
+  // §13 : deux entrées vers le même outil MOADR — standalone (accueil, aucun lien
+  // avec un RePSS) ou depuis une demande faite au sein du RePSS en cours (pré-
+  // remplissage automatique : chantier, date, contexte déjà connus à ce stade).
+  function startMoadrStandalone() {
+    setMoadrDossier(defaultMoadrDossier());
+    setScreenAvantMoadr(null);
+    setScreen("moadr");
+  }
+  function openMoadrFromDemande(demande) {
+    const base = defaultMoadrDossier();
+    const dateDebut = dossier.administratif?.dateDebutTravaux || dossier.infosChantierUsine?.dateDebutTravaux || "";
+    setMoadrDossier({
+      ...base,
+      origine: {
+        repssNumeroChantier: dossier.identification.numeroChantier,
+        repssNomChantier: dossier.identification.nomChantier,
+        demandeMoadrId: demande.id,
+      },
+      objet: {
+        ...base.objet,
+        projet: dossier.identification.nomChantier,
+        dateDebut,
+        responsableOperation: dossier.identification.pmLead,
+      },
+      intervention: { ...base.intervention, contexte: demande.descriptionSituation },
+    });
+    setScreenAvantMoadr(screen);
+    setScreen("moadr");
+  }
+  // À l'attribution de la référence MOADR (§13 : "le PDF généré est joint en
+  // annexe de ce RePSS"), on ne peut pas joindre de vrai fichier (pas de backend) :
+  // on référence le PDF généré dans la demande d'origine, marquée traitée.
+  function marquerMoadrGenere(demandeMoadrId, filename) {
+    if (!demandeMoadrId) return;
+    setDossier((prev) => {
+      const next = prev.demandesMoadr.map((d) => (d.id === demandeMoadrId ? { ...d, statut: "traite", fichierAnnexe: filename } : d));
+      return { ...prev, demandesMoadr: next, meta: { ...prev.meta, moadrEnAttente: next.some((d) => d.statut === "demande") } };
+    });
+  }
+
   function renderScreen() {
     switch (screen) {
       case "identification":
@@ -127,6 +170,7 @@ export default function App() {
             catalogueAbrege={pack.catalogueAbrege}
             onBack={goBack}
             onNext={goNext}
+            onOpenMoadr={openMoadrFromDemande}
             t={t}
           />
         );
@@ -157,7 +201,7 @@ export default function App() {
           <div className="p-8">
             <Accueil
               onStart={() => setScreen("identification")}
-              onStartMoadr={() => setScreen("moadr")}
+              onStartMoadr={startMoadrStandalone}
               lang={lang}
               setLang={setLang}
               entreprise={pack.entreprise}
@@ -175,7 +219,8 @@ export default function App() {
               t={t}
               lang={lang}
               setLang={setLang}
-              onBack={() => setScreen("accueil")}
+              onBack={() => setScreen(screenAvantMoadr || "accueil")}
+              onGenerated={marquerMoadrGenere}
             />
           </div>
         ) : (

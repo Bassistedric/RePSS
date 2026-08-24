@@ -349,7 +349,7 @@ function CatalogueAbrege({ catalogue, isChecked, toggle, t }) {
   );
 }
 
-export default function AnalyseRisques({ dossier, setDossier, catalogueComplet, catalogueAbrege, onBack, onNext, t }) {
+export default function AnalyseRisques({ dossier, setDossier, catalogueComplet, catalogueAbrege, onBack, onNext, onOpenMoadr, t }) {
   const { modeChoisi } = dossier.triage;
   const { corpsMetier } = dossier.caracterisation;
   const itemsCoches = dossier.analyseRisques.itemsCoches;
@@ -400,7 +400,7 @@ export default function AnalyseRisques({ dossier, setDossier, catalogueComplet, 
         />
       )}
 
-      <MoadrSection dossier={dossier} setDossier={setDossier} t={t} />
+      <MoadrSection dossier={dossier} setDossier={setDossier} onOpenMoadr={onOpenMoadr} t={t} />
 
       <div className="flex justify-between mt-7">
         <button onClick={onBack} className="px-6 py-2.5 rounded text-sm border" style={{ borderColor: colors.neutralBorderStrong }}>
