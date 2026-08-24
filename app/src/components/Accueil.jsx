@@ -8,7 +8,7 @@ const LANGUES = [
   { code: "en", label: "English" },
 ];
 
-export default function Accueil({ onStart, lang, setLang, entreprise, t }) {
+export default function Accueil({ onStart, onStartMoadr, lang, setLang, entreprise, t }) {
   const brand = entreprise?.branding || {};
 
   return (
@@ -62,13 +62,22 @@ export default function Accueil({ onStart, lang, setLang, entreprise, t }) {
         ))}
       </div>
 
-      <button
-        onClick={onStart}
-        className="px-8 py-3 rounded text-base font-medium mb-6"
-        style={{ background: brand.couleurPrincipale || colors.navy, color: "white" }}
-      >
-        {t("accueil_bouton_commencer")}
-      </button>
+      <div className="flex gap-3 mb-6">
+        <button
+          onClick={onStart}
+          className="px-8 py-3 rounded text-base font-medium"
+          style={{ background: brand.couleurPrincipale || colors.navy, color: "white" }}
+        >
+          {t("accueil_bouton_commencer")}
+        </button>
+        <button
+          onClick={onStartMoadr}
+          className="px-8 py-3 rounded text-base font-medium border"
+          style={{ borderColor: colors.blue, color: colors.blue }}
+        >
+          {t("accueil_bouton_creer_moadr")}
+        </button>
+      </div>
 
       <p className="text-sm" style={{ color: colors.neutralText }}>
         {t("accueil_credits")}
