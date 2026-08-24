@@ -461,7 +461,8 @@
     "moadr_signature_operateurs": "Operators",
     "moadr_reference_attribuee": "MOADR reference assigned",
     "moadr_annexe_repss_mention": "This MOADR will be attached as an annex to the linked RePSS.",
-    "bouton_annuler": "Cancel"
+    "bouton_annuler": "Cancel",
+    "moadr_voir_tableau_page_suivante": "See the detailed table on the next page."
   },
   "risques": []
 }

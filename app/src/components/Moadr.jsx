@@ -1,7 +1,10 @@
-import { Save, ArrowLeft, Link2 } from "lucide-react";
+import { useState } from "react";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import { Save, ArrowLeft, Link2, FileCheck, Loader2 } from "lucide-react";
 import FormStep from "./FormStep";
 import ScreenTitle from "./ScreenTitle";
 import MoadrAnalyseRisques from "./MoadrAnalyseRisques";
+import MoadrDocument from "./pdf/MoadrDocument";
 import {
   moadrObjetSchema,
   moadrInterventionSchema,
@@ -12,6 +15,7 @@ import {
   moadrSuiviControlesSchema,
 } from "../lib/moadrSchema";
 import { saveMoadr } from "../lib/storage";
+import { logoUrl } from "../lib/contentPack";
 import { colors } from "../lib/colors";
 
 const LANGUES = [
@@ -20,9 +24,26 @@ const LANGUES = [
   { code: "en", label: "EN" },
 ];
 
+// Même principe que meta.repssNumero (§4/§13) : la référence n'est attribuée qu'à
+// la génération finale, jamais sur un brouillon, pour ne pas gaspiller de numéros.
+function nouvelleReference() {
+  return `MOADR-${new Date().getFullYear()}-${String(Date.now()).slice(-5)}`;
+}
+
 export default function Moadr({ moadr, setMoadr, entreprise, t, lang, setLang, onBack }) {
+  const [pretPourTelechargement, setPretPourTelechargement] = useState(false);
   const responsableSippt = entreprise?.rolesApprobation?.fixes?.find((r) => /SIPPT/i.test(r.fonction));
   const { repssNumeroChantier, repssNomChantier } = moadr.origine;
+  const brand = entreprise?.branding || {};
+  const logoAbsoluteUrl = brand.logo ? new URL(logoUrl(brand.logo), window.location.origin).href : null;
+  const filename = `MOADR_${moadr.meta.reference || "brouillon"}.pdf`;
+
+  function demarrerGeneration() {
+    if (!moadr.meta.reference) {
+      setMoadr((prev) => ({ ...prev, meta: { ...prev.meta, reference: nouvelleReference() } }));
+    }
+    setPretPourTelechargement(true);
+  }
 
   return (
     <div>
@@ -127,18 +148,56 @@ export default function Moadr({ moadr, setMoadr, entreprise, t, lang, setLang, o
         </div>
       </div>
 
+      {moadr.meta.reference && (
+        <p className="text-sm mt-5" style={{ color: colors.neutralText }}>
+          {t("moadr_reference_attribuee")} : {moadr.meta.reference}
+        </p>
+      )}
+
       <div className="flex justify-between items-center mt-7">
         <button onClick={onBack} className="px-6 py-2.5 rounded text-sm border" style={{ borderColor: colors.neutralBorderStrong }}>
           {t("bouton_retour")}
         </button>
-        <button
-          onClick={() => saveMoadr(moadr)}
-          className="flex items-center gap-2 px-5 py-2.5 rounded text-sm border"
-          style={{ borderColor: colors.blue, color: colors.blue }}
-        >
-          <Save size={16} />
-          {t("enregistrer_json_bouton")}
-        </button>
+        <div className="flex gap-2.5">
+          <button
+            onClick={() => saveMoadr(moadr)}
+            className="flex items-center gap-2 px-5 py-2.5 rounded text-sm border"
+            style={{ borderColor: colors.blue, color: colors.blue }}
+          >
+            <Save size={16} />
+            {t("enregistrer_json_bouton")}
+          </button>
+          {pretPourTelechargement ? (
+            // key={lang} : même garde-fou que Generation.jsx contre le lien qui
+            // resterait un instant sur le blob de l'ancienne langue.
+            <PDFDownloadLink
+              key={lang}
+              document={<MoadrDocument moadr={moadr} entreprise={entreprise} t={t} logoAbsoluteUrl={logoAbsoluteUrl} />}
+              fileName={filename}
+              onClick={(event, instance) => {
+                if (instance?.loading) event.preventDefault();
+              }}
+              className="flex items-center gap-2 px-6 py-2.5 rounded text-sm font-medium"
+              style={{ background: colors.navy, color: "white" }}
+            >
+              {({ loading }) => (
+                <span className="flex items-center gap-2" style={{ opacity: loading ? 0.7 : 1, cursor: loading ? "default" : "pointer" }}>
+                  {loading ? <Loader2 size={16} className="animate-spin" /> : <FileCheck size={16} />}
+                  {loading ? t("generation_en_cours") : t("generer_pdf_bouton")}
+                </span>
+              )}
+            </PDFDownloadLink>
+          ) : (
+            <button
+              onClick={demarrerGeneration}
+              className="flex items-center gap-2 px-6 py-2.5 rounded text-sm font-medium"
+              style={{ background: colors.navy, color: "white" }}
+            >
+              <FileCheck size={16} />
+              {t("generer_pdf_bouton")}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
