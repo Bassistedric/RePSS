@@ -66,14 +66,21 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
         <div className="flex items-start gap-2.5 border rounded-lg px-4 py-3 mb-5" style={{ borderColor: colors.warning, background: colors.warningBg }}>
           <AlertTriangle size={16} className="mt-0.5 shrink-0" style={{ color: colors.warningText }} />
           <div className="text-sm" style={{ color: colors.warningTextStrong }}>
-            <p className="font-medium mb-1">
-              {dossier.demandesMoadr.length} {t("moadr_demandes_en_attente")}
-            </p>
-            {dossier.demandesMoadr.map((m) => (
-              <p key={m.id}>
-                {m.descriptionSituation} → {m.mentionDocument}
-              </p>
-            ))}
+            {(() => {
+              const enAttente = dossier.demandesMoadr.filter((m) => m.statut !== "traite");
+              return (
+                <>
+                  <p className="font-medium mb-1">
+                    {enAttente.length} {t("moadr_demandes_en_attente")}
+                  </p>
+                  {enAttente.map((m) => (
+                    <p key={m.id}>
+                      {m.descriptionSituation} → {m.mentionDocument}
+                    </p>
+                  ))}
+                </>
+              );
+            })()}
           </div>
         </div>
       )}

@@ -430,9 +430,9 @@
     "moadr_s5_1_texte": "De Kinney-methode kwantificeert elk risico aan de hand van drie factoren: Waarschijnlijkheid, Blootstelling en Ernst. Het risico wordt berekend met de formule R = Waarschijnlijkheid × Blootstelling × Ernst, op dezelfde schaal als de rest van de RePSS-documenten (zie Bijlage 1 — Kinney-legende).",
     "moadr_s5_2_titre": "5.2 Risicoanalysetabel",
     "moadr_ligne_tache": "Taak / stap",
-    "moadr_ligne_danger": "Gevaar",
-    "moadr_ligne_situation": "Gevaarlijke situatie",
-    "moadr_ligne_mesures_existantes": "Bestaande maatregelen",
+    "moadr_ligne_danger": "Gevaarlijke situatie (bv. warm werk)",
+    "moadr_ligne_situation": "Risico (bv. brandwonde, brand...)",
+    "moadr_ligne_mesures_existantes": "Te nemen maatregelen",
     "moadr_risque_initial": "Initieel risico",
     "moadr_risque_residuel": "Restrisico",
     "moadr_bouton_ajouter_ligne_risque": "Regel toevoegen",
@@ -462,7 +462,9 @@
     "moadr_reference_attribuee": "MOADR-referentie toegekend",
     "moadr_annexe_repss_mention": "Deze MOADR wordt als bijlage bij de gekoppelde RePSS gevoegd.",
     "bouton_annuler": "Annuleren",
-    "moadr_voir_tableau_page_suivante": "Zie de gedetailleerde tabel op de volgende pagina."
+    "moadr_voir_tableau_page_suivante": "Zie de gedetailleerde tabel op de volgende pagina.",
+    "moadr_ouvrir": "MOADR openen",
+    "moadr_rouvrir": "MOADR heropenen"
   },
   "risques": []
 }

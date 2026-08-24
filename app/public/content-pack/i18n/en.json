@@ -430,9 +430,9 @@
     "moadr_s5_1_texte": "The Kinney method quantifies each risk from three factors: Probability, Exposure and Severity. The risk is calculated using the formula R = Probability × Exposure × Severity, on the same scale as the rest of the RePSS documents (see Appendix 1 — Kinney Legend).",
     "moadr_s5_2_titre": "5.2 Risk Analysis Table",
     "moadr_ligne_tache": "Task / step",
-    "moadr_ligne_danger": "Hazard",
-    "moadr_ligne_situation": "Dangerous situation",
-    "moadr_ligne_mesures_existantes": "Existing measures",
+    "moadr_ligne_danger": "Hazardous situation (e.g. hot work)",
+    "moadr_ligne_situation": "Risk (e.g. burn, fire...)",
+    "moadr_ligne_mesures_existantes": "Measures to implement",
     "moadr_risque_initial": "Initial risk",
     "moadr_risque_residuel": "Residual risk",
     "moadr_bouton_ajouter_ligne_risque": "Add line",
@@ -462,7 +462,9 @@
     "moadr_reference_attribuee": "MOADR reference assigned",
     "moadr_annexe_repss_mention": "This MOADR will be attached as an annex to the linked RePSS.",
     "bouton_annuler": "Cancel",
-    "moadr_voir_tableau_page_suivante": "See the detailed table on the next page."
+    "moadr_voir_tableau_page_suivante": "See the detailed table on the next page.",
+    "moadr_ouvrir": "Open the MOADR",
+    "moadr_rouvrir": "Reopen the MOADR"
   },
   "risques": []
 }

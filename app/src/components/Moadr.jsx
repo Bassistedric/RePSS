@@ -30,19 +30,24 @@ function nouvelleReference() {
   return `MOADR-${new Date().getFullYear()}-${String(Date.now()).slice(-5)}`;
 }
 
-export default function Moadr({ moadr, setMoadr, entreprise, t, lang, setLang, onBack }) {
+export default function Moadr({ moadr, setMoadr, entreprise, t, lang, setLang, onBack, onGenerated }) {
   const [pretPourTelechargement, setPretPourTelechargement] = useState(false);
   const responsableSippt = entreprise?.rolesApprobation?.fixes?.find((r) => /SIPPT/i.test(r.fonction));
-  const { repssNumeroChantier, repssNomChantier } = moadr.origine;
+  const { repssNumeroChantier, repssNomChantier, demandeMoadrId } = moadr.origine;
   const brand = entreprise?.branding || {};
   const logoAbsoluteUrl = brand.logo ? new URL(logoUrl(brand.logo), window.location.origin).href : null;
   const filename = `MOADR_${moadr.meta.reference || "brouillon"}.pdf`;
 
+  // §13 : "le PDF généré est joint en annexe de ce RePSS" — attribution de la
+  // référence et notification à la demande d'origine se font ensemble, comme
+  // meta.repssNumero (attribué seulement à la génération, jamais sur un brouillon).
   function demarrerGeneration() {
+    const reference = moadr.meta.reference || nouvelleReference();
     if (!moadr.meta.reference) {
-      setMoadr((prev) => ({ ...prev, meta: { ...prev.meta, reference: nouvelleReference() } }));
+      setMoadr((prev) => ({ ...prev, meta: { ...prev.meta, reference } }));
     }
     setPretPourTelechargement(true);
+    onGenerated?.(demandeMoadrId, `MOADR_${reference}.pdf`);
   }
 
   return (
