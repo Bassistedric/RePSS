@@ -75,37 +75,44 @@ export default function Moadr({ moadr, setMoadr, entreprise, t, lang, setLang, o
         <button onClick={onBack} className="flex items-center gap-1.5 text-sm" style={{ color: colors.blue }}>
           <ArrowLeft size={15} /> {t("bouton_retour")}
         </button>
-        <div className="flex items-center gap-4">
-          <button onClick={() => fileRef.current?.click()} className="flex items-center gap-1.5 text-sm" style={{ color: colors.blue }}>
-            <Upload size={14} /> {t("moadr_importer_bouton")}
-          </button>
-          <input ref={fileRef} type="file" accept=".json" onChange={handleImportFile} className="hidden" />
-          <div className="flex gap-1">
-            {LANGUES.map((l) => (
-              <button
-                key={l.code}
-                onClick={() => setLang(l.code)}
-                className="px-2.5 py-1.5 rounded text-xs font-medium border"
-                style={{
-                  borderColor: lang === l.code ? colors.navy : colors.neutralBorderStrong,
-                  background: lang === l.code ? colors.navyTint : "white",
-                  color: lang === l.code ? colors.navy : colors.neutralText,
-                }}
-              >
-                {l.label}
-              </button>
-            ))}
-          </div>
+        <div className="flex gap-1">
+          {LANGUES.map((l) => (
+            <button
+              key={l.code}
+              onClick={() => setLang(l.code)}
+              className="px-2.5 py-1.5 rounded text-xs font-medium border"
+              style={{
+                borderColor: lang === l.code ? colors.navy : colors.neutralBorderStrong,
+                background: lang === l.code ? colors.navyTint : "white",
+                color: lang === l.code ? colors.navy : colors.neutralText,
+              }}
+            >
+              {l.label}
+            </button>
+          ))}
         </div>
       </div>
+
+      <input ref={fileRef} type="file" accept=".json" onChange={handleImportFile} className="hidden" />
+      <ScreenTitle
+        title={t("moadr_outil_titre")}
+        subtitle={t("moadr_outil_sous_titre")}
+        aside={
+          <button
+            onClick={() => fileRef.current?.click()}
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded text-sm border"
+            style={{ borderColor: colors.blue, color: colors.blue, background: "white" }}
+          >
+            <Upload size={14} /> {t("moadr_importer_bouton")}
+          </button>
+        }
+      />
 
       {importInfo && (
         <p className="text-sm mb-4" style={{ color: importInfo.error ? colors.error : colors.blue }}>
           {importInfo.error ? t("moadr_importer_erreur") : t("moadr_importer_succes")}
         </p>
       )}
-
-      <ScreenTitle title={t("moadr_outil_titre")} subtitle={t("moadr_outil_sous_titre")} />
 
       {repssNumeroChantier && (
         <div className="flex items-start gap-2.5 border rounded-lg px-4 py-3 mb-5" style={{ borderColor: colors.blue, background: colors.navyTint }}>
