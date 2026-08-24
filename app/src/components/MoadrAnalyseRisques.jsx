@@ -115,9 +115,25 @@ export default function MoadrAnalyseRisques({ moadr, setMoadr, t }) {
   return (
     <div>
       <div className="rounded-lg border p-4 mb-4" style={{ borderColor: colors.neutralBorder, background: colors.neutralBgSubtle }}>
-        <p className="text-sm mb-3" style={{ color: colors.neutralText }}>
+        <p className="text-sm mb-4" style={{ color: colors.neutralText }}>
           {t("moadr_s5_1_texte")}
         </p>
+        <div className="flex flex-col gap-3">
+          {[
+            ["moadr_kinney_p_titre", "moadr_kinney_p_texte"],
+            ["moadr_kinney_e_titre", "moadr_kinney_e_texte"],
+            ["moadr_kinney_g_titre", "moadr_kinney_g_texte"],
+          ].map(([titreKey, texteKey]) => (
+            <div key={titreKey}>
+              <p className="text-sm font-semibold mb-1" style={{ color: colors.blue }}>
+                {t(titreKey)}
+              </p>
+              <p className="text-sm" style={{ color: colors.neutralText }}>
+                {t(texteKey)}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="rounded-lg border p-4 mb-5" style={{ borderColor: colors.neutralBorder }}>

@@ -191,8 +191,18 @@ export default function MoadrDocument({ moadr, entreprise, t, logoAbsoluteUrl })
         <KV label={t("moadr_qualification_operateurs")} value={moadr.ressourcesHumaines.qualificationOperateurs} />
 
         <Banner label={t("moadr_s5_titre")} />
-        <Text style={{ marginBottom: 4 }}>{t("moadr_s5_1_texte")}</Text>
-        <Text style={{ color: colors.neutralText, fontStyle: "italic" }}>{t("moadr_voir_tableau_page_suivante")}</Text>
+        <Text style={{ marginBottom: 6 }}>{t("moadr_s5_1_texte")}</Text>
+        {[
+          ["moadr_kinney_p_titre", "moadr_kinney_p_texte"],
+          ["moadr_kinney_e_titre", "moadr_kinney_e_texte"],
+          ["moadr_kinney_g_titre", "moadr_kinney_g_texte"],
+        ].map(([titreKey, texteKey]) => (
+          <View key={titreKey} style={{ marginBottom: 5 }}>
+            <Text style={{ fontWeight: 700, color: colors.navy, marginBottom: 1 }}>{t(titreKey)}</Text>
+            <Text>{t(texteKey)}</Text>
+          </View>
+        ))}
+        <Text style={{ color: colors.neutralText, fontStyle: "italic", marginTop: 2 }}>{t("moadr_voir_tableau_page_suivante")}</Text>
 
         <Banner label={t("moadr_s6_titre")} />
         <KV label={t("moadr_epc")} value={moadr.mesuresPrevention.epc} />

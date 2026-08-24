@@ -427,7 +427,7 @@
     "moadr_qualification_operateurs": "Operators' qualification",
     "moadr_s5_titre": "5. Risk Analysis (Kinney Method)",
     "moadr_s5_1_titre": "5.1 Introduction to the Kinney method",
-    "moadr_s5_1_texte": "The Kinney method quantifies each risk from three factors: Probability, Exposure and Severity. The risk is calculated using the formula R = Probability × Exposure × Severity, on the same scale as the rest of the RePSS documents (see Appendix 1 — Kinney Legend).",
+    "moadr_s5_1_texte": "The Kinney method quantifies each risk from three factors: Probability, Exposure and Severity. The risk is calculated using the formula R = Probability × Exposure × Severity.",
     "moadr_s5_2_titre": "5.2 Risk Analysis Table",
     "moadr_ligne_tache": "Task / step",
     "moadr_ligne_danger": "Hazardous situation (e.g. hot work)",
@@ -464,7 +464,16 @@
     "bouton_annuler": "Cancel",
     "moadr_voir_tableau_page_suivante": "See the detailed table on the next page.",
     "moadr_ouvrir": "Open the MOADR",
-    "moadr_rouvrir": "Reopen the MOADR"
+    "moadr_rouvrir": "Reopen the MOADR",
+    "moadr_kinney_p_titre": "Probability factor (P)",
+    "moadr_kinney_p_texte": "Probability is the risk that a hazard results in harm. This estimate must be made without taking individual or collective prevention measures into account.",
+    "moadr_kinney_e_titre": "Exposure factor (E)",
+    "moadr_kinney_e_texte": "The exposure factor takes into account the duration and frequency of exposure to the hazard.",
+    "moadr_kinney_g_titre": "Severity level (G)",
+    "moadr_kinney_g_texte": "To estimate the severity level, you must estimate the most serious possible effects of the exposure.",
+    "moadr_importer_bouton": "Import a file",
+    "moadr_importer_erreur": "Invalid file: this is not a MOADR (.json).",
+    "moadr_importer_succes": "MOADR imported."
   },
   "risques": []
 }

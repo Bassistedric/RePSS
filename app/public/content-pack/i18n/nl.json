@@ -427,7 +427,7 @@
     "moadr_qualification_operateurs": "Kwalificatie van de operatoren",
     "moadr_s5_titre": "5. Risicoanalyse (Kinney-methode)",
     "moadr_s5_1_titre": "5.1 Inleiding tot de Kinney-methode",
-    "moadr_s5_1_texte": "De Kinney-methode kwantificeert elk risico aan de hand van drie factoren: Waarschijnlijkheid, Blootstelling en Ernst. Het risico wordt berekend met de formule R = Waarschijnlijkheid × Blootstelling × Ernst, op dezelfde schaal als de rest van de RePSS-documenten (zie Bijlage 1 — Kinney-legende).",
+    "moadr_s5_1_texte": "De Kinney-methode kwantificeert elk risico aan de hand van drie factoren: Waarschijnlijkheid, Blootstelling en Ernst. Het risico wordt berekend met de formule R = Waarschijnlijkheid × Blootstelling × Ernst.",
     "moadr_s5_2_titre": "5.2 Risicoanalysetabel",
     "moadr_ligne_tache": "Taak / stap",
     "moadr_ligne_danger": "Gevaarlijke situatie (bv. warm werk)",
@@ -464,7 +464,16 @@
     "bouton_annuler": "Annuleren",
     "moadr_voir_tableau_page_suivante": "Zie de gedetailleerde tabel op de volgende pagina.",
     "moadr_ouvrir": "MOADR openen",
-    "moadr_rouvrir": "MOADR heropenen"
+    "moadr_rouvrir": "MOADR heropenen",
+    "moadr_kinney_p_titre": "Waarschijnlijkheidsfactor (P)",
+    "moadr_kinney_p_texte": "Waarschijnlijkheid is het risico dat een gevaar tot schade leidt. Deze inschatting moet gebeuren zonder rekening te houden met individuele of collectieve preventiemaatregelen.",
+    "moadr_kinney_e_titre": "Blootstellingsfactor (E)",
+    "moadr_kinney_e_texte": "De blootstellingsfactor houdt rekening met de duur en de frequentie van de blootstelling aan het gevaar.",
+    "moadr_kinney_g_titre": "Ernstgraad (G)",
+    "moadr_kinney_g_texte": "Om de ernstgraad in te schatten, moet u de ernstigste mogelijke gevolgen van de blootstelling inschatten.",
+    "moadr_importer_bouton": "Een bestand importeren",
+    "moadr_importer_erreur": "Ongeldig bestand: dit is geen MOADR (.json).",
+    "moadr_importer_succes": "MOADR geïmporteerd."
   },
   "risques": []
 }

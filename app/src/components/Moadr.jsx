@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import { Save, ArrowLeft, Link2, FileCheck, Loader2 } from "lucide-react";
+import { Save, ArrowLeft, Link2, FileCheck, Loader2, Upload } from "lucide-react";
 import FormStep from "./FormStep";
 import ScreenTitle from "./ScreenTitle";
 import MoadrAnalyseRisques from "./MoadrAnalyseRisques";
@@ -14,7 +14,7 @@ import {
   moadrProcedureSecoursSchema,
   moadrSuiviControlesSchema,
 } from "../lib/moadrSchema";
-import { saveMoadr } from "../lib/storage";
+import { saveMoadr, readDossierFile } from "../lib/storage";
 import { logoUrl } from "../lib/contentPack";
 import { colors } from "../lib/colors";
 
@@ -32,11 +32,30 @@ function nouvelleReference() {
 
 export default function Moadr({ moadr, setMoadr, entreprise, t, lang, setLang, onBack, onGenerated }) {
   const [pretPourTelechargement, setPretPourTelechargement] = useState(false);
+  const [importInfo, setImportInfo] = useState(null);
+  const fileRef = useRef(null);
   const responsableSippt = entreprise?.rolesApprobation?.fixes?.find((r) => /SIPPT/i.test(r.fonction));
   const { repssNumeroChantier, repssNomChantier, demandeMoadrId } = moadr.origine;
   const brand = entreprise?.branding || {};
   const logoAbsoluteUrl = brand.logo ? new URL(logoUrl(brand.logo), window.location.origin).href : null;
   const filename = `MOADR_${moadr.meta.reference || "brouillon"}.pdf`;
+
+  // Même mécanisme que "Reprendre un RePSS existant" (Identification.jsx, §8) :
+  // aucun backend, tout se lit côté navigateur depuis le .json enregistré.
+  async function handleImportFile(e) {
+    const file = e.target.files[0];
+    e.target.value = "";
+    if (!file) return;
+    try {
+      const data = await readDossierFile(file);
+      if (!data?.objet) throw new Error("format invalide");
+      setMoadr(data);
+      setPretPourTelechargement(false);
+      setImportInfo({ error: false });
+    } catch {
+      setImportInfo({ error: true });
+    }
+  }
 
   // §13 : "le PDF généré est joint en annexe de ce RePSS" — attribution de la
   // référence et notification à la demande d'origine se font ensemble, comme
@@ -56,23 +75,35 @@ export default function Moadr({ moadr, setMoadr, entreprise, t, lang, setLang, o
         <button onClick={onBack} className="flex items-center gap-1.5 text-sm" style={{ color: colors.blue }}>
           <ArrowLeft size={15} /> {t("bouton_retour")}
         </button>
-        <div className="flex gap-1">
-          {LANGUES.map((l) => (
-            <button
-              key={l.code}
-              onClick={() => setLang(l.code)}
-              className="px-2.5 py-1.5 rounded text-xs font-medium border"
-              style={{
-                borderColor: lang === l.code ? colors.navy : colors.neutralBorderStrong,
-                background: lang === l.code ? colors.navyTint : "white",
-                color: lang === l.code ? colors.navy : colors.neutralText,
-              }}
-            >
-              {l.label}
-            </button>
-          ))}
+        <div className="flex items-center gap-4">
+          <button onClick={() => fileRef.current?.click()} className="flex items-center gap-1.5 text-sm" style={{ color: colors.blue }}>
+            <Upload size={14} /> {t("moadr_importer_bouton")}
+          </button>
+          <input ref={fileRef} type="file" accept=".json" onChange={handleImportFile} className="hidden" />
+          <div className="flex gap-1">
+            {LANGUES.map((l) => (
+              <button
+                key={l.code}
+                onClick={() => setLang(l.code)}
+                className="px-2.5 py-1.5 rounded text-xs font-medium border"
+                style={{
+                  borderColor: lang === l.code ? colors.navy : colors.neutralBorderStrong,
+                  background: lang === l.code ? colors.navyTint : "white",
+                  color: lang === l.code ? colors.navy : colors.neutralText,
+                }}
+              >
+                {l.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
+
+      {importInfo && (
+        <p className="text-sm mb-4" style={{ color: importInfo.error ? colors.error : colors.blue }}>
+          {importInfo.error ? t("moadr_importer_erreur") : t("moadr_importer_succes")}
+        </p>
+      )}
 
       <ScreenTitle title={t("moadr_outil_titre")} subtitle={t("moadr_outil_sous_titre")} />
 
