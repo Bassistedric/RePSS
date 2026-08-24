@@ -427,7 +427,7 @@
     "moadr_qualification_operateurs": "Qualification des opérateurs",
     "moadr_s5_titre": "5. Analyse de Risque (Méthode Kinney)",
     "moadr_s5_1_titre": "5.1 Introduction à la méthode Kinney",
-    "moadr_s5_1_texte": "La méthode Kinney quantifie chaque risque à partir de trois facteurs : Probabilité, Exposition et Gravité. Le risque est calculé selon la formule R = Probabilité × Exposition × Gravité, sur la même échelle que le reste des documents RePSS (voir Annexe 1 — Légende Kinney).",
+    "moadr_s5_1_texte": "La méthode Kinney quantifie chaque risque à partir de trois facteurs : Probabilité, Exposition et Gravité. Le risque est calculé selon la formule R = Probabilité × Exposition × Gravité.",
     "moadr_s5_2_titre": "5.2 Tableau d'Analyse de Risques",
     "moadr_ligne_tache": "Tâche / étape",
     "moadr_ligne_danger": "Situation dangereuse (ex : travail point chaud)",
@@ -464,7 +464,16 @@
     "bouton_annuler": "Annuler",
     "moadr_voir_tableau_page_suivante": "Voir le tableau détaillé, page suivante.",
     "moadr_ouvrir": "Ouvrir le MOADR",
-    "moadr_rouvrir": "Rouvrir le MOADR"
+    "moadr_rouvrir": "Rouvrir le MOADR",
+    "moadr_kinney_p_titre": "Facteur de probabilité (P)",
+    "moadr_kinney_p_texte": "La probabilité est le risque qu'un danger entraîne des dommages. Vous devez procéder à cette estimation sans tenir compte des mesures de prévention individuelles ou collectives.",
+    "moadr_kinney_e_titre": "Facteur d'exposition (E)",
+    "moadr_kinney_e_texte": "Le facteur d'exposition tient compte de la durée et de la fréquence de l'exposition au danger.",
+    "moadr_kinney_g_titre": "Degré de gravité (G)",
+    "moadr_kinney_g_texte": "Pour estimer le degré de gravité, vous devez estimer les plus graves effets éventuels de l'exposition.",
+    "moadr_importer_bouton": "Importer un fichier",
+    "moadr_importer_erreur": "Fichier invalide : ce n'est pas un MOADR (.json).",
+    "moadr_importer_succes": "MOADR importé."
   },
   "risques": []
 }
