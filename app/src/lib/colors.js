@@ -42,4 +42,9 @@ export const colors = {
   warningText: "#8A6300",
   warningTextStrong: "#5A4300",
   error: "#B3261E",
+  // Fond rouge très clair : seul usage hors "erreur bloquante" toléré par §11,
+  // pour le risque INITIAL du MOADR (§13 : "fond teinté rouge pour le risque
+  // initial, fond teinté vert pour le résiduel" — avant/après mesures, pas une
+  // erreur applicative).
+  errorBg: "#FBEAE9",
 };

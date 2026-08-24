@@ -32,7 +32,10 @@ export function couleurNiveau(niveauCode) {
 // dérivé de `valeur` + UI_Textes (déjà traduit en fr/en/nl), jamais du champ
 // `texte` du catalogue lui-même — ça évite de dupliquer cette traduction dans
 // les 3 catalogues de risques alors qu'elle existe déjà une seule fois ici.
+// Grille complète (les 3 échelles + seuils de criticité) confirmée par Ced via la
+// feuille de calcul originale — voir NIVEAU_SEUILS ci-dessous.
 const PROBABILITE_KEYS = {
+  "0.1": "kinney_p_impossible",
   "0.2": "kinney_p_pratiquement_impossible",
   "0.5": "kinney_p_si_tout_va_de_travers",
   1: "kinney_p_possible_simultane",
@@ -41,6 +44,7 @@ const PROBABILITE_KEYS = {
   10: "kinney_p_va_se_produire",
 };
 const EXPOSITION_KEYS = {
+  "0.2": "kinney_e_moins_1x_an",
   "0.5": "kinney_e_2_3x_an",
   1: "kinney_e_chaque_mois",
   3: "kinney_e_chaque_semaine",
@@ -53,7 +57,45 @@ const GRAVITE_KEYS = {
   7: "kinney_g_invalidite",
   15: "kinney_g_1_mort",
   40: "kinney_g_plusieurs_morts",
+  100: "kinney_g_nombreux_morts",
 };
+
+// Seuils de criticité R = P×E×G (grille Kinney originale, confirmée par Ced) :
+// bornes inférieures incluses dans le palier qu'elles ouvrent. Vérifié sans
+// contradiction contre tous les scores déjà compilés dans catalogue_risques.json.
+const NIVEAU_SEUILS = [
+  { max: 40, code: "acceptable" },
+  { max: 70, code: "attention" },
+  { max: 200, code: "correction" },
+  { max: 400, code: "immediate" },
+  { max: Infinity, code: "arret" },
+];
+
+// Pour le MOADR (§13) : pas de catalogue préexistant, chaque ligne d'analyse de
+// risque est construite en direct par le PM → le niveau doit être calculé depuis
+// le score plutôt que lu depuis une colonne pré-remplie du classeur.
+export function niveauDepuisScore(score) {
+  const r = parseFloat(score);
+  return NIVEAU_SEUILS.find((s) => r < s.max)?.code ?? "arret";
+}
+
+// Options de menu déroulant (valeur + libellé traduit), triées par valeur
+// croissante — mêmes clés UI_Textes que legendeKinney(), pour le formulaire
+// d'ajout de ligne du MOADR (menus déroulants sur vocabulaire fixe, §13).
+function optionsDepuisKeys(keys, t) {
+  return Object.entries(keys)
+    .map(([valeur, labelKey]) => ({ valeur: parseFloat(valeur), label: t(labelKey) }))
+    .sort((a, b) => a.valeur - b.valeur);
+}
+export function optionsProbabilite(t) {
+  return optionsDepuisKeys(PROBABILITE_KEYS, t);
+}
+export function optionsExposition(t) {
+  return optionsDepuisKeys(EXPOSITION_KEYS, t);
+}
+export function optionsGravite(t) {
+  return optionsDepuisKeys(GRAVITE_KEYS, t);
+}
 
 // Légende Annexe 1 : dérivée dynamiquement de catalogue_risques.json (jamais codée
 // en dur dans l'app) — l'ensemble des valeurs réellement utilisées pour chaque

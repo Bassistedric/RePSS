@@ -3,6 +3,7 @@ import { loadContentPack } from "./lib/contentPack";
 import { makeTranslator } from "./lib/i18n";
 import { colors } from "./lib/colors";
 import { defaultDossier } from "./lib/dossier";
+import { defaultMoadrDossier } from "./lib/moadrDossier";
 import { getSteps } from "./lib/steps";
 import { saveDossier } from "./lib/storage";
 
@@ -14,6 +15,7 @@ import InfosAdmin from "./components/InfosAdmin";
 import InfosChantierUsine from "./components/InfosChantierUsine";
 import AnalyseRisques from "./components/AnalyseRisques";
 import Generation from "./components/Generation";
+import Moadr from "./components/Moadr";
 
 export default function App() {
   const [pack, setPack] = useState(null);
@@ -21,6 +23,9 @@ export default function App() {
   const [lang, setLang] = useState("fr");
   const [screen, setScreen] = useState("accueil");
   const [dossier, setDossier] = useState(defaultDossier);
+  // §13 : le MOADR est un troisième type de document, distinct du dossier RePSS
+  // (pas de mode "abrégé/complet" à gérer) — son propre état, en parallèle.
+  const [moadrDossier, setMoadrDossier] = useState(defaultMoadrDossier);
   const [infosAdminTab, setInfosAdminTab] = useState("renseignements");
   // Plus haut index d'étape jamais atteint : distinct de l'étape courante pour que
   // revenir en arrière dans la sidebar ne "referme" pas l'accès aux étapes déjà
@@ -150,7 +155,28 @@ export default function App() {
       <div className="w-full max-w-5xl rounded-xl overflow-hidden border shadow-sm" style={{ borderColor: colors.neutralBorder, background: "white" }}>
         {screen === "accueil" ? (
           <div className="p-8">
-            <Accueil onStart={() => setScreen("identification")} lang={lang} setLang={setLang} entreprise={pack.entreprise} t={t} />
+            <Accueil
+              onStart={() => setScreen("identification")}
+              onStartMoadr={() => setScreen("moadr")}
+              lang={lang}
+              setLang={setLang}
+              entreprise={pack.entreprise}
+              t={t}
+            />
+          </div>
+        ) : screen === "moadr" ? (
+          <div className="p-8 overflow-y-auto" style={{ maxHeight: "90vh" }}>
+            {/* Outil autonome, une seule page (pas de sidebar d'étapes) : les 9
+                sections du MOADR ne bifurquent pas comme le triage RePSS, §13. */}
+            <Moadr
+              moadr={moadrDossier}
+              setMoadr={setMoadrDossier}
+              entreprise={pack.entreprise}
+              t={t}
+              lang={lang}
+              setLang={setLang}
+              onBack={() => setScreen("accueil")}
+            />
           </div>
         ) : (
           <div className="flex">

@@ -25,6 +25,25 @@ export function saveDossier(dossier) {
   URL.revokeObjectURL(url);
 }
 
+// Même mécanisme que saveDossier (Blob + URL.createObjectURL, §8), pour le MOADR
+// (§13) : document autonome, pas de backend non plus.
+export function saveMoadr(moadr) {
+  const { reference } = moadr.meta;
+  const { projet } = moadr.objet;
+  const blob = new Blob([JSON.stringify(moadr, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  const filename = reference
+    ? `MOADR_${sanitizeFilename(reference)}.json`
+    : projet
+      ? `MOADR_${sanitizeFilename(projet)}_brouillon.json`
+      : "MOADR_brouillon.json";
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 export function readDossierFile(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
