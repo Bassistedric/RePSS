@@ -461,7 +461,8 @@
     "moadr_signature_operateurs": "Operatoren",
     "moadr_reference_attribuee": "MOADR-referentie toegekend",
     "moadr_annexe_repss_mention": "Deze MOADR wordt als bijlage bij de gekoppelde RePSS gevoegd.",
-    "bouton_annuler": "Annuleren"
+    "bouton_annuler": "Annuleren",
+    "moadr_voir_tableau_page_suivante": "Zie de gedetailleerde tabel op de volgende pagina."
   },
   "risques": []
 }
