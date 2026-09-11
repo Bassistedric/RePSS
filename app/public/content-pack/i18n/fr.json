@@ -216,7 +216,7 @@
     "caracterisation_complet": "Complet",
     "caracterisation_abrege_indispo": "Abrégé non disponible : au moins un critère ci-dessous s'applique à ce chantier.",
     "caracterisation_aide_intro": "Si l'un de ces points concerne le chantier, le complet est requis",
-    "caracterisation_critere_heures": "Heures de chantier < 1000",
+    "caracterisation_critere_heures": "Heures de chantier > 1000",
     "caracterisation_critere_hauteur": "Travail en hauteur ≥ 5 m",
     "caracterisation_critere_ht": "Haute tension",
     "caracterisation_critere_confine": "Espace confiné",

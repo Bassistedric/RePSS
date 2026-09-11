@@ -73,7 +73,7 @@ de générer), jamais bilingue dans le même PDF.
   },
   "triage": {
     "modeChoisi": "complet",
-    "aideAuChoix": { "heuresInf1000": null, "hauteur5mPlus": null, "hauteTension": null, "espaceConfine": null }
+    "aideAuChoix": { "heuresSup1000": null, "hauteur5mPlus": null, "hauteTension": null, "espaceConfine": null }
   },
   "caracterisation": { "corpsMetier": ["hvac_froid"] },
   "administratif": { "dateDebutTravaux": "", "dateFinTravauxEstimee": "" },
@@ -130,9 +130,12 @@ qui est généré depuis les données, pas une capture d'écran).
 2. **Caractérisation** — DOIT venir juste après l'identification, avant tout le
    reste, car elle conditionne toute la suite :
    - Triage abrégé/complet : choix radio assumé par le PM.
-   - Aide au choix (4 critères légaux : heures <1000, hauteur ≥5m, HT, espace
+   - Aide au choix (4 critères légaux : heures >1000, hauteur ≥5m, HT, espace
      confiné) : **contraignant**, pas juste informatif — cocher un seul de ces
      critères force `modeChoisi = "complet"` et désactive le radio "Abrégé".
+     (Corrigé en conversation : le signe était inversé — l'abrégé est interdit
+     **au-dessus** de 1000 heures prestées par vma sud, pas en-dessous, cohérent
+     avec l'avertissement du document de référence de l'abrégé.)
    - Corps de métier (multi-select : électricité, HVAC-Froid, photovoltaïque) —
      peut en cumuler plusieurs, filtre les catégories de l'étape Analyse de risques.
 3. Puis bifurcation selon le mode choisi.

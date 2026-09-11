@@ -2,7 +2,7 @@ import { colors } from "../lib/colors";
 import ScreenTitle from "./ScreenTitle";
 
 const AIDE_CRITERES = [
-  { key: "heuresInf1000", labelKey: "caracterisation_critere_heures" },
+  { key: "heuresSup1000", labelKey: "caracterisation_critere_heures" },
   { key: "hauteur5mPlus", labelKey: "caracterisation_critere_hauteur" },
   { key: "hauteTension", labelKey: "caracterisation_critere_ht" },
   { key: "espaceConfine", labelKey: "caracterisation_critere_confine" },

@@ -216,7 +216,7 @@
     "caracterisation_complet": "Volledig",
     "caracterisation_abrege_indispo": "Verkort niet beschikbaar: minstens één van onderstaande criteria is van toepassing op deze bouwplaats.",
     "caracterisation_aide_intro": "Als een van deze punten van toepassing is op de bouwplaats, is de volledige versie vereist",
-    "caracterisation_critere_heures": "Werfuren < 1000",
+    "caracterisation_critere_heures": "Werfuren > 1000",
     "caracterisation_critere_hauteur": "Werken op hoogte ≥ 5 m",
     "caracterisation_critere_ht": "Hoogspanning",
     "caracterisation_critere_confine": "Besloten ruimte",
