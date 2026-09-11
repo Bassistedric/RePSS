@@ -47,7 +47,7 @@ export function defaultDossier() {
     triage: {
       modeChoisi: "complet", // "abrege" | "complet"
       aideAuChoix: {
-        heuresInf1000: false,
+        heuresSup1000: false,
         hauteur5mPlus: false,
         hauteTension: false,
         espaceConfine: false,

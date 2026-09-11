@@ -216,7 +216,7 @@
     "caracterisation_complet": "Full",
     "caracterisation_abrege_indispo": "Abridged not available: at least one of the criteria below applies to this site.",
     "caracterisation_aide_intro": "If any of these points apply to the site, the full version is required",
-    "caracterisation_critere_heures": "Site hours < 1000",
+    "caracterisation_critere_heures": "Site hours > 1000",
     "caracterisation_critere_hauteur": "Work at height ≥ 5 m",
     "caracterisation_critere_ht": "High voltage",
     "caracterisation_critere_confine": "Confined space",
