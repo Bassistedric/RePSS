@@ -553,6 +553,33 @@ de Ced, principes à reprendre :
 - Actions globales : vider le tableau, enregistrer l'analyse complète, annuler.
 - Référence auto-générée par ligne d'analyse (même logique que `REPSS-2026-XXX`).
 
+### Fusion du MOADR dans le PDF du RePSS (trou de spécification comblé)
+
+Générer un MOADR depuis une demande RePSS fonctionnait, mais rien ne décrivait
+comment ses pages devaient atterrir dans le PDF final du RePSS. Tranché :
+
+- À la génération du PDF du RePSS, parcourir `demandesMoadr`. Pour chaque entrée
+  dont `statut` vaut **`"valide"`** et qui porte un `fichierAnnexe`, **fusionner
+  réellement** les pages du PDF MOADR à la suite du PDF RePSS — pas un simple lien
+  ni une mention textuelle.
+- Les entrées pas encore validées (`statut` = `"demande"` ou `"traite"`) gardent
+  le comportement déjà en place : mention textuelle (`mentionDocument`), aucune
+  page fusionnée, jamais bloquant pour la génération du RePSS.
+- **Nouveau statut `"traite"`** (déjà en place) : posé automatiquement dès que le
+  MOADR est généré depuis la demande — ça ne veut pas dire relu/approuvé, juste
+  « un PDF existe ». **`"valide"`** est un palier supplémentaire, posé par une
+  action humaine distincte (même logique que `reglesGeneralesAnnexe4.texte` :
+  `brouillon_partiel` → `valide` n'est jamais automatique, §14) : c'est cette
+  validation explicite qui déclenche la fusion, pas la simple génération.
+- Lien entre les deux documents : `origine.demandeMoadrId` côté MOADR ↔ `id` de
+  l'entrée `demandesMoadr` côté RePSS (déjà la clé utilisée pour le
+  pré-remplissage et pour écrire `fichierAnnexe` en retour, §13 ci-dessus).
+- Pas de backend : la fusion doit se faire entièrement côté navigateur à partir
+  de données déjà présentes dans le `.json` du RePSS au moment de la génération —
+  implique de stocker le dossier MOADR complet (pas seulement son nom de fichier)
+  sur l'entrée `demandesMoadr` correspondante, pour pouvoir regénérer son PDF et
+  fusionner ses pages même après réouverture d'un RePSS sauvegardé.
+
 ## 14. Points encore ouverts (à trancher, pas encore décidés)
 
 - Bureau d'architecture / B.E. Tech. Spéciales / Coordinateur Sécurité : traités
