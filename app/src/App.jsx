@@ -98,24 +98,34 @@ export default function App() {
     setScreenAvantMoadr(null);
     setScreen("moadr");
   }
+  // §13 : "Ouvrir le MOADR" pré-remplit depuis la demande (chantier/date/contexte)
+  // uniquement la toute première fois (demande.moadrDossier encore vide). Une fois
+  // généré au moins une fois, "Rouvrir le MOADR" doit reprendre le dossier déjà
+  // sauvegardé tel quel — sinon rouvrir pour une simple correction écraserait tout
+  // le travail déjà fait (mode opératoire, analyse de risque, etc.) avec un
+  // nouveau pré-remplissage à moitié vide.
   function openMoadrFromDemande(demande) {
-    const base = defaultMoadrDossier();
-    const dateDebut = dossier.administratif?.dateDebutTravaux || dossier.infosChantierUsine?.dateDebutTravaux || "";
-    setMoadrDossier({
-      ...base,
-      origine: {
-        repssNumeroChantier: dossier.identification.numeroChantier,
-        repssNomChantier: dossier.identification.nomChantier,
-        demandeMoadrId: demande.id,
-      },
-      objet: {
-        ...base.objet,
-        projet: dossier.identification.nomChantier,
-        dateDebut,
-        responsableOperation: dossier.identification.pmLead,
-      },
-      intervention: { ...base.intervention, contexte: demande.descriptionSituation },
-    });
+    if (demande.moadrDossier) {
+      setMoadrDossier(demande.moadrDossier);
+    } else {
+      const base = defaultMoadrDossier();
+      const dateDebut = dossier.administratif?.dateDebutTravaux || dossier.infosChantierUsine?.dateDebutTravaux || "";
+      setMoadrDossier({
+        ...base,
+        origine: {
+          repssNumeroChantier: dossier.identification.numeroChantier,
+          repssNomChantier: dossier.identification.nomChantier,
+          demandeMoadrId: demande.id,
+        },
+        objet: {
+          ...base.objet,
+          projet: dossier.identification.nomChantier,
+          dateDebut,
+          responsableOperation: dossier.identification.pmLead,
+        },
+        intervention: { ...base.intervention, contexte: demande.descriptionSituation },
+      });
+    }
     setScreenAvantMoadr(screen);
     setScreen("moadr");
   }
