@@ -60,13 +60,17 @@ export default function Moadr({ moadr, setMoadr, entreprise, t, lang, setLang, o
   // §13 : "le PDF généré est joint en annexe de ce RePSS" — attribution de la
   // référence et notification à la demande d'origine se font ensemble, comme
   // meta.repssNumero (attribué seulement à la génération, jamais sur un brouillon).
+  // Le dossier MOADR complet (pas qu'un nom de fichier) remonte avec la demande
+  // d'origine : c'est lui qui permet de regénérer et fusionner les pages de ce
+  // MOADR dans le PDF du RePSS une fois la demande validée (§13, fusion).
   function demarrerGeneration() {
     const reference = moadr.meta.reference || nouvelleReference();
+    const snapshot = moadr.meta.reference ? moadr : { ...moadr, meta: { ...moadr.meta, reference } };
     if (!moadr.meta.reference) {
-      setMoadr((prev) => ({ ...prev, meta: { ...prev.meta, reference } }));
+      setMoadr(snapshot);
     }
     setPretPourTelechargement(true);
-    onGenerated?.(demandeMoadrId, `MOADR_${reference}.pdf`);
+    onGenerated?.(demandeMoadrId, `MOADR_${reference}.pdf`, snapshot);
   }
 
   return (

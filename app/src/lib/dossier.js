@@ -193,7 +193,10 @@ export function defaultDossier() {
       listeEnginsSpeciaux: [],
     },
 
-    demandesMoadr: [], // [{ id, descriptionSituation, dateAjout, statut, mentionDocument, fichierAnnexe }]
+    // §13 (fusion PDF) : moadrDossier porte le dossier MOADR complet, pas qu'un
+    // nom de fichier — nécessaire pour regénérer et fusionner ses pages même
+    // après réouverture d'un RePSS sauvegardé (pas de backend pour le relire).
+    demandesMoadr: [], // [{ id, descriptionSituation, dateAjout, statut, mentionDocument, fichierAnnexe, moadrDossier }]
 
     historiqueVersions: [{ version: 1, date, motif: "Création initiale" }],
   };

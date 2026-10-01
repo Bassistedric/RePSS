@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus, Trash2, AlertTriangle, FileText, CheckCircle2 } from "lucide-react";
+import { Plus, Trash2, AlertTriangle, FileText, CheckCircle2, FileCheck2 } from "lucide-react";
 import { colors } from "../lib/colors";
 
 // MOADR = points très spécifiques au chantier, hors catalogue. Liste non bloquante :
@@ -7,7 +7,10 @@ import { colors } from "../lib/colors";
 // l'étape de génération (CLAUDE.md §5/§6, schéma §3 `demandesMoadr`).
 // §13 : "Ouvrir le MOADR" lance l'outil MOADR pré-rempli depuis cette demande
 // (chantier/date/contexte déjà connus) ; le PDF généré y est référencé en retour
-// (fichierAnnexe), la demande passant alors au statut "traite".
+// (fichierAnnexe + moadrDossier complet), la demande passant au statut "traite".
+// "traite" ne veut dire que "un PDF existe" — "valide" est un palier distinct,
+// posé explicitement ici par le PM, qui déclenche la fusion réelle des pages du
+// MOADR dans le PDF du RePSS à la génération (§13, fusion).
 export default function MoadrSection({ dossier, setDossier, onOpenMoadr, t }) {
   const [draft, setDraft] = useState("");
   const items = dossier.demandesMoadr;
@@ -21,6 +24,7 @@ export default function MoadrSection({ dossier, setDossier, onOpenMoadr, t }) {
       statut: "demande",
       mentionDocument: t("moadr_mention_document"),
       fichierAnnexe: null,
+      moadrDossier: null,
     };
     setDossier((prev) => ({
       ...prev,
@@ -37,6 +41,13 @@ export default function MoadrSection({ dossier, setDossier, onOpenMoadr, t }) {
     });
   }
 
+  function setStatutMoadr(id, statut) {
+    setDossier((prev) => ({
+      ...prev,
+      demandesMoadr: prev.demandesMoadr.map((m) => (m.id === id ? { ...m, statut } : m)),
+    }));
+  }
+
   return (
     <div className="border rounded-lg p-5 mt-5" style={{ borderColor: colors.neutralBorder, background: colors.neutralBgSubtle }}>
       <p className="text-base font-semibold mb-1.5" style={{ color: colors.blue }}>
@@ -50,6 +61,7 @@ export default function MoadrSection({ dossier, setDossier, onOpenMoadr, t }) {
         <div className="flex flex-col gap-2 mb-3.5">
           {items.map((m) => {
             const traite = m.statut === "traite";
+            const valide = m.statut === "valide";
             return (
               <div
                 key={m.id}
@@ -58,23 +70,40 @@ export default function MoadrSection({ dossier, setDossier, onOpenMoadr, t }) {
               >
                 <div className="flex flex-col gap-1">
                   <span className="flex items-start gap-2" style={{ color: colors.neutralTextStrong }}>
-                    {traite ? (
+                    {valide ? (
+                      <FileCheck2 size={13} className="mt-0.5 shrink-0" style={{ color: colors.success }} />
+                    ) : traite ? (
                       <CheckCircle2 size={13} className="mt-0.5 shrink-0" style={{ color: colors.success }} />
                     ) : (
                       <AlertTriangle size={13} className="mt-0.5 shrink-0" style={{ color: colors.warningText }} />
                     )}
                     {m.descriptionSituation}
                   </span>
-                  {traite && m.fichierAnnexe && (
+                  {(traite || valide) && m.fichierAnnexe && (
                     <span className="flex items-center gap-1.5 text-sm ml-5" style={{ color: colors.neutralText }}>
                       <FileText size={12} /> {m.fichierAnnexe}
                     </span>
                   )}
+                  {valide && (
+                    <span className="text-sm ml-5" style={{ color: colors.success }}>
+                      {t("moadr_statut_valide")}
+                    </span>
+                  )}
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
+                  {traite && (
+                    <button onClick={() => setStatutMoadr(m.id, "valide")} className="text-sm font-medium whitespace-nowrap" style={{ color: colors.success }}>
+                      {t("moadr_bouton_valider")}
+                    </button>
+                  )}
+                  {valide && (
+                    <button onClick={() => setStatutMoadr(m.id, "traite")} className="text-sm whitespace-nowrap" style={{ color: colors.neutralText }}>
+                      {t("moadr_bouton_devalider")}
+                    </button>
+                  )}
                   {onOpenMoadr && (
                     <button onClick={() => onOpenMoadr(m)} className="text-sm font-medium whitespace-nowrap" style={{ color: colors.blue }}>
-                      {traite ? t("moadr_rouvrir") : t("moadr_ouvrir")}
+                      {traite || valide ? t("moadr_rouvrir") : t("moadr_ouvrir")}
                     </button>
                   )}
                   <button onClick={() => removeMoadr(m.id)} style={{ color: colors.neutralText }}>

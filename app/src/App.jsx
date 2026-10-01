@@ -120,12 +120,21 @@ export default function App() {
     setScreen("moadr");
   }
   // À l'attribution de la référence MOADR (§13 : "le PDF généré est joint en
-  // annexe de ce RePSS"), on ne peut pas joindre de vrai fichier (pas de backend) :
-  // on référence le PDF généré dans la demande d'origine, marquée traitée.
-  function marquerMoadrGenere(demandeMoadrId, filename) {
+  // annexe de ce RePSS"), on ne peut pas joindre de vrai fichier à ce stade (pas
+  // de backend) : on référence le PDF généré dans la demande d'origine, marquée
+  // traitée, et on y stocke le dossier MOADR complet (pas qu'un nom de fichier) —
+  // c'est lui qui permettra de regénérer et fusionner les pages à la génération
+  // du RePSS une fois la demande validée (§13, fusion).
+  function marquerMoadrGenere(demandeMoadrId, filename, moadrSnapshot) {
     if (!demandeMoadrId) return;
     setDossier((prev) => {
-      const next = prev.demandesMoadr.map((d) => (d.id === demandeMoadrId ? { ...d, statut: "traite", fichierAnnexe: filename } : d));
+      const next = prev.demandesMoadr.map((d) =>
+        d.id === demandeMoadrId
+          ? // Régénérer un MOADR déjà "valide" (ex. après correction, "Rouvrir le
+            // MOADR") ne doit pas effacer la validation déjà posée par le PM.
+            { ...d, statut: d.statut === "valide" ? "valide" : "traite", fichierAnnexe: filename, moadrDossier: moadrSnapshot }
+          : d
+      );
       return { ...prev, demandesMoadr: next, meta: { ...prev.meta, moadrEnAttente: next.some((d) => d.statut === "demande") } };
     });
   }

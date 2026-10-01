@@ -1054,9 +1054,13 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
             {dossier.demandesMoadr.map((m) => (
               <View key={m.id} style={{ marginBottom: 4 }}>
                 <Text>{m.descriptionSituation}</Text>
-                {/* §13 : le MOADR généré depuis cette demande est référencé ici plutôt
-                    que réellement joint (pas de backend pour fusionner deux PDF). */}
-                {m.statut === "traite" && m.fichierAnnexe ? (
+                {/* §13 (fusion) : un MOADR "valide" est réellement fusionné (pages
+                    suivantes, voir mergerMoadrDansRepss) — "traite" n'est qu'un PDF
+                    généré pas encore validé, simple référence ; "demande" n'a
+                    encore aucun document, mention générique seulement. */}
+                {m.statut === "valide" ? (
+                  <Text style={{ color: colors.success }}>{t("moadr_joint_en_annexe")}</Text>
+                ) : m.statut === "traite" && m.fichierAnnexe ? (
                   <Text style={{ color: colors.success }}>{m.fichierAnnexe}</Text>
                 ) : (
                   <Text style={{ color: colors.neutralText }}>{m.mentionDocument}</Text>

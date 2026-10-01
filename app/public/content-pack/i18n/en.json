@@ -473,7 +473,12 @@
     "moadr_kinney_g_texte": "To estimate the severity level, you must estimate the most serious possible effects of the exposure.",
     "moadr_importer_bouton": "Import a file",
     "moadr_importer_erreur": "Invalid file: this is not a MOADR (.json).",
-    "moadr_importer_succes": "MOADR imported."
+    "moadr_importer_succes": "MOADR imported.",
+    "erreur_generation_pdf": "Error generating the PDF. Try again, and if it persists, check that no attached MOADR is corrupted.",
+    "moadr_statut_valide": "Validated — will be merged into the RePSS PDF",
+    "moadr_bouton_valider": "Validate",
+    "moadr_bouton_devalider": "Unvalidate",
+    "moadr_joint_en_annexe": "Attached as an annex to this document (following pages)."
   },
   "risques": []
 }

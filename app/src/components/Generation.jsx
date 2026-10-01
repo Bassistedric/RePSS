@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { useEffect, useState } from "react";
 import { FileCheck, Loader2, Save, AlertTriangle, Plus, Trash2, CheckCircle2 } from "lucide-react";
 import RepssDocument from "./pdf/RepssDocument";
 import { logoUrl } from "../lib/contentPack";
-import { saveDossier } from "../lib/storage";
+import { saveDossier, downloadBlob } from "../lib/storage";
+import { fusionnerMoadrValides } from "../lib/pdfMerge";
 import { colors } from "../lib/colors";
 import ScreenTitle from "./ScreenTitle";
 
@@ -21,6 +21,8 @@ function AutoDoc({ label, t }) {
 
 export default function Generation({ dossier, setDossier, entreprise, catalogueComplet, catalogueAbrege, hopitaux, t, lang, setLang, onBack }) {
   const isAbrege = dossier.triage.modeChoisi === "abrege";
+  const [generationEnCours, setGenerationEnCours] = useState(false);
+  const [erreurGeneration, setErreurGeneration] = useState(false);
   const brand = entreprise?.branding || {};
   const logoAbsoluteUrl = brand.logo ? new URL(logoUrl(brand.logo), window.location.origin).href : null;
   // §12 : les tables de contacts (référence, urgence) affichent le logo de chaque
@@ -58,6 +60,36 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // §13 (fusion) : PDFDownloadLink ne convient plus — le document final n'est
+  // plus un simple <Document> react-pdf, c'est ce <Document> potentiellement
+  // fusionné avec les pages des MOADR "valide" (lib/pdfMerge.js, pdf-lib).
+  async function genererPdf() {
+    setErreurGeneration(false);
+    setGenerationEnCours(true);
+    try {
+      const repssDocElement = (
+        <RepssDocument
+          dossier={dossier}
+          entreprise={entreprise}
+          catalogueComplet={catalogueComplet}
+          catalogueAbrege={catalogueAbrege}
+          hopitaux={hopitaux}
+          t={t}
+          lang={lang}
+          logoAbsoluteUrl={logoAbsoluteUrl}
+          logosBaseUrl={logosBaseUrl}
+          photoCouvertureAbsoluteUrl={photoCouvertureAbsoluteUrl}
+        />
+      );
+      const blob = await fusionnerMoadrValides(repssDocElement, dossier.demandesMoadr, { entreprise, t, logoAbsoluteUrl });
+      downloadBlob(blob, filename);
+    } catch {
+      setErreurGeneration(true);
+    } finally {
+      setGenerationEnCours(false);
+    }
+  }
+
   return (
     <div>
       <ScreenTitle title={isAbrege ? t("step_generation_abrege") : t("step_generation_complet")} />
@@ -67,7 +99,7 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
           <AlertTriangle size={16} className="mt-0.5 shrink-0" style={{ color: colors.warningText }} />
           <div className="text-sm" style={{ color: colors.warningTextStrong }}>
             {(() => {
-              const enAttente = dossier.demandesMoadr.filter((m) => m.statut !== "traite");
+              const enAttente = dossier.demandesMoadr.filter((m) => m.statut === "demande");
               return (
                 <>
                   <p className="font-medium mb-1">
@@ -183,6 +215,12 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
         )}
       </div>
 
+      {erreurGeneration && (
+        <p className="text-sm mb-4" style={{ color: colors.error }}>
+          {t("erreur_generation_pdf")}
+        </p>
+      )}
+
       <div className="flex justify-between items-center">
         <button onClick={onBack} className="px-6 py-2.5 rounded text-sm border" style={{ borderColor: colors.neutralBorderStrong }}>
           {t("bouton_retour")}
@@ -196,42 +234,19 @@ export default function Generation({ dossier, setDossier, entreprise, catalogueC
             <Save size={16} />
             {t("enregistrer_json_bouton")}
           </button>
-          {/* key={lang} : force un remontage complet quand la langue change plutôt que
-              de compter sur PDFDownloadLink pour détecter le changement de `document` —
-              sans ça, il reste un court instant où le lien pointe encore vers le blob
-              de l'ancienne langue alors que le bouton a déjà l'air normal/cliquable.
-              onClick + instance.loading : garde-fou supplémentaire, au cas où le clic
-              survienne pendant cet instant avant que le rendu ne reflète `loading`. */}
-          <PDFDownloadLink
-            key={lang}
-            document={
-              <RepssDocument
-                dossier={dossier}
-                entreprise={entreprise}
-                catalogueComplet={catalogueComplet}
-                catalogueAbrege={catalogueAbrege}
-                hopitaux={hopitaux}
-                t={t}
-                lang={lang}
-                logoAbsoluteUrl={logoAbsoluteUrl}
-                logosBaseUrl={logosBaseUrl}
-                photoCouvertureAbsoluteUrl={photoCouvertureAbsoluteUrl}
-              />
-            }
-            fileName={filename}
-            onClick={(event, instance) => {
-              if (instance?.loading) event.preventDefault();
-            }}
-            className="flex items-center gap-2 px-6 py-2.5 rounded text-sm font-medium"
-            style={{ background: colors.navy, color: "white" }}
+          {/* §13 (fusion) : plus un simple <Document> react-pdf (potentiellement
+              fusionné avec les pages des MOADR "valide"), donc plus de
+              PDFDownloadLink — bouton classique + état de chargement local,
+              téléchargement déclenché manuellement une fois la fusion terminée. */}
+          <button
+            onClick={genererPdf}
+            disabled={generationEnCours}
+            className="flex items-center gap-2 px-6 py-2.5 rounded text-sm font-medium disabled:opacity-70"
+            style={{ background: colors.navy, color: "white", cursor: generationEnCours ? "default" : "pointer" }}
           >
-            {({ loading }) => (
-              <span className="flex items-center gap-2" style={{ opacity: loading ? 0.7 : 1, cursor: loading ? "default" : "pointer" }}>
-                {loading ? <Loader2 size={16} className="animate-spin" /> : <FileCheck size={16} />}
-                {loading ? t("generation_en_cours") : t("generer_pdf_bouton")}
-              </span>
-            )}
-          </PDFDownloadLink>
+            {generationEnCours ? <Loader2 size={16} className="animate-spin" /> : <FileCheck size={16} />}
+            {generationEnCours ? t("generation_en_cours") : t("generer_pdf_bouton")}
+          </button>
         </div>
       </div>
     </div>
