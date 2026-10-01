@@ -7,13 +7,17 @@ export function sanitizeFilename(s) {
 }
 
 // Déclenche le téléchargement d'un Blob JSON (§8 : pas de backend, tout côté
-// navigateur). L'ancre est ajoutée au DOM avant le clic (requis par certains
-// navigateurs pour que `.click()` déclenche réellement le téléchargement) et
-// `URL.revokeObjectURL` est différé : le révoquer dans la même tâche que le
-// clic peut, sur Safari notamment, invalider l'URL avant que le navigateur
-// n'ait fini de lire le Blob, produisant un fichier tronqué ou vide.
+// navigateur).
 function downloadJson(data, filename) {
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  downloadBlob(blob, filename);
+}
+
+// Même garde-fou (ancre dans le DOM, revokeObjectURL différé), pour un Blob déjà
+// construit ailleurs — utilisé pour le PDF final du RePSS une fois les MOADR
+// "valide" fusionnés (§13, fusion), puisque ce n'est plus un simple <Document>
+// react-pdf passable à PDFDownloadLink.
+export function downloadBlob(blob, filename) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;

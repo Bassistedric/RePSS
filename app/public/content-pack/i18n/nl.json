@@ -473,7 +473,12 @@
     "moadr_kinney_g_texte": "Om de ernstgraad in te schatten, moet u de ernstigste mogelijke gevolgen van de blootstelling inschatten.",
     "moadr_importer_bouton": "Een bestand importeren",
     "moadr_importer_erreur": "Ongeldig bestand: dit is geen MOADR (.json).",
-    "moadr_importer_succes": "MOADR geïmporteerd."
+    "moadr_importer_succes": "MOADR geïmporteerd.",
+    "erreur_generation_pdf": "Fout bij het genereren van de PDF. Probeer opnieuw, en controleer bij aanhoudend probleem of geen gekoppelde MOADR beschadigd is.",
+    "moadr_statut_valide": "Gevalideerd — wordt samengevoegd met de RePSS-PDF",
+    "moadr_bouton_valider": "Valideren",
+    "moadr_bouton_devalider": "Validatie ongedaan maken",
+    "moadr_joint_en_annexe": "Als bijlage bij dit document gevoegd (volgende pagina's)."
   },
   "risques": []
 }

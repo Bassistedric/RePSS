@@ -473,7 +473,12 @@
     "moadr_kinney_g_texte": "Pour estimer le degré de gravité, vous devez estimer les plus graves effets éventuels de l'exposition.",
     "moadr_importer_bouton": "Importer un fichier",
     "moadr_importer_erreur": "Fichier invalide : ce n'est pas un MOADR (.json).",
-    "moadr_importer_succes": "MOADR importé."
+    "moadr_importer_succes": "MOADR importé.",
+    "erreur_generation_pdf": "Erreur lors de la génération du PDF. Réessaie, et si ça persiste, vérifie qu'aucun MOADR joint n'est corrompu.",
+    "moadr_statut_valide": "Validé — sera fusionné au PDF du RePSS",
+    "moadr_bouton_valider": "Valider",
+    "moadr_bouton_devalider": "Dévalider",
+    "moadr_joint_en_annexe": "Joint en annexe de ce document (pages suivantes)."
   },
   "risques": []
 }
