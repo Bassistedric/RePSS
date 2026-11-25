@@ -69,7 +69,9 @@ de générer), jamais bilingue dans le même PDF.
     "nomChantier": "Rénovation site Gembloux",
     "chantierId": "12345 - Rénovation site Gembloux",
     "pmLead": "",
-    "pmSecondaire": ""
+    "pmSecondaire": "",
+    "estSocieteMomentanee": false,
+    "societeMomentanee": { "nom": "", "numero": "", "adresse": "" }
   },
   "triage": {
     "modeChoisi": "complet",
@@ -136,6 +138,11 @@ qui est généré depuis les données, pas une capture d'écran).
    une liste déroulante, saisie libre assumée). Pas de détection automatique d'un
    RePSS existant (aucun backend, aucun accès SharePoint) : uniquement un bouton
    « Reprendre un RePSS existant » qui importe un fichier `.json` côté navigateur.
+   Sous PM lead/PM secondaire, avant la tuile image de page de garde : question
+   « Est-ce une SM ? » (case à cocher Oui) — si cochée, déplie 3 champs (Nom/Numéro/
+   Adresse de la SM), repliés sinon sans perdre leur contenu si la case est
+   décochée puis recochée. Ces infos apparaissent dans le PDF juste sous le nom du
+   chantier (couverture, §12).
 2. **Caractérisation** — DOIT venir juste après l'identification, avant tout le
    reste, car elle conditionne toute la suite :
    - Triage abrégé/complet : choix radio assumé par le PM.
@@ -455,7 +462,10 @@ les décisions prises dans ce document :
 
 1. **Couverture** : logo entreprise, nom du chantier et numéro de chantier en
    encadrés de couleur, photo/illustration si fournie. Pas de case
-   Soumission/Exécution (notion pas retenue dans le nouveau système).
+   Soumission/Exécution (notion pas retenue dans le nouveau système). Si
+   `identification.estSocieteMomentanee` est `true`, un encadré plus discret juste
+   sous le nom du chantier affiche les infos de la société momentanée (nom/numéro/
+   adresse, §3/§5).
 2. **Page d'explication** : texte fixe court sur la portée du document (dans
    `UI_Textes`, à compléter si absent).
 3. **Table des matières** avec numéros de page.

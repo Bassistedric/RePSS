@@ -42,7 +42,7 @@
     "liege": "Luik",
     "namur_liege_lux_brabant": "Namen-Luik-Luxemburg-Waals-Brabant",
     "titre_adm_chantier": "Bouwplaatsbeheer",
-    "resp_approbation": "Goedkeuringsverantwoordelijke",
+    "resp_approbation": "Verantwoordelijken",
     "role_bu_site_manager": "BU Building Technologies – Site Manager",
     "role_tender_engineer": "Tender Engineer",
     "role_operations_manager": "Operations Manager",
@@ -481,8 +481,14 @@
     "moadr_joint_en_annexe": "Als bijlage bij dit document gevoegd (volgende pagina's).",
     "entite_label": "Entiteit",
     "entite_placeholder": "bv. zuid, noord",
-    "bouton_ajouter_societe_momentanee": "Momentane vennootschap toevoegen",
-    "bouton_retirer_entite": "Deze momentane vennootschap verwijderen"
+    "bouton_ajouter_societe_momentanee": "toevoegen",
+    "bouton_retirer_entite": "Deze momentane vennootschap verwijderen",
+    "identification_est_sm_question": "Is dit een momentane vennootschap?",
+    "identification_sm_oui": "Ja",
+    "identification_sm_nom": "Naam van de momentane vennootschap",
+    "identification_sm_numero": "Nummer van de momentane vennootschap",
+    "identification_sm_adresse": "Adres van de momentane vennootschap",
+    "identification_sm_titre": "Momentane vennootschap"
   },
   "risques": []
 }

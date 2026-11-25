@@ -42,7 +42,7 @@
     "liege": "Liège",
     "namur_liege_lux_brabant": "Namur-Liège-Luxembourg-Brabant wallon",
     "titre_adm_chantier": "Administration du chantier",
-    "resp_approbation": "Responsable d'approbation",
+    "resp_approbation": "Responsables",
     "role_bu_site_manager": "BU Building Technologies – Site Manager",
     "role_tender_engineer": "Tender Engineer",
     "role_operations_manager": "Operations Manager",
@@ -481,8 +481,14 @@
     "moadr_joint_en_annexe": "Joint en annexe de ce document (pages suivantes).",
     "entite_label": "Entité",
     "entite_placeholder": "ex. sud, nord",
-    "bouton_ajouter_societe_momentanee": "Ajouter une société momentanée",
-    "bouton_retirer_entite": "Retirer cette société momentanée"
+    "bouton_ajouter_societe_momentanee": "ajouter",
+    "bouton_retirer_entite": "Retirer cette société momentanée",
+    "identification_est_sm_question": "Est-ce une SM ?",
+    "identification_sm_oui": "Oui",
+    "identification_sm_nom": "Nom de la SM",
+    "identification_sm_numero": "Numéro de la SM",
+    "identification_sm_adresse": "Adresse de la SM",
+    "identification_sm_titre": "Société momentanée"
   },
   "risques": []
 }

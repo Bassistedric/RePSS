@@ -42,7 +42,7 @@
     "liege": "Liège",
     "namur_liege_lux_brabant": "Namur-Liège-Luxembourg-Walloon Brabant",
     "titre_adm_chantier": "Site Management",
-    "resp_approbation": "Approval Manager",
+    "resp_approbation": "Responsible persons",
     "role_bu_site_manager": "BU Building Technologies – Site Manager",
     "role_tender_engineer": "Tender Engineer",
     "role_operations_manager": "Operations Manager",
@@ -481,8 +481,14 @@
     "moadr_joint_en_annexe": "Attached as an annex to this document (following pages).",
     "entite_label": "Entity",
     "entite_placeholder": "e.g. south, north",
-    "bouton_ajouter_societe_momentanee": "Add a temporary joint venture",
-    "bouton_retirer_entite": "Remove this joint venture"
+    "bouton_ajouter_societe_momentanee": "add",
+    "bouton_retirer_entite": "Remove this joint venture",
+    "identification_est_sm_question": "Is this a joint venture?",
+    "identification_sm_oui": "Yes",
+    "identification_sm_nom": "Joint venture name",
+    "identification_sm_numero": "Joint venture number",
+    "identification_sm_adresse": "Joint venture address",
+    "identification_sm_titre": "Joint venture"
   },
   "risques": []
 }
