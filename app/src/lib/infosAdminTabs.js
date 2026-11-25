@@ -22,9 +22,12 @@ export const INFOS_ADMIN_TABS = [
       Boolean(
         d.administratif.dateDebutTravaux ||
           d.administratif.dateFinTravauxEstimee ||
-          Object.values(d.administratif.responsables).some((contact) =>
-            typeof contact === "string" ? Boolean(contact) : Object.values(contact || {}).some(Boolean)
-          ) ||
+          Object.values(d.administratif.responsables).some((entryOrEntries) => {
+            const entries = Array.isArray(entryOrEntries) ? entryOrEntries : [entryOrEntries];
+            return entries.some((contact) =>
+              typeof contact === "string" ? Boolean(contact) : Object.values(contact || {}).some(Boolean)
+            );
+          }) ||
           d.documentsAccompagnants.sousTraitants.length > 0
       ),
   },

@@ -105,6 +105,15 @@ de générer), jamais bilingue dans le même PDF.
 **Important** : `analyseRisques.itemsCoches` référence l'id d'une **ligne de risque**
 (la feuille de l'arbre), jamais une activité — voir §6.
 
+**Sociétés momentanées (tableau Responsable d'approbation, §5/§12)** :
+`administratif.responsables.{role}`, pour les 6 rôles variables uniquement, est un
+**tableau** d'entrées `{ entite, nom, email, gsm }` plutôt qu'un objet unique — pour
+pouvoir dédoubler un rôle entre deux sociétés partenaires sur le même chantier (ex.
+« sud »/« nord »). Une seule entrée par défaut, `entite` masqué/inutile dans ce cas.
+Les anciens dossiers sauvegardés avec un objet unique (ou une simple chaîne pour le
+nom, format antérieur) sont enrobés dans un tableau à une entrée à l'import, plutôt
+que de planter.
+
 ## 4. Convention de nommage des fichiers
 
 - Fichier chantier (JSON + PDF) : `RePSS_{numeroChantier}_{nomChantier}.json` (nom
@@ -161,6 +170,14 @@ qui est généré depuis les données, pas une capture d'écran).
      `entreprise.json`) et variable par chantier (Tender Engineer, Operations
      Manager, Project Manager, Assistant PM, Project Engineer, Site Supervisor) —
      colonnes Paraphe/Date **supprimées**, aucun mécanisme de signature électronique.
+     **Sociétés momentanées** (ajouté après retour terrain : un PM avait dû éditer
+     le PDF à la main pour dupliquer une ligne de rôle en « sud »/« nord », deux
+     sociétés partenaires sur le même chantier) : chaque rôle variable démarre avec
+     une seule entrée (`entite` masqué tant qu'il n'y en a qu'une) ; un lien
+     « + Ajouter une société momentanée » sous le bloc du rôle ajoute une entrée,
+     et dès qu'un rôle a ≥2 entrées, `entite` devient visible et obligatoire sur
+     chacune (ex. « sud », « nord »), avec un bouton de suppression (jamais sous 1).
+     Ne s'applique qu'aux 6 rôles variables, jamais aux 4 rôles fixes.
    - *Règles spécifiques* : intro fixe (rappel accident 10 points + consignes appel
      secours 7 points, dans `UI_Textes`). Contacts d'urgence : Service incendie
      (112 fixe + champ libre n° interne type GSK), **Hôpital le plus proche
@@ -452,7 +469,10 @@ les décisions prises dans ce document :
    travaux, historique de versions (`historiqueVersions`, pas de table
    Révision/Modification séparée), liste des sous-traitants — titre **toujours
    affiché même sans sous-traitant** (`Néant.` sinon), même principe que les
-   titres de catégorie de l'analyse de risques (§6).
+   titres de catégorie de l'analyse de risques (§6). **Sociétés momentanées** (§3,
+   §5) : un rôle variable à une seule entrée s'affiche comme avant (Fonction =
+   libellé du rôle) ; un rôle à ≥2 entrées s'affiche en une ligne par entrée,
+   Fonction = `"{libellé du rôle} – {entite}"`.
 6. **Caractéristiques du chantier** : **correction remontée par un PM** — affiche
    en plus des 2 mentions fixes (plan général d'installation à joindre, point de
    rassemblement identifié) le détail des contrôles à 3 états de `caracteristiques`

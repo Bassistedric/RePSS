@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { Upload, X } from "lucide-react";
 import { readDossierFile } from "../lib/storage";
+import { normalizeDossier } from "../lib/dossier";
 import { resizeImageToDataUrl } from "../lib/imageResize";
 import { colors } from "../lib/colors";
 import ScreenTitle from "./ScreenTitle";
@@ -40,7 +41,7 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
     try {
       const data = await readDossierFile(file);
       if (!data?.identification) throw new Error("format invalide");
-      setDossier(data);
+      setDossier(normalizeDossier(data));
       setImportInfo({
         version: data?.meta?.version ?? "?",
         date: data?.meta?.dateDerniereModif ?? "?",

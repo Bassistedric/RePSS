@@ -478,7 +478,11 @@
     "moadr_statut_valide": "Validated — will be merged into the RePSS PDF",
     "moadr_bouton_valider": "Validate",
     "moadr_bouton_devalider": "Unvalidate",
-    "moadr_joint_en_annexe": "Attached as an annex to this document (following pages)."
+    "moadr_joint_en_annexe": "Attached as an annex to this document (following pages).",
+    "entite_label": "Entity",
+    "entite_placeholder": "e.g. south, north",
+    "bouton_ajouter_societe_momentanee": "Add a temporary joint venture",
+    "bouton_retirer_entite": "Remove this joint venture"
   },
   "risques": []
 }
