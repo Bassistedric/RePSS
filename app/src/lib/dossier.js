@@ -46,13 +46,26 @@ export function normalizeResponsables(responsables) {
 }
 
 // Appliqué à l'import d'un fichier .json ("Reprendre un RePSS existant") pour que
-// les anciens formats de `administratif.responsables` restent lisibles.
+// les anciens formats de `administratif.responsables` restent lisibles, et pour que
+// les champs ajoutés après coup (ex. société momentanée en Identification, §3)
+// existent toujours plutôt que d'être `undefined` sur un dossier plus ancien.
 export function normalizeDossier(data) {
-  if (!data?.administratif?.responsables) return data;
-  return {
-    ...data,
-    administratif: { ...data.administratif, responsables: normalizeResponsables(data.administratif.responsables) },
-  };
+  if (!data) return data;
+  let next = data;
+  if (data.administratif?.responsables) {
+    next = { ...next, administratif: { ...next.administratif, responsables: normalizeResponsables(data.administratif.responsables) } };
+  }
+  if (data.identification && !data.identification.societeMomentanee) {
+    next = {
+      ...next,
+      identification: {
+        ...next.identification,
+        estSocieteMomentanee: next.identification.estSocieteMomentanee ?? false,
+        societeMomentanee: { nom: "", numero: "", adresse: "" },
+      },
+    };
+  }
+  return next;
 }
 
 // Recompose l'adresse du chantier (rue/numéro/code postal/ville, §CLAUDE.md
@@ -79,6 +92,12 @@ export function defaultDossier() {
       nomChantier: "",
       pmLead: "",
       pmSecondaire: "",
+      // Si le chantier est porté par une société momentanée (SM) : les 3 champs
+      // restent vides mais présents même quand estSocieteMomentanee est false (pas
+      // besoin de les supprimer/null-ifier), pour ne pas perdre leur contenu si la
+      // case est décochée puis recochée.
+      estSocieteMomentanee: false,
+      societeMomentanee: { nom: "", numero: "", adresse: "" },
       // Image de couverture propre au chantier (data URL), à la place de l'image
       // générique de entreprise.json > branding.photoCouverture. null = image
       // générique. Pas de backend : stockée directement dans le dossier JSON.

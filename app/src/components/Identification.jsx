@@ -11,11 +11,16 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
   const [imageError, setImageError] = useState(false);
   const fileRef = useRef(null);
   const imageFileRef = useRef(null);
-  const { numeroChantier, nomChantier, pmLead, pmSecondaire, imagePageDeGarde } = dossier.identification;
+  const { numeroChantier, nomChantier, pmLead, pmSecondaire, estSocieteMomentanee, societeMomentanee, imagePageDeGarde } =
+    dossier.identification;
   const chantierId = numeroChantier && nomChantier ? `${numeroChantier} - ${nomChantier}` : "";
 
   function setIdentification(patch) {
     setDossier((prev) => ({ ...prev, identification: { ...prev.identification, ...patch } }));
+  }
+
+  function updateSocieteMomentanee(patch) {
+    setIdentification({ societeMomentanee: { ...societeMomentanee, ...patch } });
   }
 
   async function handleImageFile(e) {
@@ -107,6 +112,52 @@ export default function Identification({ dossier, setDossier, onNext, t }) {
             onChange={(e) => setIdentification({ pmSecondaire: e.target.value })}
           />
         </div>
+      </div>
+
+      <div className="border rounded-lg p-5 mb-6" style={{ borderColor: colors.neutralBorder, background: colors.neutralBgSubtle }}>
+        <p className="text-sm font-medium mb-2">{t("identification_est_sm_question")}</p>
+        <label className="flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={estSocieteMomentanee}
+            onChange={(e) => setIdentification({ estSocieteMomentanee: e.target.checked })}
+          />
+          {t("identification_sm_oui")}
+        </label>
+        {estSocieteMomentanee && (
+          <div className="grid grid-cols-3 gap-3 mt-3.5">
+            <div>
+              <label className="text-sm font-medium block mb-1.5">{t("identification_sm_nom")}</label>
+              <input
+                type="text"
+                className="w-full border rounded px-3.5 py-2.5 text-sm"
+                style={{ borderColor: colors.neutralBorderStrong, background: "white" }}
+                value={societeMomentanee.nom}
+                onChange={(e) => updateSocieteMomentanee({ nom: e.target.value })}
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium block mb-1.5">{t("identification_sm_numero")}</label>
+              <input
+                type="text"
+                className="w-full border rounded px-3.5 py-2.5 text-sm"
+                style={{ borderColor: colors.neutralBorderStrong, background: "white" }}
+                value={societeMomentanee.numero}
+                onChange={(e) => updateSocieteMomentanee({ numero: e.target.value })}
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium block mb-1.5">{t("identification_sm_adresse")}</label>
+              <input
+                type="text"
+                className="w-full border rounded px-3.5 py-2.5 text-sm"
+                style={{ borderColor: colors.neutralBorderStrong, background: "white" }}
+                value={societeMomentanee.adresse}
+                onChange={(e) => updateSocieteMomentanee({ adresse: e.target.value })}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="border rounded-lg p-5 mb-6" style={{ borderColor: colors.neutralBorder, background: colors.neutralBgSubtle }}>

@@ -56,6 +56,11 @@ const styles = StyleSheet.create({
   coverBox: { marginTop: 40, padding: 16, borderRadius: 4, border: `1.5pt solid ${colors.navy}`, backgroundColor: colors.navyTint, alignItems: "center" },
   coverBoxLabel: { fontSize: 8, color: colors.navy, textTransform: "uppercase", letterSpacing: 1, textAlign: "center" },
   coverBoxValue: { fontSize: 15, fontWeight: 700, color: colors.navy, marginTop: 3, textAlign: "center" },
+  // Société momentanée (§3) : juste sous la boîte "Nom du chantier", plus discrète
+  // (pas la même mise en avant que les 2 boîtes principales N° chantier/Nom).
+  coverSmBox: { marginTop: 10, padding: 10, borderRadius: 4, border: `0.75pt solid ${colors.neutralBorderStrong}`, backgroundColor: colors.neutralBgSubtle },
+  coverSmLabel: { fontSize: 7.5, color: colors.neutralText, textTransform: "uppercase", letterSpacing: 0.5, textAlign: "center", marginBottom: 4 },
+  coverSmLine: { fontSize: 9, color: colors.neutralTextStrong, textAlign: "center" },
   coverPhoto: { width: "100%", height: 240, objectFit: "cover", marginTop: 24, borderRadius: 4 },
   coverSpacer: { flexGrow: 1 },
   coverMetaRow: { flexDirection: "row", justifyContent: "space-between", paddingTop: 14, borderTop: `0.5pt solid ${colors.neutralBorder}` },
@@ -364,6 +369,17 @@ function CouverturePage({ dossier, entreprise, t, logoAbsoluteUrl, photoCouvertu
           <Text style={styles.coverBoxLabel}>{t("nom_chantier")}</Text>
           <Text style={styles.coverBoxValue}>{identification.nomChantier || "-"}</Text>
         </View>
+
+        {identification.estSocieteMomentanee && (
+          <View style={styles.coverSmBox}>
+            <Text style={styles.coverSmLabel}>{t("identification_sm_titre")}</Text>
+            <Text style={styles.coverSmLine}>{identification.societeMomentanee.nom || "-"}</Text>
+            <Text style={styles.coverSmLine}>
+              {t("identification_sm_numero")} : {identification.societeMomentanee.numero || "-"}
+            </Text>
+            <Text style={styles.coverSmLine}>{identification.societeMomentanee.adresse || "-"}</Text>
+          </View>
+        )}
 
         {photoCouvertureAbsoluteUrl && <Image src={photoCouvertureAbsoluteUrl} style={styles.coverPhoto} />}
 
