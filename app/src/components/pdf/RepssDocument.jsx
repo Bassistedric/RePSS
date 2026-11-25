@@ -755,11 +755,23 @@ export default function RepssDocument({ dossier, entreprise, catalogueComplet, c
   const logoSrc = (filename) => (filename ? `${logosBaseUrl}${filename}` : null);
 
   const responsablesFixes = entreprise?.rolesApprobation?.fixes || [];
-  const responsablesVariables = ROLES_ADMINISTRATION.map((role) => {
+  // Un rôle variable peut être porté par plusieurs sociétés momentanées sur un même
+  // chantier (ex. "sud"/"nord") : une seule entrée s'affiche comme avant (Fonction =
+  // libellé du rôle), ≥2 entrées s'affichent une ligne par entrée (Fonction =
+  // "{libellé} – {entite}").
+  const responsablesVariables = ROLES_ADMINISTRATION.flatMap((role) => {
     const saved = adm.responsables?.[role];
-    const contact = typeof saved === "string" ? { nom: saved } : (saved || {});
-    return { fonction: t(role), nom: contact.nom, email: contact.email, tel: contact.gsm };
-  }).filter((contact) => contact.nom || contact.email || contact.tel);
+    const entries = Array.isArray(saved) ? saved : saved && typeof saved === "object" ? [saved] : [];
+    const multiple = entries.length > 1;
+    return entries
+      .map((contact) => ({
+        fonction: multiple && contact.entite ? `${t(role)} – ${contact.entite}` : t(role),
+        nom: contact.nom,
+        email: contact.email,
+        tel: contact.gsm,
+      }))
+      .filter((contact) => contact.nom || contact.email || contact.tel);
+  });
 
   return (
     <Document>

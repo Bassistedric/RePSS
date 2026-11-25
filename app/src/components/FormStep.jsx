@@ -69,43 +69,101 @@ function TableField({ path, columns, value, onChange, t }) {
   );
 }
 
-function ApprovalRolesField({ path, roles, value, onChange, t }) {
-  function contactFor(role) {
-    const contact = value?.[role];
-    // Les anciens dossiers stockaient uniquement le nom sous forme de chaîne.
-    return typeof contact === "string" ? { nom: contact, email: "", gsm: "" } : (contact || {});
-  }
+function approvalEntriesFor(value, role) {
+  const raw = value?.[role];
+  // Compatibilité avec les anciens formats (objet unique, ou simple chaîne pour le
+  // nom) : dossier.js > normalizeDossier() s'en occupe déjà à l'import, mais ce
+  // repli couvre aussi un dossier en cours d'édition pas encore passé par là.
+  if (Array.isArray(raw)) return raw.length ? raw : [{ entite: "", nom: "", email: "", gsm: "" }];
+  if (raw && typeof raw === "object") return [raw];
+  if (typeof raw === "string" && raw) return [{ entite: "", nom: raw, email: "", gsm: "" }];
+  return [{ entite: "", nom: "", email: "", gsm: "" }];
+}
 
-  function updateContact(role, key, nextValue) {
-    onChange(path, {
-      ...(value || {}),
-      [role]: { ...contactFor(role), [key]: nextValue },
-    });
+// Un rôle variable peut être porté par plusieurs sociétés momentanées sur un même
+// chantier (ex. "sud"/"nord") : chaque rôle est un tableau d'entrées plutôt qu'un
+// contact unique. Le champ "Entité" reste masqué tant qu'il n'y a qu'une seule
+// entrée (ambigu sinon : pas la peine de nommer une société momentanée s'il n'y en
+// a qu'une).
+function ApprovalRolesField({ path, roles, value, onChange, t }) {
+  function updateRole(role, nextEntries) {
+    onChange(path, { ...(value || {}), [role]: nextEntries });
+  }
+  function updateEntry(role, idx, key, nextValue) {
+    const entries = approvalEntriesFor(value, role);
+    updateRole(role, entries.map((e, i) => (i === idx ? { ...e, [key]: nextValue } : e)));
+  }
+  function addEntry(role) {
+    updateRole(role, [...approvalEntriesFor(value, role), { entite: "", nom: "", email: "", gsm: "" }]);
+  }
+  function removeEntry(role, idx) {
+    const entries = approvalEntriesFor(value, role);
+    if (entries.length <= 1) return;
+    updateRole(role, entries.filter((_, i) => i !== idx));
   }
 
   return (
-    <div className="overflow-x-auto">
-      <div className="grid min-w-[32rem] grid-cols-[minmax(10rem,1.2fr)_minmax(8.5rem,1fr)_minmax(7.5rem,0.8fr)] gap-x-4 gap-y-3 items-end">
-        <span className="text-sm font-medium" style={{ color: colors.neutralText }}>{t("tbl_nom")}</span>
-        <span className="text-sm font-medium" style={{ color: colors.neutralText }}>{t("tbl_email")}</span>
-        <span className="text-sm font-medium" style={{ color: colors.neutralText }}>{t("gsm")}</span>
-        {roles.map((role) => {
-          const contact = contactFor(role);
-          return (
-            <div key={role} className="contents">
-              <label className="text-sm font-medium">
-                <span className="block mb-1.5">{t(role)}</span>
-                <input type="text" autoComplete="off" className={INPUT_CLASS} style={INPUT_STYLE} value={contact.nom ?? ""} onChange={(e) => updateContact(role, "nom", e.target.value)} />
-              </label>
-              {/* autoComplete="off" : sans ça, le navigateur propose/renseigne le même
-                  email/tél. enregistré (souvent celui de la personne qui remplit)
-                  sur toutes les lignes de rôles variables au lieu de laisser vide. */}
-              <input aria-label={`${t(role)} – ${t("tbl_email")}`} type="email" autoComplete="off" className={INPUT_CLASS} style={INPUT_STYLE} value={contact.email ?? ""} onChange={(e) => updateContact(role, "email", e.target.value)} />
-              <input aria-label={`${t(role)} – ${t("gsm")}`} type="tel" autoComplete="off" className={INPUT_CLASS} style={INPUT_STYLE} value={contact.gsm ?? ""} onChange={(e) => updateContact(role, "gsm", e.target.value)} />
-            </div>
-          );
-        })}
-      </div>
+    <div className="flex flex-col gap-6">
+      {roles.map((role) => {
+        const entries = approvalEntriesFor(value, role);
+        const multiple = entries.length > 1;
+        return (
+          <div key={role} className="flex flex-col gap-2.5">
+            <span className="text-sm font-medium" style={{ color: colors.neutralTextStrong }}>{t(role)}</span>
+            {entries.map((entry, idx) => (
+              <div key={idx} className="flex flex-wrap items-end gap-3">
+                {multiple && (
+                  <label className="text-sm" style={{ width: "7.5rem" }}>
+                    <span className="block mb-1.5 font-medium" style={{ color: colors.neutralText }}>{t("entite_label")}</span>
+                    <input
+                      type="text"
+                      placeholder={t("entite_placeholder")}
+                      className={INPUT_CLASS}
+                      style={INPUT_STYLE}
+                      value={entry.entite ?? ""}
+                      onChange={(e) => updateEntry(role, idx, "entite", e.target.value)}
+                    />
+                  </label>
+                )}
+                <label className="text-sm flex-1" style={{ minWidth: "10rem" }}>
+                  <span className="block mb-1.5 font-medium" style={{ color: colors.neutralText }}>{t("tbl_nom")}</span>
+                  {/* autoComplete="off" : sans ça, le navigateur propose/renseigne le
+                      même nom/email/tél. enregistré sur toutes les lignes de rôles
+                      variables au lieu de laisser vide. */}
+                  <input type="text" autoComplete="off" className={INPUT_CLASS} style={INPUT_STYLE} value={entry.nom ?? ""} onChange={(e) => updateEntry(role, idx, "nom", e.target.value)} />
+                </label>
+                <label className="text-sm flex-1" style={{ minWidth: "9rem" }}>
+                  <span className="block mb-1.5 font-medium" style={{ color: colors.neutralText }}>{t("tbl_email")}</span>
+                  <input type="email" autoComplete="off" className={INPUT_CLASS} style={INPUT_STYLE} value={entry.email ?? ""} onChange={(e) => updateEntry(role, idx, "email", e.target.value)} />
+                </label>
+                <label className="text-sm flex-1" style={{ minWidth: "8rem" }}>
+                  <span className="block mb-1.5 font-medium" style={{ color: colors.neutralText }}>{t("gsm")}</span>
+                  <input type="tel" autoComplete="off" className={INPUT_CLASS} style={INPUT_STYLE} value={entry.gsm ?? ""} onChange={(e) => updateEntry(role, idx, "gsm", e.target.value)} />
+                </label>
+                {multiple && (
+                  <button
+                    type="button"
+                    onClick={() => removeEntry(role, idx)}
+                    className="pb-2.5"
+                    aria-label={t("bouton_retirer_entite")}
+                    style={{ color: colors.neutralText }}
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                )}
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={() => addEntry(role)}
+              className="flex items-center gap-1.5 text-sm self-start"
+              style={{ color: colors.blue }}
+            >
+              <Plus size={14} /> {t("bouton_ajouter_societe_momentanee")}
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 }

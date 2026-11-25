@@ -478,7 +478,11 @@
     "moadr_statut_valide": "Gevalideerd — wordt samengevoegd met de RePSS-PDF",
     "moadr_bouton_valider": "Valideren",
     "moadr_bouton_devalider": "Validatie ongedaan maken",
-    "moadr_joint_en_annexe": "Als bijlage bij dit document gevoegd (volgende pagina's)."
+    "moadr_joint_en_annexe": "Als bijlage bij dit document gevoegd (volgende pagina's).",
+    "entite_label": "Entiteit",
+    "entite_placeholder": "bv. zuid, noord",
+    "bouton_ajouter_societe_momentanee": "Momentane vennootschap toevoegen",
+    "bouton_retirer_entite": "Deze momentane vennootschap verwijderen"
   },
   "risques": []
 }

@@ -15,6 +15,46 @@ function today() {
   return new Date().toISOString().slice(0, 10);
 }
 
+// Un rôle variable du tableau "Responsable d'approbation" peut être porté par
+// plusieurs sociétés momentanées sur un même chantier (ex. "sud"/"nord") : chaque
+// rôle est donc un tableau d'entrées { entite, nom, email, gsm }, pas un objet
+// unique. `entite` reste vide/masqué tant qu'il n'y a qu'une seule entrée (voir
+// ApprovalRolesField, FormStep.jsx).
+function defaultApprovalEntry() {
+  return { entite: "", nom: "", email: "", gsm: "" };
+}
+
+// Les dossiers sauvegardés avant l'introduction des sociétés momentanées stockent
+// `responsables.{role}` comme un objet unique (ou, plus anciennement, une simple
+// chaîne pour le nom) plutôt qu'un tableau : on l'enrobe dans un tableau à une
+// entrée à la lecture plutôt que de planter l'import.
+export function normalizeResponsables(responsables) {
+  if (!responsables) return responsables;
+  const next = {};
+  for (const [role, val] of Object.entries(responsables)) {
+    if (Array.isArray(val)) {
+      next[role] = val.length ? val : [defaultApprovalEntry()];
+    } else if (val && typeof val === "object") {
+      next[role] = [{ ...defaultApprovalEntry(), ...val }];
+    } else if (typeof val === "string" && val) {
+      next[role] = [{ ...defaultApprovalEntry(), nom: val }];
+    } else {
+      next[role] = [defaultApprovalEntry()];
+    }
+  }
+  return next;
+}
+
+// Appliqué à l'import d'un fichier .json ("Reprendre un RePSS existant") pour que
+// les anciens formats de `administratif.responsables` restent lisibles.
+export function normalizeDossier(data) {
+  if (!data?.administratif?.responsables) return data;
+  return {
+    ...data,
+    administratif: { ...data.administratif, responsables: normalizeResponsables(data.administratif.responsables) },
+  };
+}
+
 // Recompose l'adresse du chantier (rue/numéro/code postal/ville, §CLAUDE.md
 // scindés en 4 champs) en une seule ligne lisible, pour le PDF.
 export function formatAdresseChantier(rg) {
@@ -72,7 +112,7 @@ export function defaultDossier() {
       dateFinTravauxEstimee: "",
       motifNouvelleVersion: "",
       responsables: Object.fromEntries(
-        ROLES_ADMINISTRATION.map((r) => [r, { nom: "", email: "", gsm: "" }])
+        ROLES_ADMINISTRATION.map((r) => [r, [defaultApprovalEntry()]])
       ),
     },
     reglesSpecifiques: {
